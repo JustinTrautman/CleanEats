@@ -12,6 +12,7 @@
 		C304BA9959A44286F7AD54CB /* Pods_CleanEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F647D3D1D0CE0F57E55C2946 /* Pods_CleanEatsTests.framework */; };
 		D0018EED20E5502900A040CE /* LaunchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0018EEC20E5502900A040CE /* LaunchPage.storyboard */; };
 		D0018EF120E5512900A040CE /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0018EF020E5512900A040CE /* SearchPageViewController.swift */; };
+		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D0895E1320E1A71C00EB1307 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0895E1120E1A71C00EB1307 /* LaunchScreen.storyboard */; };
@@ -47,6 +48,7 @@
 		CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0018EEC20E5502900A040CE /* LaunchPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchPage.storyboard; path = "../../DevMountain/CleanEats copy 2/UI&Storyboards/LaunchPage.storyboard"; sourceTree = "<group>"; };
 		D0018EF020E5512900A040CE /* SearchPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPageViewController.swift; path = "../../DevMountain/CleanEats copy 2/UI&Storyboards/SearchPageViewController.swift"; sourceTree = "<group>"; };
+		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D0018EEC20E5502900A040CE /* LaunchPage.storyboard */,
+				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
 				D0895E3E20E1A77C00EB1307 /* LaunchScreen */,
 			);
 			path = "UI&Storyboards";
@@ -338,6 +341,7 @@
 				D0018EED20E5502900A040CE /* LaunchPage.storyboard in Resources */,
 				D0895E1320E1A71C00EB1307 /* LaunchScreen.storyboard in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
+				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
