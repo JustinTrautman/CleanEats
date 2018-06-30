@@ -12,6 +12,9 @@ import GooglePlaces
 
 class GoogleMapViewController: UIViewController {
     
+    // MARK: - Properties
+    let restaurantSearchBar = SearchPageViewController.sharedPageView.restaurantSearchBar
+    
     // MARK: - Outlets
     
     // MARK: - View Lifecycle
