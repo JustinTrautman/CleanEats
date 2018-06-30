@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,9 +23,13 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcE-jG-Qju">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1072"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
                                     </searchBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-L6-hMg">
                                         <rect key="frame" x="30" y="141" width="315" height="202.5"/>
@@ -32,15 +37,17 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="mzV-Lz-RGO">
                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="96.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZy-IR-s3g">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZy-IR-s3g">
                                                         <rect key="frame" x="0.0" y="0.0" width="96.5" height="96.5"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="KZy-IR-s3g" secondAttribute="height" multiplier="1:1" id="nls-9L-ius"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                         <state key="normal" title="Fast Food">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <state key="selected" title="Fast Food"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -50,13 +57,17 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="fastFoodButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="ta1-oV-EHr"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-3U-3dC">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-3U-3dC">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96.5"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fkx-3U-3dC" secondAttribute="height" multiplier="1:1" id="7UU-Ld-v2v"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                         <state key="normal" title="Dine-In">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -69,13 +80,17 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="dineInButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="E3Y-gf-cqv"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-kj-fks">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-kj-fks">
                                                         <rect key="frame" x="218.5" y="0.0" width="96.5" height="96.5"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="vQ3-kj-fks" secondAttribute="height" multiplier="1:1" id="cxb-Ut-Yvp"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                         <state key="normal" title="Bar/Pub">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -94,12 +109,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="td4-yM-H8G">
                                                 <rect key="frame" x="0.0" y="106.5" width="315" height="96"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54w-n7-YRM">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54w-n7-YRM">
                                                         <rect key="frame" x="0.0" y="0.0" width="96.5" height="96"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="54w-n7-YRM" secondAttribute="height" multiplier="1:1" id="Q6c-fK-3rz"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="Food Truck">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -113,12 +129,13 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fED-Ar-Ibs">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fED-Ar-Ibs">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fED-Ar-Ibs" secondAttribute="height" multiplier="1:1" id="7Nn-ta-dpz"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                                         <state key="normal" title="Fast Casual">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -132,12 +149,13 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKQ-pA-u58">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKQ-pA-u58">
                                                         <rect key="frame" x="218.5" y="0.0" width="96.5" height="96"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="OKQ-pA-u58" secondAttribute="height" multiplier="1:1" id="OyI-0b-mbf"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                         <state key="normal" title="Gas Station">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -161,6 +179,9 @@
                                             <constraint firstAttribute="height" constant="60" id="h8h-u4-DTE"/>
                                         </constraints>
                                         <state key="normal" title="(Programmatic Find Food) "/>
+                                        <connections>
+                                            <action selector="findFoodButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="SDp-vm-cZb"/>
+                                        </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-PT-ELu">
                                         <rect key="frame" x="10" y="505" width="355" height="283"/>
@@ -184,6 +205,58 @@
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CHQ-Hi-irk" id="7dS-dE-Ovz">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pmq-IK-iSA">
+                                                            <rect key="frame" x="15" y="19" width="92" height="92"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="Pmq-IK-iSA" secondAttribute="height" multiplier="1:1" id="4rm-Zh-Oe5"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Restaurant Title)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jI3-6S-66f">
+                                                            <rect key="frame" x="115" y="19" width="133" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Distance)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZA-5O-5VZ">
+                                                            <rect key="frame" x="115" y="67" width="80" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Short Description)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcb-mc-p88">
+                                                            <rect key="frame" x="115" y="91" width="148" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="fgh-bP-WMp"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BiH-U0-A04">
+                                                            <rect key="frame" x="115" y="43" width="121" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="h0d-DB-hYn"/>
+                                                                <constraint firstAttribute="width" constant="121" id="yBH-pS-HFX"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="0ZA-5O-5VZ" firstAttribute="top" secondItem="BiH-U0-A04" secondAttribute="bottom" constant="3" id="5cg-wN-ZgH"/>
+                                                        <constraint firstItem="Pmq-IK-iSA" firstAttribute="top" secondItem="7dS-dE-Ovz" secondAttribute="top" constant="19" id="5sK-Iv-EZ4"/>
+                                                        <constraint firstItem="0ZA-5O-5VZ" firstAttribute="leading" secondItem="BiH-U0-A04" secondAttribute="leading" id="6lS-p4-OkV"/>
+                                                        <constraint firstItem="dcb-mc-p88" firstAttribute="leading" secondItem="0ZA-5O-5VZ" secondAttribute="leading" id="Gv5-M7-i2b"/>
+                                                        <constraint firstItem="Pmq-IK-iSA" firstAttribute="leading" secondItem="7dS-dE-Ovz" secondAttribute="leading" constant="15" id="HPh-P9-6bS"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="dcb-mc-p88" secondAttribute="bottom" constant="14" id="L8x-qZ-aNp"/>
+                                                        <constraint firstItem="Pmq-IK-iSA" firstAttribute="width" secondItem="7dS-dE-Ovz" secondAttribute="height" multiplier="23:34" id="LRf-Of-Spl"/>
+                                                        <constraint firstItem="jI3-6S-66f" firstAttribute="leading" secondItem="7dS-dE-Ovz" secondAttribute="leading" constant="115" id="LnZ-Tf-eSc"/>
+                                                        <constraint firstItem="jI3-6S-66f" firstAttribute="leading" secondItem="Pmq-IK-iSA" secondAttribute="trailing" constant="8" symbolic="YES" id="M9J-sn-ez6"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="dcb-mc-p88" secondAttribute="trailing" constant="97" id="T70-i1-QNP"/>
+                                                        <constraint firstItem="Pmq-IK-iSA" firstAttribute="centerX" secondItem="7dS-dE-Ovz" secondAttribute="centerX" id="g6a-Ik-fcY"/>
+                                                        <constraint firstItem="jI3-6S-66f" firstAttribute="leading" secondItem="BiH-U0-A04" secondAttribute="leading" id="gWe-vJ-pDv"/>
+                                                        <constraint firstItem="jI3-6S-66f" firstAttribute="top" secondItem="Pmq-IK-iSA" secondAttribute="top" id="hvU-dK-vvp"/>
+                                                        <constraint firstItem="BiH-U0-A04" firstAttribute="top" secondItem="jI3-6S-66f" secondAttribute="bottom" constant="3" id="jRV-of-UfO"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
@@ -242,6 +315,8 @@
                     <navigationItem key="navigationItem" title="Clean Eats" id="W5U-sB-EsT"/>
                     <size key="freeformSize" width="375" height="1136"/>
                     <connections>
+                        <outlet property="dineInButton" destination="fkx-3U-3dC" id="0gc-iG-PRh"/>
+                        <outlet property="fastFoodButton" destination="KZy-IR-s3g" id="aRc-uT-Mby"/>
                         <outlet property="findFoodButton" destination="ocL-XY-FWk" id="B0B-V3-lF6"/>
                         <outlet property="restaurantSearchBar" destination="F13-9I-YlE" id="vbp-qj-xjo"/>
                     </connections>

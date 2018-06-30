@@ -21,5 +21,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'CleanEats' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GooglePlacePicker'
 
 end
