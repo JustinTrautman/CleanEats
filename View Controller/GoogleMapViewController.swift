@@ -13,7 +13,6 @@ import GooglePlaces
 class GoogleMapViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var findFoodButton: UIButton!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
