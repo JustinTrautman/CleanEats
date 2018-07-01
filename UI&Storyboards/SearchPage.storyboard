@@ -15,6 +15,7 @@
         <!--Clean Eats-->
         <scene sceneID="fAu-3s-aMl">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Z-sX-OlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="oX3-0i-TXq" customClass="SearchPageViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0DO-EB-F10">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
@@ -23,14 +24,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcE-jG-Qju">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1072"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                    </searchBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-L6-hMg">
                                         <rect key="frame" x="30" y="141" width="315" height="202.5"/>
                                         <subviews>
@@ -43,11 +36,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="KZy-IR-s3g" secondAttribute="height" multiplier="1:1" id="nls-9L-ius"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                         <state key="normal" title="Fast Food">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
-                                                        <state key="selected" title="Fast Food"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -67,7 +59,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fkx-3U-3dC" secondAttribute="height" multiplier="1:1" id="7UU-Ld-v2v"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                         <state key="normal" title="Dine-In">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -90,7 +82,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="vQ3-kj-fks" secondAttribute="height" multiplier="1:1" id="cxb-Ut-Yvp"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                         <state key="normal" title="Bar/Pub">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -115,7 +107,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="54w-n7-YRM" secondAttribute="height" multiplier="1:1" id="Q6c-fK-3rz"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <state key="normal" title="Food Truck">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -135,7 +127,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fED-Ar-Ibs" secondAttribute="height" multiplier="1:1" id="7Nn-ta-dpz"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                                         <state key="normal" title="Fast Casual">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -155,7 +147,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="OKQ-pA-u58" secondAttribute="height" multiplier="1:1" id="OyI-0b-mbf"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                         <state key="normal" title="Gas Station">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
@@ -174,7 +166,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-XY-FWk">
-                                        <rect key="frame" x="48" y="367" width="279" height="60"/>
+                                        <rect key="frame" x="48" y="366.5" width="279" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="h8h-u4-DTE"/>
                                         </constraints>
@@ -184,13 +176,16 @@
                                         </connections>
                                     </button>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-PT-ELu">
-                                        <rect key="frame" x="10" y="505" width="355" height="283"/>
+                                        <rect key="frame" x="10" y="504.5" width="355" height="283.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="283.5" id="vkX-pQ-g3f"/>
+                                        </constraints>
                                         <connections>
                                             <segue destination="SNu-dY-CjH" kind="embed" id="HgI-X9-wxR"/>
                                         </connections>
                                     </containerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Near Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi7-mc-KaG">
-                                        <rect key="frame" x="141" y="451" width="92.5" height="28"/>
+                                        <rect key="frame" x="141.5" y="450.5" width="92.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -263,43 +258,55 @@
                                         <sections/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvo-9A-77N">
-                                        <rect key="frame" x="143" y="83" width="88.5" height="28"/>
+                                        <rect key="frame" x="143.5" y="83" width="88.5" height="28"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Restaurant, City" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ocL-XY-FWk" firstAttribute="top" secondItem="uGe-L6-hMg" secondAttribute="bottom" constant="23" id="2IW-7r-x3a"/>
-                                    <constraint firstItem="zvo-9A-77N" firstAttribute="top" secondItem="F13-9I-YlE" secondAttribute="bottom" constant="27" id="3Qj-HS-ypT"/>
+                                    <constraint firstItem="zvo-9A-77N" firstAttribute="top" secondItem="F13-9I-YlE" secondAttribute="bottom" constant="27" id="32j-iY-G2e"/>
+                                    <constraint firstAttribute="trailing" secondItem="F13-9I-YlE" secondAttribute="trailing" id="3Go-sx-Kru"/>
                                     <constraint firstAttribute="trailing" secondItem="gyc-PT-ELu" secondAttribute="trailing" constant="10" id="B6p-YR-k2X"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" constant="10" id="Civ-pD-cbF"/>
-                                    <constraint firstItem="F13-9I-YlE" firstAttribute="top" secondItem="LcE-jG-Qju" secondAttribute="top" id="Dkp-l3-4ry"/>
-                                    <constraint firstAttribute="bottom" secondItem="F13-9I-YlE" secondAttribute="bottom" constant="1016" id="EZO-f4-ylK"/>
                                     <constraint firstItem="Bi7-mc-KaG" firstAttribute="top" secondItem="ocL-XY-FWk" secondAttribute="bottom" constant="24" id="FBH-5m-iwp"/>
                                     <constraint firstItem="4dE-vB-mdt" firstAttribute="top" secondItem="gyc-PT-ELu" secondAttribute="bottom" constant="-1" id="GTB-j6-qDF"/>
                                     <constraint firstItem="uGe-L6-hMg" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" constant="30" id="NBn-kj-uWo"/>
                                     <constraint firstAttribute="trailing" secondItem="4dE-vB-mdt" secondAttribute="trailing" id="Nqo-Nb-tU6"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" constant="10" id="P0a-kb-7iX"/>
+                                    <constraint firstAttribute="bottom" secondItem="gyc-PT-ELu" secondAttribute="bottom" constant="284" id="Pd3-jj-Tmp"/>
                                     <constraint firstAttribute="trailing" secondItem="gyc-PT-ELu" secondAttribute="trailing" constant="10" id="QPW-Y2-lIR"/>
                                     <constraint firstItem="4dE-vB-mdt" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" id="QZn-tp-g4i"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="centerX" secondItem="uGe-L6-hMg" secondAttribute="centerX" id="S0X-K7-U0v"/>
+                                    <constraint firstItem="F13-9I-YlE" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" id="T6A-Ay-tqz"/>
                                     <constraint firstItem="mzV-Lz-RGO" firstAttribute="centerX" secondItem="LcE-jG-Qju" secondAttribute="centerX" id="TLa-rj-xh2"/>
                                     <constraint firstItem="ocL-XY-FWk" firstAttribute="centerX" secondItem="Bi7-mc-KaG" secondAttribute="centerX" id="Xb3-fp-BlJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="gyc-PT-ELu" secondAttribute="trailing" constant="10" id="Y0D-DR-wh5"/>
                                     <constraint firstItem="ocL-XY-FWk" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" constant="48" id="alh-A9-Z8H"/>
                                     <constraint firstAttribute="trailing" secondItem="gyc-PT-ELu" secondAttribute="trailing" constant="10" id="bAt-Ih-mDO"/>
-                                    <constraint firstItem="F13-9I-YlE" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" id="c3J-gl-4IW"/>
                                     <constraint firstItem="uGe-L6-hMg" firstAttribute="top" secondItem="zvo-9A-77N" secondAttribute="bottom" constant="30" id="euc-On-p5m"/>
                                     <constraint firstItem="4dE-vB-mdt" firstAttribute="centerX" secondItem="LcE-jG-Qju" secondAttribute="centerX" id="fuy-zt-1Sa"/>
                                     <constraint firstAttribute="bottom" secondItem="gyc-PT-ELu" secondAttribute="bottom" constant="284" id="gaf-Z5-m4c"/>
-                                    <constraint firstItem="F13-9I-YlE" firstAttribute="centerX" secondItem="ocL-XY-FWk" secondAttribute="centerX" id="io0-SV-owF"/>
+                                    <constraint firstItem="gyc-PT-ELu" firstAttribute="top" secondItem="Bi7-mc-KaG" secondAttribute="bottom" constant="26" id="iWR-dy-YfO"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="centerX" secondItem="LcE-jG-Qju" secondAttribute="centerX" id="kVk-VL-8Nn"/>
                                     <constraint firstAttribute="trailing" secondItem="gyc-PT-ELu" secondAttribute="trailing" constant="10" id="lAN-Dj-5xC"/>
                                     <constraint firstAttribute="bottom" secondItem="4dE-vB-mdt" secondAttribute="bottom" id="o6h-RE-VHg"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="centerX" secondItem="4dE-vB-mdt" secondAttribute="centerX" id="oFh-xv-Le4"/>
+                                    <constraint firstItem="F13-9I-YlE" firstAttribute="centerX" secondItem="LcE-jG-Qju" secondAttribute="centerX" id="t39-wU-uAG"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="centerX" secondItem="ocL-XY-FWk" secondAttribute="centerX" id="vWr-4g-UGX"/>
                                     <constraint firstItem="gyc-PT-ELu" firstAttribute="top" secondItem="Bi7-mc-KaG" secondAttribute="bottom" constant="26" id="yOQ-8g-R4T"/>
                                     <constraint firstItem="zvo-9A-77N" firstAttribute="centerX" secondItem="LcE-jG-Qju" secondAttribute="centerX" id="yPp-8b-vJo"/>
+                                    <constraint firstItem="gyc-PT-ELu" firstAttribute="leading" secondItem="LcE-jG-Qju" secondAttribute="leading" constant="10" id="zfT-ev-aJb"/>
+                                    <constraint firstItem="F13-9I-YlE" firstAttribute="top" secondItem="LcE-jG-Qju" secondAttribute="top" id="zmV-92-Ewy"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -318,10 +325,9 @@
                         <outlet property="dineInButton" destination="fkx-3U-3dC" id="0gc-iG-PRh"/>
                         <outlet property="fastFoodButton" destination="KZy-IR-s3g" id="aRc-uT-Mby"/>
                         <outlet property="findFoodButton" destination="ocL-XY-FWk" id="B0B-V3-lF6"/>
-                        <outlet property="restaurantSearchBar" destination="F13-9I-YlE" id="vbp-qj-xjo"/>
+                        <outlet property="scrollView" destination="LcE-jG-Qju" id="owm-0H-FOu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Z-sX-OlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.400000000000006" y="15.292353823088456"/>
         </scene>
@@ -337,6 +343,9 @@
                     </view>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="MapView" destination="aSL-wZ-VDH" id="bbd-1V-S3N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJR-Yn-zfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

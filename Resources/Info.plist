@@ -42,7 +42,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&lt;string&gt;Show your location on the map&lt;/string&gt;</string>
+	<string>Use Location</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
