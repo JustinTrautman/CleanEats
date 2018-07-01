@@ -21,7 +21,9 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     @IBOutlet var MapView: GMSMapView!
     
     // MARK: - Properties
-   // static let sharedMapController = GoogleMapViewController()
+    private let dataProvider = RestaurantSearch()
+    private let searchRadius: Double = 5000
+    
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
@@ -30,9 +32,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // myMapView.delegate = self
         locationManager.delegate = self
-        // restaurantSearchBar?.delegate = self
         locationManager.requestWhenInUseAuthorization() // Request User location - Remove later
         locationManager.startUpdatingLocation()
         locationManager.startMonitoringSignificantLocationChanges()
@@ -41,6 +41,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
         initGoogleMaps()
     }
     
+    // MARK: - Required Google Map Delegate Functions
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         let lat = place.coordinate.latitude
@@ -60,13 +61,13 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error autocompleting address error: \(error) \(error.localizedDescription)")
-        
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Configuring the map's layout
     func initGoogleMaps() {
         let camera = GMSCameraPosition.camera(withLatitude: 47.6588, longitude: -117.4260, zoom: 17.0)
         self.myMapView.camera = camera
@@ -75,7 +76,6 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     }
 
     func setupMapView() {
-        
             view.addSubview(myMapView)
             myMapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             myMapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -88,19 +88,30 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
             v.translatesAutoresizingMaskIntoConstraints = false
             return v
         }()
-}
 
+// MARK - : Populating the MapView
+private func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
+    
+    MapView.clear()
+    
+    dataProvider.fetchPlacesNearCoordinate(coordinate, radius:searchRadius, types: searchedTypes) { places in
+        places.forEach {
+            let marker = PlaceMarker(place: $0)
+            marker.map = self.mapView
+            }
+        }
+  }
+}
+    
 // MARK: - CLLocationManagerDelegate
 extension GoogleMapViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
         guard status == .authorizedWhenInUse else {
             return
         }
         
         locationManager.startUpdatingLocation()
-        
         myMapView.isMyLocationEnabled = true
     }
     
@@ -109,8 +120,8 @@ extension GoogleMapViewController : CLLocationManagerDelegate {
             return
         }
         
+        fetchNearbyPlaces(coordinate: location.coordinate)
         myMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-        
         locationManager.stopUpdatingLocation()
     }
 }

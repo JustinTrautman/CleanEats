@@ -36,9 +36,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="KZy-IR-s3g" secondAttribute="height" multiplier="1:1" id="nls-9L-ius"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                                        <state key="normal" title="Fast Food">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                        <state key="normal" title="Fast Food" backgroundImage="FastFood">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleShadowColor" red="0.098112309644670104" green="0.076863479504325399" blue="0.028978404442730716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -59,9 +60,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fkx-3U-3dC" secondAttribute="height" multiplier="1:1" id="7UU-Ld-v2v"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                                        <state key="normal" title="Dine-In">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                        <state key="normal" title="Delivery" backgroundImage="Delivery">
+                                                            <color key="titleColor" red="0.99109692258883253" green="0.99109692258883253" blue="0.99109692258883253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -82,9 +83,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="vQ3-kj-fks" secondAttribute="height" multiplier="1:1" id="cxb-Ut-Yvp"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                                        <state key="normal" title="Bar/Pub">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                        <state key="normal" title="Bar/Pub" backgroundImage="Bar:Pub">
+                                                            <color key="titleColor" red="0.99569717639593913" green="0.99569717639593913" blue="0.99569717639593913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleShadowColor" red="0.06878569162436543" green="0.06878569162436543" blue="0.06878569162436543" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -107,9 +109,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="54w-n7-YRM" secondAttribute="height" multiplier="1:1" id="Q6c-fK-3rz"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Food Truck">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                        <state key="normal" title="Food Truck" backgroundImage="FastFood">
+                                                            <color key="titleColor" red="0.99609375" green="0.99609375" blue="0.99609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleShadowColor" red="0.069360723350253783" green="0.069360723350253783" blue="0.069360723350253783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -127,9 +130,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="fED-Ar-Ibs" secondAttribute="height" multiplier="1:1" id="7Nn-ta-dpz"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                                        <state key="normal" title="Fast Casual">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                                        <state key="normal" title="Takeout" backgroundImage="Takeout">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleShadowColor" red="0.073921319796954266" green="0.073921319796954266" blue="0.073921319796954266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -147,9 +151,10 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="OKQ-pA-u58" secondAttribute="height" multiplier="1:1" id="OyI-0b-mbf"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Gas Station">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                        <state key="normal" title="Grocery" backgroundImage="Grocery">
+                                                            <color key="titleColor" red="0.98754758883248728" green="0.98754758883248728" blue="0.98754758883248728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="titleShadowColor" red="0.066862309644670104" green="0.066862309644670104" blue="0.066862309644670104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -370,4 +375,11 @@
             <point key="canvasLocation" x="-871.20000000000005" y="15.742128935532236"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Bar:Pub" width="976" height="649"/>
+        <image name="Delivery" width="500" height="625"/>
+        <image name="FastFood" width="466" height="701"/>
+        <image name="Grocery" width="975" height="650"/>
+        <image name="Takeout" width="975" height="650"/>
+    </resources>
 </document>
