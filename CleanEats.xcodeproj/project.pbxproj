@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		12A7C29C47872B9B5E260422 /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
+		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
+		4282D6B720EAD00E0045D223 /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B620EAD00E0045D223 /* RestaurantProfileViewController.swift */; };
+		4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */; };
+		4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */; };
+		4282D6BD20EAD05B0045D223 /* RestaurantProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4282D6BC20EAD05B0045D223 /* RestaurantProfile.storyboard */; };
 		D009691020EAA119005CAE1A /* Pods_CleanEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009690F20EAA119005CAE1A /* Pods_CleanEatsTests.framework */; };
 		D009691220EAA12C005CAE1A /* Pods_CleanEatsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691120EAA12C005CAE1A /* Pods_CleanEatsUITests.framework */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
@@ -45,6 +50,11 @@
 /* Begin PBXFileReference section */
 		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
+		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
+		4282D6B620EAD00E0045D223 /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
+		4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
+		4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthRatingTableViewController.swift; sourceTree = "<group>"; };
+		4282D6BC20EAD05B0045D223 /* RestaurantProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantProfile.storyboard; sourceTree = "<group>"; };
 		6DA446DDDF91BC6D36B7B88F /* Pods_CleanEatsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEatsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009690F20EAA119005CAE1A /* Pods_CleanEatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CleanEatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +153,11 @@
 		D0018EE720E54FE600A040CE /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4282D6B620EAD00E0045D223 /* RestaurantProfileViewController.swift */,
 				D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */,
+				4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */,
+				4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */,
+				4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */,
 				4282D6B220EACF180045D223 /* SearchPageViewController.swift */,
 			);
 			path = "View Controller";
@@ -202,6 +216,7 @@
 		D0895E3A20E1A73700EB1307 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				4282D6BC20EAD05B0045D223 /* RestaurantProfile.storyboard */,
 				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
 				D0895E1120E1A71C00EB1307 /* LaunchScreen.storyboard */,
 			);
@@ -316,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0895E1320E1A71C00EB1307 /* LaunchScreen.storyboard in Resources */,
+				4282D6BD20EAD05B0045D223 /* RestaurantProfile.storyboard in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
 				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
 			);
@@ -405,9 +421,13 @@
 			files = (
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				D009691620EAA52D005CAE1A /* FilterButtons.swift in Sources */,
+				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */,
+				4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */,
 				D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */,
+				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
+				4282D6B720EAD00E0045D223 /* RestaurantProfileViewController.swift in Sources */,
 				D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
 				D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */,
