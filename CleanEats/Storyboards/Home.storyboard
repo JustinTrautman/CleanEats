@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tfj-Kb-KPk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DineRite-->
+        <scene sceneID="Lpq-a7-ahd">
+            <objects>
+                <viewController id="0hk-Q2-u0J" customClass="HomeViewController" customModule="showRestaurantOnMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CFE-vt-Z9z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ope-Ij-wjh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </mapView>
+                            <searchBar alpha="0.75" contentMode="redraw" placeholder="Enter restaurant..." translatesAutoresizingMaskIntoConstraints="NO" id="DCy-7T-ZLH">
+                                <rect key="frame" x="30" y="94" width="315" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DCy-7T-ZLH" firstAttribute="top" secondItem="0uw-3e-Cj5" secondAttribute="top" constant="30" id="IBn-nP-ydh"/>
+                            <constraint firstItem="ope-Ij-wjh" firstAttribute="trailing" secondItem="0uw-3e-Cj5" secondAttribute="trailing" id="Nvz-RB-Sx4"/>
+                            <constraint firstItem="ope-Ij-wjh" firstAttribute="leading" secondItem="0uw-3e-Cj5" secondAttribute="leading" id="YHy-ft-HbO"/>
+                            <constraint firstItem="ope-Ij-wjh" firstAttribute="top" secondItem="0uw-3e-Cj5" secondAttribute="top" id="apA-G7-JpH"/>
+                            <constraint firstItem="0uw-3e-Cj5" firstAttribute="trailing" secondItem="DCy-7T-ZLH" secondAttribute="trailing" constant="30" id="peT-N0-vWU"/>
+                            <constraint firstItem="DCy-7T-ZLH" firstAttribute="leading" secondItem="0uw-3e-Cj5" secondAttribute="leading" constant="30" id="wDb-I6-FF7"/>
+                            <constraint firstItem="ope-Ij-wjh" firstAttribute="bottom" secondItem="0uw-3e-Cj5" secondAttribute="bottom" id="xsc-rV-lcu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0uw-3e-Cj5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="DineRite" id="Vrz-UU-Dmh"/>
+                    <connections>
+                        <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
+                        <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="WEu-40-Cki"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbY-d8-ams" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108" y="112.89355322338831"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="K0W-J7-00R">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tfj-Kb-KPk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="YNd-gm-4cT"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xC4-t2-8vT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0hk-Q2-u0J" kind="relationship" relationship="rootViewController" id="MzP-qi-hsn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3T3-Gd-NBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.80000000000001" y="112.89355322338831"/>
+        </scene>
+    </scenes>
+</document>
