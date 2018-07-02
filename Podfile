@@ -22,5 +22,6 @@ target 'CleanEats' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
+  pod 'SwiftyJSON', '~> 4.0'
 
 end

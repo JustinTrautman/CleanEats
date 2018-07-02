@@ -21,8 +21,9 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     @IBOutlet var MapView: GMSMapView!
     
     // MARK: - Properties
-    private let dataProvider = RestaurantSearch()
+    private let dataProvider = RestaurantSearchController()
     private let searchRadius: Double = 5000
+    private var searchedTypes = ["restaurant","convenience_store","supermarket","meal_takeaway","meal_delivery"]
     
     let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
@@ -69,7 +70,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
     
     // MARK: - Configuring the map's layout
     func initGoogleMaps() {
-        let camera = GMSCameraPosition.camera(withLatitude: 47.6588, longitude: -117.4260, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 40.7608, longitude: -111.8910, zoom: 17.0)
         self.myMapView.camera = camera
         self.myMapView.delegate = self
         self.myMapView.isMyLocationEnabled = true
@@ -94,13 +95,13 @@ private func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
     
     MapView.clear()
     
-    dataProvider.fetchPlacesNearCoordinate(coordinate, radius:searchRadius, types: searchedTypes) { places in
+    dataProvider.fetchPlacesNearCoordinate(coordinate, radius:searchRadius, types: searchedTypes)  { places in
         places.forEach {
             let marker = PlaceMarker(place: $0)
-            marker.map = self.mapView
+            marker.map = self.MapView
             }
         }
-  }
+    }
 }
     
 // MARK: - CLLocationManagerDelegate
@@ -120,8 +121,8 @@ extension GoogleMapViewController : CLLocationManagerDelegate {
             return
         }
         
-        fetchNearbyPlaces(coordinate: location.coordinate)
         myMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
+       // fetchNearbyPlaces(coordinate: location.coordinate)
     }
 }

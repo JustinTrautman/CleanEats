@@ -11,9 +11,9 @@ import GoogleMaps
 
 class PlaceMarker: GMSMarker {
     
-    let place: GooglePlace
+    let place: RestaurantSearch
     
-    init(place: GooglePlace) {
+    init(place: RestaurantSearch) {
         self.place = place
         super.init()
         

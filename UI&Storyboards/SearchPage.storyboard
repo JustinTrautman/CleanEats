@@ -15,7 +15,6 @@
         <!--Clean Eats-->
         <scene sceneID="fAu-3s-aMl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Z-sX-OlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="oX3-0i-TXq" customClass="SearchPageViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0DO-EB-F10">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
@@ -24,6 +23,14 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcE-jG-Qju">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1072"/>
                                 <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Restaurant, City" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                    </searchBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uGe-L6-hMg">
                                         <rect key="frame" x="30" y="141" width="315" height="202.5"/>
                                         <subviews>
@@ -50,9 +57,6 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="fastFoodButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="ta1-oV-EHr"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-3U-3dC">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96.5"/>
@@ -73,9 +77,6 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="dineInButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="E3Y-gf-cqv"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-kj-fks">
                                                         <rect key="frame" x="218.5" y="0.0" width="96.5" height="96.5"/>
@@ -268,14 +269,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Restaurant, City" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                    </searchBar>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ocL-XY-FWk" firstAttribute="top" secondItem="uGe-L6-hMg" secondAttribute="bottom" constant="23" id="2IW-7r-x3a"/>
@@ -327,12 +320,13 @@
                     <navigationItem key="navigationItem" title="Clean Eats" id="W5U-sB-EsT"/>
                     <size key="freeformSize" width="375" height="1136"/>
                     <connections>
-                        <outlet property="dineInButton" destination="fkx-3U-3dC" id="0gc-iG-PRh"/>
+                        <outlet property="deliveryButton" destination="fkx-3U-3dC" id="CwA-nI-baF"/>
                         <outlet property="fastFoodButton" destination="KZy-IR-s3g" id="aRc-uT-Mby"/>
                         <outlet property="findFoodButton" destination="ocL-XY-FWk" id="B0B-V3-lF6"/>
                         <outlet property="scrollView" destination="LcE-jG-Qju" id="owm-0H-FOu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Z-sX-OlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.400000000000006" y="15.292353823088456"/>
         </scene>
