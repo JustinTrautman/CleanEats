@@ -42,6 +42,12 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
         initGoogleMaps()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchNearbyPlaces(coordinate: mapView.camera.target)
+    }
+    
     // MARK: - Required Google Map Delegate Functions
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
