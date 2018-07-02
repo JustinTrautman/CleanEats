@@ -7,12 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12A7C29C47872B9B5E260422 /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */; };
+		55FD5CE7EB346218EB3F035C /* Pods_CleanEatsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA446DDDF91BC6D36B7B88F /* Pods_CleanEatsUITests.framework */; };
+		C304BA9959A44286F7AD54CB /* Pods_CleanEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F647D3D1D0CE0F57E55C2946 /* Pods_CleanEatsTests.framework */; };
+		D0018EED20E5502900A040CE /* LaunchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0018EEC20E5502900A040CE /* LaunchPage.storyboard */; };
+		D0018EF120E5512900A040CE /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0018EF020E5512900A040CE /* SearchPageViewController.swift */; };
+		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
+		D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */; };
+		D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966620E931CB003EB641 /* RestaurantSearchController.swift */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D0895E1320E1A71C00EB1307 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0895E1120E1A71C00EB1307 /* LaunchScreen.storyboard */; };
 		D0895E1E20E1A71D00EB1307 /* CleanEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E1D20E1A71D00EB1307 /* CleanEatsTests.swift */; };
 		D0895E2920E1A71D00EB1307 /* CleanEatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E2820E1A71D00EB1307 /* CleanEatsUITests.swift */; };
-		D0895E3D20E1A76900EB1307 /* LaunchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0895E3C20E1A76900EB1307 /* LaunchPage.storyboard */; };
+		D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB220E9691300A6037C /* PlaceMarker.swift */; };
+		D0AACAB720E9AF2B00A6037C /* RestaurantSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */; };
+		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
+		D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +44,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
+		40CECC37D11C00A70B2C502B /* Pods-CleanEatsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEatsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEatsTests/Pods-CleanEatsTests.release.xcconfig"; sourceTree = "<group>"; };
+		68F0FB3BBF0BFA46ED5FF5AA /* Pods-CleanEatsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEatsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEatsUITests/Pods-CleanEatsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6DA446DDDF91BC6D36B7B88F /* Pods_CleanEatsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEatsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B671081E854CA663E618AE2 /* Pods-CleanEatsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEatsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEatsUITests/Pods-CleanEatsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0018EEC20E5502900A040CE /* LaunchPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchPage.storyboard; path = "../../DevMountain/CleanEats copy 2/UI&Storyboards/LaunchPage.storyboard"; sourceTree = "<group>"; };
+		D0018EF020E5512900A040CE /* SearchPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchPageViewController.swift; path = "../../DevMountain/CleanEats copy 2/UI&Storyboards/SearchPageViewController.swift"; sourceTree = "<group>"; };
+		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
+		D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMarkerView.swift; sourceTree = "<group>"; };
+		D06E966620E931CB003EB641 /* RestaurantSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchController.swift; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,7 +66,13 @@
 		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E2820E1A71D00EB1307 /* CleanEatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanEatsUITests.swift; sourceTree = "<group>"; };
 		D0895E2A20E1A71D00EB1307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0895E3C20E1A76900EB1307 /* LaunchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchPage.storyboard; sourceTree = "<group>"; };
+		D0AACAB220E9691300A6037C /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+		D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearch.swift; sourceTree = "<group>"; };
+		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
+		E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.release.xcconfig"; sourceTree = "<group>"; };
+		F647D3D1D0CE0F57E55C2946 /* Pods_CleanEatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC52EC3BFBA47FE8B5181FC7 /* Pods-CleanEatsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEatsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEatsTests/Pods-CleanEatsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A7C29C47872B9B5E260422 /* Pods_CleanEats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C304BA9959A44286F7AD54CB /* Pods_CleanEatsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,25 +96,86 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55FD5CE7EB346218EB3F035C /* Pods_CleanEatsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081E394468838F826BDD4481 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */,
+				E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */,
+				FC52EC3BFBA47FE8B5181FC7 /* Pods-CleanEatsTests.debug.xcconfig */,
+				40CECC37D11C00A70B2C502B /* Pods-CleanEatsTests.release.xcconfig */,
+				68F0FB3BBF0BFA46ED5FF5AA /* Pods-CleanEatsUITests.debug.xcconfig */,
+				8B671081E854CA663E618AE2 /* Pods-CleanEatsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		71B01CFE1680DA06900CF4AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD73214A7BBBBF0B1E2F2165 /* Pods_CleanEats.framework */,
+				F647D3D1D0CE0F57E55C2946 /* Pods_CleanEatsTests.framework */,
+				6DA446DDDF91BC6D36B7B88F /* Pods_CleanEatsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0018EE620E54FD700A040CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
+				D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0018EE720E54FE600A040CE /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0018EF020E5512900A040CE /* SearchPageViewController.swift */,
+				D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		D0018EE820E54FF000A040CE /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D06E966620E931CB003EB641 /* RestaurantSearchController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		D0018EE920E54FF800A040CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0AACAB220E9691300A6037C /* PlaceMarker.swift */,
+				D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D0895DFC20E1A71C00EB1307 = {
 			isa = PBXGroup;
 			children = (
+				D0018EE920E54FF800A040CE /* Model */,
+				D0018EE820E54FF000A040CE /* Model Controller */,
+				D0018EE720E54FE600A040CE /* View Controller */,
+				D0018EE620E54FD700A040CE /* Views */,
 				D0895E3B20E1A74D00EB1307 /* Resources */,
 				D0895E3A20E1A73700EB1307 /* UI&Storyboards */,
-				D0895E3920E1A73200EB1307 /* Views */,
-				D0895E3820E1A72D00EB1307 /* View Controller */,
-				D0895E3720E1A72600EB1307 /* Model Controller */,
-				D0895E3620E1A72100EB1307 /* Model */,
 				D0895E0720E1A71C00EB1307 /* CleanEats */,
 				D0895E1C20E1A71D00EB1307 /* CleanEatsTests */,
 				D0895E2720E1A71D00EB1307 /* CleanEatsUITests */,
 				D0895E0620E1A71C00EB1307 /* Products */,
+				081E394468838F826BDD4481 /* Pods */,
+				71B01CFE1680DA06900CF4AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,38 +216,11 @@
 			path = CleanEatsUITests;
 			sourceTree = "<group>";
 		};
-		D0895E3620E1A72100EB1307 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		D0895E3720E1A72600EB1307 /* Model Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Model Controller";
-			sourceTree = "<group>";
-		};
-		D0895E3820E1A72D00EB1307 /* View Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Controller";
-			sourceTree = "<group>";
-		};
-		D0895E3920E1A73200EB1307 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		D0895E3A20E1A73700EB1307 /* UI&Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				D0895E3C20E1A76900EB1307 /* LaunchPage.storyboard */,
+				D0018EEC20E5502900A040CE /* LaunchPage.storyboard */,
+				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
 				D0895E3E20E1A77C00EB1307 /* LaunchScreen */,
 			);
 			path = "UI&Storyboards";
@@ -185,9 +249,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0895E2D20E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEats" */;
 			buildPhases = (
+				DD5C83EE5C575A807CED1A2E /* [CP] Check Pods Manifest.lock */,
 				D0895E0120E1A71C00EB1307 /* Sources */,
 				D0895E0220E1A71C00EB1307 /* Frameworks */,
 				D0895E0320E1A71C00EB1307 /* Resources */,
+				3237E24083DD97A5BABF96D5 /* [CP] Copy Pods Resources */,
+				478789B06AFB9BD63060091F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +269,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0895E3020E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsTests" */;
 			buildPhases = (
+				5E471A59D65C9ACD37F0E4AF /* [CP] Check Pods Manifest.lock */,
 				D0895E1520E1A71D00EB1307 /* Sources */,
 				D0895E1620E1A71D00EB1307 /* Frameworks */,
 				D0895E1720E1A71D00EB1307 /* Resources */,
@@ -220,6 +288,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0895E3320E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsUITests" */;
 			buildPhases = (
+				BFDA0719F791DECD39186230 /* [CP] Check Pods Manifest.lock */,
 				D0895E2020E1A71D00EB1307 /* Sources */,
 				D0895E2120E1A71D00EB1307 /* Frameworks */,
 				D0895E2220E1A71D00EB1307 /* Resources */,
@@ -282,9 +351,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0018EED20E5502900A040CE /* LaunchPage.storyboard in Resources */,
 				D0895E1320E1A71C00EB1307 /* LaunchScreen.storyboard in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
-				D0895E3D20E1A76900EB1307 /* LaunchPage.storyboard in Resources */,
+				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,12 +374,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3237E24083DD97A5BABF96D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		478789B06AFB9BD63060091F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E471A59D65C9ACD37F0E4AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CleanEatsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFDA0719F791DECD39186230 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CleanEatsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD5C83EE5C575A807CED1A2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CleanEats-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D0895E0120E1A71C00EB1307 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
+				D0018EF120E5512900A040CE /* SearchPageViewController.swift in Sources */,
+				D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */,
+				D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */,
+				D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */,
+				D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */,
+				D0AACAB720E9AF2B00A6037C /* RestaurantSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +646,7 @@
 		};
 		D0895E2E20E1A71D00EB1307 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -490,6 +665,7 @@
 		};
 		D0895E2F20E1A71D00EB1307 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +684,7 @@
 		};
 		D0895E3120E1A71D00EB1307 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC52EC3BFBA47FE8B5181FC7 /* Pods-CleanEatsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +706,7 @@
 		};
 		D0895E3220E1A71D00EB1307 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40CECC37D11C00A70B2C502B /* Pods-CleanEatsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -550,6 +728,7 @@
 		};
 		D0895E3420E1A71D00EB1307 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68F0FB3BBF0BFA46ED5FF5AA /* Pods-CleanEatsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -570,6 +749,7 @@
 		};
 		D0895E3520E1A71D00EB1307 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B671081E854CA663E618AE2 /* Pods-CleanEatsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
