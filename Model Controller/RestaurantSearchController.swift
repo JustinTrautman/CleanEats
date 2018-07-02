@@ -30,7 +30,7 @@ class RestaurantSearchController {
     
     func fetchPlacesNearCoordinate(_ coordinate: CLLocationCoordinate2D, radius: Double, types:[String], completion: @escaping PlacesCompletion) -> Void {
         
-        var urlString = "\(APIconstants.GooglePlaceSearchBaseURL)\(coordinate.latitude),\(coordinate.longitude)&radius=\(radius)&rankby=prominence&sensor=true&key=\(APIconstants.GoogleApiKey)"
+        var urlString = "\(String(describing: APIconstants.GooglePlaceSearchBaseURL))\(coordinate.latitude),\(coordinate.longitude)&radius=\(radius)&rankby=prominence&sensor=true&key=\(APIconstants.GoogleApiKey)"
         
         let typesString = types.count > 0 ? types.joined(separator: "|") : "food"
         urlString += "&types=\(typesString)"
@@ -63,9 +63,8 @@ class RestaurantSearchController {
                     return
             }
             results.forEach {
-                var place = RestaurantSearch(dictionary: $0, acceptedTypes: types)
+                let place = RestaurantSearch(dictionary: $0, acceptedTypes: types)
                 placesArray.append(place)
-               
             }
         }
         placesTask?.resume()
