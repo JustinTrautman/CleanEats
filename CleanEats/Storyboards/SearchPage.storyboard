@@ -259,6 +259,9 @@
                                                         <constraint firstItem="BiH-U0-A04" firstAttribute="top" secondItem="jI3-6S-66f" secondAttribute="bottom" constant="3" id="jRV-of-UfO"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="epW-bJ-Hmi" kind="show" id="65E-sE-Aro"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
@@ -329,6 +332,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Z-sX-OlR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.400000000000006" y="15.292353823088456"/>
+        </scene>
+        <!--RestaurantProfile-->
+        <scene sceneID="kM2-xC-9IG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RestaurantProfile" id="epW-bJ-Hmi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vUY-pH-ddU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="353" y="739"/>
         </scene>
         <!--Google Map View Controller-->
         <scene sceneID="uXB-ja-vjp">
