@@ -337,13 +337,25 @@
                     <view key="view" contentMode="scaleToFill" id="aSL-wZ-VDH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdx-cr-cC0" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jdx-cr-cC0" firstAttribute="top" secondItem="U5O-ND-2Rf" secondAttribute="top" id="FaF-wc-qbe"/>
+                            <constraint firstItem="U5O-ND-2Rf" firstAttribute="bottom" secondItem="jdx-cr-cC0" secondAttribute="bottom" id="Gce-MN-JPY"/>
+                            <constraint firstItem="jdx-cr-cC0" firstAttribute="leading" secondItem="U5O-ND-2Rf" secondAttribute="leading" id="XFC-gB-wUO"/>
+                            <constraint firstItem="U5O-ND-2Rf" firstAttribute="trailing" secondItem="jdx-cr-cC0" secondAttribute="trailing" id="tbt-d8-7UO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U5O-ND-2Rf"/>
                     </view>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="MapView" destination="aSL-wZ-VDH" id="bbd-1V-S3N"/>
+                        <outlet property="mapView" destination="jdx-cr-cC0" id="iF6-mn-rCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJR-Yn-zfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
