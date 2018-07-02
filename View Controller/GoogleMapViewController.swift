@@ -18,7 +18,7 @@ struct MyPlace {
 
 class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate {
     
-    @IBOutlet var MapView: GMSMapView!
+    @IBOutlet weak var mapView: GMSMapView!
     
     // MARK: - Properties
     private let dataProvider = RestaurantSearchController()
@@ -90,15 +90,14 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate, GMSAutocomp
             return v
         }()
 
-// MARK - : Populating the MapView
-private func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
     
-    MapView.clear()
-    
-    dataProvider.fetchPlacesNearCoordinate(coordinate, radius:searchRadius, types: searchedTypes)  { places in
-        places.forEach {
-            let marker = PlaceMarker(place: $0)
-            marker.map = self.MapView
+    func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
+        mapView.clear()
+        
+        dataProvider.fetchPlacesNearCoordinate(coordinate, radius:searchRadius, types: searchedTypes) { places in
+            places.forEach {
+                let marker = PlaceMarker(place: $0)
+                marker.map = self.mapView
             }
         }
     }
@@ -123,6 +122,6 @@ extension GoogleMapViewController : CLLocationManagerDelegate {
         
         myMapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
-       // fetchNearbyPlaces(coordinate: location.coordinate)
+        fetchNearbyPlaces(coordinate: location.coordinate)
     }
 }

@@ -15,6 +15,10 @@
 		D009691020EAA119005CAE1A /* Pods_CleanEatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009690F20EAA119005CAE1A /* Pods_CleanEatsTests.framework */; };
 		D009691220EAA12C005CAE1A /* Pods_CleanEatsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691120EAA12C005CAE1A /* Pods_CleanEatsUITests.framework */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
+<<<<<<< HEAD
+=======
+		D009691620EAA52D005CAE1A /* FilterButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009691520EAA52D005CAE1A /* FilterButtons.swift */; };
+>>>>>>> e50660c5525845d68d22292f5480b59a933b210a
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */; };
 		D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966620E931CB003EB641 /* RestaurantSearchController.swift */; };
@@ -58,6 +62,10 @@
 		D009690F20EAA119005CAE1A /* Pods_CleanEatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CleanEatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691120EAA12C005CAE1A /* Pods_CleanEatsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CleanEatsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+<<<<<<< HEAD
+=======
+		D009691520EAA52D005CAE1A /* FilterButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtons.swift; sourceTree = "<group>"; };
+>>>>>>> e50660c5525845d68d22292f5480b59a933b210a
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMarkerView.swift; sourceTree = "<group>"; };
 		D06E966620E931CB003EB641 /* RestaurantSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchController.swift; sourceTree = "<group>"; };
@@ -143,6 +151,7 @@
 			children = (
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
 				D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */,
+				D009691520EAA52D005CAE1A /* FilterButtons.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
+				D009691620EAA52D005CAE1A /* FilterButtons.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D0018EF120E5512900A040CE /* SearchPageViewController.swift in Sources */,
 				D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */,
