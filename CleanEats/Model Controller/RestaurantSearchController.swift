@@ -63,8 +63,13 @@ class RestaurantSearchController {
                     return
             }
             results.forEach {
-                let place = RestaurantSearch(dictionary: $0, acceptedTypes: types)
+                var place = RestaurantSearch(dictionary: $0, acceptedTypes: types)
                 placesArray.append(place)
+                if let reference = place.photoReference {
+                    self.fetchPhotoFromReference(reference) { image in
+                        place.photo = image
+                    }
+                }
             }
         }
         placesTask?.resume()
@@ -74,7 +79,7 @@ class RestaurantSearchController {
         if let photo = photoCache[reference] {
             completion(photo)
         } else {
-            let urlString = "\(APIconstants.GooglePhotoURL)\(reference)&key=\(APIconstants.GoogleApiKey)"
+            let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=\(reference)&key=\(APIconstants.GoogleApiKey)"
             guard let url = URL(string: urlString) else {
                 completion(nil)
                 return

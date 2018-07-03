@@ -13,11 +13,12 @@ import CoreLocation
 import SwiftyJSON
 
 struct RestaurantSearch {
-    
+
     let name: String
     let address: String
     let coordinate: CLLocationCoordinate2D
     let placeType: String
+    let placeID: String
     var photoReference: String?
     var photo: UIImage?
     
@@ -26,6 +27,7 @@ struct RestaurantSearch {
         let json = JSON(dictionary)
         name = json["name"].stringValue
         address = json["vicinity"].stringValue
+        placeID = json["place_id"].stringValue
         
         let lat = json["geometry"]["location"]["lat"].doubleValue as CLLocationDegrees
         let lng = json["geometry"]["location"]["lng"].doubleValue as CLLocationDegrees

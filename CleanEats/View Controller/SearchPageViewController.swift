@@ -25,9 +25,7 @@
     // View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //   restaurantsTableView.delegate = self
-        //   restaurantsTableView.dataSource = self
+    
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         initializeFindFoodButton()
@@ -69,33 +67,4 @@
         deliveryButton.layer.borderColor = UIColor.black.cgColor
         deliveryButton.layer.borderWidth = 1
     }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
  }
- 
- // MARK: - Restaurant TableView
- 
- // extension SearchPageViewController: UITableViewDelegate, UITableViewDataSource {
- //
- //    func numberOfSections(in tableView: UITableView) -> Int {
- //        return 1
- //    }
- //
- //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
- //
- //        return 1
- //    }
- //
- //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- //
- //        let cell = restaurantsTableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath)
- //
- //       // let restaurants = blabla[indexPath.row]
- //            // Update labels
- //        cell.textLabel?.text = "test"
- //        cell.detailTextLabel?.text = "test"
- //       return cell
- //    }
- // }
