@@ -47,5 +47,10 @@
 	<string>DineRite</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your current location will be displayed on the map and used for directions, nearby search results, and estimated travel times.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

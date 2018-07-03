@@ -8,6 +8,17 @@
 
 import Foundation
 
+protocol FilterButtonsDelegate: class {
+    func typesController(_ controller: FilterButtons, didSelectTypes types: [String])
+}
+
 class FilterButtons {
+    
+    private let possibleTypesDictionary = ["restaurant","convenience_store","supermarket","meal_takeaway","meal_delivery"]
+    private var sortedKeys: [String] {
+        return possibleTypesDictionary.sorted()
+    }
+    
+    var selectedTypes: [String] = []
     
 }
