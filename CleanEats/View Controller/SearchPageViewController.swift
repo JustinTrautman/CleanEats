@@ -31,7 +31,18 @@
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         initializeFindFoodButton()
+        setupNavigationBarItems()
     }
+    
+    // Adding Image to Navigation Item
+    func setupNavigationBarItems() {
+        let logo = UIImage(named: "DineRiteNew")
+        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
+    
     
     func initializeFindFoodButton() {
         
