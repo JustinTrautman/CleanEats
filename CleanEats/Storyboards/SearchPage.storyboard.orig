@@ -408,7 +408,11 @@
         <image name="Delivery" width="500" height="625"/>
         <image name="FastFood" width="466" height="701"/>
         <image name="Grocery" width="975" height="650"/>
+<<<<<<< HEAD
+        <image name="Searchicon1" width="19" height="18"/>
+=======
         <image name="RedPin" width="186" height="297"/>
+>>>>>>> 3e7983b9aa259b72ff6066b0981ea2e2ed431f2b
         <image name="Takeout" width="975" height="650"/>
     </resources>
 </document>

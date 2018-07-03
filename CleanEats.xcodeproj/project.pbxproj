@@ -26,6 +26,9 @@
 		D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966620E931CB003EB641 /* RestaurantSearchController.swift */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
+		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
+		D08AFBCF20EAF77400305116 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08AFBCE20EAF77400305116 /* MarkerInfoView.xib */; };
+		D08AFBD120EAF79000305116 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBD020EAF79000305116 /* MarkerInfoView.swift */; };
 		D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB220E9691300A6037C /* PlaceMarker.swift */; };
 		D0AACAB720E9AF2B00A6037C /* RestaurantSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */; };
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
@@ -74,6 +77,9 @@
 		D0895E1420E1A71C00EB1307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0895E1920E1A71D00EB1307 /* CleanEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D08AFBCE20EAF77400305116 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MarkerInfoView.xib; path = "../../../../Downloads/Feed_Me_Completed/Feed Me/Views/MarkerInfoView.xib"; sourceTree = "<group>"; };
+		D08AFBD020EAF79000305116 /* MarkerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
 		D0AACAB220E9691300A6037C /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearch.swift; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,9 +143,12 @@
 		D0018EE620E54FD700A040CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D08AFBCE20EAF77400305116 /* MarkerInfoView.xib */,
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
 				D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */,
 				D009691520EAA52D005CAE1A /* FilterButtons.swift */,
+				D08AFBCC20EAF65000305116 /* UIViewExtension.swift */,
+				D08AFBD020EAF79000305116 /* MarkerInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +342,7 @@
 				4282D6BD20EAD05B0045D223 /* RestaurantProfile.storyboard in Resources */,
 				06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
+				D08AFBCF20EAF77400305116 /* MarkerInfoView.xib in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
 				06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */,
 				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
@@ -427,7 +437,9 @@
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				06ECAE5820EAD5B00019227C /* FavoriteViewController.swift in Sources */,
 				D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */,
+				D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */,
 				06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */,
+				D08AFBD120EAF79000305116 /* MarkerInfoView.swift in Sources */,
 				4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */,
 				D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */,
 				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
