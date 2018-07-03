@@ -13,7 +13,7 @@
         <!--DineRite-->
         <scene sceneID="Lpq-a7-ahd">
             <objects>
-                <viewController id="0hk-Q2-u0J" customClass="HomeViewController" customModule="showRestaurantOnMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0hk-Q2-u0J" customClass="HomeViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CFE-vt-Z9z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
         <scene sceneID="K0W-J7-00R">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tfj-Kb-KPk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="YNd-gm-4cT"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Houseicon1" id="YNd-gm-4cT"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xC4-t2-8vT">
@@ -69,4 +69,7 @@
             <point key="canvasLocation" x="168.80000000000001" y="112.89355322338831"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Houseicon1" width="20" height="23"/>
+    </resources>
 </document>

@@ -377,7 +377,7 @@
         <scene sceneID="oD8-zc-7Fs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ob8-qB-L88" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="fkl-lk-FOn"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Searchicon1" id="fkl-lk-FOn"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8B6-s1-BzE">
@@ -399,6 +399,7 @@
         <image name="Delivery" width="500" height="625"/>
         <image name="FastFood" width="466" height="701"/>
         <image name="Grocery" width="975" height="650"/>
+        <image name="Searchicon1" width="19" height="18"/>
         <image name="Takeout" width="975" height="650"/>
     </resources>
 </document>

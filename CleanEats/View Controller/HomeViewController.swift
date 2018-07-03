@@ -28,6 +28,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         searchBarMap.delegate = self
         searchBarMap.layer.cornerRadius = 4
         searchBarMap.clipsToBounds = true
+        searchBarMap.layer.shadowColor = UIColor.darkGray.cgColor
+        searchBarMap.layer.shadowOffset = CGSize(width: 1, height: 1)
+        searchBarMap.layer.shadowRadius = 2
+        searchBarMap.layer.shadowOpacity = 0.65
         configureLocationServices()
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
