@@ -42,7 +42,7 @@
         <scene sceneID="oAQ-0V-aKj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1cB-SE-jMJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="kUE-AU-rRd"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Favicon1" id="kUE-AU-rRd"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fwt-SM-7Ei">
@@ -59,4 +59,7 @@
             <point key="canvasLocation" x="133.59999999999999" y="157.87106446776613"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Favicon1" width="25" height="24"/>
+    </resources>
 </document>
