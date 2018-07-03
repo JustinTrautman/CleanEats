@@ -84,7 +84,7 @@ extension GoogleMapViewController: GMSMapViewDelegate {
             return nil
         }
         
-        guard let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView else {
+        guard let infoView = UIView.viewFromNibName("GoogleMapMarker") as? MarkerInfoView else {
             return nil
         }
         
@@ -102,6 +102,4 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         mapCenterPinImage.fadeOut(0.25)
         return false
     }
-    
-
 }
