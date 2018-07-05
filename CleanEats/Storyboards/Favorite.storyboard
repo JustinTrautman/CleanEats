@@ -1,65 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1cB-SE-jMJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIT-Zt-YKv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
-        <scene sceneID="2OV-6N-JsW">
+        <!--Root View Controller-->
+        <scene sceneID="JKF-UB-rHB">
             <objects>
-                <viewController id="iTi-zx-b83" customClass="FavoriteViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4nK-7C-Hqi">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgC-ys-Tsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="NUQ-bO-ZgO" customClass="FavoriteTableViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dh0-rN-9UA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NO-Ou-ztC">
-                                <rect key="frame" x="90" y="323" width="194" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="1NO-Ou-ztC" firstAttribute="centerX" secondItem="4nK-7C-Hqi" secondAttribute="centerX" id="6zs-MF-fxp"/>
-                            <constraint firstItem="1NO-Ou-ztC" firstAttribute="centerY" secondItem="4nK-7C-Hqi" secondAttribute="centerY" id="RPt-lz-zoc"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Uzp-h2-wEy"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Title" id="80u-w2-FME"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="928-Oz-R2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="NUQ-bO-ZgO" id="HN0-ka-rIz"/>
+                            <outlet property="delegate" destination="NUQ-bO-ZgO" id="ebd-z6-aYv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="f4v-GM-PyQ"/>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="846" y="158"/>
+            <point key="canvasLocation" x="529" y="187"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="oAQ-0V-aKj">
+        <!--Favorite-->
+        <scene sceneID="8as-Xb-bG8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1cB-SE-jMJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Favicon1" id="kUE-AU-rRd"/>
-                    <toolbarItems/>
+                <navigationController id="hIT-Zt-YKv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" id="H2P-Hw-N0r"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fwt-SM-7Ei">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jLx-KL-Rkh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="iTi-zx-b83" kind="relationship" relationship="rootViewController" id="3Fw-eR-voe"/>
+                        <segue destination="NUQ-bO-ZgO" kind="relationship" relationship="rootViewController" id="HFe-ll-7af"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="95J-Gi-5ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7J-ca-YKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="157.87106446776613"/>
+            <point key="canvasLocation" x="-223" y="187"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Favicon1" width="25" height="24"/>
-    </resources>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class HomeViewController: UIViewController, UISearchBarDelegate {
+class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     static var shared = HomeViewController()
     
@@ -36,6 +36,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
+                
             
                 DispatchQueue.main.async {
                     self.homeMapView.addAnnotation(annotation)
@@ -44,11 +45,24 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
             }
             
         }
+        
     }
 
+    // Adding custom pins
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "customPin")
+        annotationView.image = UIImage(named: "pin")
+        annotationView.canShowCallout = true
+        return annotationView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         homeMapView.showsUserLocation = true
+        homeMapView.delegate = self
         searchBarMap.backgroundImage = UIImage()
         searchBarMap.delegate = self
         searchBarMap.layer.cornerRadius = 4
