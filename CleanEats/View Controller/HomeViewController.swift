@@ -11,7 +11,9 @@ import MapKit
 import CoreLocation
 
 class HomeViewController: UIViewController, UISearchBarDelegate {
-
+    
+    static var shared = HomeViewController()
+    
     // Outlets
     @IBOutlet weak var searchBarMap: UISearchBar!
     @IBOutlet weak var homeMapView: MKMapView!
@@ -20,7 +22,30 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     
-    
+    // Finding the local business around userlocation
+    func populateNearByPlaces() {
+        var region = MKCoordinateRegion()
+        region.center = CLLocationCoordinate2D(latitude: self.homeMapView.userLocation.coordinate.latitude, longitude: self.homeMapView.userLocation.coordinate.longitude)
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = self.searchBarMap.text
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            guard let response = response else  {return}
+            print(response.mapItems)
+            for item in response.mapItems {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = item.placemark.coordinate
+                annotation.title = item.name
+            
+                DispatchQueue.main.async {
+                    self.homeMapView.addAnnotation(annotation)
+                }
+            
+            }
+            
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         homeMapView.showsUserLocation = true
@@ -36,7 +61,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
-        
+        populateNearByPlaces()
         setupNavigationBarItems()
     }
 
@@ -54,6 +79,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // Action for the searchBar on the MAP
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
        searchBarMap.resignFirstResponder()
         // Ignoring user interaction while provding search result
@@ -104,9 +130,11 @@ class HomeViewController: UIViewController, UISearchBarDelegate {
                 self.homeMapView.setRegion(region, animated: true)
             }
         }
+        populateNearByPlaces()
         
     }
     
+    // Function for finding the user location
     func configureLocationServices() {
         locationManager.delegate = self
         

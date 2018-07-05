@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ob8-qB-L88">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ob8-qB-L88">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -186,9 +186,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="283.5" id="vkX-pQ-g3f"/>
                                         </constraints>
-                                        <connections>
-                                            <segue destination="SNu-dY-CjH" kind="embed" id="HgI-X9-wxR"/>
-                                        </connections>
                                     </containerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Near Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi7-mc-KaG">
                                         <rect key="frame" x="141.5" y="450.5" width="92.5" height="28"/>
@@ -353,47 +350,6 @@
             </objects>
             <point key="canvasLocation" x="353" y="739"/>
         </scene>
-        <!--Google Map View Controller-->
-        <scene sceneID="uXB-ja-vjp">
-            <objects>
-                <viewController id="SNu-dY-CjH" customClass="GoogleMapViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aSL-wZ-VDH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdx-cr-cC0" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedPin" translatesAutoresizingMaskIntoConstraints="NO" id="6jz-RF-M9Z" userLabel="Center Pin">
-                                <rect key="frame" x="172" y="306" width="30" height="55"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6jz-RF-M9Z" firstAttribute="centerY" secondItem="aSL-wZ-VDH" secondAttribute="centerY" id="0aS-0f-Pra"/>
-                            <constraint firstItem="6jz-RF-M9Z" firstAttribute="centerX" secondItem="jdx-cr-cC0" secondAttribute="centerX" id="1gy-Mb-HrD"/>
-                            <constraint firstItem="6jz-RF-M9Z" firstAttribute="width" secondItem="jdx-cr-cC0" secondAttribute="height" multiplier="30:647" id="4ka-Ga-4Fx"/>
-                            <constraint firstItem="jdx-cr-cC0" firstAttribute="top" secondItem="U5O-ND-2Rf" secondAttribute="top" id="FaF-wc-qbe"/>
-                            <constraint firstItem="U5O-ND-2Rf" firstAttribute="bottom" secondItem="jdx-cr-cC0" secondAttribute="bottom" id="Gce-MN-JPY"/>
-                            <constraint firstItem="jdx-cr-cC0" firstAttribute="leading" secondItem="U5O-ND-2Rf" secondAttribute="leading" id="XFC-gB-wUO"/>
-                            <constraint firstItem="6jz-RF-M9Z" firstAttribute="top" secondItem="U5O-ND-2Rf" secondAttribute="top" constant="286" id="lfR-o7-pyL"/>
-                            <constraint firstItem="U5O-ND-2Rf" firstAttribute="trailing" secondItem="jdx-cr-cC0" secondAttribute="trailing" id="tbt-d8-7UO"/>
-                            <constraint firstItem="6jz-RF-M9Z" firstAttribute="leading" secondItem="U5O-ND-2Rf" secondAttribute="leading" constant="172" id="vIn-lu-j7Y"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="U5O-ND-2Rf"/>
-                    </view>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                    <connections>
-                        <outlet property="mapCenterPinImage" destination="6jz-RF-M9Z" id="fav-2b-kqk"/>
-                        <outlet property="mapView" destination="jdx-cr-cC0" id="iF6-mn-rCR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qJR-Yn-zfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="926" y="16"/>
-        </scene>
         <!--Search-->
         <scene sceneID="oD8-zc-7Fs">
             <objects>
@@ -420,7 +376,7 @@
         <image name="Delivery" width="500" height="625"/>
         <image name="FastFood" width="466" height="701"/>
         <image name="Grocery" width="975" height="650"/>
-        <image name="RedPin" width="186" height="297"/>
+        <image name="Searchicon1" width="19" height="18"/>
         <image name="Takeout" width="975" height="650"/>
     </resources>
 </document>

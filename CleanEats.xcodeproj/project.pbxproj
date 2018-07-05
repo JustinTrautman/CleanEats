@@ -20,22 +20,14 @@
 		4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */; };
 		4282D6BD20EAD05B0045D223 /* RestaurantProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4282D6BC20EAD05B0045D223 /* RestaurantProfile.storyboard */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
-		D009691620EAA52D005CAE1A /* FilterButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D009691520EAA52D005CAE1A /* FilterButtons.swift */; };
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
-		D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */; };
-		D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E966620E931CB003EB641 /* RestaurantSearchController.swift */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
-		D08AFBD120EAF79000305116 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBD020EAF79000305116 /* MarkerInfoView.swift */; };
-		D08F373220EC06BA00F8C558 /* GoogleMapMarker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D08F373120EC06BA00F8C558 /* GoogleMapMarker.xib */; };
-		D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB220E9691300A6037C /* PlaceMarker.swift */; };
-		D0AACAB720E9AF2B00A6037C /* RestaurantSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */; };
 		D0B9C48E20EBD55400AA8017 /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */; };
 		D0B9C49020EBE72700AA8017 /* RestaurantDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9C48F20EBE72700AA8017 /* RestaurantDetailTableViewController.swift */; };
 		D0B9C49220EBEF6C00AA8017 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9C49120EBEF6C00AA8017 /* RestaurantDetailController.swift */; };
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
-		D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */; };
 		EC92B2602D54F835DF819B3A /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,10 +64,7 @@
 		4282D6BC20EAD05B0045D223 /* RestaurantProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantProfile.storyboard; sourceTree = "<group>"; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D009691520EAA52D005CAE1A /* FilterButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtons.swift; sourceTree = "<group>"; };
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
-		D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMarkerView.swift; sourceTree = "<group>"; };
-		D06E966620E931CB003EB641 /* RestaurantSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearchController.swift; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,15 +72,10 @@
 		D0895E1920E1A71D00EB1307 /* CleanEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		D08AFBD020EAF79000305116 /* MarkerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
-		D08F373120EC06BA00F8C558 /* GoogleMapMarker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleMapMarker.xib; sourceTree = "<group>"; };
-		D0AACAB220E9691300A6037C /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
-		D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSearch.swift; sourceTree = "<group>"; };
 		D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
 		D0B9C48F20EBE72700AA8017 /* RestaurantDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTableViewController.swift; sourceTree = "<group>"; };
 		D0B9C49120EBEF6C00AA8017 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
-		D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,11 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
-				D06E966020E7EFE1003EB641 /* CustomeMarkerView.swift */,
-				D009691520EAA52D005CAE1A /* FilterButtons.swift */,
 				D08AFBCC20EAF65000305116 /* UIViewExtension.swift */,
-				D08AFBD020EAF79000305116 /* MarkerInfoView.swift */,
-				D08F373120EC06BA00F8C558 /* GoogleMapMarker.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				4282D6B620EAD00E0045D223 /* RestaurantProfileViewController.swift */,
-				D0FAC71320E56988002DB45E /* GoogleMapViewController.swift */,
 				4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */,
 				4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */,
 				4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */,
@@ -182,7 +161,6 @@
 		D0018EE820E54FF000A040CE /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D06E966620E931CB003EB641 /* RestaurantSearchController.swift */,
 				D0B9C49120EBEF6C00AA8017 /* RestaurantDetailController.swift */,
 			);
 			path = "Model Controller";
@@ -191,8 +169,6 @@
 		D0018EE920E54FF800A040CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D0AACAB220E9691300A6037C /* PlaceMarker.swift */,
-				D0AACAB620E9AF2B00A6037C /* RestaurantSearch.swift */,
 				D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */,
 			);
 			path = Model;
@@ -255,7 +231,6 @@
 				D0895E0120E1A71C00EB1307 /* Sources */,
 				D0895E0220E1A71C00EB1307 /* Frameworks */,
 				D0895E0320E1A71C00EB1307 /* Resources */,
-				3237E24083DD97A5BABF96D5 /* [CP] Copy Pods Resources */,
 				478789B06AFB9BD63060091F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -353,7 +328,6 @@
 			files = (
 				06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */,
 				4282D6BD20EAD05B0045D223 /* RestaurantProfile.storyboard in Resources */,
-				D08F373220EC06BA00F8C558 /* GoogleMapMarker.xib in Resources */,
 				06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
@@ -379,28 +353,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3237E24083DD97A5BABF96D5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		478789B06AFB9BD63060091F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,25 +397,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
-				D009691620EAA52D005CAE1A /* FilterButtons.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				06ECAE5820EAD5B00019227C /* FavoriteViewController.swift in Sources */,
-				D0AACAB320E9691300A6037C /* PlaceMarker.swift in Sources */,
 				D0B9C49220EBEF6C00AA8017 /* RestaurantDetailController.swift in Sources */,
 				D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */,
 				06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */,
-				D08AFBD120EAF79000305116 /* MarkerInfoView.swift in Sources */,
 				4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */,
-				D0FAC71420E56988002DB45E /* GoogleMapViewController.swift in Sources */,
 				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
 				4282D6B720EAD00E0045D223 /* RestaurantProfileViewController.swift in Sources */,
-				D06E966720E931CB003EB641 /* RestaurantSearchController.swift in Sources */,
 				D0B9C49020EBE72700AA8017 /* RestaurantDetailTableViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
 				D0B9C48E20EBD55400AA8017 /* RestaurantDetail.swift in Sources */,
-				D06E966120E7EFE1003EB641 /* CustomeMarkerView.swift in Sources */,
-				D0AACAB720E9AF2B00A6037C /* RestaurantSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

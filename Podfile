@@ -7,9 +7,6 @@ use_frameworks!
 
 source 'https://github.com/CocoaPods/Specs.git'
 target 'CleanEats' do
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
-  pod 'GooglePlacePicker'
   pod 'SwiftyJSON', '~> 4.0'
 
 end
