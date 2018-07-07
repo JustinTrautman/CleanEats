@@ -19,6 +19,7 @@
     @IBOutlet weak var fastFoodButton: UIButton!
     @IBOutlet weak var deliveryButton: UIButton!
     @IBOutlet weak var restaurantMapView: MKMapView!
+    @IBOutlet weak var restaurantTableView: UITableView!
     
     // MARK: - Actions
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
@@ -50,6 +51,11 @@
         
         // Restaurant SearchBar
         restaurantSearchBar.delegate = self
+        
+        // Restaurant TableView
+        restaurantTableView.delegate = self
+        restaurantTableView.dataSource = self
+        restaurantTableView.reloadData()
     }
     
     // Adding Image to Navigation Item
@@ -202,5 +208,16 @@
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
         let zoomRegion = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
         restaurantMapView.setRegion(zoomRegion, animated: true)
+    }
+ }
+ 
+ extension SearchPageViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
  }
