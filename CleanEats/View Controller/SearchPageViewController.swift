@@ -28,6 +28,7 @@
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
+    var restaurants = [Cubbys, fuddruckers, apolloBurger]
     
     // View Lifecycle
     override func viewDidLoad() {
@@ -214,10 +215,17 @@
  extension SearchPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantTableViewCell else { return UITableViewCell() }
+        
+        let restaurant = restaurants[indexPath.row]
+        
+        cell.restaurant = restaurant
+        
+        return cell
     }
  }
