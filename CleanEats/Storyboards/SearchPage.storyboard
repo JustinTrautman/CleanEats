@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ob8-qB-L88">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ob8-qB-L88">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -181,7 +181,7 @@
                                             <action selector="findFoodButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="SDp-vm-cZb"/>
                                         </connections>
                                     </button>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-PT-ELu">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gyc-PT-ELu" customClass="MKMapView">
                                         <rect key="frame" x="10" y="504.5" width="355" height="283.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="283.5" id="vkX-pQ-g3f"/>
@@ -257,6 +257,8 @@
                         <outlet property="deliveryButton" destination="fkx-3U-3dC" id="CwA-nI-baF"/>
                         <outlet property="fastFoodButton" destination="KZy-IR-s3g" id="aRc-uT-Mby"/>
                         <outlet property="findFoodButton" destination="ocL-XY-FWk" id="B0B-V3-lF6"/>
+                        <outlet property="restaurantMapView" destination="gyc-PT-ELu" id="8tZ-IE-EKc"/>
+                        <outlet property="restaurantSearchBar" destination="F13-9I-YlE" id="nxz-IK-PjL"/>
                         <outlet property="scrollView" destination="LcE-jG-Qju" id="owm-0H-FOu"/>
                     </connections>
                 </viewController>
