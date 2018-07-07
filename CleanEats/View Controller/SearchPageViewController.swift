@@ -78,7 +78,7 @@
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
             
-            guard let response = response else  {return}
+            guard let response = response else {return}
             print(response.mapItems)
             
             for item in response.mapItems {
@@ -117,6 +117,21 @@
         deliveryButton.layer.borderColor = UIColor.black.cgColor
         deliveryButton.layer.borderWidth = 1
     }
+ 
+ 
+ func showNoResultsAlert() {
+    guard let searchedTerm = restaurantSearchBar.text else { return }
+    
+    let noResultsAlert = UIAlertController(title: nil, message: "Sorry, we didn't find any results for \(searchedTerm)", preferredStyle: .alert)
+        noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(noResultsAlert, animated: true)
+ }
+ 
+ func showNoTextAlert() {
+    let noTextAlert = UIAlertController(title: nil, message: "Search cannot be blank", preferredStyle: .alert)
+    noTextAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    self.present(noTextAlert, animated: true)
+    }
  }
  
  extension SearchPageViewController: MKMapViewDelegate {
@@ -136,6 +151,10 @@
  extension SearchPageViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if restaurantSearchBar.text == "" {
+            showNoTextAlert()
+        }
+        
         restaurantSearchBar.resignFirstResponder()
         
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -159,7 +178,7 @@
             UIApplication.shared.endIgnoringInteractionEvents()
             
             if response == nil {
-                print("error")
+                self.showNoResultsAlert()
             } else {
                 
                 let annotations = self.restaurantMapView.annotations

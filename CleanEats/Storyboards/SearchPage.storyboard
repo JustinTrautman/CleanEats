@@ -24,7 +24,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Restaurant, City" translatesAutoresizingMaskIntoConstraints="NO" id="F13-9I-YlE">
                                         <rect key="frame" x="10" y="0.0" width="355" height="56"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="search" textContentType="name"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
                                             <string>Title</string>
@@ -198,7 +198,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-yF-OZW">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-yF-OZW">
                                         <rect key="frame" x="10" y="788" width="355" height="284"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -265,7 +265,7 @@
                                                             <rect key="frame" x="290" y="74" width="40" height="29"/>
                                                             <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="meR-85-DA8" secondAttribute="height" multiplier="40:29" id="ayK-SU-dfE"/>
+                                                                <constraint firstAttribute="width" secondItem="meR-85-DA8" secondAttribute="height" multiplier="40:29" id="Xwe-6l-MBT"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -273,19 +273,20 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="meR-85-DA8" firstAttribute="leading" secondItem="p6N-hb-L43" secondAttribute="trailing" constant="27.5" id="3Rf-To-3UC"/>
-                                                        <constraint firstItem="meR-85-DA8" firstAttribute="leading" secondItem="X1g-eE-6Xk" secondAttribute="trailing" constant="-12.5" id="5Rx-UU-PhG"/>
                                                         <constraint firstItem="X1g-eE-6Xk" firstAttribute="leading" secondItem="p6N-hb-L43" secondAttribute="trailing" id="AQS-YL-EGS"/>
                                                         <constraint firstAttribute="bottom" secondItem="Pmq-IK-iSA" secondAttribute="bottom" constant="35.5" id="Bty-s6-Phx"/>
-                                                        <constraint firstAttribute="trailing" secondItem="meR-85-DA8" secondAttribute="trailing" constant="25" id="Hxw-n6-wc2"/>
                                                         <constraint firstItem="p6N-hb-L43" firstAttribute="leading" secondItem="Pmq-IK-iSA" secondAttribute="trailing" constant="8" id="Ter-6U-YPs"/>
+                                                        <constraint firstItem="meR-85-DA8" firstAttribute="leading" secondItem="p6N-hb-L43" secondAttribute="trailing" constant="27" id="TmE-rp-vmw"/>
                                                         <constraint firstAttribute="trailing" secondItem="X1g-eE-6Xk" secondAttribute="trailing" constant="52.5" id="VN9-nQ-yTU"/>
-                                                        <constraint firstAttribute="bottom" secondItem="meR-85-DA8" secondAttribute="bottom" constant="58.5" id="Vys-wW-k1J"/>
                                                         <constraint firstItem="X1g-eE-6Xk" firstAttribute="top" secondItem="IGy-pW-Muo" secondAttribute="top" constant="35" id="X49-Ue-L14"/>
+                                                        <constraint firstAttribute="bottom" secondItem="meR-85-DA8" secondAttribute="bottom" constant="58.5" id="atg-f2-Tst"/>
+                                                        <constraint firstItem="meR-85-DA8" firstAttribute="leading" secondItem="X1g-eE-6Xk" secondAttribute="trailing" constant="-13" id="eVo-32-8dr"/>
                                                         <constraint firstAttribute="bottom" secondItem="p6N-hb-L43" secondAttribute="bottom" constant="20.5" id="fix-XQ-lk9"/>
                                                         <constraint firstItem="Pmq-IK-iSA" firstAttribute="leading" secondItem="IGy-pW-Muo" secondAttribute="leading" constant="16" id="jXT-MG-yvg"/>
+                                                        <constraint firstItem="X1g-eE-6Xk" firstAttribute="leading" secondItem="jI3-6S-66f" secondAttribute="trailing" constant="16.5" id="lv5-w5-9p3"/>
                                                         <constraint firstItem="p6N-hb-L43" firstAttribute="top" secondItem="IGy-pW-Muo" secondAttribute="top" constant="35" id="nEN-DH-qf2"/>
                                                         <constraint firstItem="Pmq-IK-iSA" firstAttribute="top" secondItem="IGy-pW-Muo" secondAttribute="top" constant="34" id="oV3-VA-O7C"/>
+                                                        <constraint firstAttribute="trailing" secondItem="meR-85-DA8" secondAttribute="trailing" constant="25" id="pZE-Vg-18a"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -296,6 +297,7 @@
                                                     <outlet property="restaurantPriceLabel" destination="X1g-eE-6Xk" id="Vxq-vq-6ZC"/>
                                                     <outlet property="restaurantRatingImageView" destination="BiH-U0-A04" id="l9u-Cw-vN2"/>
                                                     <outlet property="restaurantScoreLabel" destination="meR-85-DA8" id="TXa-sf-Or4"/>
+                                                    <segue destination="epW-bJ-Hmi" kind="show" id="LVS-3e-mpE"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
