@@ -6,27 +6,21 @@
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-    struct TopLevelData: Codable {
-        
-        let results: [RestaurantDetail]
-
-struct RestaurantDetail: Codable {
+struct RestaurantDetail {
     
-    let name: String
-    let priceLevel: Double
-    let rating: Double
-    let phoneNumber: String
-    let placeID: String
+    let restaurantImage: UIImage
+    let restaurantTitle: String
+    let estaurantRating: UIImage
+    let restaurantDistance: String
+    let restaurantDescription: String
+    let restaurantPrice: String
+    let restaurantRisk: String
     
-    enum codingKeys: String, CodingKey {
-        case name
-        case priceLevel = "price_level"
-        case rating
-        case phoneNumber = "formatted_phone_number"
-        case placeID = "place_id"
-        }
-    }
+    let mockData: [RestaurantDetail] = [
+        RestaurantDetail(restaurantImage: #imageLiteral(resourceName: "Cubbys"), restaurantTitle: "Cubbys", estaurantRating: #imageLiteral(resourceName: "5Stars"), restaurantDistance: "1.8 Miles Away", restaurantDescription: "America(New), Sandwiches, Salad", restaurantPrice: "$$", restaurantRisk: "18")
+    
+    ]
 }
 
