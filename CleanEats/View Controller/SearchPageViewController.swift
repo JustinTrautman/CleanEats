@@ -25,6 +25,13 @@
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
     }
     
+    @IBAction func fastFoodButtonTapped(_ sender: Any) {
+        fastFoodButton.layer.borderColor = UIColor.black.cgColor
+        fastFoodButton.layer.borderWidth = 5
+        
+         fastFoodButton.isSelected == true
+    }
+    
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
@@ -73,7 +80,13 @@
         region.center = CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude)
         
         let request = MKLocalSearchRequest()
+        
+        if fastFoodButton.isEnabled {
+            request.naturalLanguageQuery = "fast food"
+        } else {
+        
         request.naturalLanguageQuery = self.restaurantSearchBar.text
+        }
         
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in

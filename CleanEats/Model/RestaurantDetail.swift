@@ -8,6 +8,12 @@
 
 import UIKit
 
+/*
+ 
+ This is only restaurant mock data. To be deleted.
+ 
+ */
+
 struct RestaurantDetail  {
     
     let restaurantImage: UIImage
