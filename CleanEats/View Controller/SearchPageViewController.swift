@@ -29,7 +29,7 @@
         fastFoodButton.layer.borderColor = UIColor.black.cgColor
         fastFoodButton.layer.borderWidth = 5
         
-         fastFoodButton.isSelected == true
+         fastFoodButton.isSelected = true
     }
     
     // MARK: - Properties

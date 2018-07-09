@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Categories : Codable {
+struct Categories : Codable {
     
+    let alias: String?
+    let title: String?
     
 }

@@ -6,6 +6,12 @@
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
 
+/*
+ 
+ This is model is the data for the tableViewCell on the SearchPage
+ 
+ */
+
 import Foundation
 
 struct Businesses : Codable {
