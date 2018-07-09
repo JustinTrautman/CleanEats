@@ -13,22 +13,29 @@ class RestaurantTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
-    @IBOutlet weak var restaurantTitleLabel: UILabel!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var restaurantRatingImageView: UIImageView!
     @IBOutlet weak var restaurantDistanceLabel: UILabel!
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
+    @IBOutlet weak var restaurantPriceLabel: UILabel!
+    @IBOutlet weak var restaurantScoreLabel: UILabel!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    var placeInfo: JSON! {
-        didSet {
-            updateTableView()
+    var restaurant: RestaurantDetail? {
+        didSet{
+            updateViews()
         }
     }
     
-    func updateTableView() {
-        restaurantTitleLabel.text = placeInfo["name"].stringValue
+    func updateViews() {
+        
+        guard let restaurant = restaurant else { return }
+        
+        restaurantImageView.image = restaurant.restaurantImage
+        restaurantNameLabel.text = restaurant.restaurantTitle
+        restaurantRatingImageView.image = restaurant.restaurantRating
+        restaurantDistanceLabel.text = restaurant.restaurantDistance
+        restaurantDescriptionLabel.text = restaurant.restaurantDescription
+        restaurantPriceLabel.text = restaurant.restaurantPrice
+        restaurantScoreLabel.text = restaurant.restaurantRisk
     }
-    
 }
