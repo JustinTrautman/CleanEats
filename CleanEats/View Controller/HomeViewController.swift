@@ -13,6 +13,7 @@ import CoreLocation
 class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     static var shared = HomeViewController()
+    var matchingItems: [MKMapItem] = [MKMapItem]()
     
     // Outlets
     @IBOutlet weak var searchBarMap: UISearchBar!
@@ -22,30 +23,56 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     
-    // Finding the local business around userlocation
-    func populateNearByPlaces() {
-        var region = MKCoordinateRegion()
-        region.center = CLLocationCoordinate2D(latitude: self.homeMapView.userLocation.coordinate.latitude, longitude: self.homeMapView.userLocation.coordinate.longitude)
-        let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = self.searchBarMap.text
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-            guard let response = response else  {return}
-            print(response.mapItems)
-            for item in response.mapItems {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = item.placemark.coordinate
-                annotation.title = item.name
-                
-            
-                DispatchQueue.main.async {
-                    self.homeMapView.addAnnotation(annotation)
-                }
-            
-            }
-            
-        }
+    func performSearch() {
         
+        matchingItems.removeAll()
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = searchBarMap.text
+        request.region = homeMapView.region
+        
+        let search = MKLocalSearch(request: request)
+        
+        search.start(completionHandler: {(response, error) in
+            
+            if let results = response {
+                
+                if let err = error {
+                    print("Error occurred in search: \(err.localizedDescription)")
+                } else if results.mapItems.count == 0 {
+                    print("No matches found")
+                } else {
+                    print("Matches found")
+                    
+                    // Remove current annotations on map
+                                    let annotations = self.homeMapView.annotations
+                                    self.homeMapView.removeAnnotations(annotations)
+                    
+                                    // Getting data
+                                    guard let latitude = response?.boundingRegion.center.latitude else {return}
+                                    guard let longitude = response?.boundingRegion.center.longitude else {return}
+                    
+                    for item in results.mapItems {
+                        print("Name = \(item.name ?? "No match")")
+                        print("Phone = \(item.phoneNumber ?? "No Match")")
+                        
+                        self.matchingItems.append(item as MKMapItem)
+                        print("Matching items = \(self.matchingItems.count)")
+                        
+                        let annotation = MKPointAnnotation()
+                        annotation.coordinate = item.placemark.coordinate
+                        annotation.title = item.name
+                        self.homeMapView.addAnnotation(annotation)
+                    
+                        //Zooming in on annotation
+                        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+                        let span = MKCoordinateSpanMake(0.01, 0.01)
+                        let region = MKCoordinateRegionMake(coordinate, span)
+                        self.homeMapView.setRegion(region, animated: true)
+                        
+                    }
+                }
+            }
+        })
     }
 
     // Adding custom pins
@@ -75,7 +102,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
-        populateNearByPlaces()
+       // populateNearByPlaces()
         setupNavigationBarItems()
     }
 
@@ -96,55 +123,53 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     // Action for the searchBar on the MAP
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
        searchBarMap.resignFirstResponder()
-        // Ignoring user interaction while provding search result
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        
-        // Activity Indicator
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-        self.view.addSubview(activityIndicator)
-        
-        //Create the search request
-        let searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = searchBarMap.text
-        
-        let activeSearch = MKLocalSearch(request: searchRequest)
-        
-        activeSearch.start { (response, error) in
-            
-            activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            
-            if response == nil {
-                print("error")
-            } else {
-                
-                // Remove current annotations on map
-                let annotations = self.homeMapView.annotations
-                self.homeMapView.removeAnnotations(annotations)
-            
-                // Getting data
-                guard let latitude = response?.boundingRegion.center.latitude else {return}
-                guard let longitude = response?.boundingRegion.center.longitude else {return}
-            
-                // Creating annotation
-                let annotation = MKPointAnnotation()
-                annotation.title = self.searchBarMap.text
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
-                self.homeMapView.addAnnotation(annotation)
-                
-                //Zooming in on annotation
-                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                let span = MKCoordinateSpanMake(0.1, 0.1)
-                let region = MKCoordinateRegionMake(coordinate, span)
-                self.homeMapView.setRegion(region, animated: true)
-            }
-        }
-        populateNearByPlaces()
+//        // Ignoring user interaction while provding search result
+//        UIApplication.shared.beginIgnoringInteractionEvents()
+//
+//        // Activity Indicator
+//        let activityIndicator = UIActivityIndicatorView()
+//        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+//        activityIndicator.center = self.view.center
+//        activityIndicator.hidesWhenStopped = true
+//        activityIndicator.startAnimating()
+//
+//        self.view.addSubview(activityIndicator)
+//
+//        //Create the search request
+//        let searchRequest = MKLocalSearchRequest()
+//        searchRequest.naturalLanguageQuery = searchBarMap.text
+//
+//        let activeSearch = MKLocalSearch(request: searchRequest)
+//
+//        activeSearch.start { (response, error) in
+//
+//            activityIndicator.stopAnimating()
+//            UIApplication.shared.endIgnoringInteractionEvents()
+//            if response == nil {
+//                print("error")
+//            } else {
+//                // Remove current annotations on map
+//                let annotations = self.homeMapView.annotations
+//                self.homeMapView.removeAnnotations(annotations)
+//
+//                // Getting data
+//                guard let latitude = response?.boundingRegion.center.latitude else {return}
+//                guard let longitude = response?.boundingRegion.center.longitude else {return}
+//
+//                // Creating annotation
+//                let annotation = MKPointAnnotation()
+//                annotation.title = self.searchBarMap.text
+//                annotation.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+//                self.homeMapView.addAnnotation(annotation)
+//
+//                //Zooming in on annotation
+//                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+//                let span = MKCoordinateSpanMake(0.1, 0.1)
+//                let region = MKCoordinateRegionMake(coordinate, span)
+//                self.homeMapView.setRegion(region, animated: true)
+//            }
+//        }
+       performSearch()
         
     }
     

@@ -8,24 +8,24 @@
 
 import Foundation
 
-    struct TopLevelData: Codable {
+struct TopLevelData: Codable {
+    
+    let results: [RestaurantDetail]
+    
+    struct RestaurantDetail: Codable {
         
-        let results: [RestaurantDetail]
-
-struct RestaurantDetail: Codable {
-    
-    let name: String
-    let priceLevel: Double
-    let rating: Double
-    let phoneNumber: String
-    let placeID: String
-    
-    enum codingKeys: String, CodingKey {
-        case name
-        case priceLevel = "price_level"
-        case rating
-        case phoneNumber = "formatted_phone_number"
-        case placeID = "place_id"
+        let name: String
+        let priceLevel: Double
+        let rating: Double
+        let phoneNumber: String
+        let placeID: String
+        
+        enum codingKeys: String, CodingKey {
+            case name
+            case priceLevel = "price_level"
+            case rating
+            case phoneNumber = "formatted_phone_number"
+            case placeID = "place_id"
         }
     }
 }
