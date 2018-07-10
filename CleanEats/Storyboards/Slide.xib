@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,12 +17,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-Cx-KjR">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-Cx-KjR">
                     <rect key="frame" x="0.0" y="44" width="375" height="177"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eg2-Cx-KjR" secondAttribute="height" multiplier="125:59" id="BY6-GN-4yP"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="isd-Vx-TsK"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eg2-Cx-KjR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KsW-6e-4Tz"/>
+                <constraint firstItem="eg2-Cx-KjR" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SKD-yi-TX2"/>
+                <constraint firstItem="eg2-Cx-KjR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" priority="750" constant="24" id="wJr-EH-q5e"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="slideImageView" destination="eg2-Cx-KjR" id="r2J-v9-RTj"/>

@@ -10,13 +10,33 @@ import UIKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: - IBOutlets
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var aboutContainerView: UIView!
+    @IBOutlet weak var healthRatingContainerView: UIView!
+    @IBOutlet weak var reviewContainerView: UIView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var slideScrollView: UIScrollView!{
+        didSet {
+            slideScrollView.delegate = self
+        }
+    }
+    @IBOutlet weak var slidePageControl: UIPageControl!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(scrollView)
+        setupNavigationBarItems()
         slideScrollView.delegate = self
         slides = createSlides()
         setupSlideScrollView(slides: slides)
         slidePageControl.numberOfPages = slides.count
         slidePageControl.currentPage = 0
+        scrollView.contentSize = CGSize(width: 375, height: 800)
+        //scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
     }
     
@@ -25,7 +45,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "pooh1")
+        slide1.slideImageView.image = UIImage(named: "Cubbys")
         slide1.contentMode = .scaleAspectFit
         let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.slideImageView.image = UIImage(named: "pooh2")
@@ -45,8 +65,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func setupSlideScrollView(slides : [Slide]) {
         
-        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 4.4)
-        slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height / 4.4)
+        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 180)
+        slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height / 180)
         slideScrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
@@ -69,13 +89,19 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let percentageVerticalOffset: CGFloat = currentVerticalOffset / maximumVerticalOffset
         
     }
-    
-    
-    
-    
+    // Adding Image to Navigation Item
+    func setupNavigationBarItems() {
+        let logo = UIImage(named: "DineRiteNew")
+        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
     // MARK: - IBActions
     
-    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         let getIndex = segmentedControl.selectedSegmentIndex
@@ -100,24 +126,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         default:
             break
         }
-        
     }
-    
-    
-    // MARK: - IBOutlets
-    
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var aboutContainerView: UIView!
-    @IBOutlet weak var healthRatingContainerView: UIView!
-    @IBOutlet weak var reviewContainerView: UIView!
-    
-    @IBOutlet weak var slideScrollView: UIScrollView!{
-        didSet {
-            slideScrollView.delegate = self
-        }
-    }
-    @IBOutlet weak var slidePageControl: UIPageControl!
-    
 }
 
 
