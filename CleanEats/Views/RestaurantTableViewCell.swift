@@ -20,7 +20,7 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantPriceLabel: UILabel!
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     
-    var restaurant: RestaurantDetail? {
+    var restaurants: Businesses? {
         didSet{
             updateViews()
         }
@@ -28,14 +28,19 @@ class RestaurantTableViewCell: UITableViewCell {
     
     func updateViews() {
         
-        guard let restaurant = restaurant else { return }
+        guard let restaurant = restaurants else { return }
         
-        restaurantImageView.image = restaurant.restaurantImage
-        restaurantNameLabel.text = restaurant.restaurantTitle
-        restaurantRatingImageView.image = restaurant.restaurantRating
-        restaurantDistanceLabel.text = restaurant.restaurantDistance
-        restaurantDescriptionLabel.text = restaurant.restaurantDescription
+       // restaurantImageView.image = restaurant.restaurantImage
+        restaurantNameLabel.text = restaurant.restaurantName
+       // restaurantRatingImageView.image = restaurant.restaurantRating
+        restaurantDistanceLabel.text = "\(restaurant.restaurantDistance)"
+        restaurantDescriptionLabel.text = "\(restaurant.categories)"
         restaurantPriceLabel.text = restaurant.restaurantPrice
-        restaurantScoreLabel.text = restaurant.restaurantRisk
+        // restaurantScoreLabel.text = restaurant.restaurantRisk
+        
+        RestaurantInfoController.fetchRestaurantInfo(with: "Mos", andLocation: "Newport") { (business) in
+            let fetchedRestaurantData = restaurant
+            self.restaurants = fetchedRestaurantData
+        }
     }
 }

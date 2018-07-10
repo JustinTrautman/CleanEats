@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 enum SearchType: String {
     
@@ -20,15 +21,18 @@ class RestaurantInfoController {
     
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses/search")
     
-    static func fetchRestaurantInfo(with searchTerm: String, completion: @escaping ((Businesses)?) -> Void) {
+    static var restaurants: [Businesses] = []
+    
+    static func fetchRestaurantInfo(with searchTerm: String, andLocation: String, completion: @escaping ((Businesses)?) -> Void) {
         
         guard let url = baseURL else { completion(nil) ; return }
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         let termQuery = URLQueryItem(name: "term", value: "\(searchTerm)")
+        let locationQuery = URLQueryItem(name: "location", value: "\(andLocation)")
         
-        let queryArray = [termQuery]
+        let queryArray = [termQuery, locationQuery]
         components?.queryItems = queryArray
         
         guard let completeURL = components?.url else { completion(nil) ; return }
@@ -37,6 +41,7 @@ class RestaurantInfoController {
         
         var request = URLRequest(url: completeURL)
         request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
+        print(request)
 
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
@@ -48,8 +53,9 @@ class RestaurantInfoController {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let businessData = try jsonDecoder.decode(Businesses.self, from: data)
-                let restaurants = businessData
+                let restaurants = try jsonDecoder.decode(TopLevelData.self, from: data).businesses
+                self.restaurants = restaurants
+                
             } catch let error {
                 print("Error decoding restaurant data: \(error) \(error.localizedDescription)")
             }

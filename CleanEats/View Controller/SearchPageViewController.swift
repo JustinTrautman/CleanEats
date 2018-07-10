@@ -26,6 +26,7 @@
     }
     
     @IBAction func fastFoodButtonTapped(_ sender: Any) {
+        restaurantSearchBar.text = ""
         fastFoodButton.layer.borderColor = UIColor.black.cgColor
         fastFoodButton.layer.borderWidth = 5
         
@@ -35,7 +36,7 @@
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
-    var restaurants = [Cubbys, fuddruckers, apolloBurger]
+    var restaurants: [Businesses] = []
     
     // View Lifecycle
     override func viewDidLoad() {
@@ -76,6 +77,7 @@
     }
     
     func populateNearByPlaces() {
+        
         var region = MKCoordinateRegion()
         region.center = CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude)
         
@@ -131,7 +133,6 @@
         deliveryButton.layer.borderWidth = 1
     }
  
- 
  func showNoResultsAlert() {
     guard let searchedTerm = restaurantSearchBar.text else { return }
     
@@ -164,6 +165,7 @@
  extension SearchPageViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        restaurantTableView.reloadData()
         if restaurantSearchBar.text == "" {
             showNoTextAlert()
         }
@@ -256,7 +258,7 @@
         
         let restaurant = restaurants[indexPath.row]
         
-        cell.restaurant = restaurant
+        cell.restaurants = restaurant
         
         return cell
     }

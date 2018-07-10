@@ -8,16 +8,22 @@
 
 /*
  
+ This uses the Yelp API for business search
  This is model is the data for the tableViewCell on the SearchPage
  
  */
 
 import Foundation
 
+struct TopLevelData : Codable {
+    
+    let businesses: [Businesses]
+}
+
 struct Businesses : Codable {
     
-    let restaurantID: String
-    let restaurantName: String
+    let restaurantID: String?
+    let restaurantName: String?
     let restaurantImage: String?
     let categories: [Categories]?
     let restaurantRating: Double?
