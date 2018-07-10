@@ -78,16 +78,16 @@
     
     func populateNearByPlaces() {
         
-        var region = MKCoordinateRegion()
-        region.center = CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude)
+        let span = MKCoordinateSpanMake(0.012, 0.012)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude), span: span)
+        restaurantMapView.setRegion(region, animated: true)
         
         let request = MKLocalSearchRequest()
         
-        if fastFoodButton.isEnabled {
-            request.naturalLanguageQuery = "fast food"
+        if restaurantSearchBar.text == "" {
+            request.naturalLanguageQuery = "restaurants"
         } else {
-        
-        request.naturalLanguageQuery = self.restaurantSearchBar.text
+            request.naturalLanguageQuery = restaurantSearchBar.text
         }
         
         let search = MKLocalSearch(request: request)
@@ -165,6 +165,9 @@
  extension SearchPageViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let searchText = restaurantSearchBar.text else { return }
+        
         restaurantTableView.reloadData()
         if restaurantSearchBar.text == "" {
             showNoTextAlert()
