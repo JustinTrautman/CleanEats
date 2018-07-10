@@ -37,10 +37,5 @@ class RestaurantTableViewCell: UITableViewCell {
         restaurantDescriptionLabel.text = "\(restaurant.categories)"
         restaurantPriceLabel.text = restaurant.restaurantPrice
         // restaurantScoreLabel.text = restaurant.restaurantRisk
-        
-        RestaurantInfoController.fetchRestaurantInfo(with: "Mos", andLocation: "Newport") { (business) in
-            let fetchedRestaurantData = restaurant
-            self.restaurants = fetchedRestaurantData
-        }
     }
 }

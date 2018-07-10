@@ -41,12 +41,11 @@ class RestaurantInfoController {
         
         var request = URLRequest(url: completeURL)
         request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
-        print(request)
 
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
-                print("DataTask had an issue decoding data. Exiting with error: \(error) \(error.localizedDescription)")
+                print("DataTask had an issue reaching the network. Exiting with error: \(error) \(error.localizedDescription)")
             }
             
             guard let data = data else { completion(nil) ; return }
