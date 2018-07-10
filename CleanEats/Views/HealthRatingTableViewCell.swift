@@ -9,7 +9,13 @@
 import UIKit
 
 class HealthRatingTableViewCell: UITableViewCell {
-
+    
+    // MARK: IBOutlets
+    
+ 
+    @IBOutlet weak var infoButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +26,17 @@ class HealthRatingTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    @IBAction func inspectionInfoButton(_ sender: UIButton) {
+    
+    // MARK: IBActions
+    
+    @IBAction func infoButtonTapped(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Criticl Violation", message: "This is an alert.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        alert.present(alert, animated: true, completion: nil)
     }
 }
+    
+
