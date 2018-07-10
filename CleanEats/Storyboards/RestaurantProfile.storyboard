@@ -219,7 +219,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Hh-Dh-liZ" userLabel="Contact Info StackView">
-                                <rect key="frame" x="39" y="285" width="297" height="106"/>
+                                <rect key="frame" x="-148.5" y="285" width="297" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-US-OSx">
                                         <rect key="frame" x="0.0" y="0.0" width="297" height="25"/>
@@ -242,7 +242,7 @@
                                 </subviews>
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-WI-NMh">
-                                <rect key="frame" x="24" y="53" width="327" height="171"/>
+                                <rect key="frame" x="-163.5" y="53" width="327" height="171"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ovg-WI-NMh" secondAttribute="height" multiplier="109:57" id="xM6-OA-okH"/>
                                     <constraint firstAttribute="height" constant="171" id="yo5-CS-cUj"/>
@@ -278,7 +278,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="465"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yvJ-EZ-zsh" id="qx2-YF-sz4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="464.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="464.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspection Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXg-IE-Siq">
