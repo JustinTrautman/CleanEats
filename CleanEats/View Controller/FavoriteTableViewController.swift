@@ -24,6 +24,8 @@ class FavoriteTableViewController: UITableViewController {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,14 +40,14 @@ class FavoriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return RestaurantController.sharedRestaurant.favoriteRestaurants.count
+        return RestaurantController.sharedRestaurant.restaurants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteRestaurant", for: indexPath)
-        let restaurant = RestaurantController.sharedRestaurant.favoriteRestaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.restaurantTitle
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteRestaurant", for: indexPath) as? FavoriteTableViewCell else {return  UITableViewCell()}
+        let restaurant = RestaurantController.sharedRestaurant.restaurants[indexPath.row]
+        cell.restaurant = restaurant
         
         return cell
     }
