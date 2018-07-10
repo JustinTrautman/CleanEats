@@ -10,15 +10,31 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var restaurantImageView: UIImageView!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var restaurantPriceLabel: UILabel!
+    @IBOutlet weak var restaurantRatingImageView: UIImageView!
+    @IBOutlet weak var restaurantDistanceLabel: UILabel!
+    @IBOutlet weak var restaurantDescriptionLabel: UILabel!
+    @IBOutlet weak var restaurantScoreLabel: UILabel!
+    
+    
+    var restaurant: Restaurant? {
+        didSet{
+            updateViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func updateViews() {
+        guard let restaurant = restaurant else { return }
+        
+        restaurantImageView.image = restaurant.restaurantImage
+        restaurantNameLabel.text = restaurant.restaurantTitle
+        restaurantRatingImageView.image = restaurant.restaurantRating
+        restaurantDistanceLabel.text = restaurant.restaurantDistance
+        restaurantDescriptionLabel.text = restaurant.restaurantDescription
+        restaurantPriceLabel.text = restaurant.restaurantPrice
+        restaurantScoreLabel.text = restaurant.restaurantRisk
     }
 
 }

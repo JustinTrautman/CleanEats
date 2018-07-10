@@ -24,7 +24,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     var currentCoordinate: CLLocationCoordinate2D?
     
     func performSearch() {
-        
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarMap.text

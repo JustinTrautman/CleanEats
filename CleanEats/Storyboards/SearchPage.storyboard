@@ -47,6 +47,7 @@
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.098112309644670104" green="0.076863479504325399" blue="0.028978404442730716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Fast Food" backgroundImage="FastFoodSelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -60,7 +61,7 @@
                                                             <action selector="fastFoodButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="x85-aH-wq9"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-3U-3dC">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkx-3U-3dC">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96.5"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -70,6 +71,7 @@
                                                         <state key="normal" title="Delivery" backgroundImage="Delivery">
                                                             <color key="titleColor" red="0.99109692258883253" green="0.99109692258883253" blue="0.99109692258883253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Delivery" backgroundImage="DeliverySelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -79,6 +81,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="deliveryButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="AZc-u7-wEV"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-kj-fks">
                                                         <rect key="frame" x="218.5" y="0.0" width="96.5" height="96.5"/>
@@ -91,6 +96,7 @@
                                                             <color key="titleColor" red="0.99569717639593913" green="0.99569717639593913" blue="0.99569717639593913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.06878569162436543" green="0.06878569162436543" blue="0.06878569162436543" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Bar/Pub" backgroundImage="BarSelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -100,6 +106,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="barButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="XMC-KZ-TiM"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -113,10 +122,11 @@
                                                             <constraint firstAttribute="width" secondItem="54w-n7-YRM" secondAttribute="height" multiplier="1:1" id="Q6c-fK-3rz"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Food Truck" backgroundImage="FastFood">
+                                                        <state key="normal" title="Food Truck" backgroundImage="Food Truck">
                                                             <color key="titleColor" red="0.99609375" green="0.99609375" blue="0.99609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.069360723350253783" green="0.069360723350253783" blue="0.069360723350253783" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Food Truck" backgroundImage="FoodTruckSelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -126,6 +136,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="FoodTruckButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="c8d-gO-IJf"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fED-Ar-Ibs">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96"/>
@@ -134,10 +147,11 @@
                                                             <constraint firstAttribute="width" secondItem="fED-Ar-Ibs" secondAttribute="height" multiplier="1:1" id="7Nn-ta-dpz"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
-                                                        <state key="normal" title="Cafe" backgroundImage="Takeout">
+                                                        <state key="normal" title="Cafe" backgroundImage="Cafe">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.073921319796954266" green="0.073921319796954266" blue="0.073921319796954266" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Cafe" backgroundImage="CafeSelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -147,6 +161,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cafeButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="wYk-FA-5vu"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKQ-pA-u58">
                                                         <rect key="frame" x="218.5" y="0.0" width="96.5" height="96"/>
@@ -159,6 +176,7 @@
                                                             <color key="titleColor" red="0.98754758883248728" green="0.98754758883248728" blue="0.98754758883248728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <color key="titleShadowColor" red="0.066862309644670104" green="0.066862309644670104" blue="0.066862309644670104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <state key="selected" title="Grocery" backgroundImage="GrocerySelected"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -168,6 +186,9 @@
                                                                 <integer key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="groceryButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="w5U-UC-p6q"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -266,7 +287,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meR-85-DA8">
                                                             <rect key="frame" x="290" y="74" width="40" height="29"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.12941176470588237" green="0.792156862745098" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="meR-85-DA8" secondAttribute="height" multiplier="40:29" id="Xwe-6l-MBT"/>
                                                             </constraints>
@@ -356,9 +377,13 @@
                     <navigationItem key="navigationItem" title="Clean Eats" id="W5U-sB-EsT"/>
                     <size key="freeformSize" width="375" height="1136"/>
                     <connections>
+                        <outlet property="barButton" destination="vQ3-kj-fks" id="N5q-B2-2GQ"/>
+                        <outlet property="cafeButton" destination="fED-Ar-Ibs" id="z6D-ZH-gTf"/>
                         <outlet property="deliveryButton" destination="fkx-3U-3dC" id="CwA-nI-baF"/>
                         <outlet property="fastFoodButton" destination="KZy-IR-s3g" id="aRc-uT-Mby"/>
                         <outlet property="findFoodButton" destination="ocL-XY-FWk" id="B0B-V3-lF6"/>
+                        <outlet property="foodTruckButton" destination="54w-n7-YRM" id="yrb-It-k6l"/>
+                        <outlet property="groceryButton" destination="OKQ-pA-u58" id="sOK-Hz-xad"/>
                         <outlet property="restaurantMapView" destination="gyc-PT-ELu" id="8tZ-IE-EKc"/>
                         <outlet property="restaurantSearchBar" destination="F13-9I-YlE" id="nxz-IK-PjL"/>
                         <outlet property="restaurantTableView" destination="UMK-yF-OZW" id="Bdo-Tb-hck"/>
@@ -400,10 +425,17 @@
     </scenes>
     <resources>
         <image name="Bar:Pub" width="976" height="649"/>
+        <image name="BarSelected" width="976" height="649"/>
+        <image name="Cafe" width="500" height="332"/>
+        <image name="CafeSelected" width="500" height="332"/>
         <image name="Delivery" width="500" height="625"/>
+        <image name="DeliverySelected" width="500" height="625"/>
         <image name="FastFood" width="466" height="701"/>
+        <image name="FastFoodSelected" width="466" height="701"/>
+        <image name="Food Truck" width="975" height="650"/>
+        <image name="FoodTruckSelected" width="975" height="650"/>
         <image name="Grocery" width="975" height="650"/>
+        <image name="GrocerySelected" width="1950" height="1300"/>
         <image name="Searchicon1" width="19" height="18"/>
-        <image name="Takeout" width="975" height="650"/>
     </resources>
 </document>

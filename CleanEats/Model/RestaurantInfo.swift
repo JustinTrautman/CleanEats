@@ -8,22 +8,30 @@
 
 /*
  
- This is model is the data for the tableViewCell on the SearchPage
+ This uses the Yelp API for business search
+ This model is the data for the tableViewCell on the SearchPage
  
  */
 
 import Foundation
+import MapKit
+
+struct TopLevelData : Codable {
+    
+    let businesses: [Businesses]
+}
 
 struct Businesses : Codable {
     
-    let restaurantID: String
-    let restaurantName: String
+    let restaurantID: String?
+    let restaurantName: String?
     let restaurantImage: String?
     let categories: [Categories]?
     let restaurantRating: Double?
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
+    var coordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D()
     
     enum CodingKeys: String, CodingKey {
         
@@ -35,5 +43,9 @@ struct Businesses : Codable {
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
+    }
+    
+    init(coordinate: CLLocationCoordinate2D) {
+        self.init(coordinate: coordinate)
     }
 }
