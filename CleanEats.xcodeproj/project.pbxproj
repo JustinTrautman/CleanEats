@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063D427020F40EF8004C8DB3 /* AboutViewController.swift */; };
 		0653D4BF20EEC48C00F1FEEA /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0653D4BE20EEC48C00F1FEEA /* FavoriteTableViewCell.swift */; };
 		0653D4C120EECFD900F1FEEA /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0653D4C020EECFD900F1FEEA /* FavoriteTableViewController.swift */; };
 		068C138C20F3D66B0067EA53 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C138B20F3D66B0067EA53 /* About.storyboard */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		063D427020F40EF8004C8DB3 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0653D4BE20EEC48C00F1FEEA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		0653D4C020EECFD900F1FEEA /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		068C138B20F3D66B0067EA53 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				06ECAE5520EAD5B00019227C /* HomeViewController.swift */,
 				D0B9C48F20EBE72700AA8017 /* RestaurantDetailTableViewController.swift */,
 				428865BF20F3D0B50095A837 /* Slide.swift */,
+				063D427020F40EF8004C8DB3 /* AboutViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -214,7 +217,6 @@
 		D0895DFC20E1A71C00EB1307 = {
 			isa = PBXGroup;
 			children = (
-				068C138B20F3D66B0067EA53 /* About.storyboard */,
 				D0895E0720E1A71C00EB1307 /* CleanEats */,
 				D0895E0620E1A71C00EB1307 /* Products */,
 				081E394468838F826BDD4481 /* Pods */,
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				06ECAE5B20EAD5D30019227C /* Favorite.storyboard */,
+				068C138B20F3D66B0067EA53 /* About.storyboard */,
 				06ECAE5D20EAD5D30019227C /* Home.storyboard */,
 				06ECAE5C20EAD5D30019227C /* Tab.storyboard */,
 				428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */,
@@ -442,6 +445,7 @@
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
+				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */,
 				D04BD43920F3D07000B7BF6C /* Categories.swift in Sources */,
