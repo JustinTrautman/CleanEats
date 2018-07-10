@@ -287,7 +287,7 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meR-85-DA8">
                                                             <rect key="frame" x="290" y="74" width="40" height="29"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.12941176470588237" green="0.792156862745098" blue="0.71764705882352942" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="meR-85-DA8" secondAttribute="height" multiplier="40:29" id="Xwe-6l-MBT"/>
                                                             </constraints>

@@ -14,6 +14,7 @@
  */
 
 import Foundation
+import MapKit
 
 struct TopLevelData : Codable {
     
@@ -30,6 +31,7 @@ struct Businesses : Codable {
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
+    var coordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D()
     
     enum CodingKeys: String, CodingKey {
         
@@ -41,5 +43,9 @@ struct Businesses : Codable {
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
+    }
+    
+    init(coordinate: CLLocationCoordinate2D) {
+        self.init(coordinate: coordinate)
     }
 }

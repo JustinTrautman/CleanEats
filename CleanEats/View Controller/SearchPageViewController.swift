@@ -27,6 +27,10 @@
     
     // MARK: - Actions
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
+        restaurantSearchBar.text = ""
+        restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        restaurantTableView.reloadData()
+        populateNearByPlaces()
     }
     
     @IBAction func fastFoodButtonTapped(_ sender: Any) {
@@ -159,7 +163,7 @@
         }
         
         if cafeButton.isSelected {
-            request.naturalLanguageQuery = "Cafe"
+            request.naturalLanguageQuery = "Coffee"
             buttonSelected = true
             restaurantMapView.removeAnnotations(restaurantMapView.annotations)
         }
@@ -204,7 +208,7 @@
         findFoodButton?.layer.shadowOpacity = 1.0
         findFoodButton?.layer.shadowOffset = CGSize(width: 5, height: 5)
         findFoodButton?.layer.masksToBounds = false
-        findFoodButton?.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.25, alpha: 1)
+        findFoodButton?.backgroundColor = UIColor(displayP3Red: 0.13, green: 0.79, blue: 0.72, alpha: 1)
         findFoodButton?.setTitle("FIND FOOD", for: .normal)
         findFoodButton?.setTitleColor(.white, for: .normal)
         findFoodButton?.titleLabel?.font = UIFont(name: "Helvetica", size: 16)
@@ -253,7 +257,7 @@
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         clearFilterButtons()
         
-        guard let searchText = restaurantSearchBar.text else { return }
+//        guard let searchText = restaurantSearchBar.text else { return }
         
         restaurantTableView.reloadData()
         if restaurantSearchBar.text == "" {
