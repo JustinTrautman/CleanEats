@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     
     static var shared = HomeViewController()
     var matchingItems: [MKMapItem] = [MKMapItem]()
-    
+
     // Outlets
     @IBOutlet weak var searchBarMap: UISearchBar!
     @IBOutlet weak var homeMapView: MKMapView!
@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     var currentCoordinate: CLLocationCoordinate2D?
     
     func performSearch() {
+
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarMap.text
@@ -60,6 +61,11 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = item.placemark.coordinate
                         annotation.title = item.name
+                        annotation.subtitle = item.phoneNumber
+                        
+                       
+                       
+        
                         self.homeMapView.addAnnotation(annotation)
                     
                         //Zooming in on annotation
@@ -73,17 +79,30 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             }
         })
     }
+    
+
 
     // Adding custom pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
+        
         if annotation is MKUserLocation {
             return nil
         }
         let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "customPin")
         annotationView.image = UIImage(named: "pin")
         annotationView.canShowCallout = true
+        
+//        joesFunction(annotationView)
+        
         return annotationView
     }
+    
+//    func joesFunction(_ annotationView: MKAnnotationView) {
+//        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        let redSquare = UIView(frame: frame)
+//        redSquare.backgroundColor = UIColor.red
+//        annotationView.detailCalloutAccessoryView = redSquare
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
