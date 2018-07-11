@@ -140,7 +140,7 @@
                                                             <action selector="FoodTruckButtonTapped:" destination="oX3-0i-TXq" eventType="touchUpInside" id="c8d-gO-IJf"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fED-Ar-Ibs">
+                                                    <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fED-Ar-Ibs">
                                                         <rect key="frame" x="109.5" y="0.0" width="96" height="96"/>
                                                         <color key="backgroundColor" white="0.72178819439999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>

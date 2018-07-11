@@ -29,12 +29,14 @@ class RestaurantTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let restaurant = restaurants else { return }
+        guard let restaurantDistance = restaurant.restaurantDistance,
+             let categories = restaurant.categories else { return }
         
-       // restaurantImageView.image = restaurant.restaurantImage
+//        restaurantImageView.image = restaurant.restaurantImage
         restaurantNameLabel.text = restaurant.restaurantName
        // restaurantRatingImageView.image = restaurant.restaurantRating
-        restaurantDistanceLabel.text = "\(restaurant.restaurantDistance)"
-        restaurantDescriptionLabel.text = "\(restaurant.categories)"
+        restaurantDistanceLabel.text = "\((restaurantDistance * 0.000621).rounded()) Miles"
+        restaurantDescriptionLabel.text = "\(categories)"
         restaurantPriceLabel.text = restaurant.restaurantPrice
         // restaurantScoreLabel.text = restaurant.restaurantRisk
     }
