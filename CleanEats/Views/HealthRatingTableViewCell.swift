@@ -19,7 +19,6 @@ class HealthRatingTableViewCell: UITableViewCell {
     
  
     @IBOutlet weak var infoButton: UIButton!
-    
     @IBOutlet weak var violationView: UIView!
     @IBOutlet weak var violationViewSubview: UIView!
     

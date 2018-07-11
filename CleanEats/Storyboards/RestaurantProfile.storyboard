@@ -429,9 +429,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-zv-rGl">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuh-zv-rGl" userLabel="violationSummaryButton">
                                                     <rect key="frame" x="320" y="6" width="8" height="20"/>
                                                     <state key="normal" image="rightArrow"/>
+                                                    <connections>
+                                                        <segue destination="PSU-Mv-Yl5" kind="show" id="miO-JU-bfh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -480,6 +483,34 @@
                 <exit id="5hV-3m-VVR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3004" y="1089.3553223388308"/>
+        </scene>
+        <!--Health Rating Detail Table View Controller-->
+        <scene sceneID="tDM-0m-Jdp">
+            <objects>
+                <tableViewController id="PSU-Mv-Yl5" customClass="HealthRatingDetailTableViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="C9V-Dq-iJm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="107" id="VQt-Og-yiJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="107"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VQt-Og-yiJ" id="fU5-9t-XEM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="106.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PSU-Mv-Yl5" id="tMh-Fb-i8D"/>
+                            <outlet property="delegate" destination="PSU-Mv-Yl5" id="VwJ-uh-byy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WAy-GK-prN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3005.5999999999999" y="1692.953523238381"/>
         </scene>
         <!--Reviews Table View Controller-->
         <scene sceneID="MB1-mC-fTb">
