@@ -12,19 +12,19 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var favoriteStar: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutContainerView: UIView!
     @IBOutlet weak var healthRatingContainerView: UIView!
     @IBOutlet weak var reviewContainerView: UIView!
-    
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var slidePageControl: UIPageControl!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var slideScrollView: UIScrollView!{
         didSet {
             slideScrollView.delegate = self
         }
     }
-    @IBOutlet weak var slidePageControl: UIPageControl!
-    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         slidePageControl.numberOfPages = slides.count
         slidePageControl.currentPage = 0
         scrollView.contentSize = CGSize(width: 375, height: 800)
-        //scoreLabel.layer.cornerRadius = 5
+        scoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
     }
     
@@ -85,8 +86,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let maximumVerticalOffset: CGFloat = scrollView.contentSize.height - scrollView.frame.height
         let currentVerticalOffset: CGFloat = scrollView.contentOffset.y
         
-        let percentageHorizontalOffset: CGFloat = currentHorizontalOffset / maximumHorizontalOffset
-        let percentageVerticalOffset: CGFloat = currentVerticalOffset / maximumVerticalOffset
+        let _: CGFloat = currentHorizontalOffset / maximumHorizontalOffset
+        let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
         
     }
     // Adding Image to Navigation Item
@@ -99,9 +100,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     // MARK: - IBActions
     
-    @IBAction func backButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         let getIndex = segmentedControl.selectedSegmentIndex
@@ -127,6 +125,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             break
         }
     }
+    @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
+        print("Star Button Tapped")
+    }
+    
+    
 }
 
 

@@ -18,19 +18,61 @@
     @IBOutlet weak var findFoodButton: UIButton!
     @IBOutlet weak var fastFoodButton: UIButton!
     @IBOutlet weak var deliveryButton: UIButton!
+    @IBOutlet weak var barButton: UIButton!
+    @IBOutlet weak var foodTruckButton: UIButton!
+    @IBOutlet weak var cafeButton: UIButton!
+    @IBOutlet weak var groceryButton: UIButton!
     @IBOutlet weak var restaurantMapView: MKMapView!
     @IBOutlet weak var restaurantTableView: UITableView!
     
     // MARK: - Actions
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
+        restaurantSearchBar.text = ""
+        restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        restaurantTableView.reloadData()
+        populateNearByPlaces()
     }
     
     @IBAction func fastFoodButtonTapped(_ sender: Any) {
+        clearFilterButtons()
         restaurantSearchBar.text = ""
-        fastFoodButton.layer.borderColor = UIColor.black.cgColor
-        fastFoodButton.layer.borderWidth = 5
-        
-         fastFoodButton.isSelected = true
+        fastFoodButton.isSelected = true
+        populateNearByPlaces()
+    }
+    
+    @IBAction func deliveryButtonTapped(_ sender: Any) {
+        clearFilterButtons()
+        restaurantSearchBar.text = ""
+        deliveryButton.isSelected = true
+        populateNearByPlaces()
+    }
+    
+    @IBAction func barButtonTapped(_ sender: Any) {
+        clearFilterButtons()
+        restaurantSearchBar.text = ""
+        barButton.isSelected = true
+        populateNearByPlaces()
+    }
+    
+    @IBAction func FoodTruckButtonTapped(_ sender: Any) {
+        clearFilterButtons()
+        restaurantSearchBar.text = ""
+        foodTruckButton.isSelected = true
+        populateNearByPlaces()
+    }
+    
+    @IBAction func cafeButtonTapped(_ sender: UIButton) {
+        clearFilterButtons()
+        restaurantSearchBar.text = ""
+        cafeButton.isSelected = true
+        populateNearByPlaces()
+    }
+    
+    @IBAction func groceryButtonTapped(_ sender: UIButton) {
+        clearFilterButtons()
+        restaurantSearchBar.text = ""
+        groceryButton.isSelected = true
+        populateNearByPlaces()
     }
     
     // MARK: - Properties
@@ -76,19 +118,67 @@
         self.navigationItem.titleView = imageView
     }
     
+    func clearFilterButtons() {
+        fastFoodButton.isSelected = false
+        deliveryButton.isSelected = false
+        barButton.isSelected = false
+        foodTruckButton.isSelected = false
+        cafeButton.isSelected = false
+        groceryButton.isSelected = false
+    }
+    
     func populateNearByPlaces() {
         
-        var region = MKCoordinateRegion()
-        region.center = CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude)
+        var buttonSelected: Bool = false
+        
+        let span = MKCoordinateSpanMake(0.012, 0.012)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude), span: span)
+        restaurantMapView.setRegion(region, animated: true)
         
         let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = restaurantSearchBar.text
         
-        if fastFoodButton.isEnabled {
-            request.naturalLanguageQuery = "fast food"
-        } else {
-        
-        request.naturalLanguageQuery = self.restaurantSearchBar.text
+        if fastFoodButton.isSelected {
+                request.naturalLanguageQuery = "Fast Food"
+                buttonSelected = true
+                restaurantMapView.removeAnnotations(restaurantMapView.annotations)
         }
+        
+        if deliveryButton.isSelected {
+            request.naturalLanguageQuery = "Delivery"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
+        if barButton.isSelected {
+            request.naturalLanguageQuery = "Bar"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
+        if foodTruckButton.isSelected {
+            request.naturalLanguageQuery = "Food Stand"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
+        if cafeButton.isSelected {
+            request.naturalLanguageQuery = "Coffee"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
+        if groceryButton.isSelected {
+            request.naturalLanguageQuery = "Grocery"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
+        if restaurantSearchBar.text == "" && buttonSelected == false {
+            request.naturalLanguageQuery = "restaurants"
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+        }
+        
         
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
@@ -118,7 +208,7 @@
         findFoodButton?.layer.shadowOpacity = 1.0
         findFoodButton?.layer.shadowOffset = CGSize(width: 5, height: 5)
         findFoodButton?.layer.masksToBounds = false
-        findFoodButton?.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.25, alpha: 1)
+        findFoodButton?.backgroundColor = UIColor(displayP3Red: 0.13, green: 0.79, blue: 0.72, alpha: 1)
         findFoodButton?.setTitle("FIND FOOD", for: .normal)
         findFoodButton?.setTitleColor(.white, for: .normal)
         findFoodButton?.titleLabel?.font = UIFont(name: "Helvetica", size: 16)
@@ -165,6 +255,10 @@
  extension SearchPageViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        clearFilterButtons()
+        
+//        guard let searchText = restaurantSearchBar.text else { return }
+        
         restaurantTableView.reloadData()
         if restaurantSearchBar.text == "" {
             showNoTextAlert()

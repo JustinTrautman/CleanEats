@@ -9,7 +9,7 @@
 /*
  
  This uses the Yelp API for business search
- This is model is the data for the tableViewCell on the SearchPage
+ This model is the data for the tableViewCell on the SearchPage
  
  */
 
@@ -43,8 +43,5 @@ struct Businesses : Codable {
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
-    }
-    init(coordinate: CLLocationCoordinate2D) {
-        self.init(coordinate: coordinate)
     }
 }
