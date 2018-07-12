@@ -25,13 +25,19 @@ struct Businesses : Codable {
     
     let restaurantID: String?
     let restaurantName: String?
-    let restaurantImage: String?
+    let restaurantImage: String
     let categories: [Categories]?
     let restaurantRating: Double?
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
     var coordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D()
+    
+    struct Categories : Codable {
+        
+        let alias: String?
+        let title: String?
+    }
     
     enum CodingKeys: String, CodingKey {
         

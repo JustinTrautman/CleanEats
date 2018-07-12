@@ -29,7 +29,7 @@
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
         restaurantSearchBar.text = ""
         restaurantMapView.removeAnnotations(restaurantMapView.annotations)
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
         populateNearByPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
@@ -113,7 +113,7 @@
         // Restaurant TableView
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
     }
     
     // Adding Image to Navigation Item
@@ -123,6 +123,12 @@
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+    }
+    
+    func reloadRestaurantTableView() {
+        DispatchQueue.main.async {
+            self.restaurantTableView.reloadData()
+        }
     }
     
     func clearFilterButtons() {
@@ -276,7 +282,7 @@
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         clearFilterButtons()
         
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
         if restaurantSearchBar.text == "" {
             showNoTextAlert()
         }
@@ -366,5 +372,9 @@
         cell.restaurants = restaurant
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        restaurantTableView.deselectRow(at: indexPath, animated: true)
     }
  }
