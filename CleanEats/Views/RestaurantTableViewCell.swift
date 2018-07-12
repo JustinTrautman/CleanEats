@@ -29,13 +29,23 @@ class RestaurantTableViewCell: UITableViewCell {
     func updateViews() {
         
         guard let restaurant = restaurants else { return }
-        
-       // restaurantImageView.image = restaurant.restaurantImage
+        guard let restaurantDistance = restaurant.restaurantDistance,
+             let categories = restaurant.categories else { return }
+
+        let distanceInMiles = restaurantDistance * 0.000621
+
         restaurantNameLabel.text = restaurant.restaurantName
        // restaurantRatingImageView.image = restaurant.restaurantRating
-        restaurantDistanceLabel.text = "\(restaurant.restaurantDistance)"
-        restaurantDescriptionLabel.text = "\(restaurant.categories)"
+        restaurantDistanceLabel.text = "\((distanceInMiles * 100).rounded() / 100) miles away"
         restaurantPriceLabel.text = restaurant.restaurantPrice
+        restaurantDescriptionLabel.text = "\(categories)"
         // restaurantScoreLabel.text = restaurant.restaurantRisk
+        
+        RestaurantInfoController.getRestaurantImage(imageStringURL: restaurant.restaurantImage) { (image) in
+            guard let fetchedImage = image else { return }
+            DispatchQueue.main.async {
+                self.restaurantImageView.image = fetchedImage
+            }
+        }
     }
 }

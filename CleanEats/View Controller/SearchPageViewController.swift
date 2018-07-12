@@ -29,8 +29,9 @@
     @IBAction func findFoodButtonTapped(_ sender: UIButton) {
         restaurantSearchBar.text = ""
         restaurantMapView.removeAnnotations(restaurantMapView.annotations)
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func fastFoodButtonTapped(_ sender: Any) {
@@ -38,6 +39,7 @@
         restaurantSearchBar.text = ""
         fastFoodButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func deliveryButtonTapped(_ sender: Any) {
@@ -45,6 +47,7 @@
         restaurantSearchBar.text = ""
         deliveryButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func barButtonTapped(_ sender: Any) {
@@ -52,6 +55,7 @@
         restaurantSearchBar.text = ""
         barButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func FoodTruckButtonTapped(_ sender: Any) {
@@ -59,6 +63,7 @@
         restaurantSearchBar.text = ""
         foodTruckButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func cafeButtonTapped(_ sender: UIButton) {
@@ -66,6 +71,7 @@
         restaurantSearchBar.text = ""
         cafeButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     @IBAction func groceryButtonTapped(_ sender: UIButton) {
@@ -73,12 +79,13 @@
         restaurantSearchBar.text = ""
         groceryButton.isSelected = true
         populateNearByPlaces()
+        restaurantSearchBar.resignFirstResponder()
     }
     
     // MARK: - Properties
+    var restaurants: [Businesses] = []
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
-    var restaurants: [Businesses] = []
     
     // View Lifecycle
     override func viewDidLoad() {
@@ -106,7 +113,7 @@
         // Restaurant TableView
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
     }
     
     // Adding Image to Navigation Item
@@ -116,6 +123,12 @@
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+    }
+    
+    func reloadRestaurantTableView() {
+        DispatchQueue.main.async {
+            self.restaurantTableView.reloadData()
+        }
     }
     
     func clearFilterButtons() {
@@ -128,7 +141,6 @@
     }
     
     func populateNearByPlaces() {
-        
         var buttonSelected: Bool = false
         
         let span = MKCoordinateSpanMake(0.012, 0.012)
@@ -179,9 +191,10 @@
             restaurantMapView.removeAnnotations(restaurantMapView.annotations)
         }
         
-        
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             
             guard let response = response else {return}
             print(response.mapItems)
@@ -191,15 +204,27 @@
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
                 
+                let latitude = annotation.coordinate.latitude
+                let longitude = annotation.coordinate.longitude
+                
+                RestaurantInfoController.fetchRestaurantInfo(withSearchTerm: item.name ?? "restaurant", latitude: latitude, longitude: longitude, completion: { (businesses) in
+                
+                    if let businesses = businesses {
+                        self.restaurants = businesses
+                        DispatchQueue.main.async {
+                            self.restaurantTableView.reloadData()
+                        }
+                    }
+                })
                 DispatchQueue.main.async {
                     self.restaurantMapView.addAnnotation(annotation)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
         }
     }
-    
+
     func initializeFindFoodButton() {
-        // Find Food Button
         findFoodButton?.layer.cornerRadius = 3.0
         findFoodButton?.clipsToBounds = true
         findFoodButton?.layer.shadowRadius = 3.0
@@ -257,9 +282,7 @@
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         clearFilterButtons()
         
-//        guard let searchText = restaurantSearchBar.text else { return }
-        
-        restaurantTableView.reloadData()
+        reloadRestaurantTableView()
         if restaurantSearchBar.text == "" {
             showNoTextAlert()
         }
@@ -268,13 +291,7 @@
         
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-        self.view.addSubview(activityIndicator)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let searchRequest = MKLocalSearchRequest()
         searchRequest.naturalLanguageQuery = restaurantSearchBar.text
@@ -283,7 +300,7 @@
         
         activeSearch.start { (response, error) in
             
-            activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             UIApplication.shared.endIgnoringInteractionEvents()
             
             if response == nil {
@@ -293,8 +310,8 @@
                 let annotations = self.restaurantMapView.annotations
                 self.restaurantMapView.removeAnnotations(annotations)
                 
-                guard let latitude = response?.boundingRegion.center.latitude else {return}
-                guard let longitude = response?.boundingRegion.center.longitude else {return}
+                guard let latitude = response?.boundingRegion.center.latitude else { return }
+                guard let longitude = response?.boundingRegion.center.longitude else { return }
                 
                 let annotation = MKPointAnnotation()
                 annotation.title = self.restaurantSearchBar.text
@@ -355,5 +372,9 @@
         cell.restaurants = restaurant
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        restaurantTableView.deselectRow(at: indexPath, animated: true)
     }
  }
