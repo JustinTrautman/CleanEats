@@ -12,9 +12,11 @@ import CoreLocation
 
 class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
+    
     static var shared = HomeViewController()
     var matchingItems: [MKMapItem] = [MKMapItem]()
-    
+    var restaurantObjects: [CustomAnnotation] = []
+
     // Outlets
     @IBOutlet weak var searchBarMap: UISearchBar!
     @IBOutlet weak var homeMapView: MKMapView!
@@ -23,7 +25,27 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     
+    
+//    func fromYelp() {
+//       RestaurantInfoController.fetchRestaurantInfo(with: searchBarMap.text, andLocation: <#T##String#>, completion: <#T##((Businesses)?) -> Void#>)
+//        for objects in RestaurantInfoController.restaurants {
+//            print("Name = \(objects.restaurantName ?? "No match")")
+//                                    print("Phone = \(objects.restaurantPhone ?? "No Match")")
+//
+//                                    print("Matching items = \(self.matchingItems.count)")
+//
+//                                    let annotation = MKPointAnnotation()
+//                                    annotation.coordinate = currentCoordinate!
+//                                    annotation.title = objects.restaurantName
+//                                    annotation.subtitle = objects.restaurantPhone
+//
+//
+//
+//        }
+//    }
+    
     func performSearch() {
+
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarMap.text
@@ -53,15 +75,22 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                     for item in results.mapItems {
                         print("Name = \(item.name ?? "No match")")
                         print("Phone = \(item.phoneNumber ?? "No Match")")
-                        
+
                         self.matchingItems.append(item as MKMapItem)
                         print("Matching items = \(self.matchingItems.count)")
-                        
+
                         let annotation = MKPointAnnotation()
                         annotation.coordinate = item.placemark.coordinate
                         annotation.title = item.name
+                        annotation.subtitle = item.phoneNumber
+                        let point = CustomAnnotation(coordinate: CLLocationCoordinate2D(latitude: latitude , longitude: longitude ))
+                        point.restaurantName = item.name
+                        //point.restaurantPrice =
+
+
+
                         self.homeMapView.addAnnotation(annotation)
-                    
+
                         //Zooming in on annotation
                         let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
                         let span = MKCoordinateSpanMake(0.01, 0.01)
@@ -73,17 +102,30 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             }
         })
     }
+    
+
 
     // Adding custom pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
+        
         if annotation is MKUserLocation {
             return nil
         }
         let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "customPin")
         annotationView.image = UIImage(named: "pin")
         annotationView.canShowCallout = true
+        
+//        joesFunction(annotationView)
+        
         return annotationView
     }
+    
+//    func joesFunction(_ annotationView: MKAnnotationView) {
+//        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        let redSquare = UIView(frame: frame)
+//        redSquare.backgroundColor = UIColor.red
+//        annotationView.detailCalloutAccessoryView = redSquare
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +211,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
 //            }
 //        }
        performSearch()
-        
+      //  fromYelp()
     }
     
     // Function for finding the user location
