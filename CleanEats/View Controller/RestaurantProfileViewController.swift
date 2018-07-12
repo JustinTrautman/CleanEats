@@ -10,6 +10,11 @@ import UIKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
+    
+    @IBOutlet var restaurantProfileView: UIView!
+    
+    
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var favoriteStar: UIButton!
@@ -39,6 +44,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        
+        
     }
     
     // Horizontal ScrollView
@@ -97,6 +104,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+    }
+    
+    func infoButtonTapped(cell: HealthRatingTableViewCell) {
+        print("Reached Info Button in ProfileViewController")
+        let violationsAlert = UIAlertController(title: "Critical Violation", message: "This is an alert.", preferredStyle: .alert)
+        violationsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(violationsAlert, animated: true, completion: nil)
+        
     }
     // MARK: - IBActions
     

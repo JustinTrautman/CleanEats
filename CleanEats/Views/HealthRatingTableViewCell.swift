@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol healthRatingTableViewCellDelegate: class {
-    func infoButtonTapped(cell: HealthRatingTableViewCell)
-}
+//protocol healthRatingTableViewCellDelegate: class {
+//    func infoButtonTapped(cell: HealthRatingTableViewCell)
+//}
 
 class HealthRatingTableViewCell: UITableViewCell {
     
-    weak var cellDelegate: healthRatingTableViewCellDelegate?
+//    weak var cellDelegate: healthRatingTableViewCellDelegate?
     // MARK: IBOutlets
     
  
@@ -46,20 +46,19 @@ class HealthRatingTableViewCell: UITableViewCell {
         violationView.layer.shouldRasterize = true
         violationViewSubview.layer.masksToBounds = false
         violationViewSubview.layer.cornerRadius = 3
+        self.selectionStyle = .none
 
     }
     
     // MARK: IBActions
     
 
-    @IBAction func infoButtonTapped(_ sender: Any) {
-        print("infoButtonTapped")
-        cellDelegate?.infoButtonTapped(cell: self)
-        let violationsAlert = UIAlertController(title: "Critical Violation", message: "This is an alert.", preferredStyle: .alert)
-        violationsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        //present(violationsAlert, animated: true, completion: nil)
-    }
+//    @IBAction func infoButtonTapped(_ sender: Any) {
+//        print("infoButtonTapped")
+//        cellDelegate?.infoButtonTapped(cell: self)
+//
+//    }
 }
-    
+    // Three steps for child
+// Two steps for the parent
 

@@ -18,6 +18,7 @@
 		06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5B20EAD5D30019227C /* Favorite.storyboard */; };
 		06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5C20EAD5D30019227C /* Tab.storyboard */; };
 		06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5D20EAD5D30019227C /* Home.storyboard */; };
+		4206797820F6D9E10013166C /* JSONHealthCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206797720F6D9E10013166C /* JSONHealthCode.swift */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */; };
@@ -34,7 +35,6 @@
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */; };
-		D04BD43920F3D07000B7BF6C /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43820F3D07000B7BF6C /* Categories.swift */; };
 		D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
@@ -76,6 +76,7 @@
 		06ECAE5C20EAD5D30019227C /* Tab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
 		06ECAE5D20EAD5D30019227C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
+		4206797720F6D9E10013166C /* JSONHealthCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHealthCode.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		D01F559720F5025300E38C9B /* RestaurantReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewController.swift; sourceTree = "<group>"; };
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoController.swift; sourceTree = "<group>"; };
-		D04BD43820F3D07000B7BF6C /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 				D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */,
 				068C138F20F3DD7E0067EA53 /* Restaurant.swift */,
 				D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */,
-				D04BD43820F3D07000B7BF6C /* Categories.swift */,
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
+				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,11 +448,11 @@
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
+				4206797820F6D9E10013166C /* JSONHealthCode.swift in Sources */,
 				428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */,
-				D04BD43920F3D07000B7BF6C /* Categories.swift in Sources */,
 				D0B9C49220EBEF6C00AA8017 /* RestaurantDetailController.swift in Sources */,
 				068C139020F3DD7E0067EA53 /* Restaurant.swift in Sources */,
 				0653D4BF20EEC48C00F1FEEA /* FavoriteTableViewCell.swift in Sources */,
