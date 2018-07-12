@@ -23,6 +23,8 @@ class RestaurantInfoController {
     
     static var restaurants: [Businesses] = []
     
+    static var sharedRestaurant = RestaurantInfoController()
+    
     static func fetchRestaurantInfo(with searchTerm: String, andLocation: String, completion: @escaping ((Businesses)?) -> Void) {
         
         guard let url = baseURL else { completion(nil) ; return }
