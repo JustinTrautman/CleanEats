@@ -8,17 +8,10 @@
 
 import UIKit
 
-//protocol healthRatingTableViewCellDelegate: class {
-//    func infoButtonTapped(cell: HealthRatingTableViewCell)
-//}
 
 class HealthRatingTableViewCell: UITableViewCell {
     
-//    weak var cellDelegate: healthRatingTableViewCellDelegate?
-    // MARK: IBOutlets
-    
- 
-    @IBOutlet weak var infoButton: UIButton!
+    // MARK: - IBOutlets
     @IBOutlet weak var violationView: UIView!
     @IBOutlet weak var violationViewSubview: UIView!
     
@@ -49,15 +42,10 @@ class HealthRatingTableViewCell: UITableViewCell {
         self.selectionStyle = .none
 
     }
-    
     // MARK: IBActions
     
-
-//    @IBAction func infoButtonTapped(_ sender: Any) {
-//        print("infoButtonTapped")
-//        cellDelegate?.infoButtonTapped(cell: self)
-//
-//    }
+    
+    
 }
     // Three steps for child
 // Two steps for the parent

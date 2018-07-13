@@ -10,26 +10,28 @@ import UIKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
-    
-    @IBOutlet var restaurantProfileView: UIView!
-    
-    
-    
     // MARK: - IBOutlets
     
+    @IBOutlet var restaurantProfileView: UIView!
     @IBOutlet weak var favoriteStar: UIButton!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var aboutContainerView: UIView!
-    @IBOutlet weak var healthRatingContainerView: UIView!
-    @IBOutlet weak var reviewContainerView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var slidePageControl: UIPageControl!
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var slideScrollView: UIScrollView!{
         didSet {
             slideScrollView.delegate = self
         }
     }
+    @IBOutlet weak var slidePageControl: UIPageControl!
+    
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var starStackView: UIStackView!
+    @IBOutlet weak var totalReviewsLabel: UILabel!
+    @IBOutlet weak var hoursOfOperationLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var aboutContainerView: UIView!
+    @IBOutlet weak var healthRatingContainerView: UIView!
+    @IBOutlet weak var reviewContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +46,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
-        
-        
     }
     
     // Horizontal ScrollView
@@ -105,14 +105,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
-    
-    func infoButtonTapped(cell: HealthRatingTableViewCell) {
-        print("Reached Info Button in ProfileViewController")
-        let violationsAlert = UIAlertController(title: "Critical Violation", message: "This is an alert.", preferredStyle: .alert)
-        violationsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(violationsAlert, animated: true, completion: nil)
-        
-    }
+
     // MARK: - IBActions
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -140,6 +133,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             break
         }
     }
+    
+    // MARK: IBOutlets
+    
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         print("Star Button Tapped")
     }

@@ -11,12 +11,6 @@ import UIKit
 class AboutProfileViewController: UIViewController {
     
     // MARK: - IBActions
-    @IBAction func callButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func emailButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func webAddressButtonTapped(_ sender: UIButton) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +20,12 @@ class AboutProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func callButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func emailButtonTapped(_ sender: UIButton) {
+    }
+    @IBAction func webAddressButtonTapped(_ sender: UIButton) {
     }
 }
 
