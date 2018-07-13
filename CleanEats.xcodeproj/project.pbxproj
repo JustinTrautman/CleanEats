@@ -32,6 +32,7 @@
 		428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */; };
 		42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */; };
 		42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */; };
+		42EECA3F20F90894002431D2 /* healthData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42EECA3E20F90894002431D2 /* healthData.json */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
@@ -39,7 +40,6 @@
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */; };
 		D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */; };
-		D0735DF720F8FB4B00F0A182 /* healthData.json in Resources */ = {isa = PBXBuildFile; fileRef = D0735DF620F8FB4B00F0A182 /* healthData.json */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
@@ -96,6 +96,7 @@
 		428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingDetailTableView.swift; sourceTree = "<group>"; };
 		42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthRatingTableViewCell.swift; path = CleanEats/Views/HealthRatingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		42EECA3E20F90894002431D2 /* healthData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = healthData.json; sourceTree = "<group>"; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoController.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
-		D0735DF620F8FB4B00F0A182 /* healthData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = healthData.json; path = ../../../../Downloads/healthData.json; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
 				06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */,
 				D0DDAA7520F8116500757030 /* Favorite.swift */,
-				D0735DF620F8FB4B00F0A182 /* healthData.json */,
+				42EECA3E20F90894002431D2 /* healthData.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,10 +397,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EECA3F20F90894002431D2 /* healthData.json in Resources */,
 				06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */,
 				068C138C20F3D66B0067EA53 /* About.storyboard in Resources */,
 				06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */,
-				D0735DF720F8FB4B00F0A182 /* healthData.json in Resources */,
 				428865C220F3D0CA0095A837 /* Slide.xib in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
