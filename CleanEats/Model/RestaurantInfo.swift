@@ -17,8 +17,8 @@ struct TopLevelData : Codable {
     
     let businesses: [Businesses]
 }
-struct Businesses : Codable {
-    
+class Businesses : NSObject, Codable {
+
     let restaurantID: String?
     let restaurantName: String?
     let restaurantImage: String
@@ -27,7 +27,26 @@ struct Businesses : Codable {
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
-    var coordinate: CLLocationCoordinate2D? = CLLocationCoordinate2D()
+    var coordinate: Coordinate?
+    
+
+    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?) {
+        self.restaurantID = restaurantID
+        self.restaurantName = restaurantName
+        self.restaurantImage = restaurantImage
+        self.categories = categories
+        self.restaurantRating = restaurantRating
+        self.restaurantPrice = restaurantPrice
+        self.restaurantPhone = restaurantPhone
+        self.restaurantDistance = restaurantDistance
+
+    }
+    
+    struct Coordinate: Codable {
+        let latitude: Double
+        let longitude: Double
+        
+    }
     
     struct Categories : Codable {
         
@@ -35,7 +54,7 @@ struct Businesses : Codable {
         let title: String?
     }
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         
         case restaurantID = "id"
         case restaurantName = "name"
@@ -45,5 +64,9 @@ struct Businesses : Codable {
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
+        case coordinate = "coordinates"
     }
 }
+
+
+
