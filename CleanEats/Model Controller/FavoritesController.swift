@@ -12,18 +12,17 @@ class FavoriteController {
     
     static let shared = FavoriteController()
     
-    var favorites = [Favorite]()
+    var favoritesArray = [Favorite]()
     
     init() {
-        self.favorites = load()
+        self.favoritesArray = load()
     }
     
     func createFavoriteWith(image: String, name: String, price: String, rating: String, phone: String, description: String) {
         
         let favorites = Favorite(restaurantImage: image, restaurantName: name, restaurantPrice: price, restaurantRating: rating, restaurantPhone: phone, restaurantDescription: description)
         
-        //favorites.append(favorites)
-        saveToFavorites()
+        favoritesArray.append(favorites)
     }
     
     func fileUrls() -> URL {
@@ -39,7 +38,7 @@ class FavoriteController {
         let jsonEncoder = JSONEncoder()
         
         do {
-            let data = try jsonEncoder.encode(favorites)
+            let data = try jsonEncoder.encode(favoritesArray)
             try data.write(to: fileUrls())
         } catch let error {
             print("File urls had an error saving to path \(#function) \(error) \(error.localizedDescription)")
@@ -59,8 +58,8 @@ class FavoriteController {
     }
     
     func delete(favorite: Favorite) {
-        guard let index = favorites.index(of: favorite) else { return }
-        favorites.remove(at: index)
+        guard let index = favoritesArray.index(of: favorite) else { return }
+        favoritesArray.remove(at: index)
         print("Sucessfuly removed favorite")
         saveToFavorites()
     }
