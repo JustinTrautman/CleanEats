@@ -19,7 +19,6 @@
 		06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5B20EAD5D30019227C /* Favorite.storyboard */; };
 		06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5C20EAD5D30019227C /* Tab.storyboard */; };
 		06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5D20EAD5D30019227C /* Home.storyboard */; };
-		4206797820F6D9E10013166C /* JSONHealthCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206797720F6D9E10013166C /* JSONHealthCode.swift */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */; };
@@ -157,6 +156,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		42BAD27020F7E80600EDFF03 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		71B01CFE1680DA06900CF4AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +233,7 @@
 				D0895E0620E1A71C00EB1307 /* Products */,
 				081E394468838F826BDD4481 /* Pods */,
 				71B01CFE1680DA06900CF4AF /* Frameworks */,
+				42BAD27020F7E80600EDFF03 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -451,7 +459,6 @@
 				06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
-				4206797820F6D9E10013166C /* JSONHealthCode.swift in Sources */,
 				428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
