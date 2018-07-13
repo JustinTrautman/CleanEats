@@ -11,11 +11,10 @@ import MapKit
 class CustomAnnotation: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D
-    var restaurantName: String?
-    var restaurantImage: UIImage?
-    var image: UIImage!
+    var restaurantName: String!
+    var restaurantImageUrlString: String!
     var restaurantID: String?
-    var restaurantRating: Double?
+    var restaurantRating: Double!
     var restaurantPrice: String?
     var restaurantPhone: String?
     var restaurantDistance: Double?

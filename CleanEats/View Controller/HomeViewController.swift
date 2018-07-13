@@ -63,19 +63,26 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                             let coordinate = self.getCordinate(latitude: lat, longitude: log)
                             
                             DispatchQueue.main.async {
-                                let annotation = MKPointAnnotation()
-                                annotation.coordinate = coordinate
+//                                let annotation = MKPointAnnotation()
+//                                annotation.coordinate = coordinate
+//
+//                                annotation.title = objects.restaurantName
+//                                annotation.subtitle = objects.restaurantPhone
                                 
-                                annotation.title = objects.restaurantName
-                                annotation.subtitle = objects.restaurantPhone
+                                let point = CustomAnnotation(coordinate: coordinate)
+                                point.restaurantName = objects.restaurantName
+                                point.restaurantImageUrlString = objects.restaurantImage
+                                point.restaurantPrice = objects.restaurantPrice
+                                point.restaurantDistance = objects.restaurantDistance
+                                point.restaurantRating = objects.restaurantRating
+                              
                                 
-
-                                self.homeMapView.addAnnotations([annotation])
+                                self.homeMapView.addAnnotations([point])
                                 print("------------ THREAD2 \(Thread.isMainThread) ------")
                                 
                                 //Zooming in on annotation
                                 let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                                let span = MKCoordinateSpanMake(0.5, 0.5)
+                                let span = MKCoordinateSpanMake(0.03, 0.03)
                                 let region = MKCoordinateRegionMake(coordinate, span)
                                 self.homeMapView.setRegion(region, animated: true)
                             }
@@ -95,59 +102,59 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     }
     
     
-        func performSearch() {
-    
-            matchingItems.removeAll()
-            let request = MKLocalSearchRequest()
-            request.naturalLanguageQuery = searchBarMap.text
-            request.region = homeMapView.region
-    
-            let search = MKLocalSearch(request: request)
-    
-            search.start(completionHandler: {(response, error) in
-    
-                if let results = response {
-    
-                    if let err = error {
-                        print("Error occurred in search: \(err.localizedDescription)")
-                    } else if results.mapItems.count == 0 {
-                        print("No matches found")
-                    } else {
-                        print("Matches found")
-    
-                        // Remove current annotations on map
-                                        let annotations = self.homeMapView.annotations
-                                        self.homeMapView.removeAnnotations(annotations)
-    
-                                        // Getting data
-                                        guard let latitude = response?.boundingRegion.center.latitude else {return}
-                                        guard let longitude = response?.boundingRegion.center.longitude else {return}
-    
-                        for item in results.mapItems {
-                            print("Name = \(item.name ?? "No match")")
-                            print("Phone = \(item.phoneNumber ?? "No Match")")
-    
-                            self.matchingItems.append(item as MKMapItem)
-                            print("Matching items = \(self.matchingItems.count)")
-    
-                            let annotation = MKPointAnnotation()
-                            annotation.coordinate = item.placemark.coordinate
-                            annotation.title = item.name
-                            annotation.subtitle = item.phoneNumber
-
-                            self.homeMapView.addAnnotation(annotation)
-    
-                            //Zooming in on annotation
-                            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                            let span = MKCoordinateSpanMake(0.01, 0.01)
-                            let region = MKCoordinateRegionMake(coordinate, span)
-                            self.homeMapView.setRegion(region, animated: true)
-    
-                        }
-                    }
-                }
-            })
-        }
+//        func performSearch() {
+//    
+//            matchingItems.removeAll()
+//            let request = MKLocalSearchRequest()
+//            request.naturalLanguageQuery = searchBarMap.text
+//            request.region = homeMapView.region
+//    
+//            let search = MKLocalSearch(request: request)
+//    
+//            search.start(completionHandler: {(response, error) in
+//    
+//                if let results = response {
+//    
+//                    if let err = error {
+//                        print("Error occurred in search: \(err.localizedDescription)")
+//                    } else if results.mapItems.count == 0 {
+//                        print("No matches found")
+//                    } else {
+//                        print("Matches found")
+//    
+//                        // Remove current annotations on map
+//                                        let annotations = self.homeMapView.annotations
+//                                        self.homeMapView.removeAnnotations(annotations)
+//    
+//                                        // Getting data
+//                                        guard let latitude = response?.boundingRegion.center.latitude else {return}
+//                                        guard let longitude = response?.boundingRegion.center.longitude else {return}
+//    
+//                        for item in results.mapItems {
+//                            print("Name = \(item.name ?? "No match")")
+//                            print("Phone = \(item.phoneNumber ?? "No Match")")
+//    
+//                            self.matchingItems.append(item as MKMapItem)
+//                            print("Matching items = \(self.matchingItems.count)")
+//    
+//                            let annotation = MKPointAnnotation()
+//                            annotation.coordinate = item.placemark.coordinate
+//                            annotation.title = item.name
+//                            annotation.subtitle = item.phoneNumber
+//
+//                            self.homeMapView.addAnnotation(annotation)
+//    
+//                            //Zooming in on annotation
+//                            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+//                            let span = MKCoordinateSpanMake(0.01, 0.01)
+//                            let region = MKCoordinateRegionMake(coordinate, span)
+//                            self.homeMapView.setRegion(region, animated: true)
+//    
+//                        }
+//                    }
+//                }
+//            })
+//        }
     //
     // Adding custom pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
@@ -155,14 +162,111 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         if annotation is MKUserLocation {
             return nil
         }
-        let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "customPin")
-        annotationView.image = UIImage(named: "pin")
-        annotationView.canShowCallout = true
+        var annotationView = self.homeMapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+            annotationView?.canShowCallout = false
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "pin")
+        
+//        let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "customPin")
+//        annotationView.image = UIImage(named: "pin")
+//        annotationView.canShowCallout = true
         
         //        joesFunction(annotationView)
         
         return annotationView
     }
+    
+    
+    
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView) {
+        // 1
+        if view.annotation is MKUserLocation
+        {
+            // Don't proceed with custom callout
+            return
+        }
+        // 2
+        let customAnnotation = view.annotation as! CustomAnnotation
+        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        let calloutView = views?[0] as! CustomCalloutView
+        calloutView.restaurantName.text = customAnnotation.restaurantName
+        calloutView.restaurantPrice.text = customAnnotation.restaurantPrice
+        guard let restaurantDistance = (customAnnotation.restaurantDistance) else {return}
+        let distanceInMiles = round((restaurantDistance/16.0934))/100
+        calloutView.restaurantDistance.text = "\(distanceInMiles) miles away"
+        if let rating = customAnnotation.restaurantRating{
+            let intRating = Int(rating)
+            guard let ratingEnum = Rating(rawValue: intRating) else {return}
+            let image = getImageForRating(rating: ratingEnum)
+            calloutView.ratingImageView.image = image
+        }
+        
+        RestaurantInfoController.getRestaurantImage(imageStringURL: customAnnotation.restaurantImageUrlString) { (image) in
+            guard let image = image else {return}
+            DispatchQueue.main.async {
+                calloutView.restaurantImage.image = image
+            }
+        }
+        
+//        calloutView.starbucksName.text = starbucksAnnotation.name
+//        calloutView.starbucksAddress.text = starbucksAnnotation.address
+//        calloutView.starbucksPhone.text = starbucksAnnotation.phone
+//        calloutView.starbucksImage.image = starbucksAnnotation.image
+        // 3
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+        view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    func getImageForRating(rating: Rating) -> UIImage?{
+        switch rating {
+        case .oneStar:
+            return UIImage(named: "oneStar")
+        case .twoStar:
+            return UIImage(named: "twoStars")
+        case .threeStar:
+            return UIImage(named: "threeStars")
+        case .fourStar:
+            return UIImage(named: "fourStars")
+        case .fiveStar:
+            return UIImage(named: "fiveStars")
+        }
+    }
+    
+//
+//    @objc func callPhoneNumber(sender: UIButton)
+//    {
+//        let v = sender.superview as! CustomCalloutView
+//        if let url = URL(string: "telprompt://\(v.starbucksPhone.text!)"), UIApplication.shared.canOpenURL(url)
+//        {
+//            UIApplication.shared.openURL(url)
+//        }
+//    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: AnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //    func joesFunction(_ annotationView: MKAnnotationView) {
     //        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
