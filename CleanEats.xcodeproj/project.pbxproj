@@ -27,7 +27,7 @@
 		428865C220F3D0CA0095A837 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428865C120F3D0CA0095A837 /* Slide.xib */; };
 		428865C420F3D3B80095A837 /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */; };
 		428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */; };
-		428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift */; };
+		428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */; };
 		42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */; };
 		42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
@@ -88,7 +88,7 @@
 		428865C120F3D0CA0095A837 /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
 		428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantProfile.storyboard; sourceTree = "<group>"; };
-		428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingDetailTableViewController.swift; sourceTree = "<group>"; };
+		428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingDetailTableView.swift; sourceTree = "<group>"; };
 		42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthRatingTableViewCell.swift; path = CleanEats/Views/HealthRatingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,7 +202,7 @@
 				D0B9C48F20EBE72700AA8017 /* RestaurantDetailTableViewController.swift */,
 				428865BF20F3D0B50095A837 /* Slide.swift */,
 				063D427020F40EF8004C8DB3 /* AboutViewController.swift */,
-				428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift */,
+				428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -466,7 +466,7 @@
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D0DDAA7420F8112500757030 /* FavoritesController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
-				428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableViewController.swift in Sources */,
+				428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */,
