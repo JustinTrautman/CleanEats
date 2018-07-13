@@ -15,6 +15,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     // MARK: IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var infoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,16 +84,41 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+        if segue.identifier == "toHealthViolationTableView" {
+            guard let destinationVC = segue.destination as? HealthRatingDetailTableViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            // Finish once data is available
+            
+        }
+        
     }
-    */
+    
     
     
 
+    // MARK: - IBActions
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        presentAlert(majorViolation: "Violations of critical food handling practices and conditions, or existence of an environmental health hazard.", minorViolation: "Low risk violations include proper storage of utensils and linens, adequate lighting, lack of refrigerator thermometers, and soiled food contact surfaces.")
+       }
 }
+
+// Mark: - Alert Stuff
+extension HealthRatingTableViewController {
+    func presentAlert(majorViolation: String, minorViolation: String) {
+        let alert = UIAlertController(title: "Violations", message: "Critical Violations: \n \(majorViolation) \n\n Non-Critical Violations: \n \(minorViolation) \n\n Violation points may be: \n 1(lowest risk violations), \n 3(moderate risk violations), \n or 6 points(highest risk violations).", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(OKAction)
+        
+        present(alert, animated: true)
+    }
+}
+
+
+

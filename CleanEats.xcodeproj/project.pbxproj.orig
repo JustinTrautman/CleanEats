@@ -160,6 +160,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		42BAD27020F7E80600EDFF03 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		71B01CFE1680DA06900CF4AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,7 +247,11 @@
 				D0895E0620E1A71C00EB1307 /* Products */,
 				081E394468838F826BDD4481 /* Pods */,
 				71B01CFE1680DA06900CF4AF /* Frameworks */,
+<<<<<<< HEAD
+				D0735DF520F82DF800F0A182 /* Recovered References */,
+=======
 				42BAD27020F7E80600EDFF03 /* Recovered References */,
+>>>>>>> 456ccbae55dbcf0f67f113677d29163f20ad6508
 			);
 			sourceTree = "<group>";
 		};
