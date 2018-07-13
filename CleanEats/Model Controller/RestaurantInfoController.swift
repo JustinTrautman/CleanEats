@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 
+
 enum SearchType: String {
     
     case SearchbarText = ""
@@ -21,9 +22,10 @@ class RestaurantInfoController {
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses/search")
     static var restaurants: [Businesses] = []
     
+    
     static func fetchRestaurantInfo(withSearchTerm: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (([Businesses])?) -> Void) {
 
-        guard let url = baseURL else { completion(nil) ; return }
+        guard let url = baseURL else { completion(nil) ; return}
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         let termQuery = URLQueryItem(name: "term", value: "\(withSearchTerm)")
@@ -48,6 +50,7 @@ class RestaurantInfoController {
             
             if let error = error {
                 print("DataTask had an issue reaching the network. Exiting with error: \(error) \(error.localizedDescription)")
+                 completion(nil) ; return
             }
             
             guard let data = data else { completion(nil) ; return }
@@ -57,8 +60,10 @@ class RestaurantInfoController {
                 let restaurants = try jsonDecoder.decode(TopLevelData.self, from: data).businesses
                 self.restaurants = restaurants
                 completion(restaurants)
+
             } catch let error {
                 print("Error decoding restaurant data: \(error) \(error.localizedDescription)")
+                
             }
         }.resume()
     }

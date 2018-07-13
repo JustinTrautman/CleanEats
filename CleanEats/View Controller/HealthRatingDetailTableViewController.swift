@@ -1,52 +1,51 @@
 //
-//  HealthReviewsTableViewController.swift
+//  HealthRatingDetailTableViewController.swift
 //  CleanEats
 //
-//  Created by Joshua Danner on 6/28/18.
+//  Created by Joshua Danner on 7/11/18.
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
 
 import UIKit
 
-class HealthRatingTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
-    
-    // MARK: IBOutlets
-    
-    @IBOutlet weak var tableView: UITableView!
-    
+class HealthRatingDetailTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 210
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return  UITableViewCell() }
-        
-        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
+
+    /*
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
 
         return cell
     }
-
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -64,7 +63,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+        }    
     }
     */
 
@@ -92,7 +91,5 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         // Pass the selected object to the new view controller.
     }
     */
-    
-    
 
 }
