@@ -68,5 +68,10 @@ class Businesses : NSObject, Codable {
     }
 }
 
-
-
+enum Rating: Int{
+    case oneStar = 1
+    case twoStar = 2
+    case threeStar = 3
+    case fourStar = 4
+    case fiveStar = 5
+}

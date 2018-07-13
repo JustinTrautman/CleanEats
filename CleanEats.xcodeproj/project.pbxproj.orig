@@ -13,6 +13,9 @@
 		068C138C20F3D66B0067EA53 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C138B20F3D66B0067EA53 /* About.storyboard */; };
 		068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138D20F3DD1E0067EA53 /* RestaurantController.swift */; };
 		068C139020F3DD7E0067EA53 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138F20F3DD7E0067EA53 /* Restaurant.swift */; };
+		06A6DE4720F83B76009E960C /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CustomCalloutView.xib */; };
+		06A6DE4B20F84075009E960C /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4A20F84075009E960C /* CustomCalloutView.swift */; };
+		06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4C20F84294009E960C /* AnnotationView.swift */; };
 		06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */; };
 		06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECAE5520EAD5B00019227C /* HomeViewController.swift */; };
 		06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */; };
@@ -36,6 +39,7 @@
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */; };
 		D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */; };
+		D0735DF720F8FB4B00F0A182 /* healthData.json in Resources */ = {isa = PBXBuildFile; fileRef = D0735DF620F8FB4B00F0A182 /* healthData.json */; };
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
@@ -72,6 +76,9 @@
 		068C138B20F3D66B0067EA53 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		068C138D20F3DD1E0067EA53 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		068C138F20F3DD7E0067EA53 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		06A6DE4620F83B76009E960C /* CustomCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		06A6DE4A20F84075009E960C /* CustomCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCalloutView.swift; path = /Users/Huzaifagadiwala/Desktop/CleanEats/CleanEats/Views/CustomCalloutView.swift; sourceTree = "<absolute>"; };
+		06A6DE4C20F84294009E960C /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = CleanEats/Model/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
 		06ECAE5520EAD5B00019227C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,7 +86,6 @@
 		06ECAE5C20EAD5D30019227C /* Tab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
 		06ECAE5D20EAD5D30019227C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
-		4206797720F6D9E10013166C /* JSONHealthCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHealthCode.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoController.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
+		D0735DF620F8FB4B00F0A182 /* healthData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = healthData.json; path = ../../../../Downloads/healthData.json; sourceTree = "<group>"; };
 		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +148,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06A6DE4520F831EF009E960C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		081E394468838F826BDD4481 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,14 +175,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		42BAD27020F7E80600EDFF03 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		71B01CFE1680DA06900CF4AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,8 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */,
+				06A6DE4C20F84294009E960C /* AnnotationView.swift */,
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
 				D08AFBCC20EAF65000305116 /* UIViewExtension.swift */,
+				06A6DE4A20F84075009E960C /* CustomCalloutView.swift */,
 				0653D4BE20EEC48C00F1FEEA /* FavoriteTableViewCell.swift */,
 				42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */,
 			);
@@ -228,16 +237,9 @@
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
 				06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */,
 				D0DDAA7520F8116500757030 /* Favorite.swift */,
+				D0735DF620F8FB4B00F0A182 /* healthData.json */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		D0735DF520F82DF800F0A182 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				4206797720F6D9E10013166C /* JSONHealthCode.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		D0895DFC20E1A71C00EB1307 = {
@@ -247,11 +249,7 @@
 				D0895E0620E1A71C00EB1307 /* Products */,
 				081E394468838F826BDD4481 /* Pods */,
 				71B01CFE1680DA06900CF4AF /* Frameworks */,
-<<<<<<< HEAD
-				D0735DF520F82DF800F0A182 /* Recovered References */,
-=======
-				42BAD27020F7E80600EDFF03 /* Recovered References */,
->>>>>>> 456ccbae55dbcf0f67f113677d29163f20ad6508
+				06A6DE4520F831EF009E960C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +287,7 @@
 				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
 				06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */,
 				428865C120F3D0CA0095A837 /* Slide.xib */,
+				06A6DE4620F83B76009E960C /* CustomCalloutView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -402,10 +401,12 @@
 				06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */,
 				068C138C20F3D66B0067EA53 /* About.storyboard in Resources */,
 				06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */,
+				D0735DF720F8FB4B00F0A182 /* healthData.json in Resources */,
 				428865C220F3D0CA0095A837 /* Slide.xib in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
 				428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */,
+				06A6DE4720F83B76009E960C /* CustomCalloutView.xib in Resources */,
 				06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */,
 				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
 			);
@@ -484,10 +485,12 @@
 				D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */,
 				D0B9C49220EBEF6C00AA8017 /* RestaurantDetailController.swift in Sources */,
 				068C139020F3DD7E0067EA53 /* Restaurant.swift in Sources */,
+				06A6DE4B20F84075009E960C /* CustomCalloutView.swift in Sources */,
 				0653D4BF20EEC48C00F1FEEA /* FavoriteTableViewCell.swift in Sources */,
 				D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */,
 				428865C420F3D3B80095A837 /* RestaurantProfileViewController.swift in Sources */,
 				06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */,
+				06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */,
 				4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */,
 				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
 				428865C020F3D0B50095A837 /* Slide.swift in Sources */,
@@ -652,7 +655,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = QE6MX92YZ5;
+=======
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
+>>>>>>> 2959ede924326e91282ce065776c1b3effbc4db5
 				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -672,7 +679,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = QE6MX92YZ5;
+=======
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
+>>>>>>> 2959ede924326e91282ce065776c1b3effbc4db5
 				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
