@@ -15,7 +15,6 @@
 		068C139020F3DD7E0067EA53 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138F20F3DD7E0067EA53 /* Restaurant.swift */; };
 		06A6DE4720F83B76009E960C /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CustomCalloutView.xib */; };
 		06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4C20F84294009E960C /* AnnotationView.swift */; };
-		06A6DE4F20F924C6009E960C /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4E20F924C6009E960C /* CustomCalloutView.swift */; };
 		06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */; };
 		06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECAE5520EAD5B00019227C /* HomeViewController.swift */; };
 		06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */; };
@@ -85,7 +84,6 @@
 		06ECAE5C20EAD5D30019227C /* Tab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
 		06ECAE5D20EAD5D30019227C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
-		4206797720F6D9E10013166C /* JSONHealthCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONHealthCode.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +148,7 @@
 		06A6DE4520F831EF009E960C /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				06A6DE4E20F924C6009E960C /* CustomCalloutView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -233,7 +232,6 @@
 				D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */,
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
 				06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */,
-				D0DDAA7520F8116500757030 /* Favorite.swift */,
 				42EECA3E20F90894002431D2 /* healthData.json */,
 			);
 			path = Model;
@@ -473,7 +471,6 @@
 				42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */,
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */,
-				06A6DE4F20F924C6009E960C /* CustomCalloutView.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,

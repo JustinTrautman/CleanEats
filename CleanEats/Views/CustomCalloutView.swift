@@ -19,6 +19,15 @@ import UIKit
             self.layer.cornerRadius = cornerRadius
         }
     }
+   
+//    @IBAction func customButtonTapped(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "RestaurantProfile", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "RestaurantProfileViewController") as! RestaurantProfileViewController ?? RestaurantProfileViewController()
+//        self.presentViewController(vc, animated: true, completion: nil)
+//
+//    }
+    
+    
     
     /*
      // Only override draw() if you perform custom drawing.

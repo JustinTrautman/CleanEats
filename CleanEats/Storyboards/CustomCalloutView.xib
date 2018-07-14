@@ -20,7 +20,7 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-vK-ZZF" userLabel="Restaurant Image">
                     <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="cqj-xI-9sk">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cqj-xI-9sk">
                     <rect key="frame" x="173" y="8" width="119" height="149"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liT-3I-DHR" userLabel="Restaurant Name">
@@ -55,23 +55,34 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-nR-AJF">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
+                    <state key="normal" title="ClickME"/>
+                    <connections>
+                        <action selector="customButtonTapped:" destination="Spy-mQ-CE7" eventType="touchUpInside" id="sRm-j1-HBp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="WSt-vK-ZZF" firstAttribute="leading" secondItem="Spy-mQ-CE7" secondAttribute="leading" id="Lsy-eo-v3z"/>
                 <constraint firstItem="5bN-Y0-uro" firstAttribute="bottom" secondItem="cqj-xI-9sk" secondAttribute="bottom" constant="8" id="MF9-Y1-6Xs"/>
+                <constraint firstItem="AOh-nR-AJF" firstAttribute="top" secondItem="5bN-Y0-uro" secondAttribute="top" id="RxW-9l-YuY"/>
                 <constraint firstItem="5bN-Y0-uro" firstAttribute="trailing" secondItem="cqj-xI-9sk" secondAttribute="trailing" constant="8" id="SSp-I9-JqI"/>
+                <constraint firstItem="AOh-nR-AJF" firstAttribute="trailing" secondItem="5bN-Y0-uro" secondAttribute="trailing" id="WeQ-vV-Nbz"/>
                 <constraint firstAttribute="bottom" secondItem="WSt-vK-ZZF" secondAttribute="bottom" id="XeM-nV-PBv"/>
                 <constraint firstItem="WSt-vK-ZZF" firstAttribute="top" secondItem="Spy-mQ-CE7" secondAttribute="top" id="fvy-eM-UGx"/>
+                <constraint firstItem="AOh-nR-AJF" firstAttribute="bottom" secondItem="5bN-Y0-uro" secondAttribute="bottom" id="j60-tf-AIr"/>
                 <constraint firstItem="cqj-xI-9sk" firstAttribute="leading" secondItem="WSt-vK-ZZF" secondAttribute="trailing" constant="8" id="kgK-RN-e2s"/>
                 <constraint firstItem="cqj-xI-9sk" firstAttribute="top" secondItem="5bN-Y0-uro" secondAttribute="top" constant="8" id="kqP-lb-Kyg"/>
+                <constraint firstItem="AOh-nR-AJF" firstAttribute="leading" secondItem="5bN-Y0-uro" secondAttribute="leading" id="xId-1G-LES"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="5bN-Y0-uro"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="30"/>
+                    <real key="value" value="4"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>

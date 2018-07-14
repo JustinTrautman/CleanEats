@@ -33,6 +33,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var healthRatingContainerView: UIView!
     @IBOutlet weak var reviewContainerView: UIView!
     
+    var restaurant: Businesses? 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)

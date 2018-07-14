@@ -21,9 +21,14 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ope-Ij-wjh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
-                            <searchBar alpha="0.75" contentMode="redraw" placeholder="Enter restaurant..." translatesAutoresizingMaskIntoConstraints="NO" id="DCy-7T-ZLH">
+                            <searchBar alpha="0.75" contentMode="redraw" placeholder="Enter restaurant..." translatesAutoresizingMaskIntoConstraints="NO" id="DCy-7T-ZLH" customClass="CustomSearchBar" customModule="CleanEats" customModuleProvider="target">
                                 <rect key="frame" x="30" y="94" width="315" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,7 +46,7 @@
                     <navigationItem key="navigationItem" title="DineRite" id="Vrz-UU-Dmh"/>
                     <connections>
                         <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
-                        <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="WEu-40-Cki"/>
+                        <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="4bQ-Yf-Fy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbY-d8-ams" userLabel="First Responder" sceneMemberID="firstResponder"/>
