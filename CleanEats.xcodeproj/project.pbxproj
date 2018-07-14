@@ -29,10 +29,10 @@
 		428865C220F3D0CA0095A837 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428865C120F3D0CA0095A837 /* Slide.xib */; };
 		428865C420F3D3B80095A837 /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */; };
 		428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */; };
-		428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */; };
 		42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */; };
 		42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */; };
 		42EECA3F20F90894002431D2 /* healthData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42EECA3E20F90894002431D2 /* healthData.json */; };
+		42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4020F9686E002431D2 /* ViolationDetailViewController.swift */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
@@ -93,10 +93,10 @@
 		428865C120F3D0CA0095A837 /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
 		428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantProfile.storyboard; sourceTree = "<group>"; };
-		428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingDetailTableView.swift; sourceTree = "<group>"; };
 		42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthRatingTableViewCell.swift; path = CleanEats/Views/HealthRatingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		42EECA3E20F90894002431D2 /* healthData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = healthData.json; sourceTree = "<group>"; };
+		42EECA4020F9686E002431D2 /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDetailViewController.swift; sourceTree = "<group>"; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 				D0B9C48F20EBE72700AA8017 /* RestaurantDetailTableViewController.swift */,
 				428865BF20F3D0B50095A837 /* Slide.swift */,
 				063D427020F40EF8004C8DB3 /* AboutViewController.swift */,
-				428AD12B20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift */,
+				42EECA4020F9686E002431D2 /* ViolationDetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -478,7 +478,6 @@
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				D0DDAA7420F8112500757030 /* FavoritesController.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
-				428AD12C20F67BEB00A3FDFA /* HealthRatingDetailTableView.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */,
@@ -493,6 +492,7 @@
 				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
 				428865C020F3D0B50095A837 /* Slide.swift in Sources */,
 				D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */,
+				42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */,
 				D0B9C49020EBE72700AA8017 /* RestaurantDetailTableViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
 				D02515A420F905A2006198E9 /* CustomCalloutView.swift in Sources */,
@@ -654,7 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QE6MX92YZ5;
+				DEVELOPMENT_TEAM = M3XYYRNDF8;
 				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -674,7 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QE6MX92YZ5;
+				DEVELOPMENT_TEAM = M3XYYRNDF8;
 				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
