@@ -84,6 +84,18 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     }
     */
 
+<<<<<<< HEAD
+    
+    // MARK: - Navigation
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        
+        }
+    
+    
+=======
 //
 //    // MARK: - Navigation
 //
@@ -100,6 +112,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
 //    }
 //
 //
+>>>>>>> 8050ec7cbfaac14a45bcdaf04f7449c7b5bd9536
     
 
     // MARK: - IBActions
