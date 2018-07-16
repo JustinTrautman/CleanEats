@@ -58,9 +58,6 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-nR-AJF">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
                     <state key="normal" title="ClickME"/>
-                    <connections>
-                        <action selector="customButtonTapped:" destination="Spy-mQ-CE7" eventType="touchUpInside" id="sRm-j1-HBp"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
