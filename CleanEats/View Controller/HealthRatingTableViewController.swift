@@ -84,7 +84,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     }
     */
 
-<<<<<<< HEAD
+
     
     // MARK: - Navigation
 
@@ -95,7 +95,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         }
     
     
-=======
+
 //
 //    // MARK: - Navigation
 //
@@ -103,7 +103,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
 //        if segue.identifier == "toDetailVC" {
-//            guard let destinationVC = segue.destination as? HealthRatingDetailTableViewController,
+//            guard let destinationVC = segue.destination,
 //                let indexPath = tableView.indexPathForSelectedRow else { return }
 //            // Finish once data is available
 //
@@ -112,7 +112,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
 //    }
 //
 //
->>>>>>> 8050ec7cbfaac14a45bcdaf04f7449c7b5bd9536
+
     
 
     // MARK: - IBActions
