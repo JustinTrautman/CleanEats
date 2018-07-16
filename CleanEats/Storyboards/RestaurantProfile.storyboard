@@ -15,7 +15,7 @@
         <!--Restaurant Profile View Controller-->
         <scene sceneID="wpo-A5-bor">
             <objects>
-                <viewController storyboardIdentifier="RestaurantProfileViewController" id="Kgo-YH-xtX" customClass="RestaurantProfileViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kgo-YH-xtX" customClass="RestaurantProfileViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agl-kz-Ul1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
