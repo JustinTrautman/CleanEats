@@ -18,7 +18,6 @@ class CriticalViolationTableViewCell: UITableViewCell {
     @IBOutlet weak var weight: UILabel!
     @IBOutlet weak var points: UILabel!
     
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -82,7 +82,9 @@ class Businesses : NSObject, Codable {
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
         case coordinate = "coordinates"
+        
     }
+    
 }
 
 enum Rating: Int{
