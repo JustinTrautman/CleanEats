@@ -22,6 +22,7 @@
 		06ECAE6020EAD5D30019227C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5D20EAD5D30019227C /* Home.storyboard */; };
 		4211E83E20FD1027008DB9EB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83D20FD1026008DB9EB /* Restaurant.swift */; };
 		4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */; };
+		423D7E9120FE613F00ED74AB /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9020FE613F00ED74AB /* Violation.swift */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */; };
@@ -87,6 +88,7 @@
 		0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.debug.xcconfig"; sourceTree = "<group>"; };
 		4211E83D20FD1026008DB9EB /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
+		423D7E9020FE613F00ED74AB /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */,
 				42EECA3E20F90894002431D2 /* healthData.json */,
 				D04B26B020FE5C8C001D0F9D /* Favorite.swift */,
+				423D7E9020FE613F00ED74AB /* Violation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				0653D4C120EECFD900F1FEEA /* FavoriteTableViewController.swift in Sources */,
 				068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */,
 				4211E83E20FD1027008DB9EB /* Restaurant.swift in Sources */,
+				423D7E9120FE613F00ED74AB /* Violation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
