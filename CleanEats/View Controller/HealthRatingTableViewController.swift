@@ -94,8 +94,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         
         }
     
-    
-
 //
 //    // MARK: - Navigation
 //
@@ -113,7 +111,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
 //
 //
 
-    
 
     // MARK: - IBActions
     @IBAction func infoButtonTapped(_ sender: Any) {

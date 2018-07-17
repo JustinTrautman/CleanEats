@@ -21,7 +21,7 @@ class RestaurantInfoController {
     static let authorizationKey = "Bearer VBD28yjGUwXP2DOqFu5UQIxZ_czZjgAbBijF-_2ch9SwdtsenIlG1cPbM0lQjYmWBmlpXNWku6aTS36pK3b6PwJqsJYW4NTmCbedCYvTm7uA3elgb6tXSBt-MIE-W3Yx"
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses/search")
     static var restaurants: [Businesses] = []
-    
+    static let shared = RestaurantInfoController()
     
     static func fetchRestaurantInfo(withSearchTerm: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (([Businesses])?) -> Void) {
 

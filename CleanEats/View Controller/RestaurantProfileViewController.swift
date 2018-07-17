@@ -24,7 +24,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var ratingStar: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -49,8 +48,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

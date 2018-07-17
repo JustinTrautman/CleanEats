@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="Spy-mQ-CE7" customClass="CustomCalloutView" customModule="CleanEats" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="Spy-mQ-CE7" customClass="CalloutView" customModule="CleanEats" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -58,6 +58,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-nR-AJF">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
                     <state key="normal" title="ClickME"/>
+                    <connections>
+                        <action selector="calloutButtonTapped:" destination="Spy-mQ-CE7" eventType="touchUpInside" id="nMI-ox-hp6"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -83,6 +86,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="buttonTapped" destination="AOh-nR-AJF" id="jJR-Xd-C8A"/>
                 <outlet property="ratingImageView" destination="3Rt-mU-zqy" id="6Xs-ca-O06"/>
                 <outlet property="restaurantDistance" destination="r44-BG-0EU" id="j8J-zv-tBX"/>
                 <outlet property="restaurantImage" destination="WSt-vK-ZZF" id="UZi-fF-HQg"/>

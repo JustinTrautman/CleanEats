@@ -20,7 +20,7 @@ struct TopLevelData : Codable {
 class Businesses : NSObject, Codable {
 
     let restaurantID: String?
-    let restaurantName: String?
+    var restaurantName: String?
     let restaurantImage: String
     let categories: [Categories]?
     let restaurantRating: Double?

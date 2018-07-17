@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CJV-fv-v5O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kgo-YH-xtX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-q6-Qbo">
-                                <rect key="frame" x="0.0" y="64" width="375" height="800"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbn-5x-t7u" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
@@ -82,7 +82,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHJ-ur-8Ri">
-                                                        <rect key="frame" x="103" y="45" width="14.5" height="12"/>
+                                                        <rect key="frame" x="92" y="45" width="14.5" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -207,14 +207,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0v-ND-K48"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Cxa-It-1f6"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Cxa-It-1f6">
+                        <barButtonItem key="backBarButtonItem" title="Home" id="8ql-6i-M1k"/>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="aboutContainerView" destination="2B4-fS-MhU" id="ac7-3h-6j6"/>
                         <outlet property="favoriteStar" destination="nIu-ik-0lC" id="0s1-v4-hcw"/>
                         <outlet property="healthRatingContainerView" destination="B2g-me-YDn" id="w8m-M2-m9C"/>
                         <outlet property="hoursOfOperationLabel" destination="dE2-Hf-pns" id="Mmz-a6-uez"/>
-                        <outlet property="ratingStar" destination="NFV-FL-xlr" id="ACz-4a-zGs"/>
+                        <outlet property="ratingStar" destination="NFV-FL-xlr" id="auq-xS-T4T"/>
                         <outlet property="restaurantNameLabel" destination="eqG-dX-TJb" id="ret-Zs-UCo"/>
                         <outlet property="restaurantProfileView" destination="agl-kz-Ul1" id="MFF-sv-DqF"/>
                         <outlet property="reviewContainerView" destination="jBh-be-7St" id="OyY-Hi-oUD"/>
@@ -548,24 +550,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghX-vb-PPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3505" y="1464"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9A7-Zo-ULC">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJV-fv-v5O" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Y6J-Yg-0Ju">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Kgo-YH-xtX" kind="relationship" relationship="rootViewController" id="8ah-fj-hBQ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t0y-Mw-xvz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1913" y="243"/>
         </scene>
         <!--Violation Detail View Controller-->
         <scene sceneID="4no-om-li6">
