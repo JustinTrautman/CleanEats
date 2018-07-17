@@ -47,11 +47,20 @@
                     <connections>
                         <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
                         <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="4bQ-Yf-Fy2"/>
+                        <segue destination="v1w-ur-wmb" kind="presentation" identifier="restaurantProfile" id="HKg-gk-nPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbY-d8-ams" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1108" y="112.89355322338831"/>
+        </scene>
+        <!--RestaurantProfile-->
+        <scene sceneID="9eR-at-56z">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="RestaurantProfile" storyboardName="RestaurantProfile" id="v1w-ur-wmb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFA-Il-AJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1753" y="137"/>
         </scene>
         <!--Home-->
         <scene sceneID="K0W-J7-00R">

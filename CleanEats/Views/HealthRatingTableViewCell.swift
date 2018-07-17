@@ -15,6 +15,10 @@ class HealthRatingTableViewCell: UITableViewCell {
     @IBOutlet weak var violationView: UIView!
     @IBOutlet weak var violationViewSubview: UIView!
     
+    @IBOutlet weak var criticalViolationsTotal: UILabel!
+    @IBOutlet weak var nonCriticalViolationsTotal: UILabel!
+    @IBOutlet weak var violationsPointTotal: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

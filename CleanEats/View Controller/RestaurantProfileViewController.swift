@@ -23,7 +23,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var slidePageControl: UIPageControl!
     
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var starStackView: UIStackView!
+    @IBOutlet weak var starRatingImage: UIImageView!
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
