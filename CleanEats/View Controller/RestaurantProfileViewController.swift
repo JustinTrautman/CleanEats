@@ -22,8 +22,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     @IBOutlet weak var slidePageControl: UIPageControl!
     
+    @IBOutlet weak var ratingStar: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var starStackView: UIStackView!
+    
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -48,7 +49,19 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
+    
     
     // Horizontal ScrollView
     var slides: [Slide] = []
@@ -107,7 +120,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
-
+    
     // MARK: - IBActions
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -136,13 +149,18 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: IBOutlets
-    
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         print("Star Button Tapped")
     }
     
-    
+    func updateView() {
+        guard let
+            restaurant = restaurant,
+            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
+        self.restaurantNameLabel.text = name
+        self.ratingStar.image = image
+        
+    }
 }
 
 

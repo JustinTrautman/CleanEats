@@ -47,7 +47,8 @@
                     <connections>
                         <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
                         <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="4bQ-Yf-Fy2"/>
-                        <segue destination="v1w-ur-wmb" kind="presentation" identifier="restaurantProfile" id="HKg-gk-nPg"/>
+                        <segue destination="v1w-ur-wmb" kind="show" identifier="restaurantProfile" id="MKb-hs-irQ"/>
+                        <segue destination="v1w-ur-wmb" kind="show" identifier="toRestaurantDetail" id="Iv9-VT-NSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbY-d8-ams" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -60,7 +61,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="RestaurantProfile" storyboardName="RestaurantProfile" id="v1w-ur-wmb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFA-Il-AJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="137"/>
+            <point key="canvasLocation" x="1889" y="-85"/>
         </scene>
         <!--Home-->
         <scene sceneID="K0W-J7-00R">
@@ -86,4 +87,7 @@
     <resources>
         <image name="Houseicon1" width="20" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MKb-hs-irQ"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -13,7 +13,7 @@
 		068C138C20F3D66B0067EA53 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C138B20F3D66B0067EA53 /* About.storyboard */; };
 		068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138D20F3DD1E0067EA53 /* RestaurantController.swift */; };
 		068C139020F3DD7E0067EA53 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138F20F3DD7E0067EA53 /* Restaurant.swift */; };
-		06A6DE4720F83B76009E960C /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CustomCalloutView.xib */; };
+		06A6DE4720F83B76009E960C /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CalloutView.xib */; };
 		06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4C20F84294009E960C /* AnnotationView.swift */; };
 		06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */; };
 		06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECAE5520EAD5B00019227C /* HomeViewController.swift */; };
@@ -36,7 +36,7 @@
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
-		D02515A420F905A2006198E9 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02515A320F905A2006198E9 /* CustomCalloutView.swift */; };
+		D02515A420F905A2006198E9 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02515A320F905A2006198E9 /* CalloutView.swift */; };
 		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
 		D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */; };
 		D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */; };
@@ -73,7 +73,7 @@
 		068C138B20F3D66B0067EA53 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		068C138D20F3DD1E0067EA53 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
 		068C138F20F3DD7E0067EA53 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		06A6DE4620F83B76009E960C /* CustomCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		06A6DE4620F83B76009E960C /* CalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
 		06A6DE4C20F84294009E960C /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		06A6DE4E20F924C6009E960C /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = CleanEats/Model/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
@@ -99,7 +99,7 @@
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
 		D01F559720F5025300E38C9B /* RestaurantReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewController.swift; sourceTree = "<group>"; };
-		D02515A320F905A2006198E9 /* CustomCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		D02515A320F905A2006198E9 /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
 		D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoController.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				06A6DE4C20F84294009E960C /* AnnotationView.swift */,
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
 				D08AFBCC20EAF65000305116 /* UIViewExtension.swift */,
-				D02515A320F905A2006198E9 /* CustomCalloutView.swift */,
+				D02515A320F905A2006198E9 /* CalloutView.swift */,
 				0653D4BE20EEC48C00F1FEEA /* FavoriteTableViewCell.swift */,
 				42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */,
 			);
@@ -279,7 +279,7 @@
 				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
 				06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */,
 				428865C120F3D0CA0095A837 /* Slide.xib */,
-				06A6DE4620F83B76009E960C /* CustomCalloutView.xib */,
+				06A6DE4620F83B76009E960C /* CalloutView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -398,7 +398,7 @@
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
 				428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */,
-				06A6DE4720F83B76009E960C /* CustomCalloutView.xib in Resources */,
+				06A6DE4720F83B76009E960C /* CalloutView.xib in Resources */,
 				06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */,
 				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
 			);
@@ -486,7 +486,7 @@
 				D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */,
 				42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
-				D02515A420F905A2006198E9 /* CustomCalloutView.swift in Sources */,
+				D02515A420F905A2006198E9 /* CalloutView.swift in Sources */,
 				D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */,
 				D0B9C48E20EBD55400AA8017 /* RestaurantDetail.swift in Sources */,
 				0653D4C120EECFD900F1FEEA /* FavoriteTableViewController.swift in Sources */,
