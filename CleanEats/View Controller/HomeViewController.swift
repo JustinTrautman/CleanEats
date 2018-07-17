@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     static var shared = HomeViewController()
     var matchingItems: [MKMapItem] = [MKMapItem]()
     var restaurants: [Businesses] = []
+    var selectedAnnotation: MKPointAnnotation?
     
     // Outlets
     
@@ -26,6 +27,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     // Propeties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
+    var selectedRestaurant: Businesses?
     
     func fromYelp() {
         matchingItems.removeAll()
@@ -74,12 +76,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                                 //                                annotation.title = objects.restaurantName
                                 //                                annotation.subtitle = objects.restaurantPhone
                                 
-                                let point = CustomAnnotation(coordinate: coordinate)
-                                point.restaurantName = objects.restaurantName
-                                point.restaurantImageUrlString = objects.restaurantImage
-                                point.restaurantPrice = objects.restaurantPrice
-                                point.restaurantDistance = objects.restaurantDistance
-                                point.restaurantRating = objects.restaurantRating
+                                let point = CustomAnnotation(coordinate: coordinate, restaurant: objects)
                                 
                                 self.homeMapView.addAnnotations([point])
                                 
@@ -191,19 +188,13 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         
         // 2
         let customAnnotation = view.annotation as! CustomAnnotation
-        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
-        let calloutView = views?[0] as! CustomCalloutView
-        calloutView.restaurantName.text = customAnnotation.restaurantName
-        calloutView.restaurantPrice.text = customAnnotation.restaurantPrice
-        guard let restaurantDistance = (customAnnotation.restaurantDistance) else {return}
-        let distanceInMiles = round((restaurantDistance/16.0934))/100
-        calloutView.restaurantDistance.text = "\(distanceInMiles) miles away"
-        if let rating = customAnnotation.restaurantRating{
-            let intRating = Int(rating)
-            guard let ratingEnum = Rating(rawValue: intRating) else {return}
-            let image = getImageForRating(rating: ratingEnum)
-            calloutView.ratingImageView.image = image
-        }
+        let views = Bundle.main.loadNibNamed("CalloutView", owner: nil, options: nil)
+        let calloutView = views?[0] as! CalloutView
+        
+        calloutView.restaurant = customAnnotation.restaurant
+        calloutView.delegate = self
+     
+  
         
         RestaurantInfoController.getRestaurantImage(imageStringURL: customAnnotation.restaurantImageUrlString) { (image) in
             guard let image = image else {return}
@@ -216,28 +207,14 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-        
-    }
-    
-    func getImageForRating(rating: Rating) -> UIImage?{
-        switch rating {
-        case .oneStar:
-            return UIImage(named: "oneStar")
-        case .twoStar:
-            return UIImage(named: "twoStars")
-        case .threeStar:
-            return UIImage(named: "threeStars")
-        case .fourStar:
-            return UIImage(named: "fourStars")
-        case .fiveStar:
-            return UIImage(named: "fiveStars")
-        }
+      
+      
     }
     
     //
     //    @objc func callPhoneNumber(sender: UIButton)
     //    {
-    //        let v = sender.superview as! CustomCalloutView
+    //        let v = sender.superview as! CalloutView
     //        if let url = URL(string: "telprompt://\(v.starbucksPhone.text!)"), UIApplication.shared.canOpenURL(url)
     //        {
     //            UIApplication.shared.openURL(url)
@@ -272,6 +249,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         view.addSubview(scale)
         // populateNearByPlaces()
         setupNavigationBarItems()
+    
+       
     }
     // Adding Image to Navigation Item
     func setupNavigationBarItems() {
@@ -332,13 +311,20 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
 //    }
 //
 //
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toRestaurantProfile" {
-//            let detailVC = segue.destination as? RestaurantProfileViewController
-//            detailVC?.restaurant = ((sender as? MKAnnotationView)?.annotation as! Businesses)
-//
-//        }
-//    }
+    
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        self.selectedAnnotation = view.annotation as? MKPointAnnotation
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "restaurantProfile" {
+            guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
+            detailVC.restaurant = self.selectedRestaurant
+        }
+        
+        
+    }
 }
 
 extension HomeViewController: CLLocationManagerDelegate {
@@ -362,4 +348,12 @@ extension HomeViewController: CLLocationManagerDelegate {
         
     }
     
+}
+
+extension HomeViewController: CalloutViewDelegate {
+    func calloutViewTapped(restaurant: Businesses,  sender: CalloutView) {
+        print("Customcallout from delegate")
+        self.selectedRestaurant = restaurant
+        self.performSegue(withIdentifier: "restaurantProfile", sender: sender)
+    }
 }
