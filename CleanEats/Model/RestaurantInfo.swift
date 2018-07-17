@@ -28,6 +28,23 @@ class Businesses : NSObject, Codable {
     let restaurantPhone: String?
     let restaurantDistance: Double?
     var coordinate: Coordinate?
+    var imageForRating: UIImage? {
+        guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Int(rating)) else {
+            return UIImage()
+        }
+        switch ratingEnum {
+        case .oneStar:
+            return UIImage(named: "oneStar")
+        case .twoStar:
+            return UIImage(named: "twoStars")
+        case .threeStar:
+            return UIImage(named: "threeStars")
+        case .fourStar:
+            return UIImage(named: "fourStars")
+        case .fiveStar:
+            return UIImage(named: "fiveStars")
+        }
+    }
     
 
     init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?) {
@@ -65,7 +82,9 @@ class Businesses : NSObject, Codable {
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
         case coordinate = "coordinates"
+        
     }
+    
 }
 
 enum Rating: Int{

@@ -9,25 +9,21 @@
 import UIKit
 
 class ViolationDetailViewController: UIViewController {
-
     
     // MARK:  IBOutlets
     
-
+    @IBOutlet weak var criticalViolationStackView: UIStackView!
+    @IBOutlet weak var nonCriticalViolationStackView: UIStackView!
+    @IBOutlet weak var violationTableViewController: UITableView!
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -40,3 +36,40 @@ class ViolationDetailViewController: UIViewController {
     */
 
 }
+
+
+/*extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 2
+//        if section == 0 {
+//            return 1//array
+//        } else if section == 1 {
+//            return 2//array
+//        }
+  }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath)
+        
+        switch(indexPath.section) {
+        case 0 : return " \(criticalViolationStackView)"
+        case 1 : return " \(nonCriticalViolationStackView)"
+        default : return ""
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        }
+    
+    }
+}
+ */
+
+
