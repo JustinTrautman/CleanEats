@@ -47,13 +47,7 @@
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
 		D0B9C48E20EBD55400AA8017 /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */; };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 39291d597f1e97a69722e053c4ca7254d1ca72fd
 		D0B9C49220EBEF6C00AA8017 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B9C49120EBEF6C00AA8017 /* RestaurantDetailController.swift */; };
->>>>>>> b6725628512c60b598777d259f64d9f5772142cf
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
 		EC92B2602D54F835DF819B3A /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */; };
 /* End PBXBuildFile section */
@@ -123,10 +117,7 @@
 		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D0B9C48D20EBD55400AA8017 /* RestaurantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		D0B9C49120EBEF6C00AA8017 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 39291d597f1e97a69722e053c4ca7254d1ca72fd
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
