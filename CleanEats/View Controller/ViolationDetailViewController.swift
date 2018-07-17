@@ -10,6 +10,13 @@ import UIKit
 
 class ViolationDetailViewController: UIViewController {
 
+    
+    // MARK:  IBOutlets
+    
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
