@@ -248,18 +248,18 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
         // populateNearByPlaces()
-        setupNavigationBarItems()
+        //setupNavigationBarItems()
     
        
     }
-    // Adding Image to Navigation Item
-    func setupNavigationBarItems() {
-        let logo = UIImage(named: "DineRiteNew")
-        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        imageView = UIImageView(image: logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
-    }
+//    // Adding Image to Navigation Item
+//    func setupNavigationBarItems() {
+//        let logo = UIImage(named: "DineRiteNew")
+//        var imageView = UIImageView(frame: CGRect(x:0, y: 0, width: 40, height: 40))
+//        imageView = UIImageView(image: logo)
+//        imageView.contentMode = .scaleAspectFit
+//        self.navigationItem.titleView = imageView
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

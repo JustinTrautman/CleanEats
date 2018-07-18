@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--DineRite-->
+        <!--Home View Controller-->
         <scene sceneID="Lpq-a7-ahd">
             <objects>
                 <viewController id="0hk-Q2-u0J" customClass="HomeViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ope-Ij-wjh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                             </mapView>
                             <searchBar alpha="0.75" contentMode="redraw" placeholder="Enter restaurant..." translatesAutoresizingMaskIntoConstraints="NO" id="DCy-7T-ZLH" customClass="CustomSearchBar" customModule="CleanEats" customModuleProvider="target">
-                                <rect key="frame" x="30" y="94" width="315" height="56"/>
+                                <rect key="frame" x="30" y="128" width="315" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -43,7 +43,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0uw-3e-Cj5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="DineRite" id="Vrz-UU-Dmh"/>
+                    <navigationItem key="navigationItem" prompt=" " id="Vrz-UU-Dmh">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="N4e-hX-AOs">
+                            <rect key="frame" x="130.5" y="38.5" width="114" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DineRiteNew" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-pl-Uuh">
+                                    <rect key="frame" x="0.0" y="-16" width="114" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </navigationItem>
                     <connections>
                         <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
                         <outlet property="searchBarMap" destination="DCy-7T-ZLH" id="4bQ-Yf-Fy2"/>
@@ -85,6 +98,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DineRiteNew" width="114" height="35"/>
         <image name="Houseicon1" width="20" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
