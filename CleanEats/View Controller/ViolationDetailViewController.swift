@@ -25,8 +25,7 @@ class ViolationDetailViewController: UIViewController {
         violationTableViewController.dataSource = self
         violationTableViewController.delegate = self
         
-        
-    }
+}
     
     func splitBetweenMajorAndMinor(_ input: [Violation]) -> (major: [Violation], minor: [Violation]) {
         // USE THE .filter() method
