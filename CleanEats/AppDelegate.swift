@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
+        RestaurantDetailController.fetchRestaurantDetailsWith(restaurantID: "KO50xE3Rc-G8zB65NNYOZg") { (restaurant) in
+            if let restaurant = restaurant {
+                print("This doesn't matter")
+            }
+        }
+        
         return true
     }
 

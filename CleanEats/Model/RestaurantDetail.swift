@@ -10,12 +10,67 @@ import UIKit
 
 /*
  
- 
+ TODO: Add explanation of file
  
  */
 
-struct RestaurantDetail {
+struct TopData: Codable {
+    
+    let restaurants: [RestaurantDetails]
+}
+
+struct RestaurantDetails : Codable {
+    
+    let reviewCount: Int
+    let photos: [Photos]
+    let hours: [Hours]
+    let location: [Location]
+    
+    enum CodingKeys : String, CodingKey {
+        
+        case reviewCount = "review_count"
+        case photos, hours, location
+    }
+}
+
+struct Photos : Codable{
+    
+    let photoURL: String?
+}
+
+struct Hours : Codable {
+    
+    let open: [Open]
+}
+
+struct Location : Codable {
+    
+    let completeAddress: String?
+    
+    enum CodingKeys : String, CodingKey {
+        
+        case completeAddress = "display_address"
+    }
+}
+
+struct Open : Codable {
+    
+    let closingTime: String?
+    let dayOfTheWeek: Int?
+    let openingTime: String?
+    
+    enum CodingKeys : String, CodingKey {
+        case closingTime = "end"
+        case dayOfTheWeek = "day"
+        case openingTime = "start"
+    }
+}
+
+enum CodingKeys : String, CodingKey {
     
     
+    case closingTime = "end"
+    case dayOfTheWeek = "day"
+    case openingTime = "start"
 }
 
