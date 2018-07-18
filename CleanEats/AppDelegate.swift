@@ -15,6 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+//        HealthDataController.shared.serializeHealData()
+//        let violationData = HealthDataController.shared.violationData
+//        var keysFound = [String]()
+//        for key in violationData.keys {
+//            if key.contains("(801) 598-1691") {
+//                keysFound.append(key)
+//            }
+//        }
+//        print("keys found with Protein \(keysFound.count)")
+        
+        HealthDataController.shared.getViolationDataWith(searchTerm: "Food")
         
         return true
     }
