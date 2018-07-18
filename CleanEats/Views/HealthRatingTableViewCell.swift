@@ -22,7 +22,7 @@ class HealthRatingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -31,26 +31,27 @@ class HealthRatingTableViewCell: UITableViewCell {
     }
     
     func initializeViolationView() {
-        // Find Food Button
-        violationView.layer.cornerRadius = 3.0
-        violationView.clipsToBounds = false
         
+        violationView.layer.cornerRadius = 3.0
+        violationView.clipsToBounds = true
+        violationView.layer.masksToBounds = false
         violationView.layer.shadowRadius = 7.0
         violationView.layer.shadowColor = UIColor.black.cgColor
         violationView.layer.shadowOpacity = 0.4
         violationView.layer.shadowOffset = CGSize.zero
-        violationView.layer.masksToBounds = false
         violationView.layer.shouldRasterize = true
+        
         violationViewSubview.layer.masksToBounds = false
         violationViewSubview.layer.cornerRadius = 3
+        violationViewSubview.clipsToBounds = true
         self.selectionStyle = .none
-
+        
     }
     // MARK: IBActions
     
     
     
 }
-    // Three steps for child
+// Three steps for child
 // Two steps for the parent
 
