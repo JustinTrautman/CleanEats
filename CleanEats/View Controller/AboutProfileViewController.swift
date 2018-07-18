@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
-class AboutProfileViewController: UIViewController {
+class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: IBOutlets
     
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var webAddressButton: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        mapView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {

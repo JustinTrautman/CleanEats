@@ -302,6 +302,7 @@
                     </view>
                     <connections>
                         <outlet property="addressButton" destination="dbh-Fu-o1Z" id="Phf-uO-Hwl"/>
+                        <outlet property="mapView" destination="ovg-WI-NMh" id="7l7-ya-xm6"/>
                         <outlet property="phoneButton" destination="wGb-US-OSx" id="QFX-Is-Azz"/>
                         <outlet property="webAddressButton" destination="t8D-F3-TZy" id="A78-Ev-Mte"/>
                     </connections>
