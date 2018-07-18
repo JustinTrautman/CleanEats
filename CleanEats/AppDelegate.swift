@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        print("keys found with Protein \(keysFound.count)")
         
-        HealthDataController.shared.getViolationDataWith(searchTerm: "Food")
+        HealthDataController.shared.getViolationDataWith(searchTerm: "2180 S 300 W SOUTH SALT LAKE 84115")
         
         return true
     }
