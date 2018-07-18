@@ -20,8 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tAc-Ux-oPD">
+                                <rect key="frame" x="67" y="336" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-q6-Qbo">
-                                <rect key="frame" x="0.0" y="20" width="375" height="780"/>
+                                <rect key="frame" x="0.0" y="-30" width="375" height="830"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbn-5x-t7u" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
@@ -202,14 +207,12 @@
                         <constraints>
                             <constraint firstItem="v8M-q6-Qbo" firstAttribute="leading" secondItem="agl-kz-Ul1" secondAttribute="leading" id="3Nz-bS-CgK"/>
                             <constraint firstAttribute="trailing" secondItem="v8M-q6-Qbo" secondAttribute="trailing" id="4WC-hb-9EU"/>
-                            <constraint firstItem="v8M-q6-Qbo" firstAttribute="top" secondItem="x0v-ND-K48" secondAttribute="top" id="Gw1-tX-FiV"/>
+                            <constraint firstItem="v8M-q6-Qbo" firstAttribute="top" secondItem="x0v-ND-K48" secondAttribute="top" constant="-50" id="Gw1-tX-FiV"/>
                             <constraint firstAttribute="bottomMargin" secondItem="v8M-q6-Qbo" secondAttribute="bottom" id="UWA-zd-iGw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0v-ND-K48"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Cxa-It-1f6">
-                        <barButtonItem key="backBarButtonItem" title="Home" id="8ql-6i-M1k"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Cxa-It-1f6"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="aboutContainerView" destination="2B4-fS-MhU" id="ac7-3h-6j6"/>
@@ -301,6 +304,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K8o-68-p9d">
+                            <rect key="frame" x="0.0" y="170" width="375" height="56"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="Yelp"/>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="142" id="g9u-be-6ab">
                                 <rect key="frame" x="0.0" y="28" width="375" height="142"/>
@@ -562,47 +570,31 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n25-Kh-Mjd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lU9-qo-sbL">
-                                    <rect key="frame" x="0.0" y="302" width="375" height="140"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="Yelp"/>
-                                </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="criticalViolationCell" rowHeight="136" id="Ibh-vK-sMY" customClass="CriticalViolationTableViewCell" customModule="CleanEats" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="136"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="criticalViolationCell" rowHeight="120" id="Ibh-vK-sMY" customClass="CriticalViolationTableViewCell" customModule="CleanEats" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ibh-vK-sMY" id="Ph5-5N-1ik">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="135.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpB-4o-61K" userLabel="HeaderOne">
-                                                    <rect key="frame" x="70" y="22" width="235" height="20.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QwK-oJ-O5j">
+                                                    <rect key="frame" x="16" y="11" width="343" height="98"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Critical Violations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZu-jC-9Od">
-                                                            <rect key="frame" x="0.0" y="0.0" width="212.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJA-nT-OvH">
-                                                            <rect key="frame" x="212.5" y="0.0" width="22.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.81960784310000001" green="0.28235294119999998" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="QwK-oJ-O5j">
-                                                    <rect key="frame" x="16" y="60.5" width="343" height="47"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(violationTitle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-6Z-ROO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWM-6Z-ROO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="64"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="(violationTitle)">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="15" name=".SFNSText"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mG3-oS-mDa">
-                                                            <rect key="frame" x="0.0" y="29" width="307" height="18"/>
+                                                            <rect key="frame" x="0.0" y="80" width="307" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Critical Violation Code: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCS-jC-oCb">
                                                                     <rect key="frame" x="0.0" y="0.0" width="159" height="18"/>
@@ -646,58 +638,37 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TpB-4o-61K" firstAttribute="centerX" secondItem="Ph5-5N-1ik" secondAttribute="centerX" id="5dL-QJ-eNO"/>
-                                                <constraint firstItem="QwK-oJ-O5j" firstAttribute="top" secondItem="TpB-4o-61K" secondAttribute="bottom" constant="18" id="BvS-Pw-yLS"/>
-                                                <constraint firstAttribute="trailing" secondItem="TpB-4o-61K" secondAttribute="trailing" constant="70" id="FuO-WV-7a2"/>
+                                                <constraint firstItem="QwK-oJ-O5j" firstAttribute="top" secondItem="Ph5-5N-1ik" secondAttribute="topMargin" id="Bqm-Uq-UfG"/>
                                                 <constraint firstItem="QwK-oJ-O5j" firstAttribute="leading" secondItem="Ph5-5N-1ik" secondAttribute="leading" constant="16" id="GaY-p4-nab"/>
                                                 <constraint firstAttribute="trailing" secondItem="QwK-oJ-O5j" secondAttribute="trailing" constant="16" id="NMs-vv-r6O"/>
-                                                <constraint firstItem="TpB-4o-61K" firstAttribute="top" secondItem="Ph5-5N-1ik" secondAttribute="top" constant="22" id="gqz-nR-tx5"/>
-                                                <constraint firstItem="TpB-4o-61K" firstAttribute="leading" secondItem="Ph5-5N-1ik" secondAttribute="leading" constant="70" id="x0H-xp-fYa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QwK-oJ-O5j" secondAttribute="bottom" id="Rrn-zq-5V9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="criticalViolationTotal" destination="oJA-nT-OvH" id="FtH-nE-dZZ"/>
                                             <outlet property="points" destination="KWa-dH-qNy" id="9oG-tW-jaR"/>
                                             <outlet property="violationCodeMajor" destination="Zme-iJ-d0D" id="giM-er-rPe"/>
                                             <outlet property="violationTitleMajor" destination="VWM-6Z-ROO" id="513-Kd-Xve"/>
                                             <outlet property="weight" destination="vze-lZ-6W1" id="N35-qv-bwF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nonCriticalViolationCell" rowHeight="138" id="2Bk-dD-qQK" userLabel="non-CriticalViolationCell" customClass="NonCriticalViolationTableViewCell" customModule="CleanEats" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="138"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nonCriticalViolationCell" rowHeight="120" id="2Bk-dD-qQK" userLabel="non-CriticalViolationCell" customClass="NonCriticalViolationTableViewCell" customModule="CleanEats" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Bk-dD-qQK" id="Y6P-ER-LkK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="137.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPu-jS-6Pz" userLabel="HeaderTwo">
-                                                    <rect key="frame" x="68" y="31" width="255" height="20.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Non-Critical Violations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-Qa-Mzv">
-                                                            <rect key="frame" x="0.0" y="0.0" width="232.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(5)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clp-GF-BGn">
-                                                            <rect key="frame" x="232.5" y="0.0" width="22.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="KU7-3H-dLb">
-                                                    <rect key="frame" x="16" y="59.5" width="343" height="47"/>
+                                                    <rect key="frame" x="16" y="27" width="343" height="66"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(violationTitle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gr-4z-wWr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="18"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="37"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH3-JQ-NaS">
-                                                            <rect key="frame" x="0.0" y="29" width="342" height="18"/>
+                                                            <rect key="frame" x="0.0" y="48" width="342" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non-Critical Violation Code: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHF-wx-F0j">
                                                                     <rect key="frame" x="0.0" y="0.0" width="194" height="18"/>
@@ -741,17 +712,13 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="KU7-3H-dLb" firstAttribute="top" secondItem="KPu-jS-6Pz" secondAttribute="bottom" constant="8" symbolic="YES" id="B8S-Lg-5d5"/>
-                                                <constraint firstAttribute="trailing" secondItem="KPu-jS-6Pz" secondAttribute="trailing" constant="52" id="PrY-4s-vaG"/>
-                                                <constraint firstItem="KPu-jS-6Pz" firstAttribute="centerX" secondItem="Y6P-ER-LkK" secondAttribute="centerX" constant="8" id="VvY-vY-4bV"/>
+                                                <constraint firstItem="KU7-3H-dLb" firstAttribute="top" secondItem="Y6P-ER-LkK" secondAttribute="topMargin" constant="16" id="Dyh-mn-nes"/>
                                                 <constraint firstAttribute="trailing" secondItem="KU7-3H-dLb" secondAttribute="trailing" constant="16" id="aeJ-Zf-zRm"/>
-                                                <constraint firstItem="KPu-jS-6Pz" firstAttribute="leading" secondItem="Y6P-ER-LkK" secondAttribute="leading" constant="68" id="bD6-eH-rCL"/>
-                                                <constraint firstItem="KPu-jS-6Pz" firstAttribute="top" secondItem="Y6P-ER-LkK" secondAttribute="top" constant="31" id="bNj-MN-A5n"/>
                                                 <constraint firstItem="KU7-3H-dLb" firstAttribute="leading" secondItem="Y6P-ER-LkK" secondAttribute="leading" constant="16" id="ntD-Iy-hPe"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="KU7-3H-dLb" secondAttribute="bottom" constant="16" id="uz4-f6-q5U"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nonCriticalViolationTotal" destination="Clp-GF-BGn" id="Usn-c8-Kp2"/>
                                             <outlet property="points" destination="Ges-n1-8Wt" id="3Ue-Dh-jMw"/>
                                             <outlet property="violationCodeMinor" destination="jvP-hs-P8f" id="Zo7-Ab-qBc"/>
                                             <outlet property="violationTitleMinor" destination="9Gr-4z-wWr" id="pKh-O0-Nzz"/>

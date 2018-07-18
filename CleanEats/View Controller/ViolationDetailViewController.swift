@@ -12,14 +12,9 @@ class ViolationDetailViewController: UIViewController {
     
     // MARK:  IBOutlets
     
-    @IBOutlet weak var criticalViolationHeader: UILabel!
-    @IBOutlet weak var nonCriticalViolationHeader: UILabel!
+
     @IBOutlet weak var violationTableViewController: UITableView!
-    
-    
-    @IBOutlet weak var headerOne: UIStackView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         violationTableViewController.dataSource = self
@@ -77,32 +72,52 @@ extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let violationBoldText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
+        let violationTitleText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)]
         
         if section == 0 {
             
-            let headerView = UIView()
+            let headerOneView = UIView()
             let criticalViolationsLabel = UILabel()
             
-            headerView.addSubview(criticalViolationsLabel)
+            headerOneView.addSubview(criticalViolationsLabel)
             
             criticalViolationsLabel.translatesAutoresizingMaskIntoConstraints = false
-            criticalViolationsLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor, constant: 0).isActive = true
-            criticalViolationsLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor, constant: 0).isActive = true
+            criticalViolationsLabel.centerXAnchor.constraint(equalTo: headerOneView.centerXAnchor, constant: 0).isActive = true
+            criticalViolationsLabel.centerYAnchor.constraint(equalTo: headerOneView.centerYAnchor, constant: 0).isActive = true
 //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
-            let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: nil)
+            let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: violationBoldText)
             attributedText.append(NSAttributedString(string: "  \(99)", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red
                 ]))
             
             criticalViolationsLabel.attributedText = attributedText
             
+            return headerOneView
+        } else if section == 1 {
+            
+            let headerTwoView = UIView()
+            let nonCriticalViolationsLabel = UILabel()
+            
+            headerTwoView.addSubview(nonCriticalViolationsLabel)
+            
+            nonCriticalViolationsLabel.translatesAutoresizingMaskIntoConstraints = false
+            nonCriticalViolationsLabel.centerXAnchor.constraint(equalTo: headerTwoView.centerXAnchor, constant: 0).isActive = true
+            nonCriticalViolationsLabel.centerYAnchor.constraint(equalTo: headerTwoView.centerYAnchor, constant: 0).isActive = true
+            //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
             
             
-            return headerView
-//        } else if section == 1 {
-//            return "Non Critical Violation---"
+            let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
+            
+            attributedText.append(NSAttributedString(string: "  \(99999)", attributes: [ // Put your model object major violations where 99 is
+                NSAttributedStringKey.foregroundColor : UIColor.red]))
+            
+            nonCriticalViolationsLabel.attributedText = attributedText
+            
+            return headerTwoView
+            
         } else {
             return nil
         }

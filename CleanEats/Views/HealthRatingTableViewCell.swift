@@ -27,8 +27,7 @@ class HealthRatingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         initializeViolationView()
-        // Configure the view for the selected state
-    }
+        }
     
     func initializeViolationView() {
         
