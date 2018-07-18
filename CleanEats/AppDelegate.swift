@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         HealthDataController.shared.getViolationDataWith(searchTerm: "2180 S 300 W SOUTH SALT LAKE 84115")
         
+        RestaurantDetailController.fetchRestaurantDetailsWith(restaurantID: "KO50xE3Rc-G8zB65NNYOZg") { (restaurant) in
+            if let restaurant = restaurant {
+                print("This doesn't matter")
+            }
+        }
+        
         return true
     }
 

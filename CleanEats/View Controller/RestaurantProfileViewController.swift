@@ -157,8 +157,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     func updateView() {
         guard let
             restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
-        self.restaurantNameLabel.text = name
+            let name = restaurant.restaurantName, let image = restaurant.imageForRating,
+            let restaurantID = restaurant.restaurantID else { return }
+        self.restaurantNameLabel.text = restaurantID
         self.ratingStar.image = image
         
     }

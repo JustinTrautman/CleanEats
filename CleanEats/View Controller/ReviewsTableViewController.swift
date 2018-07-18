@@ -91,5 +91,6 @@ class ReviewsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // MARK: - IBActions
+    @IBOutlet weak var yelpButtonTapped: UIButton!
 }

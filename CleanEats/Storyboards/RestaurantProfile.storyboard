@@ -257,18 +257,27 @@
                                         <state key="normal" title="     (888) 888 - 8888" image="callicon4">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="callButtonTapped:" destination="Ygj-t1-mdg" eventType="touchUpInside" id="4aR-Pu-ezk"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-Fu-o1Z">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-Fu-o1Z" userLabel="(CleanEats@Cleantown.com)">
                                         <rect key="frame" x="0.0" y="43" width="297" height="22"/>
-                                        <state key="normal" title="     (CleanEats@Cleantown.com)" image="Email icon">
+                                        <state key="normal" title="     (address)" image="Email icon">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addressButtonTapped:" destination="Ygj-t1-mdg" eventType="touchUpInside" id="uCc-74-jcY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-F3-TZy">
                                         <rect key="frame" x="0.0" y="83" width="297" height="23"/>
                                         <state key="normal" title="     www.CleanestOfTheClean.com" image="Websiteicon5">
                                             <color key="titleColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="webAddressButtonTapped:" destination="Ygj-t1-mdg" eventType="touchUpInside" id="l3x-u7-QrK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -291,6 +300,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xpb-Nd-gCx"/>
                     </view>
+                    <connections>
+                        <outlet property="addressButton" destination="dbh-Fu-o1Z" id="Phf-uO-Hwl"/>
+                        <outlet property="mapView" destination="ovg-WI-NMh" id="7l7-ya-xm6"/>
+                        <outlet property="phoneButton" destination="wGb-US-OSx" id="QFX-Is-Azz"/>
+                        <outlet property="webAddressButton" destination="t8D-F3-TZy" id="A78-Ev-Mte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDF-Y7-qoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -304,7 +319,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="430"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K8o-68-p9d">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K8o-68-p9d">
                             <rect key="frame" x="0.0" y="170" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="Yelp"/>
@@ -371,6 +386,9 @@
                             <outlet property="delegate" destination="E65-5m-Aj2" id="wlT-2a-VEP"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="yelpButtonTapped" destination="K8o-68-p9d" id="Dj7-j9-3zz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oH-tI-0Lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
