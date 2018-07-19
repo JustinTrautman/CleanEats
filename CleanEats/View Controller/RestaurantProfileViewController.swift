@@ -152,6 +152,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         print("Star Button Tapped")
+        
     }
     
     func updateView() {
