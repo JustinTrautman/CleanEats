@@ -118,8 +118,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
+        self.navigationItem.hidesBackButton = true
+        
     }
-    
+
     // MARK: - IBActions
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -150,44 +152,21 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         print("Star Button Tapped")
+        
     }
     
     func updateView() {
         guard let
             restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
-        self.restaurantNameLabel.text = name
+            let name = restaurant.restaurantName, let image = restaurant.imageForRating,
+            let restaurantID = restaurant.restaurantID else { return }
+        self.restaurantNameLabel.text = restaurantID
         self.ratingStar.image = image
         
     }
 }
 
-//// Health Violation Data
-//
-//let criticalViolation: Int?
-//let nonCriticalViolation: Int?
-//let weight: Int?
-//let violationTitle: String?
-//let inspectionDate: String?
-//let violationCode: String?
-//
-//init(criticalViolation: Int?, nonCriticalViolation: Int?, weight: Int?, violationTitle: String?, inspectionDate: String?, violationCode: String?) {
-//    
-//    self.criticalViolation = criticalViolation
-//    self.nonCriticalViolation = nonCriticalViolation
-//    self.weight = weight
-//    self.violationTitle = violationTitle
-//    self.inspectionDate = inspectionDate
-//    self.violationCode = violationCode
-//}
 
-
-//case criticalViolation = "major"
-//case nonCriticalViolation = "minor"
-//case weight
-//case violationTitle
-//case inspectionDate
-//case violationCode
 
 
 
