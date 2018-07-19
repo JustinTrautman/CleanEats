@@ -26,7 +26,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-q6-Qbo">
-                                <rect key="frame" x="0.0" y="-30" width="375" height="830"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="720"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbn-5x-t7u" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
@@ -207,8 +207,8 @@
                         <constraints>
                             <constraint firstItem="v8M-q6-Qbo" firstAttribute="leading" secondItem="agl-kz-Ul1" secondAttribute="leading" id="3Nz-bS-CgK"/>
                             <constraint firstAttribute="trailing" secondItem="v8M-q6-Qbo" secondAttribute="trailing" id="4WC-hb-9EU"/>
-                            <constraint firstItem="v8M-q6-Qbo" firstAttribute="top" secondItem="x0v-ND-K48" secondAttribute="top" constant="-50" id="Gw1-tX-FiV"/>
                             <constraint firstAttribute="bottomMargin" secondItem="v8M-q6-Qbo" secondAttribute="bottom" id="UWA-zd-iGw"/>
+                            <constraint firstItem="v8M-q6-Qbo" firstAttribute="top" secondItem="agl-kz-Ul1" secondAttribute="top" constant="80" id="psg-At-xjp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0v-ND-K48"/>
                     </view>
@@ -323,7 +323,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="157"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="142" id="g9u-be-6ab">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reviewCell" rowHeight="142" id="g9u-be-6ab" customClass="ReviewsTableViewCell" customModule="CleanEats" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9u-be-6ab" id="C8O-67-0Jt">
@@ -348,7 +348,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-9s-7hS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Review Text)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-9s-7hS">
                                                     <rect key="frame" x="116" y="67" width="251" height="58.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -379,6 +379,13 @@
                                                 <constraint firstItem="VJB-9s-7hS" firstAttribute="trailing" secondItem="C8O-67-0Jt" secondAttribute="trailingMargin" id="zN7-4P-dDu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ratingImageView" destination="4Jd-ZQ-4Qq" id="Vnh-wi-vGT"/>
+                                            <outlet property="reviewDateLabel" destination="aui-HN-ijl" id="YxI-pL-jAH"/>
+                                            <outlet property="reviewTextLabel" destination="VJB-9s-7hS" id="vXj-vu-tUA"/>
+                                            <outlet property="reviewerName" destination="kqj-Wl-vJo" id="xX1-Ue-NE7"/>
+                                            <outlet property="reviewerProfileImage" destination="ovY-qe-ynb" id="QWI-DQ-bXt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -388,6 +395,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8o-68-p9d">
                                         <rect key="frame" x="26" y="8" width="138" height="44"/>
                                         <state key="normal" image="Yelp"/>
+                                        <connections>
+                                            <action selector="yelpButtonTapped:" destination="iqi-MK-mtA" eventType="touchUpInside" id="mOL-lm-Zc6"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftArrow" translatesAutoresizingMaskIntoConstraints="NO" id="KNT-WN-Ipv">
                                         <rect key="frame" x="8" y="23" width="10" height="20"/>

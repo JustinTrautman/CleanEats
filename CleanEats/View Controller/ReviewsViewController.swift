@@ -15,24 +15,28 @@ class ReviewsViewController: UIViewController {
     
     @IBOutlet weak var reviewsTableViewController: UITableView!
     @IBOutlet weak var yelpButton: UIButton!
-    
     @IBOutlet weak var viewForYelpButton: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewsTableViewController.delegate = self
         reviewsTableViewController.dataSource = self
+        
         initializeYelpButtonView()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - IBActions
+    
+    @IBAction func yelpButtonTapped(_ sender: Any) {
+        openURL(urlStr: "http://www.yelp.com")
+        print("yelp button tapped")
     }
+    
+    // MARK: - Properties
+    var reviews: Reviews?
     
     func initializeYelpButtonView() {
         
-       
         viewForYelpButton.clipsToBounds = true
         viewForYelpButton.layer.masksToBounds = false
         viewForYelpButton.layer.shadowRadius = 7.0
@@ -40,18 +44,6 @@ class ReviewsViewController: UIViewController {
         viewForYelpButton.layer.shadowOpacity = 0.4
         viewForYelpButton.layer.shadowOffset = CGSize.zero
         viewForYelpButton.layer.shouldRasterize = true
-        
-        
-        
-    }
-    
-    
-    
-    
-    // MARK: - IBActions
-    
-    @IBAction func yelpButtonTapped(_ sender: Any) {
-        openURL(urlStr: "http://www.yelp.com")
     }
     
     func openURL(urlStr: String!) {

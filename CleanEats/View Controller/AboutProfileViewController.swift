@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
@@ -18,10 +19,16 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var webAddressButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
+    // MARK: - Properties
+    var restaurant: RestaurantDetails?
+    var restaurantInfo: Businesses?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
+        
+        updateViews()
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +44,24 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     @IBAction func addressButtonTapped(_ sender: UIButton) {
     }
     @IBAction func webAddressButtonTapped(_ sender: UIButton) {
+    }
+    
+    // MARK: - Properties
+    let locationManager = CLLocationManager()
+    var currentCoordinate: CLLocationCoordinate2D?
+    
+    func populateMapWithRestaurant() {
+        let span = MKCoordinateSpanMake(0.012, 0.012)
+//        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.mapView., longitude: <#T##CLLocationDegrees#>), span: <#T##MKCoordinateSpan#>)
+    }
+    
+    func updateViews() {
+        
+        guard let address = restaurant?.location,
+              let phone = restaurantInfo?.restaurantPhone else { return }
+        
+        addressButton.setTitle("\(address)", for: .normal)
+        phoneButton.setTitle("\(phone)", for: .normal)
     }
 }
 
