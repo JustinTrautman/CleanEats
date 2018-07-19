@@ -177,8 +177,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         return annotationView
     }
     
-    func mapView(_ mapView: MKMapView,
-                 didSelect view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // 1
         if view.annotation is MKUserLocation
         {
@@ -247,23 +246,57 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
+    
+//        let height: CGFloat = 200 //whatever height you want to add to the existing height
+//        let bounds = self.navigationController!.navigationBar.bounds
+//        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
+        
         // populateNearByPlaces()
-        //setupNavigationBarItems()
-    
-       
+       // setupNavigationBarItems()
     }
-//    // Adding Image to Navigation Item
-//    func setupNavigationBarItems() {
-//        let logo = UIImage(named: "DineRiteNew")
-//        var imageView = UIImageView(frame: CGRect(x:0, y: 0, width: 40, height: 40))
-//        imageView = UIImageView(image: logo)
-//        imageView.contentMode = .scaleAspectFit
-//        self.navigationItem.titleView = imageView
-//    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpNavbarHeight()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
+
+    func setUpNavbarHeight() {
+        for subview in (self.navigationController?.navigationBar.subviews)! {
+            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
+                var subViewFrame: CGRect = subview.frame
+                let subView = UIView()
+                // subViewFrame.origin.y = -20;
+                subViewFrame.size.height = 90
+                subView.frame = subViewFrame
+                // Convert an image view to a view
+                // Constrain it to the center and size it
+                let logo = UIImage(named: "DineRiteNew")
+                var imageView = UIImageView()
+                imageView = UIImageView(image: logo)
+                imageView.contentMode = .scaleAspectFit
+//                self.navigationItem.titleView = imageView
+                subView.addSubview(imageView)
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+                subview.backgroundColor = .clear
+//                navigationController?.navigationItem.titleView?.backgroundColor = .red
+                navigationController?.navigationBar.addSubview(subView)
+                
+//                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
+//
+//                self.view.addSubview(titleImage)
+            }
+        }
     }
     
     // Action for the searchBar on the MAP
@@ -271,6 +304,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         searchBarMap.resignFirstResponder()
         //        performSearch()
         fromYelp()
+        zoomToLatestLocation(with: currentCoordinate!)
     }
     
     // Function for finding the user location

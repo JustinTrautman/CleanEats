@@ -12,6 +12,7 @@
 		0653D4C120EECFD900F1FEEA /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0653D4C020EECFD900F1FEEA /* FavoriteTableViewController.swift */; };
 		068C138C20F3D66B0067EA53 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068C138B20F3D66B0067EA53 /* About.storyboard */; };
 		068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068C138D20F3DD1E0067EA53 /* RestaurantController.swift */; };
+		0692702E2100F04B00DC4411 /* HelperExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692702D2100F04B00DC4411 /* HelperExtentions.swift */; };
 		06A6DE4720F83B76009E960C /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CalloutView.xib */; };
 		06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4C20F84294009E960C /* AnnotationView.swift */; };
 		06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */; };
@@ -77,6 +78,7 @@
 		0653D4C020EECFD900F1FEEA /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		068C138B20F3D66B0067EA53 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		068C138D20F3DD1E0067EA53 /* RestaurantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantController.swift; sourceTree = "<group>"; };
+		0692702D2100F04B00DC4411 /* HelperExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtentions.swift; sourceTree = "<group>"; };
 		06A6DE4620F83B76009E960C /* CalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
 		06A6DE4C20F84294009E960C /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = CleanEats/Model/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
@@ -152,6 +154,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0692702C2100F02F00DC4411 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				0692702D2100F04B00DC4411 /* HelperExtentions.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		081E394468838F826BDD4481 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +273,7 @@
 		D0895E0720E1A71C00EB1307 /* CleanEats */ = {
 			isa = PBXGroup;
 			children = (
+				0692702C2100F02F00DC4411 /* New Group */,
 				4282D6B120EACDA70045D223 /* Resources */,
 				D0018EE920E54FF800A040CE /* Model */,
 				D0018EE820E54FF000A040CE /* Model Controller */,
@@ -492,6 +503,7 @@
 				4282D6BA20EAD0170045D223 /* ReviewsTableViewController.swift in Sources */,
 				428865C020F3D0B50095A837 /* Slide.swift in Sources */,
 				D04B26B320FE5CD3001D0F9D /* FavoriteController.swift in Sources */,
+				0692702E2100F04B00DC4411 /* HelperExtentions.swift in Sources */,
 				D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */,
 				42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
