@@ -30,10 +30,11 @@ class HealthDataController {
         }
     
     func getViolationDataWith(searchTerm: String) {
-        var keysFound = [String]()
-        for key in violationData.keys {
-            if key.contains(searchTerm) {
-                keysFound.append(key)
+        var resultsFound = [String]()
+        for results in violationData.keys {
+            if results.contains(searchTerm) {
+                print("Search Term Found")
+                resultsFound.append(results)
             }
         }
     }

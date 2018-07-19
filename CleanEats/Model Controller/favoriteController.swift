@@ -15,7 +15,7 @@ class FavoriteController {
     var favorites: [Favorite] = []
     
     init() {
-       // self.favorites = load()
+        self.favorites = load()
     }
     
     func fileUrls() -> URL {
@@ -28,7 +28,7 @@ class FavoriteController {
     
     func save() {
         let jsonEncoder = JSONEncoder()
-    
+        
         do {
             let data = try jsonEncoder.encode(favorites)
             try data.write(to: fileUrls())
@@ -49,5 +49,13 @@ class FavoriteController {
             print("Error loading playlists from fileURL: \(#function) \(error) \(error.localizedDescription)")
             return []
         }
+    }
+    
+    func delete(favorite: Favorite) {
+        
+        guard let index = favorites.index(of: favorite) else { return }
+        favorites.remove(at: index)
+        print("Sucessfuly deleted item")
+        save()
     }
 }
