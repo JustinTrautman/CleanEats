@@ -43,19 +43,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0uw-3e-Cj5"/>
                     </view>
-                    <navigationItem key="navigationItem" prompt=" " id="Vrz-UU-Dmh">
+                    <navigationItem key="navigationItem" prompt="                                                                       " id="Vrz-UU-Dmh">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="N4e-hX-AOs">
-                            <rect key="frame" x="130.5" y="38.5" width="114" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DineRiteNew" translatesAutoresizingMaskIntoConstraints="NO" id="6yh-pl-Uuh">
-                                    <rect key="frame" x="0.0" y="-16" width="114" height="35"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                     </navigationItem>
                     <connections>
                         <outlet property="homeMapView" destination="ope-Ij-wjh" id="KSv-4d-q5y"/>
@@ -98,7 +87,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DineRiteNew" width="114" height="35"/>
         <image name="Houseicon1" width="20" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>

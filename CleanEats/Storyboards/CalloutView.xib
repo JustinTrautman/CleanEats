@@ -41,22 +41,22 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r44-BG-0EU" userLabel="Restaurant Distance">
-                            <rect key="frame" x="0.0" y="86.5" width="119" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Rt-mU-zqy">
-                            <rect key="frame" x="0.0" y="120.5" width="119" height="28.5"/>
+                            <rect key="frame" x="0.0" y="86.5" width="119" height="28.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="3Rt-mU-zqy" secondAttribute="height" multiplier="105:25" id="g7p-98-H6V"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r44-BG-0EU" userLabel="Restaurant Distance">
+                            <rect key="frame" x="0.0" y="132" width="119" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-nR-AJF">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-nR-AJF">
+                    <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                     <connections>
                         <action selector="calloutButtonTapped:" destination="Spy-mQ-CE7" eventType="touchUpInside" id="nMI-ox-hp6"/>
                     </connections>
