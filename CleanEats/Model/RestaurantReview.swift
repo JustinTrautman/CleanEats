@@ -39,6 +39,7 @@ struct Reviews : Codable {
             case reviewerImageURL = "image_url"
             case reviewerName = "name"
         }
+        
     }
 }
 

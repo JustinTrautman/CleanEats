@@ -246,6 +246,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
+        setUpNavbarHeight()
     
 //        let height: CGFloat = 200 //whatever height you want to add to the existing height
 //        let bounds = self.navigationController!.navigationBar.bounds
@@ -255,17 +256,17 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
        // setupNavigationBarItems()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setUpNavbarHeight()
-    }
+   
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
-
     func setUpNavbarHeight() {
         for subview in (self.navigationController?.navigationBar.subviews)! {
             if NSStringFromClass(subview.classForCoder).contains("BarBackground") {

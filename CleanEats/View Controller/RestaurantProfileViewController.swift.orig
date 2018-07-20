@@ -179,6 +179,17 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         guard let
             restaurant = restaurant,
             let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
+<<<<<<< HEAD
+        restaurantNameLabel.text = name
+        ratingStar.image = image
+    }
+    
+    func showFavoriteSavedAlert() {
+        
+        let noResultsAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
+        noResultsAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
+        self.present(noResultsAlert, animated: true)
+=======
         
         restaurantNameLabel.text = name
         ratingStar.image = image
@@ -216,6 +227,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                         //        self.view.addSubview(titleImage)
             }
         }
+>>>>>>> 51c16c30cc3edfb717b270d73701d02ef22f160b
     }
 }
 
