@@ -12,7 +12,6 @@ class FavoriteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var restaurantPriceLabel: UILabel!
     @IBOutlet weak var restaurantRatingImageView: UIImageView!
     @IBOutlet weak var restaurantDistanceLabel: UILabel!
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
@@ -33,7 +32,6 @@ class FavoriteTableViewCell: UITableViewCell {
         restaurantRatingImageView.image = restaurant.restaurantRating
         restaurantDistanceLabel.text = restaurant.restaurantDistance
         restaurantDescriptionLabel.text = restaurant.restaurantDescription
-        restaurantPriceLabel.text = restaurant.restaurantPrice
         restaurantScoreLabel.text = restaurant.restaurantRisk
     }
 

@@ -151,18 +151,33 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
-        print("Star Button Tapped")
         
+        guard let name = restaurantNameLabel.text,
+              let healthScore = scoreLabel.text else { return }
+        
+        print("Star Button Tapped")
+        FavoriteController.shared.create(image: "test", name: name, healthScore: healthScore, rating: "5 Stars", phone: "12345", description: "Test")
+    
+            favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
+            showFavoriteSavedAlert()
+            FavoriteViewController.shared.updateTableView()
+        
+            favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
     }
     
     func updateView() {
         guard let
             restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating,
-            let restaurantID = restaurant.restaurantID else { return }
-        self.restaurantNameLabel.text = restaurantID
-        self.ratingStar.image = image
+            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
+        restaurantNameLabel.text = name
+        ratingStar.image = image
+    }
+    
+    func showFavoriteSavedAlert() {
         
+        let noResultsAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
+        noResultsAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
+        self.present(noResultsAlert, animated: true)
     }
 }
 

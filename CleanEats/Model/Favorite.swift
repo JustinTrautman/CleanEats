@@ -10,16 +10,16 @@ import UIKit
 class Favorite : Codable {
     let restaurantImage: String?
     let restaurantName: String
-    let restaurantPrice: String?
+    let restaurantHealthScore: String?
     let restaurantRating: String?
     let restaurantPhone: String?
     let restaurantDescription: String?
     
-    init(restaurantImage: String, restaurantName: String, restaurantPrice: String, restaurantRating: String, restaurantPhone: String, restaurantDescription: String) {
+    init(restaurantImage: String, restaurantName: String, restaurantHealthScore: String, restaurantRating: String, restaurantPhone: String, restaurantDescription: String) {
         
         self.restaurantImage = restaurantImage
         self.restaurantName = restaurantName
-        self.restaurantPrice = restaurantPrice
+        self.restaurantHealthScore = restaurantHealthScore
         self.restaurantRating = restaurantRating
         self.restaurantPhone = restaurantPhone
         self.restaurantDescription = restaurantDescription
@@ -28,7 +28,7 @@ class Favorite : Codable {
 
 extension Favorite : Equatable {
     static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
-        return lhs.restaurantImage == rhs.restaurantImage && lhs.restaurantName == rhs.restaurantName && lhs.restaurantPrice == rhs.restaurantPrice && lhs.restaurantRating == rhs.restaurantRating && lhs.restaurantPhone == rhs.restaurantPhone && lhs.restaurantDescription == rhs.restaurantDescription
+        return lhs.restaurantImage == rhs.restaurantImage && lhs.restaurantName == rhs.restaurantName && lhs.restaurantHealthScore == rhs.restaurantHealthScore && lhs.restaurantRating == rhs.restaurantRating && lhs.restaurantPhone == rhs.restaurantPhone && lhs.restaurantDescription == rhs.restaurantDescription
         
     }
 }
