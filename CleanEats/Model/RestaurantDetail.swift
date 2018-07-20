@@ -14,22 +14,17 @@ import UIKit
  
  */
 
-struct TopData: Codable {
-    
-    let restaurants: [RestaurantDetails]
-}
-
 struct RestaurantDetails : Codable {
     
     let reviewCount: Int
     let photos: [Photos]
     let hours: [Hours]
-    let location: [Location]
+    //let location: [Location]
     
     enum CodingKeys : String, CodingKey {
         
         case reviewCount = "review_count"
-        case photos, hours, location
+        case photos, hours //, location
     }
 }
 
@@ -43,15 +38,15 @@ struct Hours : Codable {
     let open: [Open]
 }
 
-struct Location : Codable {
-    
-    let completeAddress: String?
-    
-    enum CodingKeys : String, CodingKey {
-        
-        case completeAddress = "display_address"
-    }
-}
+//struct Location : Codable {
+//
+//    let completeAddress: String?
+//
+//    enum CodingKeys : String, CodingKey {
+//
+//        case completeAddress = "display_address"
+//    }
+//}
 
 struct Open : Codable {
     
