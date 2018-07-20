@@ -13,6 +13,7 @@ class ReviewsViewController: UIViewController {
     
     // MARK: - Properties
     var business: Businesses?
+    let reviews: [Reviews] = []
     
     
     // MARK: IBOutlets
@@ -27,7 +28,6 @@ class ReviewsViewController: UIViewController {
         reviewsTableViewController.delegate = self
         reviewsTableViewController.dataSource = self
         initializeYelpButtonView()
-        
         fetchReviews()
         
     }
@@ -46,8 +46,15 @@ class ReviewsViewController: UIViewController {
             RestaurantReviewController.shared.fetchRestaurantReview(withID: businessRestaurantID) { (review) in
                 guard let review = review else { return }
 //                RestaurantReviewController.shared.reviews = review
-                self.reviewsTableViewController.reloadData()
+               self.reloadTableView()
             }
+        }
+    }
+    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.reviewsTableViewController.reloadData()
+            
         }
     }
     

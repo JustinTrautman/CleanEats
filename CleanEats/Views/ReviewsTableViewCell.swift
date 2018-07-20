@@ -35,6 +35,8 @@ class ReviewsTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let reviews = reviews else { return }
+//        self.reviewerProfileImage.image = reviews.userData.reviewerImageURL
+        self.reviewerName.text = reviews.userData.reviewerName
         self.reviewDateLabel.text = reviews.reviewTimestamp
         self.reviewTextLabel.text = reviews.reviewText
     }
