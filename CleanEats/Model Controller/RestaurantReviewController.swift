@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RestaurantReviewController {
     static let shared = RestaurantReviewController()
@@ -50,4 +51,20 @@ class RestaurantReviewController {
             
             }.resume()
         }
+    
+    static func getReviewerImage(imageStringURL: String, completion: @escaping ((UIImage?)) -> Void) {
+        guard let url = URL(string: imageStringURL) else { completion(nil) ; return }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error {
+                print("DataTask had an issue getting an image from the network. Exiting with error: \(error) \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else { completion(nil) ; return }
+            let image = UIImage(data: data)
+            completion(image)
+            }.resume()
+    }
 }

@@ -42,7 +42,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-       // setupNavigationBarItems()
+        // setupNavigationBarItems()
         slideScrollView.delegate = self
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -52,7 +52,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
-//        setUpNavbarHeight()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +60,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         updateView()
         
         
-}
+        
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
     }
     
     
@@ -117,16 +117,16 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
         
     }
-//    // Adding Image to Navigation Item
-//    func setupNavigationBarItems() {
-//        let logo = UIImage(named: "DineRiteNew")
-//        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        imageView = UIImageView(image: logo)
-//        imageView.contentMode = .scaleAspectFit
-//        self.navigationItem.titleView = imageView
-//        self.navigationItem.hidesBackButton = true
-//
-//    }
+    //    // Adding Image to Navigation Item
+    //    func setupNavigationBarItems() {
+    //        let logo = UIImage(named: "DineRiteNew")
+    //        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    //        imageView = UIImageView(image: logo)
+    //        imageView.contentMode = .scaleAspectFit
+    //        self.navigationItem.titleView = imageView
+    //        self.navigationItem.hidesBackButton = true
+    //
+    //    }
     
     // MARK: - IBActions
     
@@ -162,16 +162,23 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         
         guard let name = restaurantNameLabel.text,
-              let healthScore = scoreLabel.text else { return }
+            let healthScore = scoreLabel.text else { return }
         
         print("Star Button Tapped")
         FavoriteController.shared.create(image: "test", name: name, healthScore: healthScore, rating: "5 Stars", phone: "12345", description: "Test")
-    
-            favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
-            showFavoriteSavedAlert()
-            FavoriteViewController.shared.updateTableView()
         
-            favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+        favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
+        showFavoriteSavedAlert()
+        FavoriteViewController.shared.updateTableView()
+        
+        favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+    }
+    
+    func showFavoriteSavedAlert() {
+        
+        let noResultsAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
+        noResultsAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
+        self.present(noResultsAlert, animated: true)
     }
     
     func updateView() {
@@ -192,29 +199,29 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 // subViewFrame.origin.y = -20;
                 subViewFrame.size.height = 90
                 subView.frame = subViewFrame
-//                // Convert an image view to a view
-//                // Constrain it to the center and size it
-//                let logo = UIImage(named: "DineRiteNew")
-//                var imageView = UIImageView()
-//                imageView = UIImageView(image: logo)
-//                imageView.contentMode = .scaleAspectFit
-//                //                self.navigationItem.titleView = imageView
-//                subView.addSubview(imageView)
-//                imageView.translatesAutoresizingMaskIntoConstraints = false
-//                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-//                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-//                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-//                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-//                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-//                subview.backgroundColor = .clear
-//                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
+                //                // Convert an image view to a view
+                //                // Constrain it to the center and size it
+                //                let logo = UIImage(named: "DineRiteNew")
+                //                var imageView = UIImageView()
+                //                imageView = UIImageView(image: logo)
+                //                imageView.contentMode = .scaleAspectFit
+                //                //                self.navigationItem.titleView = imageView
+                //                subView.addSubview(imageView)
+                //                imageView.translatesAutoresizingMaskIntoConstraints = false
+                //                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+                //                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+                //                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+                //                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+                //                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+                //                subview.backgroundColor = .clear
+                //                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
                 subView.backgroundColor = .red
                 navigationController?.navigationBar.addSubview(subView)
                 navigationController?.navigationBar.bottomAnchor.constraint(equalTo: subView.bottomAnchor).isActive = true
-         
-////                               let titleImage = #imageLiteral(resourceName: "DineRiteNew")
-////
-////                                self.view.addSubview(titleImage)
+                
+                ////                               let titleImage = #imageLiteral(resourceName: "DineRiteNew")
+                ////
+                ////                                self.view.addSubview(titleImage)
             }
         }
     }

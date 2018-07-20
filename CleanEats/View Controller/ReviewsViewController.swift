@@ -30,6 +30,8 @@ class ReviewsViewController: UIViewController {
         initializeYelpButtonView()
         fetchReviews()
         
+        reloadTableView()
+        
     }
     
     @objc func businessSent(notification: Notification) {
@@ -52,7 +54,9 @@ class ReviewsViewController: UIViewController {
     }
     
     func reloadTableView() {
+        
         DispatchQueue.main.async {
+            self.reviewsTableViewController.tableFooterView = UIView()
             self.reviewsTableViewController.reloadData()
             
         }

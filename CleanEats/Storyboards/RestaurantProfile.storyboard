@@ -128,6 +128,7 @@
                                             </containerView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-ES-OWn" customClass="Slide" customModule="CleanEats" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+                                                <color key="backgroundColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </scrollView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-ik-0lC" userLabel="FavoriteStar">
                                                 <rect key="frame" x="8" y="10" width="25" height="24"/>
@@ -212,7 +213,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x0v-ND-K48"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Cxa-It-1f6"/>
+                    <navigationItem key="navigationItem" prompt=" " largeTitleDisplayMode="never" id="Cxa-It-1f6"/>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="aboutContainerView" destination="2B4-fS-MhU" id="ac7-3h-6j6"/>
