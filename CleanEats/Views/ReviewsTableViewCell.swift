@@ -34,11 +34,29 @@ class ReviewsTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
-        guard let reviews = reviews else { return }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        guard let reviews = reviews,
+              let profileImageString = reviews.userData.reviewerImageURL else { return }
+        
+        self.reviewerName.text = reviews.userData.reviewerName
         self.reviewDateLabel.text = reviews.reviewTimestamp
         self.reviewTextLabel.text = reviews.reviewText
+        
+        
+        DispatchQueue.main.async {
+            RestaurantReviewController.getReviewerImage(imageStringURL: profileImageString) { (image) in
+                if let image = image {
+                    let fetchedImage = image
+                    self.reviewerProfileImage.image = fetchedImage
+                    
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+            }
+
+        }
     }
-    
 }
 
 extension Notification.Name {

@@ -22,7 +22,7 @@ struct Reviews : Codable {
     let restaurantID: String
     let reviewText: String
     let reviewTimestamp: String
-    let userData: [User]
+    let userData: User
     
     enum CodingKeys: String, CodingKey {
         case restaurantID = "id"
