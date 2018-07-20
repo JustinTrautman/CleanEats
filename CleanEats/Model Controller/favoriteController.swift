@@ -18,15 +18,25 @@ class FavoriteController {
         self.favorites = load()
     }
     
+    func create(image: String, name: String, healthScore: String, rating: String, phone: String, description: String) {
+        
+        let favorite = Favorite(restaurantImage: image, restaurantName: name, restaurantHealthScore: healthScore, restaurantRating: rating, restaurantPhone: phone, restaurantDescription: description)
+        favorites.append(favorite)
+        save()
+    }
+    
     func fileUrls() -> URL {
+        
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths[0]
-        let favoritesLocation = "dinerite.json"
+        let favoritesLocation = "cleaneats.json"
         let url = documentDirectory.appendingPathComponent(favoritesLocation)
+        print(url)
         return url
     }
     
     func save() {
+        
         let jsonEncoder = JSONEncoder()
         
         do {
@@ -46,7 +56,7 @@ class FavoriteController {
             return favorites
             
         } catch let error {
-            print("Error loading playlists from fileURL: \(#function) \(error) \(error.localizedDescription)")
+            print("Error loading favorites from fileURL: \(#function) \(error) \(error.localizedDescription)")
             return []
         }
     }
