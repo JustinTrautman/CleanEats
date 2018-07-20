@@ -14,6 +14,7 @@ class FavoriteTableViewController: UITableViewController {
         super.viewDidLoad()
 
         setupNavigationBarItems()
+       // setUpNavbarHeight()
     }
 
     // Adding Image to Navigation Item
@@ -25,11 +26,39 @@ class FavoriteTableViewController: UITableViewController {
         self.navigationItem.titleView = imageView
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setUpNavbarHeight() {
+        for subview in (self.navigationController?.navigationBar.subviews)! {
+            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
+                var subViewFrame: CGRect = subview.frame
+                let subView = UIView()
+                // subViewFrame.origin.y = -20;
+                subViewFrame.size.height = 90
+                subView.frame = subViewFrame
+                // Convert an image view to a view
+                // Constrain it to the center and size it
+                let logo = UIImage(named: "DineRiteNew")
+                var imageView = UIImageView()
+                imageView = UIImageView(image: logo)
+                imageView.contentMode = .scaleAspectFit
+                //                self.navigationItem.titleView = imageView
+                subView.addSubview(imageView)
+                imageView.translatesAutoresizingMaskIntoConstraints = false
+                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+                subview.backgroundColor = .clear
+                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
+                navigationController?.navigationBar.addSubview(subView)
+                
+                //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
+                //
+                //                self.view.addSubview(titleImage)
+            
+        }
     }
+}
 
     // MARK: - Table view data source
 

@@ -10,21 +10,32 @@ import Foundation
 
 class HealthDataController {
     
+    static let shared = HealthDataController()
+    
     var violationData: [String : [Violation]] = [:]
     
     func serializeHealData() {
-        
         guard let url = Bundle.main.url(forResource: "healthData", withExtension: "json") else { return }
         let jsonDecoder = JSONDecoder()
         
-    do {
-        
-    let healthData = try Data(contentsOf: url)
-        let violationsDict = try jsonDecoder.decode([String: [Violation]].self, from: healthData)
-        violationData = violationsDict
-        
-    } catch let error {
-        print("Error with jsonDecoder decoding json data: \(error) \(error.localizedDescription)")
+        do {
+            
+            let healthData = try Data(contentsOf: url)
+            let violationsDict = try jsonDecoder.decode([String: [Violation]].self, from: healthData)
+            self.violationData = violationsDict
+            
+        } catch let error {
+                print("Error with jsonDecoder decoding json data: \(error) \(error.localizedDescription)")
+            }
+        }
+    
+    func getViolationDataWith(searchTerm: String) {
+        var resultsFound = [String]()
+        for results in violationData.keys {
+            if results.contains(searchTerm) {
+                print("Search Term Found")
+                resultsFound.append(results)
+            }
         }
     }
 }
