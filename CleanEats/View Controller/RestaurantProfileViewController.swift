@@ -52,28 +52,16 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        setUpNavbarHeight()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateView()
-        setUpNavbarHeight()
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
+}
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -86,7 +74,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "Cubbys")
+        slide1.slideImageView.image = UIImage(named: "")
         slide1.contentMode = .scaleAspectFit
         let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.slideImageView.image = UIImage(named: "pooh2")
@@ -164,6 +152,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = false
             
+            guard let restaurant = restaurant else { return }
+            NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
+            
         default:
             break
         }
@@ -189,26 +180,26 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
                 var subViewFrame: CGRect = subview.frame
                 let subView = UIView()
-                subViewFrame.origin.y = -20;
+                //subViewFrame.origin.y = -20;
                 subViewFrame.size.height = 90
                 subView.frame = subViewFrame
-                // Convert an image view to a view
-                // Constrain it to the center and size it
-                let logo = UIImage(named: "DineRiteNew")
-                var imageView = UIImageView()
-                imageView = UIImageView(image: logo)
-                imageView.contentMode = .scaleAspectFit
-                                self.navigationItem.titleView = imageView
-                subView.addSubview(imageView)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                subview.backgroundColor = .clear
-                               navigationController?.navigationItem.titleView?.backgroundColor = .red
-                navigationController?.navigationBar.addSubview(subView)
+//                // Convert an image view to a view
+//                // Constrain it to the center and size it
+//                let logo = UIImage(named: "DineRiteNew")
+//                var imageView = UIImageView()
+//                imageView = UIImageView(image: logo)
+//                imageView.contentMode = .scaleAspectFit
+//                                self.navigationItem.titleView = imageView
+//                subView.addSubview(imageView)
+//                imageView.translatesAutoresizingMaskIntoConstraints = false
+//                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+//                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+//                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+//                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+//                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//                subview.backgroundColor = .clear
+//                               navigationController?.navigationItem.titleView?.backgroundColor = .red
+//                navigationController?.navigationBar.addSubview(subView)
                 
                           //     let titleImage = #imageLiteral(resourceName: "DineRiteNew")
                 

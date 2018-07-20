@@ -18,6 +18,7 @@ class ReviewsTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var reviewTextLabel: UILabel!
     
+    
     // MARK: View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,27 +28,19 @@ class ReviewsTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     var reviews: Reviews? {
-    didSet {
-    updateViews()
+        didSet {
+            updateViews()
+        }
     }
-}
     
     func updateViews() {
-        
-       // guard let review = reviews else { return }
-        
-        
-//        reviewDateLabel.text = review.reviewTimestamp
-//        RestaurantReviewController.fetchRestaurantReview(withID: review.restaurantID) { (restaurantReview) in
-//            guard let fetchedReview = restaurantReview else { return }
-//            DispatchQueue.main.async {
-//                self.reviewTextLabel.text = fetchedReview
-//            }
-//        }
-        
-        
-        
-        
+        guard let reviews = reviews else { return }
+        self.reviewDateLabel.text = reviews.reviewTimestamp
+        self.reviewTextLabel.text = reviews.reviewText
     }
     
+}
+
+extension Notification.Name {
+    static let sendBusiness = Notification.Name("sendBusiness")
 }

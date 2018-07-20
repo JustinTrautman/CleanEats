@@ -129,7 +129,7 @@
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-ES-OWn" customClass="Slide" customModule="CleanEats" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                             </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-ik-0lC" userLabel="FavoriteStar">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-ik-0lC" userLabel="FavoriteStar">
                                                 <rect key="frame" x="8" y="10" width="25" height="24"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="FavoritesStar">
@@ -309,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDF-Y7-qoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2929" y="1193"/>
+            <point key="canvasLocation" x="2658" y="1193"/>
         </scene>
         <!--Reviews View Controller-->
         <scene sceneID="kWE-V5-e1h">
@@ -620,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghX-vb-PPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633" y="1193"/>
+            <point key="canvasLocation" x="3546" y="1193"/>
         </scene>
         <!--Violation Detail View Controller-->
         <scene sceneID="4no-om-li6">
@@ -808,7 +808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJK-4U-zpx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633" y="1780"/>
+            <point key="canvasLocation" x="3545" y="1789"/>
         </scene>
     </scenes>
     <resources>
