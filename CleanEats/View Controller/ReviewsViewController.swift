@@ -17,19 +17,21 @@ class ReviewsViewController: UIViewController {
     
     
     // MARK: IBOutlets
-   
+    
     @IBOutlet weak var reviewsTableViewController: UITableView!
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var viewForYelpButton: UIView!
     
+    @IBOutlet weak var reviewTextBottomConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(businessSent), name: .sendBusiness, object: nil)
+        
         reviewsTableViewController.delegate = self
         reviewsTableViewController.dataSource = self
         initializeYelpButtonView()
         fetchReviews()
-        
         reloadTableView()
         
     }
@@ -47,8 +49,8 @@ class ReviewsViewController: UIViewController {
             
             RestaurantReviewController.shared.fetchRestaurantReview(withID: businessRestaurantID) { (review) in
                 guard let review = review else { return }
-//                RestaurantReviewController.shared.reviews = review
-               self.reloadTableView()
+                //                RestaurantReviewController.shared.reviews = review
+                self.reloadTableView()
             }
         }
     }
@@ -100,21 +102,19 @@ extension ReviewsViewController:  UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewsTableViewCell
         let review = RestaurantReviewController.shared.reviews[indexPath.row]
         cell.reviews = review
         return cell
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 180
+        } else {
+            return 150
+        }
+    }
     
     /*
      // Override to support editing the table view.
@@ -153,5 +153,6 @@ extension ReviewsViewController:  UITableViewDelegate, UITableViewDataSource {
      }
      */
 }
+
 
 

@@ -32,29 +32,50 @@ class ReviewsTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+
+    
+    func initializeReviewerProfileImage() {
+        
+        reviewerProfileImage.layer.cornerRadius = reviewerProfileImage.frame.size.width / 2
+        reviewerProfileImage.clipsToBounds = false
+        reviewerProfileImage.layer.masksToBounds = true
+        reviewerProfileImage.layer.shadowRadius = 7.0
+        reviewerProfileImage.layer.shadowColor = UIColor.black.cgColor
+        reviewerProfileImage.layer.shadowOpacity = 0.4
+        reviewerProfileImage.layer.shadowOffset = CGSize.zero
+        
+        
+       
+        self.selectionStyle = .none
+        
+    }
     
     func updateViews() {
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            self.initializeReviewerProfileImage()
+        }
         
         guard let reviews = reviews,
-              let profileImageString = reviews.userData.reviewerImageURL else { return }
-        
-        self.reviewerName.text = reviews.userData.reviewerName
-        self.reviewDateLabel.text = reviews.reviewTimestamp
-        self.reviewTextLabel.text = reviews.reviewText
+            let profileImageString = reviews.userData.reviewerImageURL else { return }
         
         
-        DispatchQueue.main.async {
-            RestaurantReviewController.getReviewerImage(imageStringURL: profileImageString) { (image) in
-                if let image = image {
-                    let fetchedImage = image
+        
+        RestaurantReviewController.getReviewerImage(imageStringURL: profileImageString) { (image) in
+            if let image = image {
+                let fetchedImage = image
+                DispatchQueue.main.async {
+                    
+                    
                     self.reviewerProfileImage.image = fetchedImage
+                    self.reviewerName.text = reviews.userData.reviewerName
+                    self.reviewTextLabel.text = reviews.reviewText
+                    self.reviewDateLabel.text = Date.getFormattedDate(string: reviews.reviewTimestamp)
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
-
+            
         }
     }
 }
@@ -62,3 +83,22 @@ class ReviewsTableViewCell: UITableViewCell {
 extension Notification.Name {
     static let sendBusiness = Notification.Name("sendBusiness")
 }
+
+extension Date {
+    static func getFormattedDate(string: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // This format is input formated .
+        
+        guard let formateDate = dateFormatter.date(from:"2018-02-02 06:50:16") else {
+            
+            return "No date found"
+        }
+        
+        dateFormatter.dateFormat = "MMM dd yyyy" // Output Formated
+        
+        print ("Print :\(dateFormatter.string(from: formateDate))")//Print :02-02-2018
+        return dateFormatter.string(from: formateDate)
+    }
+}
+
+
