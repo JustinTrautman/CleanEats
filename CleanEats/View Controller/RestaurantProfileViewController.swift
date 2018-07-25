@@ -36,13 +36,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Properites
     var restaurant: Businesses?
     var yelpReviews: TopReviewData?
-    
     var reviews: [TopReviewData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-        // setupNavigationBarItems()
         slideScrollView.delegate = self
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -117,16 +115,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
         
     }
-    //    // Adding Image to Navigation Item
-    //    func setupNavigationBarItems() {
-    //        let logo = UIImage(named: "DineRiteNew")
-    //        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-    //        imageView = UIImageView(image: logo)
-    //        imageView.contentMode = .scaleAspectFit
-    //        self.navigationItem.titleView = imageView
-    //        self.navigationItem.hidesBackButton = true
-    //
-    //    }
     
     // MARK: - IBActions
     
@@ -188,43 +176,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         
         restaurantNameLabel.text = name
         ratingStar.image = image
-        totalReviewsLabel.text = "\(reviews.count)"
+        totalReviewsLabel.text = "hike"
     }
     
-    func setUpNavbarHeight() {
-        for subview in (self.navigationController?.navigationBar.subviews)! {
-            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
-                var subViewFrame: CGRect = subview.frame
-                let subView = UIView()
-                // subViewFrame.origin.y = -20;
-                subViewFrame.size.height = 90
-                subView.frame = subViewFrame
-                //                // Convert an image view to a view
-                //                // Constrain it to the center and size it
-                //                let logo = UIImage(named: "DineRiteNew")
-                //                var imageView = UIImageView()
-                //                imageView = UIImageView(image: logo)
-                //                imageView.contentMode = .scaleAspectFit
-                //                //                self.navigationItem.titleView = imageView
-                //                subView.addSubview(imageView)
-                //                imageView.translatesAutoresizingMaskIntoConstraints = false
-                //                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-                //                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-                //                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-                //                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-                //                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                //                subview.backgroundColor = .clear
-                //                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
-                subView.backgroundColor = .red
-                navigationController?.navigationBar.addSubview(subView)
-                navigationController?.navigationBar.bottomAnchor.constraint(equalTo: subView.bottomAnchor).isActive = true
-                
-                ////                               let titleImage = #imageLiteral(resourceName: "DineRiteNew")
-                ////
-                ////                                self.view.addSubview(titleImage)
-            }
-        }
-    }
+
 }
 
 

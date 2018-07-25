@@ -32,20 +32,19 @@ class ReviewsTableViewCell: UITableViewCell {
             updateViews()
         }
     }
-
+    var restaurant: Restaurant? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     
     func initializeReviewerProfileImage() {
         
         reviewerProfileImage.layer.cornerRadius = reviewerProfileImage.frame.size.width / 2
         reviewerProfileImage.clipsToBounds = false
         reviewerProfileImage.layer.masksToBounds = true
-        reviewerProfileImage.layer.shadowRadius = 7.0
-        reviewerProfileImage.layer.shadowColor = UIColor.black.cgColor
-        reviewerProfileImage.layer.shadowOpacity = 0.4
-        reviewerProfileImage.layer.shadowOffset = CGSize.zero
         
-        
-       
         self.selectionStyle = .none
         
     }
@@ -70,7 +69,9 @@ class ReviewsTableViewCell: UITableViewCell {
                     self.reviewerProfileImage.image = fetchedImage
                     self.reviewerName.text = reviews.userData.reviewerName
                     self.reviewTextLabel.text = reviews.reviewText
-                    self.reviewDateLabel.text = Date.getFormattedDate(string: reviews.reviewTimestamp)
+                    self.reviewDateLabel.text = Date.getFormattedDate(oldDateString: reviews.reviewTimestamp)
+                    self.ratingImageView.image = reviews.imageForRating
+                    
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
@@ -85,20 +86,20 @@ extension Notification.Name {
 }
 
 extension Date {
-    static func getFormattedDate(string: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // This format is input formated .
+    static func getFormattedDate(oldDateString: String) -> String {
         
-        guard let formateDate = dateFormatter.date(from:"2018-02-02 06:50:16") else {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // This format is input formatted .
+        
+        guard let formatDate = dateFormatter.date(from: oldDateString) else {
             
             return "No date found"
         }
         
-        dateFormatter.dateFormat = "MMM dd yyyy" // Output Formated
+        dateFormatter.dateFormat = "MM/dd/yyyy" // Output Formated
         
-        print ("Print :\(dateFormatter.string(from: formateDate))")//Print :02-02-2018
-        return dateFormatter.string(from: formateDate)
+        print ("Print :\(dateFormatter.string(from: formatDate))")
+        return dateFormatter.string(from: formatDate)
     }
 }
-
 
