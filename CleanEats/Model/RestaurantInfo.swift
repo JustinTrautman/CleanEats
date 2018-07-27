@@ -24,6 +24,7 @@ class Businesses : NSObject, Codable {
     let restaurantImage: String
     let categories: [Categories]?
     let restaurantRating: Double?
+    let restaurantReviewCount: Int?
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
@@ -47,12 +48,13 @@ class Businesses : NSObject, Codable {
     }
     
 
-    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?) {
+    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?) {
         self.restaurantID = restaurantID
         self.restaurantName = restaurantName
         self.restaurantImage = restaurantImage
         self.categories = categories
         self.restaurantRating = restaurantRating
+        self.restaurantReviewCount = restaurantReviewCount
         self.restaurantPrice = restaurantPrice
         self.restaurantPhone = restaurantPhone
         self.restaurantDistance = restaurantDistance
@@ -78,6 +80,7 @@ class Businesses : NSObject, Codable {
         case restaurantImage = "image_url"
         case categories
         case restaurantRating = "rating"
+        case restaurantReviewCount = "review_count"
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"

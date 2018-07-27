@@ -10,6 +10,13 @@ import UIKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: Properites
+    var restaurant: Businesses?
+    var yelpReviews: TopReviewData?
+    var reviews: [TopReviewData] = []
+    
+    
+    
     // MARK: - IBOutlets
     
     @IBOutlet var restaurantProfileView: UIView!
@@ -33,10 +40,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var healthRatingContainerView: UIView!
     @IBOutlet weak var reviewContainerView: UIView!
     
-    // MARK: Properites
-    var restaurant: Businesses?
-    var yelpReviews: TopReviewData?
-    var reviews: [TopReviewData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +74,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "")
+        slide1.slideImageView.image = UIImage(named: "45-WhiskeyStreet45")
         slide1.contentMode = .scaleAspectFit
         let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.slideImageView.image = UIImage(named: "pooh2")
@@ -172,14 +175,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     func updateView() {
         guard let
             restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
+            let name = restaurant.restaurantName, let image = restaurant.imageForRating, let reviewCount = restaurant.restaurantReviewCount else { return }
+        
         
         restaurantNameLabel.text = name
         ratingStar.image = image
-        totalReviewsLabel.text = "hike"
+        totalReviewsLabel.text = String("( \(reviewCount))")
+        
     }
-    
-
 }
 
 
