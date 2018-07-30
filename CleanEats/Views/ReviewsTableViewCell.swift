@@ -10,8 +10,23 @@ import UIKit
 
 class ReviewsTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    var reviews: Reviews? {
+        didSet {
+            updateViews()
+        }
+    }
+    var businesses: Businesses? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    
     // MARK: Outlets
     
+
     @IBOutlet weak var reviewerProfileImage: UIImageView!
     @IBOutlet weak var reviewerName: UILabel!
     @IBOutlet weak var reviewDateLabel: UILabel!
@@ -25,18 +40,6 @@ class ReviewsTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    // MARK: - Properties
-    
-    var reviews: Reviews? {
-        didSet {
-            updateViews()
-        }
-    }
-    var restaurant: Restaurant? {
-        didSet {
-            updateViews()
-        }
-    }
     
     
     func initializeReviewerProfileImage() {
@@ -50,14 +53,15 @@ class ReviewsTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
+        
         DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            
             self.initializeReviewerProfileImage()
         }
         
+
         guard let reviews = reviews,
             let profileImageString = reviews.userData.reviewerImageURL else { return }
-        
         
         
         RestaurantReviewController.getReviewerImage(imageStringURL: profileImageString) { (image) in
@@ -72,15 +76,15 @@ class ReviewsTableViewCell: UITableViewCell {
                     self.reviewDateLabel.text = Date.getFormattedDate(oldDateString: reviews.reviewTimestamp)
                     self.ratingImageView.image = reviews.imageForRating
                     
-                    
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
+                print(reviews.reviewText)
             }
             
         }
     }
 }
-
+// Notification for ReviewsViewController
 extension Notification.Name {
     static let sendBusiness = Notification.Name("sendBusiness")
 }

@@ -246,7 +246,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
-//        setUpNavbarHeight()
+        //        setUpNavbarHeight()
         
         //        let height: CGFloat = 200 //whatever height you want to add to the existing height
         //        let bounds = self.navigationController!.navigationBar.bounds
@@ -270,8 +270,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
         imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-//        imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-//
+        //        imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        //
         //                navigationController?.navigationItem.titleView?.backgroundColor = .red
         
     }
@@ -367,7 +367,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     //        if annotationView == nil{
     //            annotationView = AnnotationView(annotation: view.annotation, reuseIdentifier: "Pin")
     //            if view == annotationView {
-    //                performSegue(withIdentifier: "toRestaurantProfil", sender: view)
+    //                performSegue(withIdentifier: "toRestaurantProfile", sender: view)
     //            }
     //        }
     //    }
@@ -379,15 +379,17 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+
         if segue.identifier == "restaurantProfile" {
             guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
-            detailVC.restaurant = self.selectedRestaurant
+            detailVC.businesses = self.selectedRestaurant
+
         }
-        
-        
     }
+
+
 }
+
 
 extension HomeViewController: CLLocationManagerDelegate {
     
@@ -413,10 +415,15 @@ extension HomeViewController: CLLocationManagerDelegate {
 }
 
 extension HomeViewController: CalloutViewDelegate {
-    func calloutViewTapped(restaurant: Businesses,  sender: CalloutView) {
+    func calloutViewTapped(restaurant: Businesses, sender: CalloutView) {
         print("Customcallout from delegate")
         self.selectedRestaurant = restaurant
+        
+        
+        NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
+        
         self.performSegue(withIdentifier: "restaurantProfile", sender: sender)
+        
     }
 }
 

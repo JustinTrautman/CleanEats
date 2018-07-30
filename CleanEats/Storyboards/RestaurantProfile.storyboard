@@ -112,7 +112,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2B4-fS-MhU" userLabel="AboutContainerView">
                                                 <rect key="frame" x="0.0" y="324" width="375" height="412"/>
                                                 <connections>
-                                                    <segue destination="Ygj-t1-mdg" kind="embed" id="SHw-G2-EjI"/>
+                                                    <segue destination="Ygj-t1-mdg" kind="embed" identifier="aboutProfile" id="SHw-G2-EjI"/>
                                                 </connections>
                                             </containerView>
                                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2g-me-YDn" userLabel="HealthRating" customClass="HealthRatingTableViewCell" customModule="CleanEats" customModuleProvider="target">
@@ -244,18 +244,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="412"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Restaurant Category)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLE-b8-xjt">
-                                <rect key="frame" x="24" y="10" width="327" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLE-b8-xjt">
+                                <rect key="frame" x="24" y="10" width="327" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Hh-Dh-liZ" userLabel="Contact Info StackView">
-                                <rect key="frame" x="39" y="285" width="297" height="106"/>
+                                <rect key="frame" x="24" y="264.5" width="327" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-US-OSx">
-                                        <rect key="frame" x="0.0" y="0.0" width="297" height="25"/>
-                                        <state key="normal" title="     (888) 888 - 8888" image="callicon4">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="25"/>
+                                        <state key="normal" title="      " image="callicon4">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -263,7 +263,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-Fu-o1Z" userLabel="(CleanEats@Cleantown.com)">
-                                        <rect key="frame" x="0.0" y="43" width="297" height="22"/>
+                                        <rect key="frame" x="0.0" y="43" width="327" height="22"/>
                                         <state key="normal" title="     (address)" image="Email icon">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -272,7 +272,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-F3-TZy">
-                                        <rect key="frame" x="0.0" y="83" width="297" height="23"/>
+                                        <rect key="frame" x="0.0" y="83" width="327" height="23"/>
                                         <state key="normal" title="     www.CleanestOfTheClean.com" image="Websiteicon5">
                                             <color key="titleColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -283,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ovg-WI-NMh">
-                                <rect key="frame" x="24" y="53" width="327" height="171"/>
+                                <rect key="frame" x="24" y="32.5" width="327" height="171"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ovg-WI-NMh" secondAttribute="height" multiplier="109:57" id="xM6-OA-okH"/>
                                     <constraint firstAttribute="height" constant="171" id="yo5-CS-cUj"/>
@@ -295,7 +295,9 @@
                             <constraint firstItem="ovg-WI-NMh" firstAttribute="top" secondItem="XLE-b8-xjt" secondAttribute="bottom" constant="22.5" id="1Mb-yK-FIB"/>
                             <constraint firstItem="4Hh-Dh-liZ" firstAttribute="top" secondItem="ovg-WI-NMh" secondAttribute="bottom" constant="61" id="baz-UA-6s9"/>
                             <constraint firstItem="XLE-b8-xjt" firstAttribute="top" secondItem="Xpb-Nd-gCx" secondAttribute="top" constant="10" id="fEy-EN-TQn"/>
+                            <constraint firstItem="Xpb-Nd-gCx" firstAttribute="trailing" secondItem="4Hh-Dh-liZ" secondAttribute="trailing" constant="24" id="hsu-YS-MsB"/>
                             <constraint firstItem="ovg-WI-NMh" firstAttribute="centerX" secondItem="1VO-2t-DuP" secondAttribute="centerX" id="ly4-uN-R0y"/>
+                            <constraint firstItem="4Hh-Dh-liZ" firstAttribute="leading" secondItem="Xpb-Nd-gCx" secondAttribute="leading" constant="24" id="nfQ-pT-OnX"/>
                             <constraint firstItem="XLE-b8-xjt" firstAttribute="leading" secondItem="Xpb-Nd-gCx" secondAttribute="leading" constant="24" id="oAd-Mx-znl"/>
                             <constraint firstItem="4Hh-Dh-liZ" firstAttribute="centerX" secondItem="1VO-2t-DuP" secondAttribute="centerX" id="tm1-ne-udE"/>
                         </constraints>
@@ -348,7 +350,7 @@
                                                                 <constraint firstAttribute="width" constant="104" id="euV-jV-enk"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="(Review Text)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-9s-7hS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="(Review Text)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-9s-7hS">
                                                             <rect key="frame" x="113" y="61.5" width="224" height="37.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>

@@ -11,9 +11,10 @@ import UIKit
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: Properites
-    var restaurant: Businesses?
-    var yelpReviews: TopReviewData?
-    var reviews: [TopReviewData] = []
+    var businesses: Businesses?
+    
+//    var yelpReviews: TopReviewData?
+//    var reviews: [TopReviewData] = []
     
     
     
@@ -53,8 +54,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        let aboutVC = AboutProfileViewController()
+        self.addChildViewController(aboutVC)
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -131,6 +135,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = false
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = true
+            
         case 1:
             print("Second Segment Selected")
             aboutContainerView.isHidden = true
@@ -142,7 +147,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = false
             
-            guard let restaurant = restaurant else { return }
+            guard let restaurant = businesses else { return }
             NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
             
         default:
@@ -161,8 +166,15 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
         showFavoriteSavedAlert()
         FavoriteViewController.shared.updateTableView()
-        
         favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "aboutProfile" {
+            guard let destinationVC = segue.destination as? AboutProfileViewController else {return}
+            
+            destinationVC.businesses = businesses
+        }
     }
     
     func showFavoriteSavedAlert() {
@@ -174,16 +186,19 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func updateView() {
         guard let
-            restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating, let reviewCount = restaurant.restaurantReviewCount else { return }
-        
+            businesses = businesses,
+            let name = businesses.restaurantName, let image = businesses.imageForRating, let reviewCount = businesses.restaurantReviewCount else { return }
         
         restaurantNameLabel.text = name
         ratingStar.image = image
-        totalReviewsLabel.text = String("( \(reviewCount))")
+        totalReviewsLabel.text = String("(\(reviewCount))")
         
     }
+
 }
+
+    
+    
 
 
 

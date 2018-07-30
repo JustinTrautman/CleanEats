@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
+protocol AboutProfileViewControllerDelegate: class {
+    func didUpdateAboutProfileVC(sender: AboutProfileViewController)
+}
+
 class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: IBOutlets
@@ -20,22 +24,18 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-    var restaurant: RestaurantDetails?
-    var restaurantInfo: Businesses?
+    
+    var businesses: Businesses?
+    
+    weak var delegate: AboutProfileViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
-        
+        delegate?.didUpdateAboutProfileVC(sender: self)
         updateViews()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     
     // MARK: - IBActions
@@ -49,19 +49,15 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
-    
-    func populateMapWithRestaurant() {
-        let span = MKCoordinateSpanMake(0.012, 0.012)
-//        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.mapView., longitude: <#T##CLLocationDegrees#>), span: <#T##MKCoordinateSpan#>)
-    }
-    
+
     func updateViews() {
+        guard let businesses = businesses,
+            let phone = businesses.restaurantPhone, let address = businesses.location?.address1, let website = businesses.restaurantName else { return }
         
-        guard let address = restaurant?.location,
-              let phone = restaurantInfo?.restaurantPhone else { return }
+        phoneButton.setTitle("      \(phone)", for: .normal)
+        addressButton.setTitle("      \(address)", for: .normal)
+        webAddressButton.setTitle("      \(website)", for: .normal)
         
-        addressButton.setTitle("\(address)", for: .normal)
-        phoneButton.setTitle("\(phone)", for: .normal)
     }
 }
 
@@ -76,3 +72,4 @@ class ButtonWithImage: UIButton {
     }
     
 }
+
