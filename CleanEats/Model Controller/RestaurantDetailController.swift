@@ -19,7 +19,7 @@ class RestaurantDetailController {
         
         guard var url = baseURL else { completion(nil) ; return }
         url.appendPathComponent(restaurantID)
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         
         guard let completeURL = components?.url else { completion(nil) ; return }

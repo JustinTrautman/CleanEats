@@ -13,22 +13,51 @@
  */
 
 import Foundation
+import UIKit
 
 struct TopReviewData : Codable {
     let reviews: [Reviews]
 }
 
-struct Reviews : Codable {
+class Reviews : NSObject, Codable {
     let restaurantID: String
     let reviewText: String
     let reviewTimestamp: String
     let userData: User
+    let rating: Int?
+    var imageForRating: UIImage? {
+        guard let rating = rating, let ratingEnum = Rating(rawValue: Int(rating)) else {
+            return UIImage()
+        }
+        switch ratingEnum {
+        case .oneStar:
+            return UIImage(named: "oneStar")
+        case .twoStar:
+            return UIImage(named: "twoStars")
+        case .threeStar:
+            return UIImage(named: "threeStars")
+        case .fourStar:
+            return UIImage(named: "fourStars")
+        case .fiveStar:
+            return UIImage(named: "fiveStars")
+        }
+    }
+    
+    init(restaurantID: String, reviewText: String, reviewTimestamp: String, userData: User, rating: Int, imageForRating: UIImage?) {
+        self.restaurantID = restaurantID
+        self.reviewText = reviewText
+        self.reviewTimestamp = reviewTimestamp
+        self.userData = userData
+        self.rating = rating
+        
+    }
     
     enum CodingKeys: String, CodingKey {
         case restaurantID = "id"
         case reviewText = "text"
         case reviewTimestamp = "time_created"
         case userData = "user"
+        case rating
     }
     
     struct User : Codable {
@@ -42,5 +71,6 @@ struct Reviews : Codable {
         
     }
 }
+
 
 

@@ -24,10 +24,12 @@ class Businesses : NSObject, Codable {
     let restaurantImage: String
     let categories: [Categories]?
     let restaurantRating: Double?
+    let restaurantReviewCount: Int?
     let restaurantPrice: String?
     let restaurantPhone: String?
     let restaurantDistance: Double?
     var coordinate: Coordinate?
+    let location: Location?
     var imageForRating: UIImage? {
         guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Int(rating)) else {
             return UIImage()
@@ -47,15 +49,17 @@ class Businesses : NSObject, Codable {
     }
     
 
-    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?) {
+    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
         self.restaurantID = restaurantID
         self.restaurantName = restaurantName
         self.restaurantImage = restaurantImage
         self.categories = categories
         self.restaurantRating = restaurantRating
+        self.restaurantReviewCount = restaurantReviewCount
         self.restaurantPrice = restaurantPrice
         self.restaurantPhone = restaurantPhone
         self.restaurantDistance = restaurantDistance
+        self.location = location
 
     }
     
@@ -70,6 +74,10 @@ class Businesses : NSObject, Codable {
         let alias: String?
         let title: String?
     }
+    struct Location: Codable {
+        let address1: String?
+        let city: String?
+    }
     
     private enum CodingKeys: String, CodingKey {
         
@@ -78,12 +86,15 @@ class Businesses : NSObject, Codable {
         case restaurantImage = "image_url"
         case categories
         case restaurantRating = "rating"
+        case restaurantReviewCount = "review_count"
         case restaurantPrice = "price"
         case restaurantPhone = "display_phone"
         case restaurantDistance = "distance"
         case coordinate = "coordinates"
+        case location = "location"
         
     }
+    
     
 }
 

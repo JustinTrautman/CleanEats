@@ -43,7 +43,7 @@ protocol CalloutViewDelegate: class {
             self.restaurantImage.layer.cornerRadius = 4
             self.restaurantImage.clipsToBounds = true;
             
-            
+        
         }
     }
     

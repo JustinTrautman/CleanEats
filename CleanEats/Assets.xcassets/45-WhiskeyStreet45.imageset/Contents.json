@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "45-WhiskeyStreet45.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "oneStar.png",
       "scale" : "2x"
     },
     {

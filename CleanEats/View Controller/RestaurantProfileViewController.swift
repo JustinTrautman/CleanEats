@@ -10,6 +10,14 @@ import UIKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: Properites
+    var businesses: Businesses?
+    
+//    var yelpReviews: TopReviewData?
+//    var reviews: [TopReviewData] = []
+    
+    
+    
     // MARK: - IBOutlets
     
     @IBOutlet var restaurantProfileView: UIView!
@@ -33,16 +41,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var healthRatingContainerView: UIView!
     @IBOutlet weak var reviewContainerView: UIView!
     
-    // MARK: Properites
-    var restaurant: Businesses?
-    var yelpReviews: TopReviewData?
-    
-    var reviews: [TopReviewData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-        // setupNavigationBarItems()
         slideScrollView.delegate = self
         slides = createSlides()
         setupSlideScrollView(slides: slides)
@@ -52,8 +54,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
         view.bringSubview(toFront: slidePageControl)
+        let aboutVC = AboutProfileViewController()
+        self.addChildViewController(aboutVC)
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -73,7 +78,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func createSlides() -> [Slide] {
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "")
+        slide1.slideImageView.image = UIImage(named: "45-WhiskeyStreet45")
         slide1.contentMode = .scaleAspectFit
         let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide2.slideImageView.image = UIImage(named: "pooh2")
@@ -117,16 +122,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
         
     }
-    //    // Adding Image to Navigation Item
-    //    func setupNavigationBarItems() {
-    //        let logo = UIImage(named: "DineRiteNew")
-    //        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-    //        imageView = UIImageView(image: logo)
-    //        imageView.contentMode = .scaleAspectFit
-    //        self.navigationItem.titleView = imageView
-    //        self.navigationItem.hidesBackButton = true
-    //
-    //    }
     
     // MARK: - IBActions
     
@@ -140,6 +135,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = false
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = true
+            
         case 1:
             print("Second Segment Selected")
             aboutContainerView.isHidden = true
@@ -151,7 +147,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = false
             
-            guard let restaurant = restaurant else { return }
+            guard let restaurant = businesses else { return }
             NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
             
         default:
@@ -170,8 +166,15 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
         showFavoriteSavedAlert()
         FavoriteViewController.shared.updateTableView()
-        
         favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "aboutProfile" {
+            guard let destinationVC = segue.destination as? AboutProfileViewController else {return}
+            
+            destinationVC.businesses = businesses
+        }
     }
     
     func showFavoriteSavedAlert() {
@@ -183,49 +186,19 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func updateView() {
         guard let
-            restaurant = restaurant,
-            let name = restaurant.restaurantName, let image = restaurant.imageForRating else { return }
+            businesses = businesses,
+            let name = businesses.restaurantName, let image = businesses.imageForRating, let reviewCount = businesses.restaurantReviewCount else { return }
         
         restaurantNameLabel.text = name
         ratingStar.image = image
-        totalReviewsLabel.text = "\(reviews.count)"
+        totalReviewsLabel.text = String("(\(reviewCount))")
+        
     }
-    
-    func setUpNavbarHeight() {
-        for subview in (self.navigationController?.navigationBar.subviews)! {
-            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
-                var subViewFrame: CGRect = subview.frame
-                let subView = UIView()
-                // subViewFrame.origin.y = -20;
-                subViewFrame.size.height = 90
-                subView.frame = subViewFrame
-                //                // Convert an image view to a view
-                //                // Constrain it to the center and size it
-                //                let logo = UIImage(named: "DineRiteNew")
-                //                var imageView = UIImageView()
-                //                imageView = UIImageView(image: logo)
-                //                imageView.contentMode = .scaleAspectFit
-                //                //                self.navigationItem.titleView = imageView
-                //                subView.addSubview(imageView)
-                //                imageView.translatesAutoresizingMaskIntoConstraints = false
-                //                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-                //                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-                //                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-                //                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-                //                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                //                subview.backgroundColor = .clear
-                //                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
-                subView.backgroundColor = .red
-                navigationController?.navigationBar.addSubview(subView)
-                navigationController?.navigationBar.bottomAnchor.constraint(equalTo: subView.bottomAnchor).isActive = true
-                
-                ////                               let titleImage = #imageLiteral(resourceName: "DineRiteNew")
-                ////
-                ////                                self.view.addSubview(titleImage)
-            }
-        }
-    }
+
 }
+
+    
+    
 
 
 
