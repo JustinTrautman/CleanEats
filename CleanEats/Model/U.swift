@@ -10,12 +10,12 @@ import UIKit
 class Favorite : Codable {
     let restaurantImage: String?
     let restaurantName: String
-    let restaurantHealthScore: String?
+    let restaurantHealthScore: Int?
     let restaurantRating: String?
     let restaurantPhone: String?
     let restaurantDescription: String?
     
-    init(restaurantImage: String, restaurantName: String, restaurantHealthScore: String, restaurantRating: String, restaurantPhone: String, restaurantDescription: String) {
+    init(restaurantImage: String, restaurantName: String, restaurantHealthScore: Int, restaurantRating: String, restaurantPhone: String, restaurantDescription: String) {
         
         self.restaurantImage = restaurantImage
         self.restaurantName = restaurantName

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
@@ -57,6 +58,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
         
+        createSlides()
+        
     }
     
     
@@ -77,20 +80,21 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     var slides: [Slide] = []
     
     func createSlides() -> [Slide] {
+        
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "45-WhiskeyStreet45")
+        slide1.slideImageView.image = UIImage(named: "Spitz1")
         slide1.contentMode = .scaleAspectFit
         let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide2.slideImageView.image = UIImage(named: "pooh2")
+        slide2.slideImageView.image = UIImage(named: "Spitz2")
         slide2.contentMode = .scaleAspectFit
         let slide3 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide3.slideImageView.image = UIImage(named: "pooh3")
+        slide3.slideImageView.image = UIImage(named: "Spitz3")
         slide3.contentMode = .scaleAspectFit
         let slide4 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide4.slideImageView.image = UIImage(named: "pooh4")
+        slide4.slideImageView.image = UIImage(named: "Spitz4")
         slide4.contentMode = .scaleAspectFit
         let slide5 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide5.slideImageView.image = UIImage(named: "pooh5")
+        slide5.slideImageView.image = UIImage(named: "Spitz5")
         slide5.contentMode = .scaleAspectFit
         
         return [slide1, slide2, slide3, slide4, slide5]
@@ -161,7 +165,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             let healthScore = scoreLabel.text else { return }
         
         print("Star Button Tapped")
-        FavoriteController.shared.create(image: "test", name: name, healthScore: healthScore, rating: "5 Stars", phone: "12345", description: "Test")
+        FavoriteController.shared.create(image: "Spitz1", name: "Spits", healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
         
         favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
         showFavoriteSavedAlert()
@@ -174,6 +178,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             guard let destinationVC = segue.destination as? AboutProfileViewController else {return}
             
             destinationVC.businesses = businesses
+            
+            
+            guard let longitude = businesses?.coordinate?.longitude,
+                    let lat = businesses?.coordinate?.latitude
+                else { return }
+            
+            destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
+            
         }
     }
     
@@ -185,6 +197,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateView() {
+    
         guard let
             businesses = businesses,
             let name = businesses.restaurantName, let image = businesses.imageForRating, let reviewCount = businesses.restaurantReviewCount else { return }
@@ -194,6 +207,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         totalReviewsLabel.text = String("(\(reviewCount))")
         
     }
+    
 
 }
 

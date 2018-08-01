@@ -5,7 +5,7 @@
 //  Created by Justin Trautman on 7/12/18.
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
-import Foundation
+import UIKit
 import CoreData
 
 class FavoriteController {
@@ -20,7 +20,7 @@ class FavoriteController {
     
     func create(image: String, name: String, healthScore: String, rating: String, phone: String, description: String) {
         
-        let favorite = Favorite(restaurantImage: image, restaurantName: name, restaurantHealthScore: healthScore, restaurantRating: rating, restaurantPhone: phone, restaurantDescription: description)
+        let favorite = Favorite(restaurantImage: "placeholder", restaurantName: name, restaurantHealthScore: 5, restaurantRating: rating, restaurantPhone: phone, restaurantDescription: description)
         favorites.append(favorite)
         save()
     }

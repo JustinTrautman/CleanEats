@@ -35,8 +35,20 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         delegate?.didUpdateAboutProfileVC(sender: self)
         updateViews()
+        
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        mapView.setRegion(MKCoordinateRegion(center: restaurantCoordinates!, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
+        guard let  restaurantCoordinates = restaurantCoordinates else { return }
+        guard let businesses  = businesses else {return}
+        let point = CustomAnnotation(coordinate: restaurantCoordinates, restaurant: businesses)
+        
+        
+        self.mapView.addAnnotations([point])
+    }
     
     // MARK: - IBActions
     @IBAction func callButtonTapped(_ sender: UIButton) {
@@ -49,16 +61,37 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Properties
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
+    var restaurantCoordinates: CLLocationCoordinate2D?
 
     func updateViews() {
         guard let businesses = businesses,
             let phone = businesses.restaurantPhone, let address = businesses.location?.address1, let website = businesses.restaurantName else { return }
         
         phoneButton.setTitle("      \(phone)", for: .normal)
-        addressButton.setTitle("      \(address)", for: .normal)
-        webAddressButton.setTitle("      \(website)", for: .normal)
+        addressButton.setTitle("        info@spitzslc.com", for: .normal)
+//        addressButton.setTitle("      \(address)", for: .normal)
+        webAddressButton.setTitle("      spitzslc.com", for: .normal)
+//        webAddressButton.setTitle("      \(website)", for: .normal)
         
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        var annotationView = self.mapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
+        if annotationView == nil{
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+            annotationView?.canShowCallout = false
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "pin")
+        
+        return annotationView
+        
+    }
+    
 }
 
 class ButtonWithImage: UIButton {
