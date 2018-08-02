@@ -48,6 +48,19 @@ class Businesses : NSObject, Codable {
         }
     }
     
+    public var title: String? {
+        get { return restaurantName }
+    }
+    
+    
+    
+    public var newCoordinate: CLLocationCoordinate2D {
+        guard let longitude = coordinate?.longitude,
+            let lat = coordinate?.latitude
+            else { return  CLLocationCoordinate2D()}
+        return CLLocationCoordinate2D(latitude: lat, longitude: longitude)
+    }
+    
 
     init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
         self.restaurantID = restaurantID

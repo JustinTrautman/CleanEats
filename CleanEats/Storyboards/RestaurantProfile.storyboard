@@ -131,14 +131,14 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
                                                 <color key="backgroundColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-ik-0lC" userLabel="FavoriteStar">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIu-ik-0lC" userLabel="FavoriteStar">
                                                 <rect key="frame" x="8" y="10" width="25" height="24"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="FavoritesStar">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="favoriteStarButtonTapped:" destination="Kgo-YH-xtX" eventType="touchUpInside" id="eKq-te-zhM"/>
+                                                    <action selector="favoriteStarButtonTapped:" destination="Kgo-YH-xtX" eventType="touchUpInside" id="A9V-2Y-tDJ"/>
                                                 </connections>
                                             </button>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="XtP-Ls-xMN">
@@ -217,7 +217,7 @@
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="aboutContainerView" destination="2B4-fS-MhU" id="ac7-3h-6j6"/>
-                        <outlet property="favoriteStar" destination="nIu-ik-0lC" id="0s1-v4-hcw"/>
+                        <outlet property="favoriteStar" destination="nIu-ik-0lC" id="ylI-4d-jFE"/>
                         <outlet property="healthRatingContainerView" destination="B2g-me-YDn" id="w8m-M2-m9C"/>
                         <outlet property="hoursOfOperationLabel" destination="dE2-Hf-pns" id="Mmz-a6-uez"/>
                         <outlet property="ratingStar" destination="NFV-FL-xlr" id="auq-xS-T4T"/>
@@ -255,7 +255,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wGb-US-OSx">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="25"/>
-                                        <state key="normal" title="      " image="callicon4">
+                                        <state key="normal" title="    (801) 364-0286" image="callicon4">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -264,7 +264,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbh-Fu-o1Z" userLabel="(CleanEats@Cleantown.com)">
                                         <rect key="frame" x="0.0" y="43" width="327" height="22"/>
-                                        <state key="normal" title="     (address)" image="Email icon">
+                                        <state key="normal" title="     info@spitzslc.com" image="Email icon">
                                             <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -273,7 +273,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-F3-TZy">
                                         <rect key="frame" x="0.0" y="83" width="327" height="23"/>
-                                        <state key="normal" title="     www.CleanestOfTheClean.com" image="Websiteicon5">
+                                        <state key="normal" title="      www.spitzslc.com" image="Websiteicon5">
                                             <color key="titleColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

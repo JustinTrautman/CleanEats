@@ -115,6 +115,10 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         let favorite = FavoriteController.shared.favorites[indexPath.row]
         
         cell.restaurantNameLabel.text = favorite.restaurantName
+        cell.restaurantImageView.image = UIImage(named: "Spitz1")
+        cell.restaurantRatingImageView.image = UIImage(named: "4Star")
+        cell.restaurantPhoneNumber.text = "(801) 364-0286"
+        cell.restaurantDescriptionLabel.text = "Mediterranean Restaurant"
         
         return cell
     }
@@ -127,5 +131,9 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
             FavoriteController.shared.delete(favorite: favorite)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

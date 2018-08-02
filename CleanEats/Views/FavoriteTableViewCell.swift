@@ -16,7 +16,7 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantDistanceLabel: UILabel!
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
     @IBOutlet weak var restaurantScoreLabel: UILabel!
-    
+    @IBOutlet weak var restaurantPhoneNumber: UILabel!
     
     var restaurant: Restaurant? {
         didSet{
@@ -27,12 +27,15 @@ class FavoriteTableViewCell: UITableViewCell {
     func updateViews() {
         guard let restaurant = restaurant else { return }
         
-        restaurantImageView.image = restaurant.restaurantImage
-        restaurantNameLabel.text = restaurant.restaurantTitle
+//        restaurantImageView.image = restaurant.restaurantImage
+        restaurantImageView.image = UIImage(named: "Spitz1")
+        restaurantNameLabel.text = "Spitz SLC"
         restaurantRatingImageView.image = restaurant.restaurantRating
         restaurantDistanceLabel.text = restaurant.restaurantDistance
-        restaurantDescriptionLabel.text = restaurant.restaurantDescription
+        restaurantDescriptionLabel.text = "Mediterranean Restaurant"
         restaurantScoreLabel.text = restaurant.restaurantRisk
+        restaurantPhoneNumber.text = "(801) 364-0286"
     }
+
 
 }
