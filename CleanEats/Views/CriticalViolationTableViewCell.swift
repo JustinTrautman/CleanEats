@@ -10,9 +10,15 @@ import UIKit
 
 class CriticalViolationTableViewCell: UITableViewCell {
     
+    var violationMockData: ViolationMockData? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: IBOutlets
     
-    @IBOutlet weak var criticalViolationTotal: UILabel!
+
     @IBOutlet weak var violationTitleMajor: UILabel!
     @IBOutlet weak var violationCodeMajor: UILabel!
     @IBOutlet weak var weight: UILabel!
@@ -33,5 +39,10 @@ class CriticalViolationTableViewCell: UITableViewCell {
     func initializeViolationLabels() {
         let attibutedText = NSMutableAttributedString(string: " \(violationTitleMajor)", attributes: nil)
     }
-
+    func updateViews() {
+        guard let violationMockData = violationMockData else { return }
+        self.violationTitleMajor.text = violationMockData.violationTitle
+        self.violationCodeMajor.text = violationMockData.violationCode
+        self.weight.text = String(violationMockData.weight)
+    }
 }

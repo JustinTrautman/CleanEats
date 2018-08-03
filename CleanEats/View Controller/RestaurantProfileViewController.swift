@@ -165,7 +165,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             let healthScore = scoreLabel.text else { return }
         
         print("Star Button Tapped")
-        FavoriteController.shared.create(image: "Spitz1", name: "Spits", healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
+        FavoriteController.shared.create(image: "Spitz1", name: "Spitz", healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
         
         favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
         showFavoriteSavedAlert()

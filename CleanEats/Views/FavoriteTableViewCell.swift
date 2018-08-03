@@ -33,7 +33,8 @@ class FavoriteTableViewCell: UITableViewCell {
         restaurantRatingImageView.image = restaurant.restaurantRating
         restaurantDistanceLabel.text = restaurant.restaurantDistance
         restaurantDescriptionLabel.text = "Mediterranean Restaurant"
-        restaurantScoreLabel.text = restaurant.restaurantRisk
+        restaurantScoreLabel.text = "5"
+//        restaurantScoreLabel.text = restaurant.restaurantRisk
         restaurantPhoneNumber.text = "(801) 364-0286"
     }
 

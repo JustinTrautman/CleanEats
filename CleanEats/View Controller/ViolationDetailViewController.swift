@@ -8,7 +8,13 @@
 
 import UIKit
 
-class ViolationDetailViewController: UIViewController {
+class ViolationDetailViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
+    
+    
+    // MARK: - Private Properties
+    
+    let mockDataController = MockDataController()
+    
     
     // MARK:  IBOutlets
     
@@ -27,22 +33,11 @@ class ViolationDetailViewController: UIViewController {
         return([], [])
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 
 
-extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    
+extension  ViolationDetailViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -51,21 +46,26 @@ extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return 2   //array
+            return 5   //array
         } else if section == 1 {
-            return 12   //array
+            return 3   //array
         } else {
-            return 0
+            return 1
         }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath) as! CriticalViolationTableViewCell
+        
+        let mockData = mockDataController.mockData[indexPath.row]
+        cell.violationMockData = mockData
         
         return cell
     }
+    
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
@@ -88,7 +88,7 @@ extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDele
 //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
             let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: violationBoldText)
-            attributedText.append(NSAttributedString(string: "  \(99)", attributes: [ // Put your model object major violations where 99 is
+            attributedText.append(NSAttributedString(string: "  \(4)", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red
                 ]))
             
@@ -111,7 +111,7 @@ extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDele
             
             let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
             
-            attributedText.append(NSAttributedString(string: "  \(99999)", attributes: [ // Put your model object major violations where 99 is
+            attributedText.append(NSAttributedString(string: "  \(1)", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red]))
             
             nonCriticalViolationsLabel.attributedText = attributedText
@@ -119,6 +119,7 @@ extension  ViolationDetailViewController: UITableViewDataSource, UITableViewDele
             return headerTwoView
             
         } else {
+            
             return nil
         }
     }

@@ -14,7 +14,7 @@ class HealthDataController {
     
     var violationData: [String : [Violation]] = [:]
     
-    func serializeHealData() {
+    func serializeHealtData() {
         guard let url = Bundle.main.url(forResource: "healthData", withExtension: "json") else { return }
         let jsonDecoder = JSONDecoder()
         
@@ -25,7 +25,7 @@ class HealthDataController {
             self.violationData = violationsDict
             
         } catch let error {
-                print("Error with jsonDecoder decoding json data: \(error) \(error.localizedDescription)")
+                print("Error with jsonDecoder decoding json data: \(error)")
             }
         }
     

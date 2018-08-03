@@ -93,23 +93,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
 
         
         }
-    
-//
-//    // MARK: - Navigation
-//
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "toDetailVC" {
-//            guard let destinationVC = segue.destination,
-//                let indexPath = tableView.indexPathForSelectedRow else { return }
-//            // Finish once data is available
-//
-//        }
-//
-//    }
-//
-//
 
 
     // MARK: - IBActions

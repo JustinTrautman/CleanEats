@@ -24,6 +24,7 @@
 		4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */; };
 		423D7E9120FE613F00ED74AB /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9020FE613F00ED74AB /* Violation.swift */; };
 		423D7E9320FFAFF200ED74AB /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */; };
+		424E31F22113B2E900EDCEE6 /* ViolationMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsViewController.swift */; };
@@ -92,6 +93,7 @@
 		4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
 		423D7E9020FE613F00ED74AB /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
 		423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
+		424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationMockData.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				42EECA3E20F90894002431D2 /* healthData.json */,
 				D04B26B020FE5C8C001D0F9D /* U.swift */,
 				423D7E9020FE613F00ED74AB /* Violation.swift */,
+				424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
 				D02515A420F905A2006198E9 /* CalloutView.swift in Sources */,
+				424E31F22113B2E900EDCEE6 /* ViolationMockData.swift in Sources */,
 				D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */,
 				068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */,
 				4211E83E20FD1027008DB9EB /* Restaurant.swift in Sources */,
