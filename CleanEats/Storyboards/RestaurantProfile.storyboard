@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -680,47 +681,24 @@
                                                             <rect key="frame" x="0.0" y="80" width="343" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Critical Violation Code: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCS-jC-oCb">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="195" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" priority="250" constant="165" id="k1o-yX-d0X"/>
-                                                                    </constraints>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="257.33333333333331" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="(Code)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-iJ-d0D">
-                                                                    <rect key="frame" x="195" y="0.0" width="48" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="48" id="WIn-kg-YUl"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(weight)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vze-lZ-6W1">
-                                                                    <rect key="frame" x="243" y="0.0" width="57" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="57" id="N0w-QN-PBY"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-dH-qNy">
-                                                                    <rect key="frame" x="300" y="0.0" width="43" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="43" id="gdB-uY-gAB"/>
-                                                                    </constraints>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="(Code)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-iJ-d0D">
+                                                                    <rect key="frame" x="257.33333333333331" y="0.0" width="85.666666666666686" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="Zme-iJ-d0D" firstAttribute="width" secondItem="mG3-oS-mDa" secondAttribute="width" multiplier="0.25" id="IOz-dg-saj"/>
                                                                 <constraint firstItem="GCS-jC-oCb" firstAttribute="top" secondItem="mG3-oS-mDa" secondAttribute="top" id="Lgj-uX-cFv"/>
+                                                                <constraint firstItem="GCS-jC-oCb" firstAttribute="width" secondItem="mG3-oS-mDa" secondAttribute="width" multiplier="0.75" id="NqZ-ej-O3z"/>
                                                                 <constraint firstItem="GCS-jC-oCb" firstAttribute="leading" secondItem="mG3-oS-mDa" secondAttribute="leading" id="Xas-jo-Fp8"/>
                                                                 <constraint firstItem="Zme-iJ-d0D" firstAttribute="leading" secondItem="GCS-jC-oCb" secondAttribute="trailing" priority="750" constant="2" id="eSE-nO-PXL"/>
-                                                                <constraint firstItem="vze-lZ-6W1" firstAttribute="leading" secondItem="Zme-iJ-d0D" secondAttribute="trailing" priority="750" constant="12" id="p19-RH-zIk"/>
                                                                 <constraint firstAttribute="bottom" secondItem="GCS-jC-oCb" secondAttribute="bottom" id="sUu-iG-SJg"/>
                                                             </constraints>
                                                         </stackView>
@@ -738,10 +716,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="points" destination="KWa-dH-qNy" id="9oG-tW-jaR"/>
+                                            <outlet property="criticalViolationCodeLabel" destination="GCS-jC-oCb" id="Sg8-oD-JGt"/>
                                             <outlet property="violationCodeMajor" destination="Zme-iJ-d0D" id="giM-er-rPe"/>
                                             <outlet property="violationTitleMajor" destination="VWM-6Z-ROO" id="513-Kd-Xve"/>
-                                            <outlet property="weight" destination="vze-lZ-6W1" id="N35-qv-bwF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nonCriticalViolationCell" rowHeight="120" id="2Bk-dD-qQK" userLabel="non-CriticalViolationCell" customClass="NonCriticalViolationTableViewCell" customModule="CleanEats" customModuleProvider="target">

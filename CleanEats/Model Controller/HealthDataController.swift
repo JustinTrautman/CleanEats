@@ -29,13 +29,17 @@ class HealthDataController {
             }
         }
     
-    func getViolationDataWith(searchTerm: String) {
-        var resultsFound = [String]()
-        for results in violationData.keys {
-            if results.contains(searchTerm) {
-                print("Search Term Found")
-                resultsFound.append(results)
-            }
-        }
-    }
+//    func getViolationDataWith(searchTerm: String, completion: @escaping (([Violation])->Void)) {
+//        var resultsFound = [Violation]()
+//        for results in violationData.keys {
+//            if results.contains(searchTerm.uppercased()) {
+//                print(results)
+//                violationData[results]?.forEach {
+//                    resultsFound.append($0)
+//                }
+//            }
+//            completion(resultsFound)
+//        }
+//        
+//    }
 }

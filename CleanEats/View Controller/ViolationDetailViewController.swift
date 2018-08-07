@@ -17,16 +17,15 @@ class ViolationDetailViewController: UIViewController, UITableViewDataSource, UI
     
     
     // MARK:  IBOutlets
-    
-
     @IBOutlet weak var violationTableViewController: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         violationTableViewController.dataSource = self
         violationTableViewController.delegate = self
+        violationTableViewController.bounces = false
         
-}
+    }
     
     func splitBetweenMajorAndMinor(_ input: [Violation]) -> (major: [Violation], minor: [Violation]) {
         // USE THE .filter() method
@@ -46,9 +45,9 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            return 5   //array
+            return MockDataController.shared.mockData.count   //array
         } else if section == 1 {
-            return 3   //array
+            return 1   //array
         } else {
             return 1
         }
@@ -65,7 +64,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
         return cell
     }
     
-
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
@@ -81,11 +80,12 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             let criticalViolationsLabel = UILabel()
             
             headerOneView.addSubview(criticalViolationsLabel)
+            headerOneView.backgroundColor? = .white
             
             criticalViolationsLabel.translatesAutoresizingMaskIntoConstraints = false
             criticalViolationsLabel.centerXAnchor.constraint(equalTo: headerOneView.centerXAnchor, constant: 0).isActive = true
             criticalViolationsLabel.centerYAnchor.constraint(equalTo: headerOneView.centerYAnchor, constant: 0).isActive = true
-//            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
+            //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
             let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: violationBoldText)
             attributedText.append(NSAttributedString(string: "  \(4)", attributes: [ // Put your model object major violations where 99 is
@@ -123,7 +123,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             return nil
         }
     }
-
+    
 }
 
 
