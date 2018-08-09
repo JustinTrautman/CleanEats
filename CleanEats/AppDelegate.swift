@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Hello, world!")
             }
         }
+        
+//        HealthDataController.shared.serializeHealtData()
+//        HealthDataController.shared.getViolationDataWith(searchTerm: "Red Iguana") { (violations) in
+//            violations.forEach { print($0.violationTitle)}
+//        }
         return true
     }
 

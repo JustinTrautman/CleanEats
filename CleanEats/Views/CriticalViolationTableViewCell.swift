@@ -10,13 +10,18 @@ import UIKit
 
 class CriticalViolationTableViewCell: UITableViewCell {
     
+    var violationMockData: ViolationMockData? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     // MARK: IBOutlets
     
-    @IBOutlet weak var criticalViolationTotal: UILabel!
+
     @IBOutlet weak var violationTitleMajor: UILabel!
     @IBOutlet weak var violationCodeMajor: UILabel!
-    @IBOutlet weak var weight: UILabel!
-    @IBOutlet weak var points: UILabel!
+    @IBOutlet weak var criticalViolationCodeLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -26,12 +31,15 @@ class CriticalViolationTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        
     }
     
     func initializeViolationLabels() {
         let attibutedText = NSMutableAttributedString(string: " \(violationTitleMajor)", attributes: nil)
     }
-
+    func updateViews() {
+        guard let violationMockData = violationMockData else { return }
+        self.violationTitleMajor.text = violationMockData.violationTitle
+        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationMockData.violationCode)"
+        self.violationCodeMajor.text = "\(violationMockData.weight) points"
+    }
 }

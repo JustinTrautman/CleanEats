@@ -117,6 +117,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         cell.restaurantNameLabel.text = favorite.restaurantName
         cell.restaurantImageView.image = UIImage(named: "Spitz1")
         cell.restaurantRatingImageView.image = UIImage(named: "4Star")
+        cell.restaurantScoreLabel.text = "5"
         cell.restaurantPhoneNumber.text = "(801) 364-0286"
         cell.restaurantDescriptionLabel.text = "Mediterranean Restaurant"
         

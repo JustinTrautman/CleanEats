@@ -9,7 +9,8 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-
+    @IBOutlet weak var header: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

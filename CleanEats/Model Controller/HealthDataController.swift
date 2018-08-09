@@ -14,7 +14,7 @@ class HealthDataController {
     
     var violationData: [String : [Violation]] = [:]
     
-    func serializeHealData() {
+    func serializeHealtData() {
         guard let url = Bundle.main.url(forResource: "healthData", withExtension: "json") else { return }
         let jsonDecoder = JSONDecoder()
         
@@ -25,17 +25,21 @@ class HealthDataController {
             self.violationData = violationsDict
             
         } catch let error {
-                print("Error with jsonDecoder decoding json data: \(error) \(error.localizedDescription)")
+                print("Error with jsonDecoder decoding json data: \(error)")
             }
         }
     
-    func getViolationDataWith(searchTerm: String) {
-        var resultsFound = [String]()
-        for results in violationData.keys {
-            if results.contains(searchTerm) {
-                print("Search Term Found")
-                resultsFound.append(results)
-            }
-        }
-    }
+//    func getViolationDataWith(searchTerm: String, completion: @escaping (([Violation])->Void)) {
+//        var resultsFound = [Violation]()
+//        for results in violationData.keys {
+//            if results.contains(searchTerm.uppercased()) {
+//                print(results)
+//                violationData[results]?.forEach {
+//                    resultsFound.append($0)
+//                }
+//            }
+//            completion(resultsFound)
+//        }
+//        
+//    }
 }
