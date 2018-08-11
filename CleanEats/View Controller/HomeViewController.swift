@@ -25,6 +25,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     @IBOutlet weak var homeMapView: MKMapView!
     
     // Propeties
+    
+    // 6) location manager Need for user location
     let locationManager = CLLocationManager()
     var currentCoordinate: CLLocationCoordinate2D?
     var selectedRestaurant: Businesses?
@@ -336,6 +338,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     }
     
     // Function for finding the user location
+    // 1 Authorization for user to access maps
     func configureLocationServices() {
         locationManager.delegate = self
         
@@ -349,31 +352,22 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             beginLocationUpdates(locationManager: locationManager)
         }
     }
+    
+    // 2 Function for giving the desired user's location
     func beginLocationUpdates(locationManager: CLLocationManager) {
         homeMapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
     }
     
-    
+    // 3 Function for zooming into user's location
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
         let zoomRegion = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
         homeMapView.setRegion(zoomRegion, animated: true)
     }
-    
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //
-    //        var annotationView = self.homeMapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-    //        if annotationView == nil{
-    //            annotationView = AnnotationView(annotation: view.annotation, reuseIdentifier: "Pin")
-    //            if view == annotationView {
-    //                performSegue(withIdentifier: "toRestaurantProfile", sender: view)
-    //            }
-    //        }
-    //    }
-    //
-    //
-    
+
+
+    // 4 Function for givng the annotation for user's location
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         self.selectedAnnotation = view.annotation as? MKPointAnnotation
     }
@@ -390,9 +384,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
 
 }
 
-
+// 5 Extremely important for user location functionality to work
 extension HomeViewController: CLLocationManagerDelegate {
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let latestLocation = locations.first else { return }
