@@ -65,13 +65,12 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
 
     func updateViews() {
         guard let businesses = businesses,
-            let phone = businesses.restaurantPhone, let address = businesses.location?.address1, let website = businesses.restaurantName else { return }
+            let phone = businesses.restaurantPhone, let address = businesses.location?.address1, let yelpUrl = businesses.yelpUrl else { return }
         
         phoneButton.setTitle("      \(phone)", for: .normal)
-        addressButton.setTitle("      info@spitzslc.com", for: .normal)
-//        addressButton.setTitle("      \(address)", for: .normal)
-        webAddressButton.setTitle("      www.spitzslc.com", for: .normal)
-//        webAddressButton.setTitle("      \(website)", for: .normal)
+        addressButton.setTitle("      \(address)", for: .normal)
+        webAddressButton.setTitle("      \(yelpUrl)", for: .normal)
+
         
     }
     

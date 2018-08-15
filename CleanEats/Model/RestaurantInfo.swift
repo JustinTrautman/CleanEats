@@ -20,8 +20,11 @@ struct TopLevelData : Codable {
 class Businesses: Codable {
 
     let restaurantID: String?
+    let alias: String?
     var restaurantName: String?
     let restaurantImage: String
+    let isClosed: Bool
+    let yelpUrl: String?
     let categories: [Categories]?
     let restaurantRating: Double?
     let restaurantReviewCount: Int?
@@ -62,10 +65,13 @@ class Businesses: Codable {
     }
     
 
-    init(restaurantID: String?, restaurantName: String?, restaurantImage: String, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
+    init(restaurantID: String?, alias: String?, restaurantName: String?, restaurantImage: String, isClosed: Bool, yelpUrl: String?, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
         self.restaurantID = restaurantID
+        self.alias = alias
         self.restaurantName = restaurantName
         self.restaurantImage = restaurantImage
+        self.isClosed = isClosed
+        self.yelpUrl = yelpUrl
         self.categories = categories
         self.restaurantRating = restaurantRating
         self.restaurantReviewCount = restaurantReviewCount
@@ -73,6 +79,7 @@ class Businesses: Codable {
         self.restaurantPhone = restaurantPhone
         self.restaurantDistance = restaurantDistance
         self.location = location
+        // TODO: add photos
 
     }
     
@@ -82,11 +89,12 @@ class Businesses: Codable {
         
     }
     
-    struct Categories : Codable {
+    struct Categories: Codable {
         
         let alias: String?
         let title: String?
     }
+    
     struct Location: Codable {
         let address1: String?
         let city: String?
@@ -95,8 +103,11 @@ class Businesses: Codable {
     private enum CodingKeys: String, CodingKey {
         
         case restaurantID = "id"
+        case alias
         case restaurantName = "name"
         case restaurantImage = "image_url"
+        case isClosed = "is_closed"
+        case yelpUrl = "url"
         case categories
         case restaurantRating = "rating"
         case restaurantReviewCount = "review_count"

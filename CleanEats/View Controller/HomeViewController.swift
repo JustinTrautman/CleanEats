@@ -72,11 +72,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                             let coordinate = self.getCordinate(latitude: lat, longitude: log)
                             
                             DispatchQueue.main.async {
-                                //                                let annotation = MKPointAnnotation()
-                                //                                annotation.coordinate = coordinate
-                                //
-                                //                                annotation.title = objects.restaurantName
-                                //                                annotation.subtitle = objects.restaurantPhone
                                 
                                 let point = CustomAnnotation(coordinate: coordinate, restaurant: objects)
                                 
@@ -105,62 +100,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: log)
         return coordinate
     }
-    
-    
-    //        func performSearch() {
-    //
-    //            matchingItems.removeAll()
-    //            let request = MKLocalSearchRequest()
-    //            request.naturalLanguageQuery = searchBarMap.text
-    //            request.region = homeMapView.region
-    //
-    //            let search = MKLocalSearch(request: request)
-    //
-    //            search.start(completionHandler: {(response, error) in
-    //
-    //                if let results = response {
-    //
-    //                    if let err = error {
-    //                        print("Error occurred in search: \(err.localizedDescription)")
-    //                    } else if results.mapItems.count == 0 {
-    //                        print("No matches found")
-    //                    } else {
-    //                        print("Matches found")
-    //
-    //                        // Remove current annotations on map
-    //                                        let annotations = self.homeMapView.annotations
-    //                                        self.homeMapView.removeAnnotations(annotations)
-    //
-    //                                        // Getting data
-    //                                        guard let latitude = response?.boundingRegion.center.latitude else {return}
-    //                                        guard let longitude = response?.boundingRegion.center.longitude else {return}
-    //
-    //                        for item in results.mapItems {
-    //                            print("Name = \(item.name ?? "No match")")
-    //                            print("Phone = \(item.phoneNumber ?? "No Match")")
-    //
-    //                            self.matchingItems.append(item as MKMapItem)
-    //                            print("Matching items = \(self.matchingItems.count)")
-    //
-    //                            let annotation = MKPointAnnotation()
-    //                            annotation.coordinate = item.placemark.coordinate
-    //                            annotation.title = item.name
-    //                            annotation.subtitle = item.phoneNumber
-    //
-    //                            self.homeMapView.addAnnotation(annotation)
-    //
-    //                            //Zooming in on annotation
-    //                            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-    //                            let span = MKCoordinateSpanMake(0.01, 0.01)
-    //                            let region = MKCoordinateRegionMake(coordinate, span)
-    //                            self.homeMapView.setRegion(region, animated: true)
-    //
-    //                        }
-    //                    }
-    //                }
-    //            })
-    //        }
-    //
+
     // Adding custom pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
         
@@ -204,6 +144,9 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             }
         }
         
+
+        
+        
         // 3
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
@@ -211,16 +154,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         
         
     }
-    
-    //
-    //    @objc func callPhoneNumber(sender: UIButton)
-    //    {
-    //        let v = sender.superview as! CalloutView
-    //        if let url = URL(string: "telprompt://\(v.starbucksPhone.text!)"), UIApplication.shared.canOpenURL(url)
-    //        {
-    //            UIApplication.shared.openURL(url)
-    //        }
-    //    }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: AnnotationView.self)
@@ -248,14 +181,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
-        //        setUpNavbarHeight()
-        
-        //        let height: CGFloat = 200 //whatever height you want to add to the existing height
-        //        let bounds = self.navigationController!.navigationBar.bounds
-        //        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
-        
-        // populateNearByPlaces()
-        // setupNavigationBarItems()
+
         guard let y = navigationController?.navigationBar.frame.size.height else { return }
         let y2 = y + 40
         let size = CGSize(width: self.view.frame.width, height: y2)
@@ -264,7 +190,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         var imageView = UIImageView()
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
-        //                self.navigationItem.titleView = imageView
+
         navigationController?.navigationBar.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         guard let navBar = navigationController?.navigationBar else { return }
@@ -272,9 +198,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
         imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-        //        imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        //
-        //                navigationController?.navigationItem.titleView?.backgroundColor = .red
+
         
     }
     
@@ -301,7 +225,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
                 var subViewFrame: CGRect = subview.frame
                 let subView = UIView()
-                // subViewFrame.origin.y = -20;
+                
                 subViewFrame.size.height = 90
                 subView.frame = subViewFrame
                 // Convert an image view to a view
@@ -310,7 +234,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                 var imageView = UIImageView()
                 imageView = UIImageView(image: logo)
                 imageView.contentMode = .scaleAspectFit
-                //                self.navigationItem.titleView = imageView
+
                 subView.addSubview(imageView)
                 imageView.translatesAutoresizingMaskIntoConstraints = false
                 imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
@@ -319,12 +243,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                 imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
                 imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
                 subview.backgroundColor = .clear
-                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
+
                 navigationController?.navigationBar.addSubview(subView)
                 
-                //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
-                //
-                //                self.view.addSubview(titleImage)
+
             }
         }
     }

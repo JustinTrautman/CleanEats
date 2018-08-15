@@ -14,38 +14,74 @@ import UIKit
  
  */
 
-struct TopData: Codable {
-    
-    let restaurants: [RestaurantDetails]
-}
-
 struct RestaurantDetails : Codable {
     
+    let name: String
+    let phone: String
     let reviewCount: Int
-    let photos: [Photos]
-    let hours: [Hours]
-    let location: [Location]
+    let rating: Double?
+    let location: Location
+    let photos: [String]?
+    let hours: [Hour]?
+    var imageForRating: UIImage? {
+        guard let rating = rating, let ratingEnum = Rating(rawValue: Int(Double(rating))) else {
+            return UIImage()
+        }
+        switch ratingEnum {
+        case .oneStar:
+            return UIImage(named: "oneStar")
+        case .twoStar:
+            return UIImage(named: "twoStars")
+        case .threeStar:
+            return UIImage(named: "threeStars")
+        case .fourStar:
+            return UIImage(named: "fourStars")
+        case .fiveStar:
+            return UIImage(named: "fiveStars")
+        }
+    }
     
     enum CodingKeys : String, CodingKey {
         
+        case name
+        case phone = "display_phone"
         case reviewCount = "review_count"
-        case photos, hours, location
+        case rating
+        case location
+        case photos
+        case hours
     }
 }
 
-struct Photos : Codable{
+struct Hour: Codable {
+    let hourOpen: [Open]
+    let hoursType: String
+    let isOpenNow: Bool
     
-    let photoURL: String?
+    enum CodingKeys: String, CodingKey {
+        case hourOpen = "open"
+        case hoursType = "hours_type"
+        case isOpenNow = "is_open_now"
+    }
 }
 
-struct Hours : Codable {
+struct Open: Codable {
+    let isOvernight: Bool
+    let start: String
+    let end: String
+    let day: Int
     
-    let open: [Open]
+    enum CodingKeys: String, CodingKey {
+        case isOvernight = "is_overnight"
+        case start
+        case end
+        case day
+    }
 }
 
 struct Location : Codable {
     
-    let completeAddress: String?
+    let completeAddress: [String?]
     
     enum CodingKeys : String, CodingKey {
         
@@ -53,24 +89,4 @@ struct Location : Codable {
     }
 }
 
-struct Open : Codable {
-    
-    let closingTime: String?
-    let dayOfTheWeek: Int?
-    let openingTime: String?
-    
-    enum CodingKeys : String, CodingKey {
-        case closingTime = "end"
-        case dayOfTheWeek = "day"
-        case openingTime = "start"
-    }
-}
-
-enum CodingKeys : String, CodingKey {
-    
-    
-    case closingTime = "end"
-    case dayOfTheWeek = "day"
-    case openingTime = "start"
-}
 

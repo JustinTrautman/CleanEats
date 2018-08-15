@@ -33,15 +33,26 @@ protocol CalloutViewDelegate: class {
                 return
             }
             self.restaurantName.text = restaurant.restaurantName ?? ""
-//            self.restaurantPrice.text = restaurant.restaurantPrice ?? ""
+
             if let restaurantDistance = restaurant.restaurantDistance {
                 let distanceInMiles = round((restaurantDistance/16.0934))/100
                 self.restaurantDistance.text = "\(distanceInMiles) miles away"
             }
-//            self.ratingImageView.image = ratingImageView(frame: CGRect(x: 0, y: 0, width: 105 , height: 25))
+
             self.ratingImageView.image = restaurant.imageForRating
             self.restaurantImage.layer.cornerRadius = 4
-            self.restaurantImage.clipsToBounds = true;
+            self.restaurantImage.clipsToBounds = true
+            
+            
+            // set the image view(s) for the detail photos property
+            /*
+             self.collectionView.count = restaurant.detailPhotos
+             let photos = restaurant.detailPhotos
+             for photo in photos {
+             // self.whateverImageView.image = photo
+             
+             }
+             */
             
         
         }

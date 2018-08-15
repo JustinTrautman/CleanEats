@@ -13,9 +13,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: Properites
     var businesses: Businesses?
+    var restaurantDetails: RestaurantDetails?
     
-//    var yelpReviews: TopReviewData?
-//    var reviews: [TopReviewData] = []
+    //    var yelpReviews: TopReviewData?
+    //    var reviews: [TopReviewData] = []
     
     
     
@@ -58,8 +59,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
         
-        createSlides()
-        
+        //createSlides()
+        updateView()
     }
     
     
@@ -79,7 +80,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     // Horizontal ScrollView
     var slides: [Slide] = []
     
+    
+    
     func createSlides() -> [Slide] {
+        
         
         let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
         slide1.slideImageView.image = UIImage(named: "Spitz1")
@@ -181,7 +185,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             
             guard let longitude = businesses?.coordinate?.longitude,
-                    let lat = businesses?.coordinate?.latitude
+                let lat = businesses?.coordinate?.latitude
                 else { return }
             
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
@@ -197,22 +201,36 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateView() {
-    
-        guard let
-            businesses = businesses,
-            let name = businesses.restaurantName, let image = businesses.imageForRating, let reviewCount = businesses.restaurantReviewCount else { return }
         
-        restaurantNameLabel.text = name
-        ratingStar.image = image
-        totalReviewsLabel.text = String("(\(reviewCount))")
+        if let business = businesses {
+            guard let restuarantAlias = business.alias else { return }
+            
+            RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
+                guard restaurantDetails != nil else { return }
+                let name = restaurantDetails?.name
+                guard let totalReviews = restaurantDetails?.reviewCount else { return }
+                let starRatingView = restaurantDetails?.imageForRating
+                
+                guard let photos = restaurantDetails?.photos else { return }
+                
+//                RestaurantDetailController.fetchRestaurantPhotos(imageStringURL: [photos]) { (photos) in
+//                    guard let fetchedPhotos = photos else { return }
+//                    DispatchQueue.main.async {
+//                    }
+//                }
+                
+                DispatchQueue.main.async {
+        
+                    self.restaurantNameLabel.text = name
+                    self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
+                    self.ratingStar.image = starRatingView
+                }
+            }
+        }
+        
         
     }
-    
-
 }
-
-    
-    
 
 
 
