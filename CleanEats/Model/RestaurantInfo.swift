@@ -17,7 +17,7 @@ struct TopLevelData : Codable {
     
     let businesses: [Businesses]
 }
-class Businesses : NSObject, Codable {
+class Businesses: Codable {
 
     let restaurantID: String?
     var restaurantName: String?
