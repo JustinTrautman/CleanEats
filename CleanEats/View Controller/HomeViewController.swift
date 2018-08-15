@@ -299,11 +299,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         if segue.identifier == "restaurantProfile" {
             guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
             detailVC.businesses = self.selectedRestaurant
-
+            detailVC.navigationItem.hidesBackButton = true
+    
         }
     }
-
-
 }
 
 // 5 Extremely important for user location functionality to work

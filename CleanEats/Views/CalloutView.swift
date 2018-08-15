@@ -42,19 +42,6 @@ protocol CalloutViewDelegate: class {
             self.ratingImageView.image = restaurant.imageForRating
             self.restaurantImage.layer.cornerRadius = 4
             self.restaurantImage.clipsToBounds = true
-            
-            
-            // set the image view(s) for the detail photos property
-            /*
-             self.collectionView.count = restaurant.detailPhotos
-             let photos = restaurant.detailPhotos
-             for photo in photos {
-             // self.whateverImageView.image = photo
-             
-             }
-             */
-            
-        
         }
     }
     

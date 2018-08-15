@@ -14,6 +14,7 @@ class RestaurantDetailController {
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses")
     static var restaurantDetails: RestaurantDetails?
     static let shared = RestaurantDetailController()
+    static let photos: [UIImage] = []
     
     static func fetchRestaurantDetailsWith(restaurantAlias: String, completion: @escaping ((RestaurantDetails)?) -> Void) {
         
@@ -54,7 +55,7 @@ class RestaurantDetailController {
     }
     
     
-    static func fetchRestaurantPhotos(imageStringURL: String, completion: @escaping(UIImage?) -> Void) {
+    static func fetchRestaurantPhoto(imageStringURL: String, completion: @escaping ((UIImage)?) -> Void) {
         guard let photosURL = URL(string: imageStringURL) else { completion(nil) ; return }
         
         URLSession.shared.dataTask(with: photosURL) { data, _, error in
@@ -65,8 +66,8 @@ class RestaurantDetailController {
             }
             
             guard let data = data else { completion(nil) ; return }
-            let image = UIImage(data: data)
-            completion(image)
+            let photo = UIImage(data: data)
+            completion(photo)
             
             }.resume()
     }
