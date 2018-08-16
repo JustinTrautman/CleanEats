@@ -47,7 +47,6 @@ class ReviewsTableViewCell: UITableViewCell {
         reviewerProfileImage.layer.cornerRadius = reviewerProfileImage.frame.size.width / 2
         reviewerProfileImage.clipsToBounds = false
         reviewerProfileImage.layer.masksToBounds = true
-        
         self.selectionStyle = .none
         
     }
@@ -55,7 +54,6 @@ class ReviewsTableViewCell: UITableViewCell {
     func updateViews() {
         
         DispatchQueue.main.async {
-            
             self.initializeReviewerProfileImage()
         }
         

@@ -41,11 +41,11 @@ class RestaurantInfoController {
         
         guard let completeURL = components?.url else { completion(nil) ; return }
         
-        print(completeURL)
         
         var request = URLRequest(url: completeURL)
         request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
 
+        print("📡📡📡📡 \(completeURL)📡📡📡📡")
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -83,6 +83,7 @@ class RestaurantInfoController {
                 completion(image)
         }.resume()
     }
+    
 }
 
 

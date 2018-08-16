@@ -19,6 +19,11 @@ struct RestaurantDetails : Codable {
     let name: String
     let phone: String
     let reviewCount: Int
+<<<<<<< HEAD
+    let photos: [Photos]
+    let hours: [Hours]
+    //let location: [Location]
+=======
     let rating: Double?
     let location: Location
     let photos: [String]?
@@ -48,16 +53,21 @@ struct RestaurantDetails : Codable {
             return UIImage(named: "5Stars")
         }
     }
+>>>>>>> a4513b1ca9b1941f8dc8961b9b260b36ec116190
     
     enum CodingKeys : String, CodingKey {
         
         case name
         case phone = "display_phone"
         case reviewCount = "review_count"
+<<<<<<< HEAD
+        case photos, hours //, location
+=======
         case rating
         case location
         case photos
         case hours
+>>>>>>> a4513b1ca9b1941f8dc8961b9b260b36ec116190
     }
 }
 
@@ -87,6 +97,17 @@ struct Open: Codable {
     }
 }
 
+<<<<<<< HEAD
+//struct Location : Codable {
+//
+//    let completeAddress: String?
+//
+//    enum CodingKeys : String, CodingKey {
+//
+//        case completeAddress = "display_address"
+//    }
+//}
+=======
 struct Location : Codable {
     
     let completeAddress: [String?]
@@ -96,5 +117,6 @@ struct Location : Codable {
         case completeAddress = "display_address"
     }
 }
+>>>>>>> a4513b1ca9b1941f8dc8961b9b260b36ec116190
 
 

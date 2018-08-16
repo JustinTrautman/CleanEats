@@ -13,11 +13,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: Properites
     var businesses: Businesses?
+    var restaurantDetails: RestaurantDetails?
     
-//    var yelpReviews: TopReviewData?
-//    var reviews: [TopReviewData] = []
-    
-    
+    var dateComponents: DateComponents {
+        let now = Date()
+        let components = Calendar.current.dateComponents([.day, .hour, .minute, .weekday], from: now)
+        return components
+    }
     
     // MARK: - IBOutlets
     
@@ -47,9 +49,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         view.addSubview(scrollView)
         slideScrollView.delegate = self
-        slides = createSlides()
-        setupSlideScrollView(slides: slides)
-        slidePageControl.numberOfPages = slides.count
+        
         slidePageControl.currentPage = 0
         scrollView.contentSize = CGSize(width: 375, height: 800)
         scoreLabel.layer.masksToBounds = true
@@ -57,9 +57,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: slidePageControl)
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
-        
-        createSlides()
-        
     }
     
     
@@ -77,33 +74,29 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     
     // Horizontal ScrollView
-    var slides: [Slide] = []
+    var restaurantPhotos: [UIImage] = []
     
     func createSlides() -> [Slide] {
         
-        let slide1 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide1.slideImageView.image = UIImage(named: "Spitz1")
-        slide1.contentMode = .scaleAspectFit
-        let slide2 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide2.slideImageView.image = UIImage(named: "Spitz2")
-        slide2.contentMode = .scaleAspectFit
-        let slide3 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide3.slideImageView.image = UIImage(named: "Spitz3")
-        slide3.contentMode = .scaleAspectFit
-        let slide4 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide4.slideImageView.image = UIImage(named: "Spitz4")
-        slide4.contentMode = .scaleAspectFit
-        let slide5 : Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-        slide5.slideImageView.image = UIImage(named: "Spitz5")
-        slide5.contentMode = .scaleAspectFit
-        
-        return [slide1, slide2, slide3, slide4, slide5]
+        var slides: [Slide] = []
+
+        for photo in restaurantPhotos{
+            
+            let slide: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+            slide.slideImageView.contentMode = .scaleAspectFill
+            slide.slideImageView.clipsToBounds = true
+            slide.slideImageView.image = photo
+            slides.append(slide)
+        }
+        return slides
     }
+
     
     func setupSlideScrollView(slides : [Slide]) {
         
-        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 180)
-        slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height / 180)
+        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180
+        )
+        slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
         slideScrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
@@ -181,7 +174,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             
             guard let longitude = businesses?.coordinate?.longitude,
-                    let lat = businesses?.coordinate?.latitude
+                let lat = businesses?.coordinate?.latitude
                 else { return }
             
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
@@ -197,22 +190,47 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateView() {
-    
-        guard let
-            businesses = businesses,
-            let name = businesses.restaurantName, let image = businesses.imageForRating, let reviewCount = businesses.restaurantReviewCount else { return }
         
-        restaurantNameLabel.text = name
-        ratingStar.image = image
-        totalReviewsLabel.text = String("(\(reviewCount))")
-        
+        if let business = businesses {
+            guard let restuarantAlias = business.alias else { return }
+            
+            RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
+                guard restaurantDetails != nil else { return }
+                let name = restaurantDetails?.name
+                guard let totalReviews = restaurantDetails?.reviewCount else { return }
+                let starRatingView = restaurantDetails?.imageForRating
+                
+                guard let photoUrls = restaurantDetails?.photos else { return }
+                
+                
+                let photosGroup = DispatchGroup()
+                
+                for url in photoUrls{
+                    photosGroup.enter()
+                    print("Entering the photos dispatch Group")
+                    RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
+                        guard let photo = photo else {return}
+                        self.restaurantPhotos.append(photo)
+                        print("Leaving the photos dispatch Group")
+                        photosGroup.leave()
+                    })
+                }
+                
+                photosGroup.notify(queue: .main){
+                    print("Main Queue Notified")
+                    let slides = self.createSlides()
+                    self.slidePageControl.numberOfPages = slides.count
+                    self.setupSlideScrollView(slides: slides)
+                    self.restaurantNameLabel.text = name
+                    self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
+                    self.ratingStar.image = starRatingView
+                    
+                }
+
+            }
+        }
     }
-    
-
 }
-
-    
-    
 
 
 

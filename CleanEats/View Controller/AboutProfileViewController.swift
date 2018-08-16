@@ -18,8 +18,10 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: IBOutlets
     
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     @IBOutlet weak var phoneButton: UIButton!
-    @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var webAddressButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -63,16 +65,23 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     var currentCoordinate: CLLocationCoordinate2D?
     var restaurantCoordinates: CLLocationCoordinate2D?
 
+    var displayAddress: [String] = []
     func updateViews() {
         guard let businesses = businesses,
-            let phone = businesses.restaurantPhone, let address = businesses.location?.address1, let website = businesses.restaurantName else { return }
-        
+            let phone = businesses.restaurantPhone, let addresses = businesses.location?.displayAddress, let yelpUrl = businesses.yelpUrl else { return }
+
+        let str = addresses
+        let joinedElements = str.joined(separator: " ")
+        print("😀 \(joinedElements)")
+    
         phoneButton.setTitle("      \(phone)", for: .normal)
-        addressButton.setTitle("      info@spitzslc.com", for: .normal)
-//        addressButton.setTitle("      \(address)", for: .normal)
-        webAddressButton.setTitle("      www.spitzslc.com", for: .normal)
-//        webAddressButton.setTitle("      \(website)", for: .normal)
-        
+       // webAddressButton.setTitle("      \(yelpUrl)", for: .normal)
+
+        addressLabel.text = joinedElements
+        if let restaurantDistance = businesses.restaurantDistance {
+            let distanceInMiles = round((restaurantDistance/16.0934))/100
+            self.distanceLabel.text = "\(distanceInMiles) mi"
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
