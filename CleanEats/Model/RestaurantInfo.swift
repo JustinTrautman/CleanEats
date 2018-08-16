@@ -18,7 +18,7 @@ struct TopLevelData : Codable {
     let businesses: [Businesses]
 }
 class Businesses: Codable {
-
+    
     let restaurantID: String?
     let alias: String?
     var restaurantName: String?
@@ -34,20 +34,28 @@ class Businesses: Codable {
     var coordinate: Coordinate?
     let location: Location?
     var imageForRating: UIImage? {
-        guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Int(rating)) else {
+        guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Double(rating)) else {
             return UIImage()
         }
         switch ratingEnum {
         case .oneStar:
-            return UIImage(named: "oneStar")
+            return UIImage(named: "1Star")
+        case .onePointFiveStar:
+            return UIImage(named: "1.5Star")
         case .twoStar:
-            return UIImage(named: "twoStars")
+            return UIImage(named: "2Stars")
+        case .twoPointFiveStar:
+            return UIImage(named: "2.5Stars")
         case .threeStar:
-            return UIImage(named: "threeStars")
+            return UIImage(named: "3Stars")
+        case .threePointFiveStar:
+            return UIImage(named: "3.5Stars")
         case .fourStar:
-            return UIImage(named: "fourStars")
+            return UIImage(named: "4Stars")
+        case .fourPointFiveStar:
+            return UIImage(named: "4.5Stars")
         case .fiveStar:
-            return UIImage(named: "fiveStars")
+            return UIImage(named: "5Stars")
         }
     }
     
@@ -64,7 +72,7 @@ class Businesses: Codable {
         return CLLocationCoordinate2D(latitude: lat, longitude: longitude)
     }
     
-
+    
     init(restaurantID: String?, alias: String?, restaurantName: String?, restaurantImage: String, isClosed: Bool, yelpUrl: String?, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
         self.restaurantID = restaurantID
         self.alias = alias
@@ -80,7 +88,7 @@ class Businesses: Codable {
         self.restaurantDistance = restaurantDistance
         self.location = location
         // TODO: add photos
-
+        
     }
     
     struct Coordinate: Codable {
@@ -96,8 +104,14 @@ class Businesses: Codable {
     }
     
     struct Location: Codable {
-        let address1: String?
-        let city: String?
+        
+        let displayAddress: [String]
+        
+        enum CodingKeys: String, CodingKey {
+            
+            case displayAddress = "display_address"
+            
+        }
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -122,10 +136,14 @@ class Businesses: Codable {
     
 }
 
-enum Rating: Int{
+enum Rating: Double{
     case oneStar = 1
+    case onePointFiveStar = 1.5
     case twoStar = 2
+    case twoPointFiveStar = 2.5
     case threeStar = 3
+    case threePointFiveStar = 3.5
     case fourStar = 4
+    case fourPointFiveStar = 4.5
     case fiveStar = 5
 }

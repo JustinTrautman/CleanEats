@@ -21,10 +21,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         return components
     }
     
-
-    
-    
-    
     // MARK: - IBOutlets
     
     @IBOutlet var restaurantProfileView: UIView!
@@ -215,13 +211,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
                         guard let photo = photo else {return}
                         self.restaurantPhotos.append(photo)
-                        print("Leaving the dispatch Group")
+                        print("Leaving the photos dispatch Group")
                         photosGroup.leave()
                     })
                 }
                 
                 photosGroup.notify(queue: .main){
-                    print("Main QUE NOTIFIED")
+                    print("Main Queue Notified")
                     let slides = self.createSlides()
                     self.slidePageControl.numberOfPages = slides.count
                     self.setupSlideScrollView(slides: slides)

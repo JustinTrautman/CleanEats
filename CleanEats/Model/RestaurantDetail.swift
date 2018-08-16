@@ -24,20 +24,28 @@ struct RestaurantDetails : Codable {
     let photos: [String]?
     let hours: [Hour]?
     var imageForRating: UIImage? {
-        guard let rating = rating, let ratingEnum = Rating(rawValue: Int(Double(rating))) else {
+        guard let rating = rating, let ratingEnum = Rating(rawValue: Double(Double(rating))) else {
             return UIImage()
         }
         switch ratingEnum {
-        case .oneStar:
-            return UIImage(named: "oneStar")
-        case .twoStar:
-            return UIImage(named: "twoStars")
-        case .threeStar:
-            return UIImage(named: "threeStars")
-        case .fourStar:
-            return UIImage(named: "fourStars")
-        case .fiveStar:
-            return UIImage(named: "fiveStars")
+            case .oneStar:
+            return UIImage(named: "1Star")
+            case .onePointFiveStar:
+            return UIImage(named: "1.5Star")
+            case .twoStar:
+            return UIImage(named: "2Stars")
+            case .twoPointFiveStar:
+            return UIImage(named: "2.5Stars")
+            case .threeStar:
+            return UIImage(named: "3Stars")
+            case .threePointFiveStar:
+            return UIImage(named: "3.5Stars")
+            case .fourStar:
+            return UIImage(named: "4Stars")
+            case .fourPointFiveStar:
+            return UIImage(named: "4.5Stars")
+            case .fiveStar:
+            return UIImage(named: "5Stars")
         }
     }
     
