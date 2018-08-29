@@ -22,7 +22,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - IBOutlets
-    
     @IBOutlet var restaurantProfileView: UIView!
     @IBOutlet weak var favoriteStar: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -31,6 +30,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             slideScrollView.delegate = self
         }
     }
+    
     @IBOutlet weak var slidePageControl: UIPageControl!
     
     @IBOutlet weak var ratingStar: UIImageView!
@@ -44,7 +44,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var healthRatingContainerView: UIView!
     @IBOutlet weak var reviewContainerView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
@@ -57,21 +56,21 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubview(toFront: slidePageControl)
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
+        
+        // Prepares health data for use
+        HealthDataController.shared.serializeHealtData()
+        fetchHealthData()
+ 
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateView()
-        
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
     
     // Horizontal ScrollView
     var restaurantPhotos: [UIImage] = []
@@ -79,7 +78,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     func createSlides() -> [Slide] {
         
         var slides: [Slide] = []
-
+        
         for photo in restaurantPhotos{
             
             let slide: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
@@ -90,7 +89,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
         return slides
     }
-
     
     func setupSlideScrollView(slides : [Slide]) {
         
@@ -104,6 +102,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             slideScrollView.addSubview(slides[i])
         }
     }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
         slidePageControl.currentPage = Int(pageIndex)
@@ -117,11 +116,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         
         let _: CGFloat = currentHorizontalOffset / maximumHorizontalOffset
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
-        
     }
     
     // MARK: - IBActions
-    
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         
         let getIndex = segmentedControl.selectedSegmentIndex
@@ -138,6 +135,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = false
             reviewContainerView.isHidden = true
+            fetchHealthData()
         case 2:
             print("Third segment selected")
             aboutContainerView.isHidden = true
@@ -153,17 +151,25 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
-        
         guard let name = restaurantNameLabel.text,
             let healthScore = scoreLabel.text else { return }
         
-        print("Star Button Tapped")
-        FavoriteController.shared.create(image: "Spitz1", name: "Spitz", healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
+        FavoriteController.shared.create(image: "Spitz1", name: name, healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
         
-        favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
-        showFavoriteSavedAlert()
-        FavoriteViewController.shared.updateTableView()
-        favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+        if  favoriteStar.isEnabled {
+            favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
+            showFavoriteSavedAlert()
+            FavoriteViewController.shared.updateTableView()
+            print("Star button tapped once")
+            favoriteStar.isSelected = false
+        }
+        
+        if  !favoriteStar.isEnabled {
+            favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
+            showFavoriteRemovedAlert()
+            //            FavoriteController.shared.delete(favorite: )
+            print("Star button tapped twice")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -172,25 +178,41 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             destinationVC.businesses = businesses
             
-            
             guard let longitude = businesses?.coordinate?.longitude,
                 let lat = businesses?.coordinate?.latitude
                 else { return }
             
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
-            
         }
+}
+    
+    // Favorite star logic
+    func saveNewFavorite() {
+        
+        let image = restaurantPhotos[0]
+        guard let name = restaurantNameLabel.text,
+            let phone = businesses?.restaurantPhone else { return }
+        
+        FavoriteController.shared.create(image: "Image", name: name, healthScore: "5", rating: "5", phone: phone, description: "Description")
+    }
+    
+    func deleteFavorite() {
+        //FavoriteController.delete(<#T##FavoriteController#>)
     }
     
     func showFavoriteSavedAlert() {
-        
-        let noResultsAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
-        noResultsAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
-        self.present(noResultsAlert, animated: true)
+        let favoriteSavedAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
+        favoriteSavedAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
+        self.present(favoriteSavedAlert, animated: true)
+    }
+    
+    func showFavoriteRemovedAlert() {
+        let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
+            favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(favoriteRemovedAlert, animated: true)
     }
     
     func updateView() {
-        
         if let business = businesses {
             guard let restuarantAlias = business.alias else { return }
             
@@ -201,7 +223,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 let starRatingView = restaurantDetails?.imageForRating
                 
                 guard let photoUrls = restaurantDetails?.photos else { return }
-                
                 
                 let photosGroup = DispatchGroup()
                 
@@ -224,16 +245,17 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     self.restaurantNameLabel.text = name
                     self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
                     self.ratingStar.image = starRatingView
-                    
                 }
-
             }
         }
     }
+    
+    func fetchHealthData() {
+        guard let searchText = businesses?.restaurantName else { return }
+        let formattedSearchText = searchText.stripped
+        
+        HealthDataController.shared.getViolationDataWith(searchTerm: formattedSearchText) { (violation) in
+            violation.forEach { print($0.violationTitle)}
+        }
+    }
 }
-
-
-
-
-
-

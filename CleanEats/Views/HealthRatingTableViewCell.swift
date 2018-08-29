@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class HealthRatingTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -19,15 +18,11 @@ class HealthRatingTableViewCell: UITableViewCell {
     @IBOutlet weak var nonCriticalViolationsTotal: UILabel!
     @IBOutlet weak var violationsPointTotal: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         initializeViolationView()
-        }
+    }
     
     func initializeViolationView() {
         

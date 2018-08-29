@@ -247,19 +247,19 @@
         deliveryButton.layer.borderColor = UIColor.black.cgColor
         deliveryButton.layer.borderWidth = 1
     }
- 
- func showNoResultsAlert() {
-    guard let searchedTerm = restaurantSearchBar.text else { return }
     
-    let noResultsAlert = UIAlertController(title: nil, message: "Sorry, we didn't find any results for \(searchedTerm)", preferredStyle: .alert)
+    func showNoResultsAlert() {
+        guard let searchedTerm = restaurantSearchBar.text else { return }
+        
+        let noResultsAlert = UIAlertController(title: nil, message: "Sorry, we didn't find any results for \(searchedTerm)", preferredStyle: .alert)
         noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(noResultsAlert, animated: true)
- }
- 
- func showNoTextAlert() {
-    let noTextAlert = UIAlertController(title: nil, message: "Search cannot be blank", preferredStyle: .alert)
-    noTextAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(noTextAlert, animated: true)
+        self.present(noResultsAlert, animated: true)
+    }
+    
+    func showNoTextAlert() {
+        let noTextAlert = UIAlertController(title: nil, message: "Search cannot be blank", preferredStyle: .alert)
+        noTextAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(noTextAlert, animated: true)
     }
  }
  

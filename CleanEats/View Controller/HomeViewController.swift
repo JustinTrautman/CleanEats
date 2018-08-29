@@ -40,11 +40,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let search = MKLocalSearch(request: request)
         search.start(completionHandler: {(response, error) in
             
+            if response == nil {
+                self.showNoResultsAlert()
+            }
+            
             if let results = response {
                 
                 if let err = error {
                     print("Error occurred in search: \(err.localizedDescription)")
-                } else if results.mapItems.count == 0 {
+                } else if results.mapItems.count == nil {
                     print("No matches found")
                 } else {
                     print("Matches found")
@@ -324,6 +328,14 @@ extension HomeViewController: CLLocationManagerDelegate {
             beginLocationUpdates(locationManager: manager)
         }
         
+    }
+    
+    func showNoResultsAlert() {
+        guard let searchedTerm = searchBarMap.text else { return }
+        
+        let noResultsAlert = UIAlertController(title: nil, message: "Sorry, we didn't find any results for \(searchedTerm)", preferredStyle: .alert)
+        noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(noResultsAlert, animated: true)
     }
     
 }

@@ -7,16 +7,18 @@
 //
 /*
  
- This uses the Yelp API for business search
- This model is the data for the tableViewCell on the SearchPage
+ This model pulls from the Yelp API for business search
+ and retrieves data for the Restaurant Profile screen.
  
  */
+
 import Foundation
 import MapKit
 struct TopLevelData : Codable {
     
     let businesses: [Businesses]
 }
+
 class Businesses: Codable {
     
     let restaurantID: String?
@@ -37,6 +39,7 @@ class Businesses: Codable {
         guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Double(rating)) else {
             return UIImage()
         }
+        
         switch ratingEnum {
         case .oneStar:
             return UIImage(named: "1Star")
@@ -108,14 +111,11 @@ class Businesses: Codable {
         let displayAddress: [String]
         
         enum CodingKeys: String, CodingKey {
-            
             case displayAddress = "display_address"
-            
         }
     }
     
     private enum CodingKeys: String, CodingKey {
-        
         case restaurantID = "id"
         case alias
         case restaurantName = "name"
@@ -130,10 +130,7 @@ class Businesses: Codable {
         case restaurantDistance = "distance"
         case coordinate = "coordinates"
         case location = "location"
-        
     }
-    
-    
 }
 
 enum Rating: Double{

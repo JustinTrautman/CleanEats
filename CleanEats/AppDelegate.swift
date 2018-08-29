@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        }
         
-//        HealthDataController.shared.serializeHealtData()
+//          HealthDataController.shared.serializeHealtData()
 //        HealthDataController.shared.getViolationDataWith(searchTerm: "Red Iguana") { (violations) in
 //            violations.forEach { print($0.violationTitle)}
 //        }

@@ -25,21 +25,21 @@ class HealthDataController {
             self.violationData = violationsDict
             
         } catch let error {
-                print("Error with jsonDecoder decoding json data: \(error)")
-            }
+            print("Error with jsonDecoder decoding json data: \(error)")
         }
+    }
     
-//    func getViolationDataWith(searchTerm: String, completion: @escaping (([Violation])->Void)) {
-//        var resultsFound = [Violation]()
-//        for results in violationData.keys {
-//            if results.contains(searchTerm.uppercased()) {
-//                print(results)
-//                violationData[results]?.forEach {
-//                    resultsFound.append($0)
-//                }
-//            }
-//            completion(resultsFound)
-//        }
-//        
-//    }
+    func getViolationDataWith(searchTerm: String, completion: @escaping (([Violation]) -> Void)) {
+        var resultsFound = [Violation]()
+        for results in violationData.keys {
+            if results.contains(searchTerm.uppercased()) {
+                //              print(results)
+                violationData[results]?.forEach {
+                    resultsFound.append($0)
+                }
+            }
+            completion(resultsFound)
+        }
+        print("I found \(resultsFound.count) restaurant(s) that match that search term in the health database")
+    }
 }

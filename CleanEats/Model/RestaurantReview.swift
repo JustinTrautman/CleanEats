@@ -29,6 +29,7 @@ class Reviews : NSObject, Codable {
         guard let rating = rating, let ratingEnum = Rating(rawValue: Double(rating)) else {
             return UIImage()
         }
+        
         switch ratingEnum {
             case .oneStar:
             return UIImage(named: "1Star")
@@ -57,7 +58,6 @@ class Reviews : NSObject, Codable {
         self.reviewTimestamp = reviewTimestamp
         self.userData = userData
         self.rating = rating
-        
     }
     
     enum CodingKeys: String, CodingKey {
@@ -76,9 +76,5 @@ class Reviews : NSObject, Codable {
             case reviewerImageURL = "image_url"
             case reviewerName = "name"
         }
-        
     }
 }
-
-
-

@@ -54,6 +54,8 @@
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
+		D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */; };
+		D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1DDFD213615E100495A06 /* StringExtension.swift */; };
 		EC92B2602D54F835DF819B3A /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,8 @@
 		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		D0E1DDFD213615E100495A06 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				0692702D2100F04B00DC4411 /* HelperExtentions.swift */,
+				D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */,
+				D0E1DDFD213615E100495A06 /* StringExtension.swift */,
 			);
 			path = "Helper+Extentions";
 			sourceTree = "<group>";
@@ -489,6 +495,8 @@
 				42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */,
 				4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */,
 				D056789B20FAACE500FB6470 /* HealthDataController.swift in Sources */,
+				D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */,
+				D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */,
 				42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */,
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */,
