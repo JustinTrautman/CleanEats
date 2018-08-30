@@ -33,13 +33,13 @@ class HealthDataController {
         var resultsFound = [Violation]()
         for results in violationData.keys {
             if results.contains(searchTerm.uppercased()) {
-                //              print(results)
+                // print(results) <<<< Testing only. TODO: - Remove
                 violationData[results]?.forEach {
                     resultsFound.append($0)
                 }
             }
             completion(resultsFound)
         }
-        print("I found \(resultsFound.count) restaurant(s) that match that search term in the health database")
+        print("I found \(resultsFound.count) result(s) that match that search term in the health database")
     }
 }

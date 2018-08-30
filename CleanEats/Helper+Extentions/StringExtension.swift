@@ -11,7 +11,7 @@ import Foundation
 extension String {
     
     var stripped: String {
-        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ")
-        return self.filter {okayChars.contains($0) }
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ&")
+        return self.filter { okayChars.contains($0) }
     }
 }

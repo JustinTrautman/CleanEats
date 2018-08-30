@@ -18,6 +18,8 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     @IBOutlet weak var restaurantPhoneNumber: UILabel!
     
+    var restaurantDetails: Businesses?
+    
     var restaurant: Restaurant? {
         didSet{
             updateViews()
@@ -25,18 +27,22 @@ class FavoriteTableViewCell: UITableViewCell {
     }
     
     func updateViews() {
-        guard let restaurant = restaurant else { return }
+        guard let restaurant = restaurant,
+        let phone = restaurantDetails?.restaurantPhone,
+        let desriptionCategories = restaurantDetails?.categories else { return }
+        
+        let description1 = desriptionCategories[0].title
+        let description2 = desriptionCategories[1].title
+        let description3 = desriptionCategories[2].title
         
 //        restaurantImageView.image = restaurant.restaurantImage
-        restaurantImageView.image = UIImage(named: "Spitz1")
-        restaurantNameLabel.text = "Spitz SLC"
-        restaurantRatingImageView.image = restaurant.restaurantRating
+        restaurantImageView.image = restaurant.restaurantImage
+        restaurantNameLabel.text = restaurant.restaurantTitle
+        restaurantRatingImageView.image = #imageLiteral(resourceName: "fiveStars")
         restaurantDistanceLabel.text = restaurant.restaurantDistance
-        restaurantDescriptionLabel.text = "Mediterranean Restaurant"
+        restaurantDescriptionLabel.text = "\(description1); \(description2); \(description3)"
         restaurantScoreLabel.text = "5"
 //        restaurantScoreLabel.text = restaurant.restaurantRisk
-        restaurantPhoneNumber.text = "(801) 364-0286"
+        restaurantPhoneNumber.text = phone
     }
-
-
 }

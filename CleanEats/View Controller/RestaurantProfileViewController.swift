@@ -32,13 +32,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBOutlet weak var slidePageControl: UIPageControl!
-    
     @IBOutlet weak var ratingStar: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var aboutContainerView: UIView!
     @IBOutlet weak var healthRatingContainerView: UIView!
@@ -46,26 +44,31 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Image carousel setup
         view.addSubview(scrollView)
         slideScrollView.delegate = self
-        
         slidePageControl.currentPage = 0
         scrollView.contentSize = CGSize(width: 375, height: 800)
+        view.bringSubview(toFront: slidePageControl)
+        
+        // Text label setup
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
-        view.bringSubview(toFront: slidePageControl)
+
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
-        
-        // Prepares health data for use
-        HealthDataController.shared.serializeHealtData()
-        fetchHealthData()
- 
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         updateView()
+        
+        // Prepares health data for use to speed up parsing
+        print("Serializing health data...")
+        HealthDataController.shared.serializeHealtData()
+        print("Done serializing health data")
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,8 +95,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func setupSlideScrollView(slides : [Slide]) {
         
-        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180
-        )
+        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180)
         slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
         slideScrollView.isPagingEnabled = true
         
@@ -120,10 +122,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - IBActions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        
         let getIndex = segmentedControl.selectedSegmentIndex
-        switch getIndex
-        {
+        
+        switch getIndex {
+            
         case 0:
             print("First Segment Selected")
             aboutContainerView.isHidden = false
@@ -135,7 +137,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = false
             reviewContainerView.isHidden = true
+            
+            // Fetches health data for selected restaurant
             fetchHealthData()
+            
         case 2:
             print("Third segment selected")
             aboutContainerView.isHidden = true
@@ -152,9 +157,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         guard let name = restaurantNameLabel.text,
-            let healthScore = scoreLabel.text else { return }
+            let healthScore = scoreLabel.text,
+            let phone = businesses?.restaurantPhone else { return }
         
-        FavoriteController.shared.create(image: "Spitz1", name: name, healthScore: "5", rating: "4 Stars", phone: "(801) 364-0286", description: "Mediterranean Restaurant")
+        saveNewFavorite()
         
         if  favoriteStar.isEnabled {
             favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
@@ -184,16 +190,22 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
         }
-}
+    }
     
     // Favorite star logic
     func saveNewFavorite() {
+        
+        guard let desriptionCategories = businesses?.categories else { return }
+        
+        let description1 = desriptionCategories[0].title
+        let description2 = desriptionCategories[1].title
+        let description3 = desriptionCategories[2].title
         
         let image = restaurantPhotos[0]
         guard let name = restaurantNameLabel.text,
             let phone = businesses?.restaurantPhone else { return }
         
-        FavoriteController.shared.create(image: "Image", name: name, healthScore: "5", rating: "5", phone: phone, description: "Description")
+        FavoriteController.shared.create(image: "Image", name: name, healthScore: "5", rating: "5", phone: phone, description: "\(description1); \(description2); \(description3)")
     }
     
     func deleteFavorite() {
@@ -208,7 +220,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func showFavoriteRemovedAlert() {
         let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
-            favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(favoriteRemovedAlert, animated: true)
     }
     
@@ -251,11 +263,58 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchHealthData() {
-        guard let searchText = businesses?.restaurantName else { return }
-        let formattedSearchText = searchText.stripped
         
-        HealthDataController.shared.getViolationDataWith(searchTerm: formattedSearchText) { (violation) in
-            violation.forEach { print($0.violationTitle)}
+        var violationTitles: String?
+        var criticalViolations: Int?
+        var nonCriticalViolations: Int?
+        var inspectionDates: String?
+        var violationCodes: String?
+        var violationWeights: Int?
+        
+        guard let searchText = businesses?.location?.displayAddress[0] else { return }
+        let formattedSearchText = searchText.replacingOccurrences(of: "th", with: "").uppercased()
+        guard var nameSearch = businesses?.restaurantName else { return }
+        //        print(searchText)
+        //        print(formattedSearchText)
+        
+        HealthDataController.shared.getViolationDataWith(searchTerm: "\(formattedSearchText)") { (violation) in
+            violation.forEach {
+                // MARK: - Pyramid of if statements and cavemen debugging with print statements.
+                if let violationTitle = $0.violationTitle {
+                    violationTitles = violationTitle
+                    print(violationTitles)
+                }
+                
+                if let criticalViolation = $0.criticalViolation {
+                    criticalViolations = criticalViolation
+                    print(criticalViolations)
+                }
+                
+                if let nonCriticalViolation = $0.nonCriticalViolation {
+                    nonCriticalViolations = nonCriticalViolation
+                    print(nonCriticalViolations)
+                    
+                }
+                
+                if let inspectionDate = $0.inspectionDate {
+                    inspectionDates = inspectionDate
+                    print(inspectionDates)
+                }
+                
+                if let violationCode = $0.violationCode {
+                    violationCodes = violationCode
+                    print(violationCodes)
+                }
+                
+                if let violationWeight = $0.weight {
+                    violationWeights = violationWeight
+                    print(violationWeights)
+                }
+            }
+            
+            if violation.count == 0 {
+                print(">>> No Results Found <<<")
+            }
         }
     }
 }

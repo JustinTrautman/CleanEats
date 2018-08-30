@@ -40,16 +40,17 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let search = MKLocalSearch(request: request)
         search.start(completionHandler: {(response, error) in
             
-            if response == nil {
-                self.showNoResultsAlert()
-            }
+//            if self.matchingItems.count == 0 {
+//                self.showNoResultsAlert()
+//            }
             
             if let results = response {
                 
                 if let err = error {
                     print("Error occurred in search: \(err.localizedDescription)")
-                } else if results.mapItems.count == nil {
+                } else if results.mapItems.count == 0 {
                     print("No matches found")
+                    self.showNoResultsAlert()
                 } else {
                     print("Matches found")
                     
@@ -75,6 +76,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                             
                             let coordinate = self.getCordinate(latitude: lat, longitude: log)
                             
+                            // TODO: - remove unnecessary code from main thread
                             DispatchQueue.main.async {
                                 
                                 let point = CustomAnnotation(coordinate: coordinate, restaurant: objects)
