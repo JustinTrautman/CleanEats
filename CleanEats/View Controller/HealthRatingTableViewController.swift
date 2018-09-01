@@ -10,10 +10,19 @@ import UIKit
 
 class HealthRatingTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // MARK: IBOutlets
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoButton: UIButton!
     
+    // MARK: - Properties
+    var violationTitles: [String?] = []
+    var criticalViolations: [Int]? = []
+    var nonCriticalViolations: [Int]? = []
+    var inspectionDates: [String]? = []
+    var violationCodes: [String]? = []
+    var violationWeights: [Int]? = []
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self

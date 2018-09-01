@@ -17,16 +17,12 @@ protocol AboutProfileViewControllerDelegate: class {
 class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: IBOutlets
-    
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    
     @IBOutlet weak var phoneButton: UIButton!
-    @IBOutlet weak var webAddressButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
-    
     var businesses: Businesses?
     
     weak var delegate: AboutProfileViewControllerDelegate?
@@ -37,9 +33,7 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         delegate?.didUpdateAboutProfileVC(sender: self)
         updateViews()
-        
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -54,10 +48,10 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - IBActions
     @IBAction func callButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func addressButtonTapped(_ sender: UIButton) {
-    }
-    @IBAction func webAddressButtonTapped(_ sender: UIButton) {
+        // TODO: - Replace deprecated OpenURL code.
+        print("Call button tapped")
+        let phoneURL = NSURL(string: "tel://3604996044")!
+        UIApplication.shared.openURL(phoneURL as URL)
     }
     
     // MARK: - Properties

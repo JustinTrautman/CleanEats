@@ -24,6 +24,7 @@ class FavoriteViewController: UIViewController {
             
             favoriteTableView.delegate = self
             favoriteTableView.dataSource = self
+            favoriteTableView.tableFooterView = UIView()
             
             updateTableView()
         }

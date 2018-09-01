@@ -15,6 +15,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     var businesses: Businesses?
     var restaurantDetails: RestaurantDetails?
     
+    var violationTitles: [String?] = []
+    var criticalViolations: [Int]? = []
+    var nonCriticalViolations: [Int]? = []
+    var inspectionDates: [String]? = []
+    var violationCodes: [String]? = []
+    var violationWeights: [Int]? = []
+    
     var dateComponents: DateComponents {
         let now = Date()
         let components = Calendar.current.dateComponents([.day, .hour, .minute, .weekday], from: now)
@@ -55,7 +62,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         // Text label setup
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
-
+        
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
     }
@@ -94,7 +101,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupSlideScrollView(slides : [Slide]) {
-        
         slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180)
         slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
         slideScrollView.isPagingEnabled = true
@@ -122,6 +128,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - IBActions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        
+        
+        
         let getIndex = segmentedControl.selectedSegmentIndex
         
         switch getIndex {
@@ -140,6 +149,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             // Fetches health data for selected restaurant
             fetchHealthData()
+            
+            
             
         case 2:
             print("Third segment selected")
@@ -173,7 +184,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         if  !favoriteStar.isEnabled {
             favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
             showFavoriteRemovedAlert()
-            //            FavoriteController.shared.delete(favorite: )
+            deleteFavorite()
             print("Star button tapped twice")
         }
     }
@@ -191,6 +202,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
         }
     }
+    //
+    //    var violationTitles: [String?] = []
+    //    var criticalViolations: [Int]?
+    //    var nonCriticalViolations: [Int]?
+    //    var inspectionDates: [String]?
+    //    var violationCodes: [String]?
+    //    var violationWeights: [Int]?
     
     // Favorite star logic
     func saveNewFavorite() {
@@ -209,7 +227,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func deleteFavorite() {
-        //FavoriteController.delete(<#T##FavoriteController#>)
+        
+        // TODO: - Impelement favorite delete function
     }
     
     func showFavoriteSavedAlert() {
@@ -263,17 +282,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func fetchHealthData() {
-        
-        var violationTitles: String?
-        var criticalViolations: Int?
-        var nonCriticalViolations: Int?
-        var inspectionDates: String?
-        var violationCodes: String?
-        var violationWeights: Int?
-        
         guard let searchText = businesses?.location?.displayAddress[0] else { return }
         let formattedSearchText = searchText.replacingOccurrences(of: "th", with: "").uppercased()
-        guard var nameSearch = businesses?.restaurantName else { return }
         //        print(searchText)
         //        print(formattedSearchText)
         
@@ -281,39 +291,41 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             violation.forEach {
                 // MARK: - Pyramid of if statements and cavemen debugging with print statements.
                 if let violationTitle = $0.violationTitle {
-                    violationTitles = violationTitle
-                    print(violationTitles)
+                    self.violationTitles = [violationTitle]
+                    self.violationTitles.removeDuplicates()
+                    print(self.violationTitles)
                 }
                 
                 if let criticalViolation = $0.criticalViolation {
-                    criticalViolations = criticalViolation
-                    print(criticalViolations)
+                    self.criticalViolations = [criticalViolation]
+                    self.criticalViolations?.removeDuplicates()
+                    print(self.criticalViolations)
                 }
                 
                 if let nonCriticalViolation = $0.nonCriticalViolation {
-                    nonCriticalViolations = nonCriticalViolation
-                    print(nonCriticalViolations)
+                    self.nonCriticalViolations = [nonCriticalViolation]
+                    self.nonCriticalViolations?.removeDuplicates()
+                    print(self.nonCriticalViolations)
                     
                 }
                 
                 if let inspectionDate = $0.inspectionDate {
-                    inspectionDates = inspectionDate
-                    print(inspectionDates)
+                    self.inspectionDates = [inspectionDate]
+                    self.inspectionDates?.removeDuplicates()
+                    print(self.inspectionDates)
                 }
                 
                 if let violationCode = $0.violationCode {
-                    violationCodes = violationCode
-                    print(violationCodes)
+                    self.violationCodes = [violationCode]
+                    self.violationCodes?.removeDuplicates()
+                    print(self.violationCodes)
                 }
                 
                 if let violationWeight = $0.weight {
-                    violationWeights = violationWeight
-                    print(violationWeights)
+                    self.violationWeights = [violationWeight]
+                    self.violationWeights?.removeDuplicates()
+                    print(self.violationWeights)
                 }
-            }
-            
-            if violation.count == 0 {
-                print(">>> No Results Found <<<")
             }
         }
     }
