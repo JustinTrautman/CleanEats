@@ -24,7 +24,6 @@
 		4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */; };
 		423D7E9120FE613F00ED74AB /* Violation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9020FE613F00ED74AB /* Violation.swift */; };
 		423D7E9320FFAFF200ED74AB /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */; };
-		424E31F22113B2E900EDCEE6 /* ViolationMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */; };
 		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsViewController.swift */; };
@@ -42,6 +41,7 @@
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
+		D023F73C213B079A001678CF /* HealthViolationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023F73B213B079A001678CF /* HealthViolationData.swift */; };
 		D02515A420F905A2006198E9 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02515A320F905A2006198E9 /* CalloutView.swift */; };
 		D04B26B120FE5C8C001D0F9D /* U.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B26B020FE5C8C001D0F9D /* U.swift */; };
 		D04B26B320FE5CD3001D0F9D /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B26B220FE5CD3001D0F9D /* FavoriteController.swift */; };
@@ -95,7 +95,6 @@
 		4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
 		423D7E9020FE613F00ED74AB /* Violation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Violation.swift; sourceTree = "<group>"; };
 		423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
-		424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationMockData.swift; sourceTree = "<group>"; };
 		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
 		D01F559720F5025300E38C9B /* RestaurantReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewController.swift; sourceTree = "<group>"; };
+		D023F73B213B079A001678CF /* HealthViolationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViolationData.swift; sourceTree = "<group>"; };
 		D02515A320F905A2006198E9 /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		D04B26B020FE5C8C001D0F9D /* U.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = U.swift; sourceTree = "<group>"; };
 		D04B26B220FE5CD3001D0F9D /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 				42EECA3E20F90894002431D2 /* healthData.json */,
 				D04B26B020FE5C8C001D0F9D /* U.swift */,
 				423D7E9020FE613F00ED74AB /* Violation.swift */,
-				424E31F12113B2E900EDCEE6 /* ViolationMockData.swift */,
+				D023F73B213B079A001678CF /* HealthViolationData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -493,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */,
+				D023F73C213B079A001678CF /* HealthViolationData.swift in Sources */,
 				4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */,
 				D056789B20FAACE500FB6470 /* HealthDataController.swift in Sources */,
 				D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */,
@@ -524,7 +525,6 @@
 				42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */,
 				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
 				D02515A420F905A2006198E9 /* CalloutView.swift in Sources */,
-				424E31F22113B2E900EDCEE6 /* ViolationMockData.swift in Sources */,
 				D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */,
 				068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */,
 				4211E83E20FD1027008DB9EB /* Restaurant.swift in Sources */,

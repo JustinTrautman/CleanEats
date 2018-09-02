@@ -10,17 +10,21 @@ import UIKit
 
 class HealthRatingTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    static let shared = HealthRatingTableViewController()
+    
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoButton: UIButton!
     
     // MARK: - Properties
-    var violationTitles: [String?] = []
-    var criticalViolations: [Int]? = []
-    var nonCriticalViolations: [Int]? = []
-    var inspectionDates: [String]? = []
-    var violationCodes: [String]? = []
-    var violationWeights: [Int]? = []
+    var restaurants: Businesses?
+    
+    var violationTitles = HealthViolationData.shared.violationTitles
+    var criticalViolations = HealthViolationData.shared.criticalViolations
+    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
+    var inspectionDates = HealthViolationData.shared.inspectionDates
+    var violationCodes = HealthViolationData.shared.violationCodes
+    var violationWeights = HealthViolationData.shared.violationWeights
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -28,76 +32,106 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
+        
+        // Prepares health data for use to speed up parsing
+        print("Serializing health data...")
+        HealthDataController.shared.serializeHealtData()
+        print("Done serializing health data")
+        
+        // Fetches health data for selected restaurant
+        fetchHealthData()
     }
     
+    func fetchHealthData() {
+        guard let searchText = restaurants?.location?.displayAddress[0] else { return }
+        let formattedSearchText = searchText.replacingOccurrences(of: "th", with: "").uppercased()
+        print(searchText)
+        print(formattedSearchText)
+        
+        HealthDataController.shared.getViolationDataWith(searchTerm: "\(formattedSearchText)") { (violation) in
+            violation.forEach {
+                // MARK: - Pyramid of if statements and caveman debugging with print statements.
+                if let violationTitle = $0.violationTitle {
+                    HealthViolationData.shared.violationTitles?.append(violationTitle)
+                }
+                
+                if let criticalViolation = $0.criticalViolation {
+                    HealthViolationData.shared.criticalViolations?.append(criticalViolation)
+                    self.criticalViolations?.removeDuplicates()
+                    //                    print(self.criticalViolations)
+                }
+                
+                if let nonCriticalViolation = $0.nonCriticalViolation {
+                    HealthViolationData.shared.nonCriticalViolations?.append(nonCriticalViolation)
+                    self.nonCriticalViolations?.removeDuplicates()
+                    //                    print(self.nonCriticalViolations)
+                }
+                
+                if let inspectionDate = $0.inspectionDate {
+                    HealthViolationData.shared.inspectionDates?.append(inspectionDate)
+                    self.inspectionDates?.removeDuplicates()
+                    //                    print(self.inspectionDates)
+                }
+                
+                if let violationCode = $0.violationCode {
+                    HealthViolationData.shared.violationCodes?.append(violationCode)
+                    self.violationCodes?.removeDuplicates()
+                    //                    print(self.violationCodes)
+                }
+                
+                if let violationWeight = $0.weight {
+                    HealthViolationData.shared.violationWeights?.append(violationWeight)
+                    self.violationWeights?.removeDuplicates()
+                    //                    print(self.violationWeights)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Table view data source
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 210
     }
     
-    // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
+        guard let inspectionDates = inspectionDates else { return 0 }
+        return inspectionDates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return  UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return UITableViewCell() }
         
+        guard let criticalViolations = criticalViolations,
+            let nonCriticalViolations = nonCriticalViolations,
+            var inspectionDate = inspectionDates else { return UITableViewCell() }
+            inspectionDate.removeDuplicates()
         
+        cell.inspectionDateLabel.text = "\(inspectionDate)"
+        cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
+        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
+        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
         
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    
     // MARK: - Navigation
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        if segue.identifier == "toViolationVC" {
+            guard let destinationVC = segue.destination as? ViolationDetailViewController else { return }
+            
+            destinationVC.violationTitles = violationTitles
+            destinationVC.criticalViolations = criticalViolations
+            destinationVC.nonCriticalViolations = nonCriticalViolations
+            destinationVC.inspectionDates = inspectionDates
+            destinationVC.violationCodes = violationCodes
+            destinationVC.violationWeights = violationWeights
+        }
     }
-    
     
     // MARK: - IBActions
     @IBAction func infoButtonTapped(_ sender: Any) {
@@ -116,6 +150,3 @@ extension HealthRatingTableViewController {
         present(alert, animated: true)
     }
 }
-
-
-

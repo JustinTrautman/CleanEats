@@ -29,8 +29,6 @@ class RestaurantReviewController {
         var request = URLRequest(url: completeURL)
         request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
         
-        print(request)
-
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 print("DataTask had an issue reaching the network. Exiting with error: \(error) \(error.localizedDescription)")
@@ -38,8 +36,7 @@ class RestaurantReviewController {
             }
                 guard let data = data else { completion(nil) ; return }
                 let jsonDecoder = JSONDecoder()
-            print(data)
-                
+            
                 do {
                     let reviews = try jsonDecoder.decode(TopReviewData.self, from: data).reviews
                     self.reviews = reviews

@@ -31,7 +31,6 @@ class FavoriteController {
         let documentDirectory = paths[0]
         let favoritesLocation = "cleaneats.json"
         let url = documentDirectory.appendingPathComponent(favoritesLocation)
-        print(url)
         return url
     }
     

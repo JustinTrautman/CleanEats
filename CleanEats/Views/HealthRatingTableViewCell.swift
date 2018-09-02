@@ -11,16 +11,24 @@ import UIKit
 class HealthRatingTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet weak var inspectionDateLabel: UILabel!
     @IBOutlet weak var violationView: UIView!
     @IBOutlet weak var violationViewSubview: UIView!
-    
     @IBOutlet weak var criticalViolationsTotal: UILabel!
     @IBOutlet weak var nonCriticalViolationsTotal: UILabel!
     @IBOutlet weak var violationsPointTotal: UILabel!
     
+    // Properies
+    var violationTitles = HealthRatingTableViewController.shared.violationTitles
+    var criticalViolations = HealthRatingTableViewController.shared.criticalViolations
+    var nonCriticalViolations = HealthRatingTableViewController.shared.nonCriticalViolations
+    var inspectionDates = HealthRatingTableViewController.shared.inspectionDates
+    var violationCodes = HealthRatingTableViewController.shared.violationCodes
+    var violationWeights = HealthRatingTableViewController.shared.violationWeights
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         initializeViolationView()
     }
     
@@ -39,13 +47,6 @@ class HealthRatingTableViewCell: UITableViewCell {
         violationViewSubview.layer.cornerRadius = 3
         violationViewSubview.clipsToBounds = true
         self.selectionStyle = .none
-        
     }
-    // MARK: IBActions
-    
-    
-    
 }
-// Three steps for child
-// Two steps for the parent
 

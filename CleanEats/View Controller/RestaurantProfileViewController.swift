@@ -52,6 +52,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let criticalTotal = HealthViolationData.shared.criticalViolations?.count,
+            let nonCriticalTotal = HealthViolationData.shared.nonCriticalViolations?.count else { return }
+        
         // Image carousel setup
         view.addSubview(scrollView)
         slideScrollView.delegate = self
@@ -62,6 +65,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         // Text label setup
         scoreLabel.layer.masksToBounds = true
         scoreLabel.layer.cornerRadius = 5
+        scoreLabel.text = "\(criticalTotal + nonCriticalTotal)"
         
         let aboutVC = AboutProfileViewController()
         self.addChildViewController(aboutVC)
@@ -71,6 +75,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(true)
         
         updateView()
+        
+//        showLoadingHealthDataAlert()
         
         // Prepares health data for use to speed up parsing
         print("Serializing health data...")
@@ -128,9 +134,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - IBActions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        
-        
-        
         let getIndex = segmentedControl.selectedSegmentIndex
         
         switch getIndex {
@@ -146,12 +149,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = false
             reviewContainerView.isHidden = true
-            
-            // Fetches health data for selected restaurant
-            fetchHealthData()
-            
-            
-            
+        
         case 2:
             print("Third segment selected")
             aboutContainerView.isHidden = true
@@ -191,7 +189,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "aboutProfile" {
-            guard let destinationVC = segue.destination as? AboutProfileViewController else {return}
+            guard let destinationVC = segue.destination as? AboutProfileViewController else { return }
             
             destinationVC.businesses = businesses
             
@@ -201,14 +199,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
         }
+        
+        if segue.identifier == "toHealthTV" {
+            guard let destinationTV = segue.destination as? HealthRatingTableViewController else { return }
+            
+            destinationTV.restaurants = businesses
+        }
     }
-    //
-    //    var violationTitles: [String?] = []
-    //    var criticalViolations: [Int]?
-    //    var nonCriticalViolations: [Int]?
-    //    var inspectionDates: [String]?
-    //    var violationCodes: [String]?
-    //    var violationWeights: [Int]?
     
     // Favorite star logic
     func saveNewFavorite() {
@@ -241,6 +238,22 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
         favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(favoriteRemovedAlert, animated: true)
+    }
+    
+    func showLoadingHealthDataAlert() {
+        
+        let loadingAlert = UIAlertController(title: nil, message: "Testing...", preferredStyle: .alert)
+        
+        loadingAlert.view.tintColor = UIColor.black
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating()
+        
+        loadingAlert.view.addSubview(loadingIndicator)
+        present(loadingAlert, animated: true, completion: nil)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func updateView() {
@@ -276,55 +289,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     self.restaurantNameLabel.text = name
                     self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
                     self.ratingStar.image = starRatingView
-                }
-            }
-        }
-    }
-    
-    func fetchHealthData() {
-        guard let searchText = businesses?.location?.displayAddress[0] else { return }
-        let formattedSearchText = searchText.replacingOccurrences(of: "th", with: "").uppercased()
-        //        print(searchText)
-        //        print(formattedSearchText)
-        
-        HealthDataController.shared.getViolationDataWith(searchTerm: "\(formattedSearchText)") { (violation) in
-            violation.forEach {
-                // MARK: - Pyramid of if statements and cavemen debugging with print statements.
-                if let violationTitle = $0.violationTitle {
-                    self.violationTitles = [violationTitle]
-                    self.violationTitles.removeDuplicates()
-                    print(self.violationTitles)
-                }
-                
-                if let criticalViolation = $0.criticalViolation {
-                    self.criticalViolations = [criticalViolation]
-                    self.criticalViolations?.removeDuplicates()
-                    print(self.criticalViolations)
-                }
-                
-                if let nonCriticalViolation = $0.nonCriticalViolation {
-                    self.nonCriticalViolations = [nonCriticalViolation]
-                    self.nonCriticalViolations?.removeDuplicates()
-                    print(self.nonCriticalViolations)
-                    
-                }
-                
-                if let inspectionDate = $0.inspectionDate {
-                    self.inspectionDates = [inspectionDate]
-                    self.inspectionDates?.removeDuplicates()
-                    print(self.inspectionDates)
-                }
-                
-                if let violationCode = $0.violationCode {
-                    self.violationCodes = [violationCode]
-                    self.violationCodes?.removeDuplicates()
-                    print(self.violationCodes)
-                }
-                
-                if let violationWeight = $0.weight {
-                    self.violationWeights = [violationWeight]
-                    self.violationWeights?.removeDuplicates()
-                    print(self.violationWeights)
                 }
             }
         }

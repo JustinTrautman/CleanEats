@@ -306,7 +306,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
             detailVC.businesses = self.selectedRestaurant
             detailVC.navigationItem.hidesBackButton = true
-    
         }
     }
 }
@@ -329,7 +328,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             beginLocationUpdates(locationManager: manager)
         }
-        
     }
     
     func showNoResultsAlert() {
@@ -339,7 +337,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(noResultsAlert, animated: true)
     }
-    
 }
 
 extension HomeViewController: CalloutViewDelegate {

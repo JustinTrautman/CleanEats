@@ -68,7 +68,6 @@ class ReviewsViewController: UIViewController {
     
     @IBAction func yelpButtonTapped(_ sender: Any) {
         openYelpURL(urlStr: "http://www.yelp.com")
-        print("yelp button tapped")
     }
     
     
@@ -114,8 +113,4 @@ extension ReviewsViewController:  UITableViewDelegate, UITableViewDataSource {
             return 170
         }
     }
-    
 }
-
-
-

@@ -10,31 +10,30 @@ import UIKit
 
 class ViolationDetailViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
     
-    
-    // MARK: - Private Properties
-    
-    let mockDataController = MockDataController()
-    
+    // MARK: - Properties
+    var violationTitles = HealthViolationData.shared.violationTitles
+    var criticalViolations = HealthViolationData.shared.criticalViolations
+    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
+    var inspectionDates = HealthViolationData.shared.inspectionDates
+    var violationCodes = HealthViolationData.shared.violationCodes
+    var violationWeights = HealthViolationData.shared.violationWeights
     
     // MARK:  IBOutlets
-    @IBOutlet weak var violationTableViewController: UITableView!
+    @IBOutlet weak var violationTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        violationTableViewController.dataSource = self
-        violationTableViewController.delegate = self
-        violationTableViewController.bounces = false
-        
+        violationTableView.dataSource = self
+        violationTableView.delegate = self
+        violationTableView.bounces = false
+        violationTableView.tableFooterView = UIView()
     }
     
     func splitBetweenMajorAndMinor(_ input: [Violation]) -> (major: [Violation], minor: [Violation]) {
         // USE THE .filter() method
         return([], [])
     }
-    
-    
 }
-
 
 extension  ViolationDetailViewController: UITableViewDelegate {
     
@@ -43,29 +42,26 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0 {
-            return MockDataController.shared.mockData.count   //array
-        } else if section == 1 {
-            return 1   //array
-        } else {
-            return 1
-        }
-        
+        guard var violations = violationTitles else { return 0 }
+          print(violations.removeDuplicates())
+        return violations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        guard var violationTitle = violationTitles else { return UITableViewCell() }
+        violationTitle.removeDuplicates()
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath) as! CriticalViolationTableViewCell
         
-        let mockData = mockDataController.mockData[indexPath.row]
-        cell.violationMockData = mockData
+        let violationData = violationTitle[indexPath.row]
+        
+        cell.numberOfCriticalViolations = violationData.count
+        cell.violationTitleMajor.text = "\(violationTitle)"
         
         return cell
     }
-    
-    
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
@@ -73,6 +69,9 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let violationBoldText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
         let violationTitleText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)]
+        
+        guard let criticalViolationTotal = HealthViolationData.shared.criticalViolations,
+        let nonCriticalViolationTotal = HealthViolationData.shared.nonCriticalViolations else { return UIView() }
         
         if section == 0 {
             
@@ -88,7 +87,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
             let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: violationBoldText)
-            attributedText.append(NSAttributedString(string: "  \(4)", attributes: [ // Put your model object major violations where 99 is
+            attributedText.append(NSAttributedString(string: "  \(criticalViolationTotal.count)", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red
                 ]))
             
@@ -107,11 +106,9 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             nonCriticalViolationsLabel.centerYAnchor.constraint(equalTo: headerTwoView.centerYAnchor, constant: 0).isActive = true
             //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
-            
-            
             let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
             
-            attributedText.append(NSAttributedString(string: "  \(1)", attributes: [ // Put your model object major violations where 99 is
+            attributedText.append(NSAttributedString(string: "  \(nonCriticalViolationTotal.count)", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red]))
             
             nonCriticalViolationsLabel.attributedText = attributedText
@@ -123,8 +120,4 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             return nil
         }
     }
-    
 }
-
-
-

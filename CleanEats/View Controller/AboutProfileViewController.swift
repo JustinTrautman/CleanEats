@@ -42,15 +42,14 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         guard let businesses  = businesses else {return}
         let point = CustomAnnotation(coordinate: restaurantCoordinates, restaurant: businesses)
         
-        
         self.mapView.addAnnotations([point])
     }
     
     // MARK: - IBActions
     @IBAction func callButtonTapped(_ sender: UIButton) {
         // TODO: - Replace deprecated OpenURL code.
-        print("Call button tapped")
-        let phoneURL = NSURL(string: "tel://3604996044")!
+        guard let phoneNumber = phoneButton.currentTitle?.replacingOccurrences(of: " ", with: ""),
+            let phoneURL = NSURL(string: "tel://\(phoneNumber)") else { return }
         UIApplication.shared.openURL(phoneURL as URL)
     }
     
@@ -92,9 +91,7 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         annotationView?.image = UIImage(named: "pin")
         
         return annotationView
-        
     }
-    
 }
 
 class ButtonWithImage: UIButton {
@@ -106,6 +103,4 @@ class ButtonWithImage: UIButton {
             titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (imageView?.frame.width)!)
         }
     }
-    
 }
-
