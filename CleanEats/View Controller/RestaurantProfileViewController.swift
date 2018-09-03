@@ -211,20 +211,28 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     // Favorite star logic
     func saveNewFavorite() {
+        guard let desriptionCategories = businesses?.categories,
+        let criticalViolations = criticalViolations,
+        let nonCriticalViolations = nonCriticalViolations else { return }
         
-        guard let desriptionCategories = businesses?.categories else { return }
+        let totalViolations = criticalViolations.count + nonCriticalViolations.count
         
-        let description1 = desriptionCategories[0].title
-        let description2 = desriptionCategories[1].title
-        let description3 = desriptionCategories[2].title
+        if let description1 = desriptionCategories[0].title {
         
         let image = restaurantPhotos[0]
         guard let name = restaurantNameLabel.text,
             let phone = businesses?.restaurantPhone else { return }
         
-        FavoriteController.shared.create(image: "Image", name: name, healthScore: "5", rating: "5", phone: phone, description: "\(description1); \(description2); \(description3)")
+        // Register default image
+        UserDefaults.standard.register(defaults: ["key": UIImageJPEGRepresentation(image, 100)])
+        
+        // Save image to UserDefaults
+        UserDefaults.standard.set(UIImageJPEGRepresentation(image, 100), forKey: "key")
+        
+        FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "5", phone: phone, description: "\(description1)")
+        }
     }
-    
+
     func deleteFavorite() {
         
         // TODO: - Impelement favorite delete function

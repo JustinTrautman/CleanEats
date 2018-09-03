@@ -115,13 +115,6 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         
         let favorite = FavoriteController.shared.favorites[indexPath.row]
         
-//        cell.restaurantNameLabel.text = favorite.restaurantName
-//        cell.restaurantImageView.image = UIImage(named: "Spitz1")
-//        cell.restaurantRatingImageView.image = UIImage(named: "4Star")
-//        cell.restaurantScoreLabel.text = "\(cell.restaurantScoreLabel)"
-//        cell.restaurantPhoneNumber.text = "\(cell.restaurantPhoneNumber)"
-//        cell.restaurantDescriptionLabel.text = "\(cell.restaurantDescriptionLabel)"
-        
         return cell
     }
     
