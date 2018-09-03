@@ -337,18 +337,18 @@ extension HomeViewController: CLLocationManagerDelegate {
         noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(noResultsAlert, animated: true)
     }
+
 }
 
 extension HomeViewController: CalloutViewDelegate {
     func calloutViewTapped(restaurant: Businesses, sender: CalloutView) {
         print("Customcallout from delegate")
-        self.selectedRestaurant = restaurant
         
+        self.selectedRestaurant = restaurant
         
         NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
         
         self.performSegue(withIdentifier: "restaurantProfile", sender: sender)
-        
     }
 }
 

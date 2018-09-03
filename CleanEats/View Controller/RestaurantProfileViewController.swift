@@ -15,12 +15,12 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     var businesses: Businesses?
     var restaurantDetails: RestaurantDetails?
     
-    var violationTitles: [String?] = []
-    var criticalViolations: [Int]? = []
-    var nonCriticalViolations: [Int]? = []
-    var inspectionDates: [String]? = []
-    var violationCodes: [String]? = []
-    var violationWeights: [Int]? = []
+    var violationTitles = HealthViolationData.shared.violationTitles
+    var criticalViolations = HealthViolationData.shared.criticalViolations
+    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
+    var inspectionDates = HealthViolationData.shared.inspectionDates
+    var violationCodes = HealthViolationData.shared.violationCodes
+    var violationWeights = HealthViolationData.shared.violationWeights
     
     var dateComponents: DateComponents {
         let now = Date()
@@ -52,8 +52,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let criticalTotal = HealthViolationData.shared.criticalViolations?.count,
-            let nonCriticalTotal = HealthViolationData.shared.nonCriticalViolations?.count else { return }
+        guard let criticalTotal = criticalViolations?.count,
+            let nonCriticalTotal = nonCriticalViolations?.count else { return }
         
         // Image carousel setup
         view.addSubview(scrollView)
@@ -75,9 +75,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(true)
         
         updateView()
-        
-//        showLoadingHealthDataAlert()
-        
+            
         // Prepares health data for use to speed up parsing
         print("Serializing health data...")
         HealthDataController.shared.serializeHealtData()
@@ -149,6 +147,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = false
             reviewContainerView.isHidden = true
+            
+            if inspectionDates?.count == 0 {
+                showNoHealthDataAlert()
+            }
         
         case 2:
             print("Third segment selected")
@@ -238,6 +240,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
         favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(favoriteRemovedAlert, animated: true)
+    }
+    
+    func showNoHealthDataAlert() {
+        guard let restaurantName = restaurantNameLabel.text else { return }
+        let noHealthDataAlet = UIAlertController(title: nil, message: "Sorry, no health data was found for \(restaurantName)", preferredStyle: .alert)
+        noHealthDataAlet.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(noHealthDataAlet, animated: true)
     }
     
     func showLoadingHealthDataAlert() {

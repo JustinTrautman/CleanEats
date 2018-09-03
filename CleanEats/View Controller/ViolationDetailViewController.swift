@@ -43,21 +43,32 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard var violations = violationTitles else { return 0 }
-          print(violations.removeDuplicates())
-        return violations.count
+        
+        let firstViolation = violations[0] 
+        
+//        print(firstViolation.count)
+        
+        return 1
+//         return firstViolation.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard var violationTitle = violationTitles else { return UITableViewCell() }
+        guard var violationTitle = violationTitles,
+        let violationCode = violationCodes else { return UITableViewCell() }
+        
         violationTitle.removeDuplicates()
+        let firstViolationTitle = violationTitle.first
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath) as! CriticalViolationTableViewCell
         
-        let violationData = violationTitle[indexPath.row]
+        guard let criticalViolationCount = criticalViolations,
+        let title = firstViolationTitle else { return UITableViewCell() }
         
-        cell.numberOfCriticalViolations = violationData.count
-        cell.violationTitleMajor.text = "\(violationTitle)"
+        cell.numberOfCriticalViolations = 1
+//        cell.numberOfCriticalViolations = criticalViolationCount.count
+        cell.violationTitleMajor.text = "\(title)"
+        cell.violationCodeMajor.text = "\(violationCode)"
         
         return cell
     }

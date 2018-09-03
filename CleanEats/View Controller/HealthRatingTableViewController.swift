@@ -38,7 +38,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         HealthDataController.shared.serializeHealtData()
         print("Done serializing health data")
         
-        // Fetches health data for selected restaurant
         fetchHealthData()
     }
     
@@ -95,7 +94,8 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let inspectionDates = inspectionDates else { return 0 }
-        return inspectionDates.count
+        return 1
+//        return inspectionDates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -104,14 +104,16 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         guard let criticalViolations = criticalViolations,
             let nonCriticalViolations = nonCriticalViolations,
             var inspectionDate = inspectionDates else { return UITableViewCell() }
-            inspectionDate.removeDuplicates()
         
-        cell.inspectionDateLabel.text = "\(inspectionDate)"
+        if inspectionDate.count != 0 {
+            let firstInspection = inspectionDate[0]
+        
+        cell.inspectionDateLabel.text = "\(firstInspection)"
         cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
         cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
         cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
-        
-        return cell
+        }
+          return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

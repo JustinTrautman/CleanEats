@@ -741,16 +741,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="KU7-3H-dLb">
-                                                    <rect key="frame" x="16" y="27" width="343" height="66"/>
+                                                    <rect key="frame" x="16" y="24" width="343" height="71.666666666666671"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(violationTitle)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gr-4z-wWr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="37"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="42.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oH3-JQ-NaS">
-                                                            <rect key="frame" x="0.0" y="48" width="342" height="18"/>
+                                                            <rect key="frame" x="0.0" y="53.666666666666671" width="342" height="18"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non-Critical Violation Code: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHF-wx-F0j">
                                                                     <rect key="frame" x="0.0" y="0.0" width="194" height="18"/>
