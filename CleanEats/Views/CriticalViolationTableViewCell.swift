@@ -36,11 +36,13 @@ class CriticalViolationTableViewCell: UITableViewCell {
     }
     func updateViews() {
         
+        guard let violationCode = HealthViolationData.shared.violationCodes else { return }
+        
         if numberOfCriticalViolations == 0 {
             self.violationTitleMajor.text = "No critical violations"
         }
         self.violationTitleMajor.text = "\(HealthViolationData.shared.violationTitles)"
-//        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationMockData.violationCode)"
+//        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationCode.first)"
 //        self.violationCodeMajor.text = "\(violationMockData.weight) points"
     }
 }

@@ -107,13 +107,16 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        print(FavoriteController.shared.favorites.count)
         return FavoriteController.shared.favorites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return  UITableViewCell() }
         
-        let favorite = FavoriteController.shared.favorites[indexPath.row]
+        let favorite = FavoriteController.shared.favorites
+        let indexPath =  favorite[indexPath.row]
+        cell.favorites = indexPath
         
         return cell
     }

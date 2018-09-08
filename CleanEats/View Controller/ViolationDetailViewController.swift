@@ -38,7 +38,7 @@ class ViolationDetailViewController: UIViewController, UITableViewDataSource, UI
 extension  ViolationDetailViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,7 +55,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard var violationTitle = violationTitles,
-        let violationCode = violationCodes else { return UITableViewCell() }
+        let violationCode = violationCodes?.first else { return UITableViewCell() }
         
         violationTitle.removeDuplicates()
         let firstViolationTitle = violationTitle.first
@@ -97,8 +97,11 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             criticalViolationsLabel.centerYAnchor.constraint(equalTo: headerOneView.centerYAnchor, constant: 0).isActive = true
             //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
             
-            let attributedText = NSMutableAttributedString(string: "Critical Violations", attributes: violationBoldText)
-            attributedText.append(NSAttributedString(string: "  \(criticalViolationTotal.count)", attributes: [ // Put your model object major violations where 99 is
+            // FIXME - I changed this from critical violations to non critical violations. Change back when health data is fixed
+            
+            let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
+            // Replace '1' with non critical violation count
+            attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red
                 ]))
             
@@ -119,7 +122,8 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             
             let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
             
-            attributedText.append(NSAttributedString(string: "  \(nonCriticalViolationTotal.count)", attributes: [ // Put your model object major violations where 99 is
+            // Replace '1' with non critical violation count
+            attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
                 NSAttributedStringKey.foregroundColor : UIColor.red]))
             
             nonCriticalViolationsLabel.attributedText = attributedText

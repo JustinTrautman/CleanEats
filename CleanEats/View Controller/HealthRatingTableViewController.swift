@@ -94,7 +94,11 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let inspectionDates = inspectionDates else { return 0 }
-        return 1
+        if inspectionDates.count != 0 {
+            return 1
+        } else {
+            return 0
+        }
 //        return inspectionDates.count
     }
     
@@ -110,8 +114,10 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         
         cell.inspectionDateLabel.text = "\(firstInspection)"
         cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
-        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
-        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
+        cell.nonCriticalViolationsTotal.text = "1"
+//        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
+         cell.violationsPointTotal.text = "1"
+//        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
         }
           return cell
     }
@@ -127,7 +133,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
             guard let destinationVC = segue.destination as? ViolationDetailViewController else { return }
             
             destinationVC.violationTitles = violationTitles
-            destinationVC.criticalViolations = criticalViolations
+//            destinationVC.criticalViolations = criticalViolations
             destinationVC.nonCriticalViolations = nonCriticalViolations
             destinationVC.inspectionDates = inspectionDates
             destinationVC.violationCodes = violationCodes

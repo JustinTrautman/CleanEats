@@ -9,7 +9,15 @@
 import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
-
+    
+    static let shared = FavoriteTableViewCell()
+    var favorites: Favorite? {
+        didSet{
+            updateViews()
+        }
+    }
+    var restaurant: Businesses?
+    
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantRatingImageView: UIImageView!
@@ -17,18 +25,9 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     @IBOutlet weak var restaurantPhoneNumber: UILabel!
     
-    var restaurantDetails: Businesses?
-    var restaurant: Restaurant?
-    
-    override func layoutSubviews() {
-        updateViews()
-    }
-    
-    var favorites: Favorite? {
-        didSet {
-            updateViews()
-        }
-    }
+//    override func layoutSubviews() {
+//        updateViews()
+//    }
     
     func updateViews() {
         // Load image from UserDefaults
@@ -37,24 +36,8 @@ class FavoriteTableViewCell: UITableViewCell {
         
         restaurantImageView.image = imageFromData
         
-        if let restaurant = restaurant {
-            restaurantNameLabel.text = restaurant.restaurantTitle
-        }
-        
-        if let desriptionCategories = restaurantDetails?.categories {
-            let description1 = desriptionCategories[0].title
-            restaurantDescriptionLabel.text = "\(description1)"
-        }
-        
-        if let criticalViolations = HealthViolationData.shared.criticalViolations {
-            
-            if let nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations {
-                restaurantScoreLabel.text = "\(criticalViolations.count + nonCriticalViolations.count)"
-            }
-        }
-        
-        if let restaurantDetails = restaurantDetails {
-            restaurantPhoneNumber.text = restaurantDetails.restaurantPhone
+        if let name = favorites?.restaurantName {
+            restaurantNameLabel.text = name
         }
     }
 }
