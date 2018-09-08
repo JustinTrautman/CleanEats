@@ -5,7 +5,6 @@
 //  Created by Huzaifa Gadiwala on 11/7/18.
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
-
 import MapKit
 
 class CustomAnnotation: NSObject, MKAnnotation {
@@ -38,6 +37,6 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.restaurant = restaurant
     }
-
+    
 }
 

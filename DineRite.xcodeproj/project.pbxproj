@@ -14,7 +14,6 @@
 		0692702E2100F04B00DC4411 /* HelperExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0692702D2100F04B00DC4411 /* HelperExtentions.swift */; };
 		06A6DE4720F83B76009E960C /* CalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A6DE4620F83B76009E960C /* CalloutView.xib */; };
 		06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6DE4C20F84294009E960C /* AnnotationView.swift */; };
-		06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */; };
 		06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06ECAE5520EAD5B00019227C /* HomeViewController.swift */; };
 		06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */; };
 		06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06ECAE5B20EAD5D30019227C /* Favorite.storyboard */; };
@@ -32,13 +31,14 @@
 		428865C220F3D0CA0095A837 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 428865C120F3D0CA0095A837 /* Slide.xib */; };
 		428865C420F3D3B80095A837 /* RestaurantProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */; };
 		428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */; };
-		42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */; };
 		42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */; };
 		42EECA3F20F90894002431D2 /* healthData.json in Resources */ = {isa = PBXBuildFile; fileRef = 42EECA3E20F90894002431D2 /* healthData.json */; };
 		42EECA4120F9686E002431D2 /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4020F9686E002431D2 /* ViolationDetailViewController.swift */; };
 		42EECA4320FAAE98002431D2 /* CriticalViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4220FAAE98002431D2 /* CriticalViolationTableViewCell.swift */; };
 		42EECA4520FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4420FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
+		D01C20262144226D000068F6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01C20252144226D000068F6 /* CustomAnnotation.swift */; };
+		D01C2028214422E8000068F6 /* Pods_DineRite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01C2027214422E8000068F6 /* Pods_DineRite.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
 		D023F73C213B079A001678CF /* HealthViolationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D023F73B213B079A001678CF /* HealthViolationData.swift */; };
@@ -56,8 +56,8 @@
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
 		D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */; };
 		D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1DDFD213615E100495A06 /* StringExtension.swift */; };
+		D0E3CA01214420CF00A52370 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3CA00214420CF00A52370 /* HealthRatingTableViewCell.swift */; };
 		D0EBA4262143506F00CC34BC /* RatingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EBA4252143506F00CC34BC /* RatingHelper.swift */; };
-		EC92B2602D54F835DF819B3A /* Pods_CleanEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03CAE86D3F55C1005E067B93 /* Pods-DineRite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DineRite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DineRite/Pods-DineRite.debug.xcconfig"; sourceTree = "<group>"; };
 		063D427020F40EF8004C8DB3 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		0653D4BE20EEC48C00F1FEEA /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		068C138B20F3D66B0067EA53 /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		0692702D2100F04B00DC4411 /* HelperExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtentions.swift; sourceTree = "<group>"; };
 		06A6DE4620F83B76009E960C /* CalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalloutView.xib; sourceTree = "<group>"; };
 		06A6DE4C20F84294009E960C /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
-		06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = CleanEats/Model/CustomAnnotation.swift; sourceTree = SOURCE_ROOT; };
 		06ECAE5520EAD5B00019227C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06ECAE5B20EAD5D30019227C /* Favorite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
@@ -104,14 +104,16 @@
 		428865C120F3D0CA0095A837 /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantProfileViewController.swift; sourceTree = "<group>"; };
 		428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantProfile.storyboard; sourceTree = "<group>"; };
-		42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HealthRatingTableViewCell.swift; path = CleanEats/Views/HealthRatingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		42EECA3E20F90894002431D2 /* healthData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = healthData.json; sourceTree = "<group>"; };
 		42EECA4020F9686E002431D2 /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDetailViewController.swift; sourceTree = "<group>"; };
 		42EECA4220FAAE98002431D2 /* CriticalViolationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalViolationTableViewCell.swift; sourceTree = "<group>"; };
 		42EECA4420FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonCriticalViolationTableViewCell.swift; sourceTree = "<group>"; };
+		6BD501300BE62017BB040F2F /* Pods_DineRite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DineRite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D01C20252144226D000068F6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		D01C2027214422E8000068F6 /* Pods_DineRite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DineRite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
 		D01F559720F5025300E38C9B /* RestaurantReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewController.swift; sourceTree = "<group>"; };
 		D023F73B213B079A001678CF /* HealthViolationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViolationData.swift; sourceTree = "<group>"; };
@@ -123,17 +125,19 @@
 		D056789A20FAACE500FB6470 /* HealthDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataController.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 		D0789B0C210149680078F8E3 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		D0895E0520E1A71C00EB1307 /* CleanEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0895E0520E1A71C00EB1307 /* DineRite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DineRite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E0820E1A71C00EB1307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0895E0F20E1A71C00EB1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0895E1420E1A71C00EB1307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0895E1920E1A71D00EB1307 /* CleanEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanEatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0895E1920E1A71D00EB1307 /* DineRiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DineRiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0895E2420E1A71D00EB1307 /* DineRiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DineRiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D0E1DDFD213615E100495A06 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D0E3CA00214420CF00A52370 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingTableViewCell.swift; sourceTree = "<group>"; };
 		D0EBA4252143506F00CC34BC /* RatingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHelper.swift; sourceTree = "<group>"; };
+		D4E6D835EDD8FB2D5F7F22BF /* Pods-DineRite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DineRite.release.xcconfig"; path = "Pods/Target Support Files/Pods-DineRite/Pods-DineRite.release.xcconfig"; sourceTree = "<group>"; };
 		E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,8 +146,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01C2028214422E8000068F6 /* Pods_DineRite.framework in Frameworks */,
 				D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */,
-				EC92B2602D54F835DF819B3A /* Pods_CleanEats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +184,8 @@
 			children = (
 				0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */,
 				E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */,
+				03CAE86D3F55C1005E067B93 /* Pods-DineRite.debug.xcconfig */,
+				D4E6D835EDD8FB2D5F7F22BF /* Pods-DineRite.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -197,8 +203,10 @@
 		71B01CFE1680DA06900CF4AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D01C2027214422E8000068F6 /* Pods_DineRite.framework */,
 				D009691320EAA138005CAE1A /* Foundation.framework */,
 				738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */,
+				6BD501300BE62017BB040F2F /* Pods_DineRite.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,7 +214,6 @@
 		D0018EE620E54FD700A040CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				42999C3820F416F000E721B6 /* HealthRatingTableViewCell.swift */,
 				06A6DE4C20F84294009E960C /* AnnotationView.swift */,
 				D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */,
 				D08AFBCC20EAF65000305116 /* UIViewExtension.swift */,
@@ -215,6 +222,7 @@
 				42999C3A20F4176000E721B6 /* ReviewsTableViewCell.swift */,
 				42EECA4220FAAE98002431D2 /* CriticalViolationTableViewCell.swift */,
 				42EECA4420FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift */,
+				D0E3CA00214420CF00A52370 /* HealthRatingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,7 +264,7 @@
 				4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */,
 				D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */,
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
-				06D9B04720F68DDA002E9FDE /* CustomAnnotation.swift */,
+				D01C20252144226D000068F6 /* CustomAnnotation.swift */,
 				42EECA3E20F90894002431D2 /* healthData.json */,
 				D04B26B020FE5C8C001D0F9D /* U.swift */,
 				423D7E9020FE613F00ED74AB /* Violation.swift */,
@@ -268,7 +276,7 @@
 		D0895DFC20E1A71C00EB1307 = {
 			isa = PBXGroup;
 			children = (
-				D0895E0720E1A71C00EB1307 /* CleanEats */,
+				D0895E0720E1A71C00EB1307 /* DineRite */,
 				D0895E0620E1A71C00EB1307 /* Products */,
 				081E394468838F826BDD4481 /* Pods */,
 				71B01CFE1680DA06900CF4AF /* Frameworks */,
@@ -278,14 +286,14 @@
 		D0895E0620E1A71C00EB1307 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0895E0520E1A71C00EB1307 /* CleanEats.app */,
-				D0895E1920E1A71D00EB1307 /* CleanEatsTests.xctest */,
-				D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */,
+				D0895E0520E1A71C00EB1307 /* DineRite.app */,
+				D0895E1920E1A71D00EB1307 /* DineRiteTests.xctest */,
+				D0895E2420E1A71D00EB1307 /* DineRiteUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D0895E0720E1A71C00EB1307 /* CleanEats */ = {
+		D0895E0720E1A71C00EB1307 /* DineRite */ = {
 			isa = PBXGroup;
 			children = (
 				0692702C2100F02F00DC4411 /* Helper+Extentions */,
@@ -296,7 +304,7 @@
 				D0018EE620E54FD700A040CE /* Views */,
 				D0895E3A20E1A73700EB1307 /* Storyboards */,
 			);
-			path = CleanEats;
+			path = DineRite;
 			sourceTree = "<group>";
 		};
 		D0895E3A20E1A73700EB1307 /* Storyboards */ = {
@@ -318,9 +326,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D0895E0420E1A71C00EB1307 /* CleanEats */ = {
+		D0895E0420E1A71C00EB1307 /* DineRite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0895E2D20E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEats" */;
+			buildConfigurationList = D0895E2D20E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRite" */;
 			buildPhases = (
 				DD5C83EE5C575A807CED1A2E /* [CP] Check Pods Manifest.lock */,
 				D0895E0120E1A71C00EB1307 /* Sources */,
@@ -332,14 +340,14 @@
 			);
 			dependencies = (
 			);
-			name = CleanEats;
+			name = DineRite;
 			productName = CleanEats;
-			productReference = D0895E0520E1A71C00EB1307 /* CleanEats.app */;
+			productReference = D0895E0520E1A71C00EB1307 /* DineRite.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D0895E1820E1A71D00EB1307 /* CleanEatsTests */ = {
+		D0895E1820E1A71D00EB1307 /* DineRiteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0895E3020E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsTests" */;
+			buildConfigurationList = D0895E3020E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRiteTests" */;
 			buildPhases = (
 				D0895E1520E1A71D00EB1307 /* Sources */,
 				D0895E1620E1A71D00EB1307 /* Frameworks */,
@@ -350,14 +358,14 @@
 			dependencies = (
 				D0895E1B20E1A71D00EB1307 /* PBXTargetDependency */,
 			);
-			name = CleanEatsTests;
+			name = DineRiteTests;
 			productName = CleanEatsTests;
-			productReference = D0895E1920E1A71D00EB1307 /* CleanEatsTests.xctest */;
+			productReference = D0895E1920E1A71D00EB1307 /* DineRiteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D0895E2320E1A71D00EB1307 /* CleanEatsUITests */ = {
+		D0895E2320E1A71D00EB1307 /* DineRiteUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0895E3320E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsUITests" */;
+			buildConfigurationList = D0895E3320E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRiteUITests" */;
 			buildPhases = (
 				D0895E2020E1A71D00EB1307 /* Sources */,
 				D0895E2120E1A71D00EB1307 /* Frameworks */,
@@ -368,9 +376,9 @@
 			dependencies = (
 				D0895E2620E1A71D00EB1307 /* PBXTargetDependency */,
 			);
-			name = CleanEatsUITests;
+			name = DineRiteUITests;
 			productName = CleanEatsUITests;
-			productReference = D0895E2420E1A71D00EB1307 /* CleanEatsUITests.xctest */;
+			productReference = D0895E2420E1A71D00EB1307 /* DineRiteUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -396,7 +404,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0895E0020E1A71C00EB1307 /* Build configuration list for PBXProject "CleanEats" */;
+			buildConfigurationList = D0895E0020E1A71C00EB1307 /* Build configuration list for PBXProject "DineRite" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -409,9 +417,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0895E0420E1A71C00EB1307 /* CleanEats */,
-				D0895E1820E1A71D00EB1307 /* CleanEatsTests */,
-				D0895E2320E1A71D00EB1307 /* CleanEatsUITests */,
+				D0895E0420E1A71C00EB1307 /* DineRite */,
+				D0895E1820E1A71D00EB1307 /* DineRiteTests */,
+				D0895E2320E1A71D00EB1307 /* DineRiteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -458,7 +466,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-DineRite/Pods-DineRite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -467,7 +475,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CleanEats/Pods-CleanEats-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DineRite/Pods-DineRite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DD5C83EE5C575A807CED1A2E /* [CP] Check Pods Manifest.lock */ = {
@@ -481,7 +489,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CleanEats-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-DineRite-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -495,15 +503,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42999C3920F416F000E721B6 /* HealthRatingTableViewCell.swift in Sources */,
+				D0E3CA01214420CF00A52370 /* HealthRatingTableViewCell.swift in Sources */,
 				D023F73C213B079A001678CF /* HealthViolationData.swift in Sources */,
 				4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */,
+				D01C20262144226D000068F6 /* CustomAnnotation.swift in Sources */,
 				D056789B20FAACE500FB6470 /* HealthDataController.swift in Sources */,
 				D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */,
 				D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */,
 				42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */,
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
-				06D9B04820F68DDA002E9FDE /* CustomAnnotation.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				42EECA4320FAAE98002431D2 /* CriticalViolationTableViewCell.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
@@ -555,12 +563,12 @@
 /* Begin PBXTargetDependency section */
 		D0895E1B20E1A71D00EB1307 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0895E0420E1A71C00EB1307 /* CleanEats */;
+			target = D0895E0420E1A71C00EB1307 /* DineRite */;
 			targetProxy = D0895E1A20E1A71D00EB1307 /* PBXContainerItemProxy */;
 		};
 		D0895E2620E1A71D00EB1307 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0895E0420E1A71C00EB1307 /* CleanEats */;
+			target = D0895E0420E1A71C00EB1307 /* DineRite */;
 			targetProxy = D0895E2520E1A71D00EB1307 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -682,12 +690,12 @@
 		};
 		D0895E2E20E1A71D00EB1307 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0796E381700C85E5CD9E3CE7 /* Pods-CleanEats.debug.xcconfig */;
+			baseConfigurationReference = 03CAE86D3F55C1005E067B93 /* Pods-DineRite.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
-				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DineRite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -702,12 +710,12 @@
 		};
 		D0895E2F20E1A71D00EB1307 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E34C74F3CF981332592E38F7 /* Pods-CleanEats.release.xcconfig */;
+			baseConfigurationReference = D4E6D835EDD8FB2D5F7F22BF /* Pods-DineRite.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
-				INFOPLIST_FILE = "$(SRCROOT)/CleanEats/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DineRite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -737,7 +745,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanEats.app/CleanEats";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DineRite.app/DineRite";
 			};
 			name = Debug;
 		};
@@ -758,7 +766,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanEats.app/CleanEats";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DineRite.app/DineRite";
 			};
 			name = Release;
 		};
@@ -805,7 +813,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0895E0020E1A71C00EB1307 /* Build configuration list for PBXProject "CleanEats" */ = {
+		D0895E0020E1A71C00EB1307 /* Build configuration list for PBXProject "DineRite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0895E2B20E1A71D00EB1307 /* Debug */,
@@ -814,7 +822,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0895E2D20E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEats" */ = {
+		D0895E2D20E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0895E2E20E1A71D00EB1307 /* Debug */,
@@ -823,7 +831,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0895E3020E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsTests" */ = {
+		D0895E3020E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRiteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0895E3120E1A71D00EB1307 /* Debug */,
@@ -832,7 +840,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0895E3320E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "CleanEatsUITests" */ = {
+		D0895E3320E1A71D00EB1307 /* Build configuration list for PBXNativeTarget "DineRiteUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0895E3420E1A71D00EB1307 /* Debug */,

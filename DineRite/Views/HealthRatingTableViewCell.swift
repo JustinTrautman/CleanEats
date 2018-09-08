@@ -5,7 +5,6 @@
 //  Created by Joshua Danner on 7/9/18.
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
-
 import UIKit
 
 class HealthRatingTableViewCell: UITableViewCell {
@@ -49,4 +48,3 @@ class HealthRatingTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
 }
-
