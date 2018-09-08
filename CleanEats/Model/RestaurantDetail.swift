@@ -24,7 +24,7 @@ struct RestaurantDetails : Codable {
     let photos: [String]?
     let hours: [Hour]?
     var imageForRating: UIImage? {
-        guard let rating = rating, let ratingEnum = Rating(rawValue: Double(Double(rating))) else {
+        guard let rating = rating, let ratingEnum = RatingEnum(rawValue: Double(Double(rating))) else {
             return UIImage()
         }
         switch ratingEnum {

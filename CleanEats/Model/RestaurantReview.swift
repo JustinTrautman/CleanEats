@@ -26,7 +26,7 @@ class Reviews : NSObject, Codable {
     let userData: User
     let rating: Int?
     var imageForRating: UIImage? {
-        guard let rating = rating, let ratingEnum = Rating(rawValue: Double(rating)) else {
+        guard let rating = rating, let ratingEnum = RatingEnum(rawValue: Double(rating)) else {
             return UIImage()
         }
         

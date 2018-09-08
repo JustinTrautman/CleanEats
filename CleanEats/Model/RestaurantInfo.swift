@@ -36,7 +36,7 @@ class Businesses: Codable {
     var coordinate: Coordinate?
     let location: Location?
     var imageForRating: UIImage? {
-        guard let rating = restaurantRating, let ratingEnum = Rating(rawValue: Double(rating)) else {
+        guard let rating = restaurantRating, let ratingEnum = RatingEnum(rawValue: Double(rating)) else {
             return UIImage()
         }
         

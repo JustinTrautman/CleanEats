@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Rating: Double{
+enum RatingEnum: Double{
     case oneStar = 1
     case onePointFiveStar = 1.5
     case twoStar = 2
