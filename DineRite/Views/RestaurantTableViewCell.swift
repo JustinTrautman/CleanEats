@@ -21,21 +21,20 @@ class RestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     
     var restaurants: Businesses? {
-        didSet{
+        didSet {
             updateViews()
         }
     }
     
     func updateViews() {
-        
         guard let restaurant = restaurants else { return }
         guard let restaurantDistance = restaurant.restaurantDistance,
-             let categories = restaurant.categories else { return }
-
+            let categories = restaurant.categories else { return }
+        
         let distanceInMiles = restaurantDistance * 0.000621
-
+        
         restaurantNameLabel.text = restaurant.restaurantName
-       // restaurantRatingImageView.image = restaurant.restaurantRating
+        // restaurantRatingImageView.image = restaurant.restaurantRating
         restaurantDistanceLabel.text = "\((distanceInMiles * 100).rounded() / 100) miles away"
         restaurantPriceLabel.text = restaurant.restaurantPrice
         restaurantDescriptionLabel.text = "\(categories)"

@@ -22,10 +22,9 @@ protocol CalloutViewDelegate: class {
     @IBInspectable var cornerRadius: CGFloat = 5 {
         didSet{
             self.layer.cornerRadius = cornerRadius
-        
         }
     }
-   
+    
     weak var delegate: CalloutViewDelegate?
     var restaurant: Businesses? {
         didSet {
@@ -33,12 +32,12 @@ protocol CalloutViewDelegate: class {
                 return
             }
             self.restaurantName.text = restaurant.restaurantName ?? ""
-
+            
             if let restaurantDistance = restaurant.restaurantDistance {
                 let distanceInMiles = round((restaurantDistance/16.0934))/100
                 self.restaurantDistance.text = "\(distanceInMiles) miles away"
             }
-
+            
             self.ratingImageView.image = restaurant.imageForRating
             self.restaurantImage.layer.cornerRadius = 4
             self.restaurantImage.clipsToBounds = true
@@ -51,5 +50,4 @@ protocol CalloutViewDelegate: class {
         }
         delegate?.calloutViewTapped(restaurant: restaurant, sender: self)
     }
-    
 }

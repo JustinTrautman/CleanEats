@@ -22,7 +22,6 @@ class RestaurantDetailController {
         url.appendPathComponent(restaurantAlias)
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
-        
         guard let completeURL = components?.url else { completion(nil) ; return }
         
         print("📡📡📡📡 \(completeURL)📡📡📡📡")
@@ -49,11 +48,8 @@ class RestaurantDetailController {
                 print("❌Error decoding restaurantDetail data; \(error) \(error.localizedDescription)")
                 
             }
-            
-           
-        }.resume()
+            }.resume()
     }
-    
     
     static func fetchRestaurantPhoto(imageStringURL: String, completion: @escaping ((UIImage)?) -> Void) {
         guard let photosURL = URL(string: imageStringURL) else { completion(nil) ; return }

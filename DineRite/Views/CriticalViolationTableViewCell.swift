@@ -21,12 +21,10 @@ class CriticalViolationTableViewCell: UITableViewCell {
     @IBOutlet weak var violationCodeMajor: UILabel!
     @IBOutlet weak var criticalViolationCodeLabel: UILabel!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -34,15 +32,15 @@ class CriticalViolationTableViewCell: UITableViewCell {
     func initializeViolationLabels() {
         let attibutedText = NSMutableAttributedString(string: " \(violationTitleMajor)", attributes: nil)
     }
+    
     func updateViews() {
-        
         guard let violationCode = HealthViolationData.shared.violationCodes else { return }
         
         if numberOfCriticalViolations == 0 {
             self.violationTitleMajor.text = "No critical violations"
         }
         self.violationTitleMajor.text = "\(HealthViolationData.shared.violationTitles)"
-//        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationCode.first)"
-//        self.violationCodeMajor.text = "\(violationMockData.weight) points"
+        //        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationCode.first)"
+        //        self.violationCodeMajor.text = "\(violationMockData.weight) points"
     }
 }

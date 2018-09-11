@@ -10,7 +10,7 @@ import UIKit
 
 /*
  
- TODO: Add explanation of file
+ TODO: This model pulls from the Yelp business detail API to get detailed information of each restaurant.
  
  */
 
@@ -28,23 +28,23 @@ struct RestaurantDetails : Codable {
             return UIImage()
         }
         switch ratingEnum {
-            case .oneStar:
+        case .oneStar:
             return UIImage(named: "1Star")
-            case .onePointFiveStar:
+        case .onePointFiveStar:
             return UIImage(named: "1.5Star")
-            case .twoStar:
+        case .twoStar:
             return UIImage(named: "2Stars")
-            case .twoPointFiveStar:
+        case .twoPointFiveStar:
             return UIImage(named: "2.5Stars")
-            case .threeStar:
+        case .threeStar:
             return UIImage(named: "3Stars")
-            case .threePointFiveStar:
+        case .threePointFiveStar:
             return UIImage(named: "3.5Stars")
-            case .fourStar:
+        case .fourStar:
             return UIImage(named: "4Stars")
-            case .fourPointFiveStar:
+        case .fourPointFiveStar:
             return UIImage(named: "4.5Stars")
-            case .fiveStar:
+        case .fiveStar:
             return UIImage(named: "5Stars")
         }
     }
@@ -67,6 +67,7 @@ struct Hour: Codable {
     let isOpenNow: Bool
     
     enum CodingKeys: String, CodingKey {
+        
         case hourOpen = "open"
         case hoursType = "hours_type"
         case isOpenNow = "is_open_now"
@@ -80,6 +81,7 @@ struct Open: Codable {
     let day: Int
     
     enum CodingKeys: String, CodingKey {
+        
         case isOvernight = "is_overnight"
         case start
         case end
@@ -88,7 +90,6 @@ struct Open: Codable {
 }
 
 struct Location : Codable {
-    
     let completeAddress: [String?]
     
     enum CodingKeys : String, CodingKey {
@@ -96,5 +97,3 @@ struct Location : Codable {
         case completeAddress = "display_address"
     }
 }
-
-

@@ -25,10 +25,4 @@ class RestaurantController {
     }
     
     var favoriteRestaurants = [Restaurant]()
-    
 }
-
-// TVC
-//numberOfRowsInsection
-// return RestaurantController.shared.restaurants.map{$0.isFavorite}
-

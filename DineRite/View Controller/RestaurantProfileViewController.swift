@@ -218,7 +218,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 
                 let image = restaurantPhotos[0]
                 guard let name = restaurantNameLabel.text,
-                let phone = businesses?.restaurantPhone else { return }
+                    let phone = businesses?.restaurantPhone else { return }
                 
                 // Register default image
                 UserDefaults.standard.register(defaults: ["key": UIImageJPEGRepresentation(image, 100)])
@@ -227,83 +227,83 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 UserDefaults.standard.set(UIImageJPEGRepresentation(image, 100), forKey: "key")
                 
                 FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "\(rating)", phone: phone, description: "\(description1)")
+            }
         }
     }
-}
-
-func deleteFavorite() {
     
-    // TODO: - Impelement favorite delete function
-}
-
-func showFavoriteSavedAlert() {
-    let favoriteSavedAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
-    favoriteSavedAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
-    self.present(favoriteSavedAlert, animated: true)
-}
-
-func showFavoriteRemovedAlert() {
-    let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
-    favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(favoriteRemovedAlert, animated: true)
-}
-
-func showNoHealthDataAlert() {
-    guard let restaurantName = restaurantNameLabel.text else { return }
-    let noHealthDataAlet = UIAlertController(title: nil, message: "Sorry, no health data was found for \(restaurantName)", preferredStyle: .alert)
-    noHealthDataAlet.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(noHealthDataAlet, animated: true)
-}
-
-func showLoadingHealthDataAlert() {
-    
-    let loadingAlert = UIAlertController(title: nil, message: "Testing...", preferredStyle: .alert)
-    
-    loadingAlert.view.tintColor = UIColor.black
-    let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-    loadingIndicator.hidesWhenStopped = true
-    loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-    loadingIndicator.startAnimating()
-    
-    loadingAlert.view.addSubview(loadingIndicator)
-    present(loadingAlert, animated: true, completion: nil)
-    
-    dismiss(animated: true, completion: nil)
-}
-
-func updateView() {
-    if let business = businesses {
-        guard let restuarantAlias = business.alias else { return }
+    func deleteFavorite() {
         
-        RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
-            guard restaurantDetails != nil else { return }
-            let name = restaurantDetails?.name
-            guard let totalReviews = restaurantDetails?.reviewCount else { return }
-            let starRatingView = restaurantDetails?.imageForRating
+        // TODO: - Impelement favorite delete function
+    }
+    
+    func showFavoriteSavedAlert() {
+        let favoriteSavedAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
+        favoriteSavedAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
+        self.present(favoriteSavedAlert, animated: true)
+    }
+    
+    func showFavoriteRemovedAlert() {
+        let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
+        favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(favoriteRemovedAlert, animated: true)
+    }
+    
+    func showNoHealthDataAlert() {
+        guard let restaurantName = restaurantNameLabel.text else { return }
+        let noHealthDataAlet = UIAlertController(title: nil, message: "Sorry, no health data was found for \(restaurantName)", preferredStyle: .alert)
+        noHealthDataAlet.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(noHealthDataAlet, animated: true)
+    }
+    
+    func showLoadingHealthDataAlert() {
+        
+        let loadingAlert = UIAlertController(title: nil, message: "Testing...", preferredStyle: .alert)
+        
+        loadingAlert.view.tintColor = UIColor.black
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating()
+        
+        loadingAlert.view.addSubview(loadingIndicator)
+        present(loadingAlert, animated: true, completion: nil)
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func updateView() {
+        if let business = businesses {
+            guard let restuarantAlias = business.alias else { return }
             
-            guard let photoUrls = restaurantDetails?.photos else { return }
-            
-            let photosGroup = DispatchGroup()
-            
-            for url in photoUrls{
-                photosGroup.enter()
-                print("Entering the photos dispatch Group")
-                RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
-                    guard let photo = photo else {return}
-                    self.restaurantPhotos.append(photo)
-                    print("Leaving the photos dispatch Group")
-                    photosGroup.leave()
-                })
-            }
-            
-            photosGroup.notify(queue: .main){
-                print("Main Queue Notified")
-                let slides = self.createSlides()
-                self.slidePageControl.numberOfPages = slides.count
-                self.setupSlideScrollView(slides: slides)
-                self.restaurantNameLabel.text = name
-                self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
-                self.ratingStar.image = starRatingView
+            RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
+                guard restaurantDetails != nil else { return }
+                let name = restaurantDetails?.name
+                guard let totalReviews = restaurantDetails?.reviewCount else { return }
+                let starRatingView = restaurantDetails?.imageForRating
+                
+                guard let photoUrls = restaurantDetails?.photos else { return }
+                
+                let photosGroup = DispatchGroup()
+                
+                for url in photoUrls{
+                    photosGroup.enter()
+                    print("Entering the photos dispatch Group")
+                    RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
+                        guard let photo = photo else {return}
+                        self.restaurantPhotos.append(photo)
+                        print("Leaving the photos dispatch Group")
+                        photosGroup.leave()
+                    })
+                }
+                
+                photosGroup.notify(queue: .main){
+                    print("Main Queue Notified")
+                    let slides = self.createSlides()
+                    self.slidePageControl.numberOfPages = slides.count
+                    self.setupSlideScrollView(slides: slides)
+                    self.restaurantNameLabel.text = name
+                    self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
+                    self.ratingStar.image = starRatingView
                 }
             }
         }

@@ -32,7 +32,6 @@ class HealthRatingTableViewCell: UITableViewCell {
     }
     
     func initializeViolationView() {
-        
         violationView.layer.cornerRadius = 3.0
         violationView.clipsToBounds = true
         violationView.layer.masksToBounds = false
@@ -41,10 +40,10 @@ class HealthRatingTableViewCell: UITableViewCell {
         violationView.layer.shadowOpacity = 0.4
         violationView.layer.shadowOffset = CGSize.zero
         violationView.layer.shouldRasterize = true
-        
         violationViewSubview.layer.masksToBounds = false
         violationViewSubview.layer.cornerRadius = 3
         violationViewSubview.clipsToBounds = true
+        
         self.selectionStyle = .none
     }
 }

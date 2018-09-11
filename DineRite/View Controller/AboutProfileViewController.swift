@@ -24,9 +24,12 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Properties
     var businesses: Businesses?
-    
     weak var delegate: AboutProfileViewControllerDelegate?
+    let locationManager = CLLocationManager()
+    var currentCoordinate: CLLocationCoordinate2D?
+    var restaurantCoordinates: CLLocationCoordinate2D?
     
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +39,6 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         mapView.setRegion(MKCoordinateRegion(center: restaurantCoordinates!, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
         guard let  restaurantCoordinates = restaurantCoordinates else { return }
         guard let businesses  = businesses else {return}
@@ -53,23 +55,18 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         UIApplication.shared.openURL(phoneURL as URL)
     }
     
-    // MARK: - Properties
-    let locationManager = CLLocationManager()
-    var currentCoordinate: CLLocationCoordinate2D?
-    var restaurantCoordinates: CLLocationCoordinate2D?
-
     var displayAddress: [String] = []
     func updateViews() {
         guard let businesses = businesses,
             let phone = businesses.restaurantPhone, let addresses = businesses.location?.displayAddress, let yelpUrl = businesses.yelpUrl else { return }
-
+        
         let str = addresses
         let joinedElements = str.joined(separator: " ")
         print("😀 \(joinedElements)")
-    
+        
         phoneButton.setTitle("      \(phone)", for: .normal)
-       // webAddressButton.setTitle("      \(yelpUrl)", for: .normal)
-
+        // webAddressButton.setTitle("      \(yelpUrl)", for: .normal)
+        
         addressLabel.text = joinedElements
         if let restaurantDistance = businesses.restaurantDistance {
             let distanceInMiles = round((restaurantDistance/16.0934))/100

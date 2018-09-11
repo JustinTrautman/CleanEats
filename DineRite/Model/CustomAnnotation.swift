@@ -37,6 +37,4 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.restaurant = restaurant
     }
-    
 }
-

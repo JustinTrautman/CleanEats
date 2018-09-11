@@ -99,7 +99,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         } else {
             return 0
         }
-//        return inspectionDates.count
+        //        return inspectionDates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,15 +111,15 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         
         if inspectionDate.count != 0 {
             let firstInspection = inspectionDate[0]
-        
-        cell.inspectionDateLabel.text = "\(firstInspection)"
-        cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
-        cell.nonCriticalViolationsTotal.text = "1"
-//        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
-         cell.violationsPointTotal.text = "1"
-//        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
+            
+            cell.inspectionDateLabel.text = "\(firstInspection)"
+            cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
+            cell.nonCriticalViolationsTotal.text = "1"
+            //        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
+            cell.violationsPointTotal.text = "1"
+            //        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
         }
-          return cell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -133,7 +133,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
             guard let destinationVC = segue.destination as? ViolationDetailViewController else { return }
             
             destinationVC.violationTitles = violationTitles
-//            destinationVC.criticalViolations = criticalViolations
+            //            destinationVC.criticalViolations = criticalViolations
             destinationVC.nonCriticalViolations = nonCriticalViolations
             destinationVC.inspectionDates = inspectionDates
             destinationVC.violationCodes = violationCodes

@@ -34,20 +34,19 @@ class RestaurantReviewController {
                 print("DataTask had an issue reaching the network. Exiting with error: \(error) \(error.localizedDescription)")
                 completion(nil)
             }
-                guard let data = data else { completion(nil) ; return }
-                let jsonDecoder = JSONDecoder()
+            guard let data = data else { completion(nil) ; return }
+            let jsonDecoder = JSONDecoder()
             
-                do {
-                    let reviews = try jsonDecoder.decode(TopReviewData.self, from: data).reviews
-                    self.reviews = reviews
-                    completion(reviews)
-                    
-                } catch let error {
-                    print("Error decoding restaurant data: \(error) \(error.localizedDescription)")
-                }
-            
+            do {
+                let reviews = try jsonDecoder.decode(TopReviewData.self, from: data).reviews
+                self.reviews = reviews
+                completion(reviews)
+                
+            } catch let error {
+                print("Error decoding restaurant data: \(error) \(error.localizedDescription)")
+            }
             }.resume()
-        }
+    }
     
     static func getReviewerImage(imageStringURL: String, completion: @escaping ((UIImage?)) -> Void) {
         guard let url = URL(string: imageStringURL) else { completion(nil) ; return }

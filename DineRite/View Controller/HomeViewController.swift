@@ -7,7 +7,6 @@ class CustomSearchBar: UISearchBar {
     @IBInspectable var cornerRadius: CGFloat = 0.0 {
         didSet {
             return layer.cornerRadius = cornerRadius
-            
         }
     }
 }
@@ -15,16 +14,14 @@ class CustomSearchBar: UISearchBar {
 class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     static var shared = HomeViewController()
+    
     var matchingItems: [MKMapItem] = [MKMapItem]()
     var restaurants: [Businesses] = []
     var selectedAnnotation: MKPointAnnotation?
     
     // Outlets
-    
     @IBOutlet weak var searchBarMap: CustomSearchBar!
     @IBOutlet weak var homeMapView: MKMapView!
-    
-    // Propeties
     
     // 6) location manager Need for user location
     let locationManager = CLLocationManager()
@@ -39,10 +36,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         
         let search = MKLocalSearch(request: request)
         search.start(completionHandler: {(response, error) in
-            
-//            if self.matchingItems.count == 0 {
-//                self.showNoResultsAlert()
-//            }
             
             if let results = response {
                 
@@ -97,27 +90,23 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         })
     }
     
-    
-    
-    
     func getCordinate(latitude: Double, longitude: Double) -> CLLocationCoordinate2D {
         let lat = CLLocationDegrees(latitude)
         let log =  CLLocationDegrees(longitude)
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: log)
         return coordinate
     }
-
+    
     // Adding custom pins
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?  {
-        
         if annotation is MKUserLocation {
             return nil
         }
         var annotationView = self.homeMapView.dequeueReusableAnnotationView(withIdentifier: "Pin")
-        if annotationView == nil{
+        if annotationView == nil {
             annotationView = AnnotationView(annotation: annotation, reuseIdentifier: "Pin")
             annotationView?.canShowCallout = false
-        }else{
+        } else {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "pin")
@@ -141,8 +130,6 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         calloutView.restaurant = customAnnotation.restaurant
         calloutView.delegate = self
         
-        
-        
         RestaurantInfoController.getRestaurantImage(imageStringURL: customAnnotation.restaurantImageUrlString) { (image) in
             guard let image = image else {return}
             DispatchQueue.main.async {
@@ -150,20 +137,14 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
             }
         }
         
-
-        
-        
         // 3
         calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
         view.addSubview(calloutView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
-        
-        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        if view.isKind(of: AnnotationView.self)
-        {
+        if view.isKind(of: AnnotationView.self) {
             for subview in view.subviews
             {
                 subview.removeFromSuperview()
@@ -187,7 +168,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let scale = MKScaleView(mapView: homeMapView)
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
-
+        
         guard let y = navigationController?.navigationBar.frame.size.height else { return }
         let y2 = y + 40
         let size = CGSize(width: self.view.frame.width, height: y2)
@@ -196,7 +177,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         var imageView = UIImageView()
         imageView = UIImageView(image: logo)
         imageView.contentMode = .scaleAspectFit
-
+        
         navigationController?.navigationBar.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         guard let navBar = navigationController?.navigationBar else { return }
@@ -204,11 +185,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
         imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-
-        
     }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -240,7 +217,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                 var imageView = UIImageView()
                 imageView = UIImageView(image: logo)
                 imageView.contentMode = .scaleAspectFit
-
+                
                 subView.addSubview(imageView)
                 imageView.translatesAutoresizingMaskIntoConstraints = false
                 imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
@@ -249,10 +226,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                 imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
                 imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
                 subview.backgroundColor = .clear
-
-                navigationController?.navigationBar.addSubview(subView)
                 
-
+                navigationController?.navigationBar.addSubview(subView)
             }
         }
     }
@@ -293,15 +268,15 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let zoomRegion = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
         homeMapView.setRegion(zoomRegion, animated: true)
     }
-
-
+    
+    
     // 4 Function for givng the annotation for user's location
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         self.selectedAnnotation = view.annotation as? MKPointAnnotation
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.identifier == "restaurantProfile" {
             guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
             detailVC.businesses = self.selectedRestaurant
@@ -337,7 +312,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(noResultsAlert, animated: true)
     }
-
 }
 
 extension HomeViewController: CalloutViewDelegate {
@@ -351,5 +325,3 @@ extension HomeViewController: CalloutViewDelegate {
         self.performSegue(withIdentifier: "restaurantProfile", sender: sender)
     }
 }
-
-

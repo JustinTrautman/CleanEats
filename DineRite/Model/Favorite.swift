@@ -29,6 +29,5 @@ class Favorite : Codable {
 extension Favorite : Equatable {
     static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
         return lhs.restaurantImage == rhs.restaurantImage && lhs.restaurantName == rhs.restaurantName && lhs.restaurantHealthScore == rhs.restaurantHealthScore && lhs.restaurantRating == rhs.restaurantRating && lhs.restaurantPhone == rhs.restaurantPhone && lhs.restaurantDescription == rhs.restaurantDescription
-        
     }
 }

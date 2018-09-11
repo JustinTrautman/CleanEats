@@ -46,16 +46,15 @@ extension  ViolationDetailViewController: UITableViewDelegate {
         
         let firstViolation = violations[0] 
         
-//        print(firstViolation.count)
+        //        print(firstViolation.count)
         
         return 1
-//         return firstViolation.count
+        //         return firstViolation.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard var violationTitle = violationTitles,
-        let violationCode = violationCodes?.first else { return UITableViewCell() }
+            let violationCode = violationCodes?.first else { return UITableViewCell() }
         
         violationTitle.removeDuplicates()
         let firstViolationTitle = violationTitle.first
@@ -63,16 +62,16 @@ extension  ViolationDetailViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath) as! CriticalViolationTableViewCell
         
         guard let criticalViolationCount = criticalViolations,
-        let title = firstViolationTitle else { return UITableViewCell() }
+            let title = firstViolationTitle else { return UITableViewCell() }
         
         cell.numberOfCriticalViolations = 1
-//        cell.numberOfCriticalViolations = criticalViolationCount.count
+        //        cell.numberOfCriticalViolations = criticalViolationCount.count
         cell.violationTitleMajor.text = "\(title)"
         cell.violationCodeMajor.text = "\(violationCode)"
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
@@ -82,7 +81,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
         let violationTitleText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)]
         
         guard let criticalViolationTotal = HealthViolationData.shared.criticalViolations,
-        let nonCriticalViolationTotal = HealthViolationData.shared.nonCriticalViolations else { return UIView() }
+            let nonCriticalViolationTotal = HealthViolationData.shared.nonCriticalViolations else { return UIView() }
         
         if section == 0 {
             

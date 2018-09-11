@@ -13,8 +13,7 @@ extension UIView {
     func lock() {
         if let _ = viewWithTag(10) {
             //View is already locked
-        }
-        else {
+        } else {
             let lockView = UIView(frame: bounds)
             lockView.backgroundColor = UIColor(white: 0.0, alpha: 0.75)
             lockView.tag = 10

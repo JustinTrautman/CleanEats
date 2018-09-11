@@ -11,7 +11,6 @@ import Foundation
 // Health Violation Data
 
 class Violation: Codable {
-    
     let criticalViolation: Int?
     let nonCriticalViolation: Int?
     let weight: Int?
@@ -30,6 +29,7 @@ class Violation: Codable {
     }
     
     private enum codingKey: String, CodingKey {
+        
         case criticalViolation = "major"
         case nonCriticalViolation = "minor"
         case weight

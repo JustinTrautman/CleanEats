@@ -28,9 +28,9 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     @IBOutlet weak var restaurantPhoneNumber: UILabel!
     
-//    override func layoutSubviews() {
-//        updateViews()
-//    }
+    //    override func layoutSubviews() {
+    //        updateViews()
+    //    }
     
     func updateViews() {
         // Load image from UserDefaults
@@ -53,35 +53,34 @@ class FavoriteTableViewCell: UITableViewCell {
         
         if let ratingStringAmount = favorites?.restaurantRating {
             guard let ratingDouble = Double(ratingStringAmount) else { return }
-        
-        guard let ratingEnum = RatingEnum(rawValue: Double(ratingDouble)) else { return }
-        
-        if let rating = favorites?.restaurantRating {
-        
-        switch ratingEnum {
-        case .oneStar:
-            imageForRating = UIImage(named: "1Star")
-        case .onePointFiveStar:
-            imageForRating = UIImage(named: "1.5Star")
-        case .twoStar:
-            imageForRating = UIImage(named: "2Stars")
-        case .twoPointFiveStar:
-            imageForRating = UIImage(named: "2.5Stars")
-        case .threeStar:
-            imageForRating = UIImage(named: "3Stars")
-        case .threePointFiveStar:
-            imageForRating = UIImage(named: "3.5Stars")
-        case .fourStar:
-            imageForRating = UIImage(named: "4Stars")
-        case .fourPointFiveStar:
-            imageForRating = UIImage(named: "4.5Stars")
-        case .fiveStar:
-            imageForRating = UIImage(named: "5Stars")
-        default:
-            imageForRating = UIImage(named: "0Stars")
-                }
             
-            restaurantRatingImageView.image = imageForRating
+            guard let ratingEnum = RatingEnum(rawValue: Double(ratingDouble)) else { return }
+            
+            if let rating = favorites?.restaurantRating {
+                
+                switch ratingEnum {
+                case .oneStar:
+                    imageForRating = UIImage(named: "1Star")
+                case .onePointFiveStar:
+                    imageForRating = UIImage(named: "1.5Star")
+                case .twoStar:
+                    imageForRating = UIImage(named: "2Stars")
+                case .twoPointFiveStar:
+                    imageForRating = UIImage(named: "2.5Stars")
+                case .threeStar:
+                    imageForRating = UIImage(named: "3Stars")
+                case .threePointFiveStar:
+                    imageForRating = UIImage(named: "3.5Stars")
+                case .fourStar:
+                    imageForRating = UIImage(named: "4Stars")
+                case .fourPointFiveStar:
+                    imageForRating = UIImage(named: "4.5Stars")
+                case .fiveStar:
+                    imageForRating = UIImage(named: "5Stars")
+                default:
+                    imageForRating = UIImage(named: "0Stars")
+                }
+                restaurantRatingImageView.image = imageForRating
             }
         }
     }

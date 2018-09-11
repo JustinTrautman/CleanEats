@@ -15,18 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-/**     >>> Testing only. Delete this. <<<
-        RestaurantReviewController.shared.fetchRestaurantReview(withID: "xAG4O7l-t1ubbwVAlPnDKg") { (restaurant) in
-            if let restaurant = restaurant {
-                print("Hello, world!")
-            }
-        }
-        
-          HealthDataController.shared.serializeHealtData()
-        HealthDataController.shared.getViolationDataWith(searchTerm: "Red Iguana") { (violations) in
-            violations.forEach { print($0.violationTitle)}
-        }
- **/
         return true
     }
 

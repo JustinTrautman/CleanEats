@@ -61,6 +61,7 @@ class Reviews : NSObject, Codable {
     }
     
     enum CodingKeys: String, CodingKey {
+        
         case restaurantID = "id"
         case reviewText = "text"
         case reviewTimestamp = "time_created"
@@ -73,6 +74,7 @@ class Reviews : NSObject, Codable {
         let reviewerName: String?
         
         enum CodingKeys: String, CodingKey {
+            
             case reviewerImageURL = "image_url"
             case reviewerName = "name"
         }

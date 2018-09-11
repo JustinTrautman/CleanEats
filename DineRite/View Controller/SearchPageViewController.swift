@@ -151,9 +151,9 @@
         request.naturalLanguageQuery = restaurantSearchBar.text
         
         if fastFoodButton.isSelected {
-                request.naturalLanguageQuery = "Fast Food"
-                buttonSelected = true
-                restaurantMapView.removeAnnotations(restaurantMapView.annotations)
+            request.naturalLanguageQuery = "Fast Food"
+            buttonSelected = true
+            restaurantMapView.removeAnnotations(restaurantMapView.annotations)
         }
         
         if deliveryButton.isSelected {
@@ -208,7 +208,7 @@
                 let longitude = annotation.coordinate.longitude
                 
                 RestaurantInfoController.fetchRestaurantInfo(withSearchTerm: item.name ?? "restaurant", latitude: latitude, longitude: longitude, completion: { (businesses) in
-                
+                    
                     if let businesses = businesses {
                         self.restaurants = businesses
                         DispatchQueue.main.async {
@@ -223,7 +223,7 @@
             }
         }
     }
-
+    
     func initializeFindFoodButton() {
         findFoodButton?.layer.cornerRadius = 3.0
         findFoodButton?.clipsToBounds = true

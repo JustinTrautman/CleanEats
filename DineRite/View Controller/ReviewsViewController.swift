@@ -10,14 +10,11 @@ import UIKit
 
 class ReviewsViewController: UIViewController {
     
-    
     // MARK: - Properties
     var businesses: Businesses?
     let reviews: [Reviews] = []
     
-    
     // MARK: IBOutlets
-    
     @IBOutlet weak var reviewsTableViewController: UITableView!
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var viewForYelpButton: UIView!
@@ -32,7 +29,6 @@ class ReviewsViewController: UIViewController {
         initializeYelpButtonView()
         fetchReviews()
         reloadTableView()
-        
     }
     
     @objc func businessSent(notification: Notification) {
@@ -42,7 +38,6 @@ class ReviewsViewController: UIViewController {
     }
     
     func fetchReviews() {
-        
         if let business = businesses {
             guard let businessRestaurantID = business.restaurantID else { return }
             
@@ -55,14 +50,11 @@ class ReviewsViewController: UIViewController {
     }
     
     func reloadTableView() {
-        
         DispatchQueue.main.async {
             self.reviewsTableViewController.tableFooterView = UIView()
             self.reviewsTableViewController.reloadData()
-            
         }
     }
-    
     
     // MARK: - IBActions
     
@@ -70,9 +62,7 @@ class ReviewsViewController: UIViewController {
         openYelpURL(urlStr: "http://www.yelp.com")
     }
     
-    
     func initializeYelpButtonView() {
-        
         viewForYelpButton.clipsToBounds = true
         viewForYelpButton.layer.masksToBounds = false
         viewForYelpButton.layer.shadowRadius = 7.0
@@ -83,7 +73,6 @@ class ReviewsViewController: UIViewController {
     }
     
     func openYelpURL(urlStr: String!) {
-        
         if let url = NSURL(string:urlStr) {
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
@@ -93,13 +82,10 @@ class ReviewsViewController: UIViewController {
 extension ReviewsViewController:  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return RestaurantReviewController.shared.reviews.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewsTableViewCell
         let review = RestaurantReviewController.shared.reviews[indexPath.row]
         cell.reviews = review

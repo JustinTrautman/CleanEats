@@ -11,62 +11,49 @@ import UIKit
 class ReviewsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
-    
     var reviews: Reviews? {
         didSet {
             updateViews()
         }
     }
+    
     var businesses: Businesses? {
         didSet {
             updateViews()
         }
     }
     
-    
     // MARK: Outlets
-    
-
     @IBOutlet weak var reviewerProfileImage: UIImageView!
     @IBOutlet weak var reviewerName: UILabel!
     @IBOutlet weak var reviewDateLabel: UILabel!
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var reviewTextLabel: UILabel!
     
-    
     // MARK: View Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-    
-    
     func initializeReviewerProfileImage() {
-        
         reviewerProfileImage.layer.cornerRadius = reviewerProfileImage.frame.size.width / 2
         reviewerProfileImage.clipsToBounds = false
         reviewerProfileImage.layer.masksToBounds = true
         self.selectionStyle = .none
-        
     }
     
     func updateViews() {
-        
         DispatchQueue.main.async {
             self.initializeReviewerProfileImage()
         }
         
-
         guard let reviews = reviews,
             let profileImageString = reviews.userData.reviewerImageURL else { return }
-        
         
         RestaurantReviewController.getReviewerImage(imageStringURL: profileImageString) { (image) in
             if let image = image {
                 let fetchedImage = image
                 DispatchQueue.main.async {
-                    
                     
                     self.reviewerProfileImage.image = fetchedImage
                     self.reviewerName.text = reviews.userData.reviewerName
@@ -78,7 +65,6 @@ class ReviewsTableViewCell: UITableViewCell {
                 }
                 print(reviews.reviewText)
             }
-            
         }
     }
 }
@@ -104,4 +90,3 @@ extension Date {
         return dateFormatter.string(from: formatDate)
     }
 }
-

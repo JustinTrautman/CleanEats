@@ -14,13 +14,12 @@
 
 import Foundation
 import MapKit
+
 struct TopLevelData : Codable {
-    
     let businesses: [Businesses]
 }
 
 class Businesses: Codable {
-    
     let restaurantID: String?
     let alias: String?
     var restaurantName: String?
@@ -66,15 +65,12 @@ class Businesses: Codable {
         get { return restaurantName }
     }
     
-    
-    
     public var newCoordinate: CLLocationCoordinate2D {
         guard let longitude = coordinate?.longitude,
             let lat = coordinate?.latitude
             else { return  CLLocationCoordinate2D()}
         return CLLocationCoordinate2D(latitude: lat, longitude: longitude)
     }
-    
     
     init(restaurantID: String?, alias: String?, restaurantName: String?, restaurantImage: String, isClosed: Bool, yelpUrl: String?, categories: [Categories]?, restaurantRating: Double?, restaurantReviewCount: Int?, restaurantPrice: String?, restaurantPhone: String?, restaurantDistance: Double?, location: Location?) {
         self.restaurantID = restaurantID
@@ -90,32 +86,29 @@ class Businesses: Codable {
         self.restaurantPhone = restaurantPhone
         self.restaurantDistance = restaurantDistance
         self.location = location
-        // TODO: add photos
-        
     }
     
     struct Coordinate: Codable {
         let latitude: Double
         let longitude: Double
-        
     }
     
     struct Categories: Codable {
-        
         let alias: String?
         let title: String?
     }
     
     struct Location: Codable {
-        
         let displayAddress: [String]
         
         enum CodingKeys: String, CodingKey {
+            
             case displayAddress = "display_address"
         }
     }
     
     private enum CodingKeys: String, CodingKey {
+        
         case restaurantID = "id"
         case alias
         case restaurantName = "name"
