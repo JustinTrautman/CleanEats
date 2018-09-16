@@ -51,8 +51,9 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     @IBAction func callButtonTapped(_ sender: UIButton) {
         // TODO: - Replace deprecated OpenURL code.
         guard let phoneNumber = phoneButton.currentTitle?.replacingOccurrences(of: " ", with: ""),
-            let phoneURL = NSURL(string: "tel://\(phoneNumber)") else { return }
-        UIApplication.shared.openURL(phoneURL as URL)
+            let phoneURL = URL(string: "telprompt://\(phoneNumber)") else { return }
+        UIApplication.shared.canOpenURL(phoneURL)
+        UIApplication.shared.open(phoneURL)
     }
     
     var displayAddress: [String] = []
