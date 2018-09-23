@@ -143,11 +143,11 @@
     func populateNearByPlaces() {
         var buttonSelected: Bool = false
         
-        let span = MKCoordinateSpanMake(0.012, 0.012)
+        let span = MKCoordinateSpan(latitudeDelta: 0.012, longitudeDelta: 0.012)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.restaurantMapView.userLocation.coordinate.latitude, longitude: self.restaurantMapView.userLocation.coordinate.longitude), span: span)
         restaurantMapView.setRegion(region, animated: true)
         
-        let request = MKLocalSearchRequest()
+        let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = restaurantSearchBar.text
         
         if fastFoodButton.isSelected {
@@ -228,7 +228,6 @@
         findFoodButton?.layer.cornerRadius = 3.0
         findFoodButton?.clipsToBounds = true
         findFoodButton?.layer.shadowRadius = 3.0
-        findFoodButton?.layer.cornerRadius = 30
         findFoodButton?.layer.shadowColor = UIColor.black.cgColor
         findFoodButton?.layer.shadowOpacity = 1.0
         findFoodButton?.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -293,7 +292,7 @@
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        let searchRequest = MKLocalSearchRequest()
+        let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = restaurantSearchBar.text
         
         let activeSearch = MKLocalSearch(request: searchRequest)
@@ -319,8 +318,8 @@
                 self.restaurantMapView.addAnnotation(annotation)
                 
                 let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                let span = MKCoordinateSpanMake(0.1, 0.1)
-                let region = MKCoordinateRegionMake(coordinate, span)
+                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
                 self.restaurantMapView.setRegion(region, animated: true)
             }
         }
@@ -352,7 +351,7 @@
     }
     
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
-        let zoomRegion = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
+        let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
         restaurantMapView.setRegion(zoomRegion, animated: true)
     }
  }

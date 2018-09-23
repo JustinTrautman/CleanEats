@@ -30,7 +30,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     
     func fromYelp() {
         matchingItems.removeAll()
-        let request = MKLocalSearchRequest()
+        let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarMap.text
         request.region = homeMapView.region
         
@@ -78,8 +78,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                                 
                                 //Zooming in on annotation
                                 let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-                                let span = MKCoordinateSpanMake(0.03, 0.03)
-                                let region = MKCoordinateRegionMake(coordinate, span)
+                                let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                let region = MKCoordinateRegion(center: coordinate, span: span)
                                 self.homeMapView.setRegion(region, animated: true)
                             }
                         }
@@ -265,7 +265,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     
     // 3 Function for zooming into user's location
     func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
-        let zoomRegion = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
+        let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
         homeMapView.setRegion(zoomRegion, animated: true)
     }
     

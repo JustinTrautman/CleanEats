@@ -77,8 +77,8 @@ extension  ViolationDetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let violationBoldText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 17)]
-        let violationTitleText = [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)]
+        let violationBoldText = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
+        let violationTitleText = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)]
         
         guard let criticalViolationTotal = HealthViolationData.shared.criticalViolations,
             let nonCriticalViolationTotal = HealthViolationData.shared.nonCriticalViolations else { return UIView() }
@@ -101,7 +101,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
             // Replace '1' with non critical violation count
             attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
-                NSAttributedStringKey.foregroundColor : UIColor.red
+                NSAttributedString.Key.foregroundColor : UIColor.red
                 ]))
             
             criticalViolationsLabel.attributedText = attributedText
@@ -123,7 +123,7 @@ extension  ViolationDetailViewController: UITableViewDelegate {
             
             // Replace '1' with non critical violation count
             attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
-                NSAttributedStringKey.foregroundColor : UIColor.red]))
+                NSAttributedString.Key.foregroundColor : UIColor.red]))
             
             nonCriticalViolationsLabel.attributedText = attributedText
             

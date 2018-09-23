@@ -60,7 +60,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         slideScrollView.delegate = self
         slidePageControl.currentPage = 0
         scrollView.contentSize = CGSize(width: 375, height: 800)
-        view.bringSubview(toFront: slidePageControl)
+        view.bringSubviewToFront(slidePageControl)
         
         // Text label setup
         scoreLabel.layer.masksToBounds = true
@@ -68,7 +68,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         scoreLabel.text = "\(criticalTotal + nonCriticalTotal)"
         
         let aboutVC = AboutProfileViewController()
-        self.addChildViewController(aboutVC)
+        self.addChild(aboutVC)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -221,10 +221,10 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     let phone = businesses?.restaurantPhone else { return }
                 
                 // Register default image
-                UserDefaults.standard.register(defaults: ["key": UIImageJPEGRepresentation(image, 100)])
+                UserDefaults.standard.register(defaults: ["key": UIImage.jpegData(image)])
                 
                 // Save image to UserDefaults
-                UserDefaults.standard.set(UIImageJPEGRepresentation(image, 100), forKey: "key")
+                UserDefaults.standard.set(UIImage.jpegData(image), forKey: "key")
                 
                 FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "\(rating)", phone: phone, description: "\(description1)")
             }
@@ -262,7 +262,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         loadingAlert.view.tintColor = UIColor.black
         let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating()
         
         loadingAlert.view.addSubview(loadingIndicator)
