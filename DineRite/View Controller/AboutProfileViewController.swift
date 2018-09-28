@@ -36,6 +36,7 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         delegate?.didUpdateAboutProfileVC(sender: self)
         updateViews()
+        StoreFeedbackHelper.askForReview()
     }
     
     override func viewDidAppear(_ animated: Bool) {

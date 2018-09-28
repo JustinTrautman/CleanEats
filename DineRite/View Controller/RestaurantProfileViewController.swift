@@ -69,6 +69,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         
         let aboutVC = AboutProfileViewController()
         self.addChild(aboutVC)
+        
+        StoreFeedbackHelper.askForReview()
     }
     
     override func viewWillAppear(_ animated: Bool) {

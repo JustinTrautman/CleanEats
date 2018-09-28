@@ -55,6 +55,7 @@
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
 		D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */; };
+		D0D7D66A215EDCED0037817B /* StoreFeedbackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7D669215EDCED0037817B /* StoreFeedbackHelper.swift */; };
 		D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1DDFD213615E100495A06 /* StringExtension.swift */; };
 		D0E3CA01214420CF00A52370 /* HealthRatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3CA00214420CF00A52370 /* HealthRatingTableViewCell.swift */; };
 		D0EBA4262143506F00CC34BC /* RatingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0EBA4252143506F00CC34BC /* RatingHelper.swift */; };
@@ -134,6 +135,7 @@
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		D0D7D669215EDCED0037817B /* StoreFeedbackHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFeedbackHelper.swift; sourceTree = "<group>"; };
 		D0E1DDFD213615E100495A06 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D0E3CA00214420CF00A52370 /* HealthRatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRatingTableViewCell.swift; sourceTree = "<group>"; };
 		D0EBA4252143506F00CC34BC /* RatingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingHelper.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */,
 				D0E1DDFD213615E100495A06 /* StringExtension.swift */,
 				D0EBA4252143506F00CC34BC /* RatingHelper.swift */,
+				D0D7D669215EDCED0037817B /* StoreFeedbackHelper.swift */,
 			);
 			path = "Helper+Extentions";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */,
 				D01C20262144226D000068F6 /* CustomAnnotation.swift in Sources */,
 				D056789B20FAACE500FB6470 /* HealthDataController.swift in Sources */,
+				D0D7D66A215EDCED0037817B /* StoreFeedbackHelper.swift in Sources */,
 				D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */,
 				D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */,
 				42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */,

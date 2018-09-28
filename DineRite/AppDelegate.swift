@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Increment app opened counter by 1 everytime app is opened.
+        StoreFeedbackHelper.incrementAppOpenedCount()
+        
         return true
     }
 
