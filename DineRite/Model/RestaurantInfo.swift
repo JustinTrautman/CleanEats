@@ -5,6 +5,7 @@
 //  Created by Justin Trautman on 7/9/18.
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
+
 /*
  
  This model pulls from the Yelp API for business search
@@ -20,6 +21,7 @@ struct TopLevelData : Codable {
 }
 
 class Businesses: Codable {
+    
     let restaurantID: String?
     let alias: String?
     var restaurantName: String?
@@ -34,6 +36,7 @@ class Businesses: Codable {
     let restaurantDistance: Double?
     var coordinate: Coordinate?
     let location: Location?
+    
     var imageForRating: UIImage? {
         guard let rating = restaurantRating, let ratingEnum = RatingEnum(rawValue: Double(rating)) else {
             return UIImage()

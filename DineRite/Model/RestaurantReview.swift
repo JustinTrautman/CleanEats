@@ -10,7 +10,7 @@
  
  This model uses the Yelp Reviews API to get reviews for a selected restaurant.
  
- */
+*/
 
 import Foundation
 import UIKit

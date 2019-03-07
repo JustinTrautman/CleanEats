@@ -17,14 +17,6 @@ class HealthRatingTableViewCell: UITableViewCell {
     @IBOutlet weak var nonCriticalViolationsTotal: UILabel!
     @IBOutlet weak var violationsPointTotal: UILabel!
     
-    // Properies
-    var violationTitles = HealthRatingTableViewController.shared.violationTitles
-    var criticalViolations = HealthRatingTableViewController.shared.criticalViolations
-    var nonCriticalViolations = HealthRatingTableViewController.shared.nonCriticalViolations
-    var inspectionDates = HealthRatingTableViewController.shared.inspectionDates
-    var violationCodes = HealthRatingTableViewController.shared.violationCodes
-    var violationWeights = HealthRatingTableViewController.shared.violationWeights
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

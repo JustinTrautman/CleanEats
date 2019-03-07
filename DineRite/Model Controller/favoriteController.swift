@@ -10,6 +10,7 @@ import CoreData
 
 class FavoriteController {
     
+    // TODO: Remove shared instance
     static let shared = FavoriteController()
     
     var favorites: [Favorite] = []

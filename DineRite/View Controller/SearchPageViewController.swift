@@ -197,7 +197,6 @@
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             
             guard let response = response else {return}
-            print(response.mapItems)
             
             for item in response.mapItems {
                 let annotation = MKPointAnnotation()

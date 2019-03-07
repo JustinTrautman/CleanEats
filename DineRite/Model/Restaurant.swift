@@ -9,7 +9,6 @@
 import UIKit
 
 struct Restaurant  {
-    
     let restaurantImage: UIImage
     let restaurantTitle: String
     let restaurantRating: UIImage

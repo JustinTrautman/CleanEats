@@ -14,14 +14,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Properites
     var businesses: Businesses?
     var restaurantDetails: RestaurantDetails?
+    var mapAddress: String?
     
-    var violationTitles = HealthViolationData.shared.violationTitles
-    var criticalViolations = HealthViolationData.shared.criticalViolations
-    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
-    var inspectionDates = HealthViolationData.shared.inspectionDates
-    var violationCodes = HealthViolationData.shared.violationCodes
-    var violationWeights = HealthViolationData.shared.violationWeights
-    
+    // TODO: Move to extension
     var dateComponents: DateComponents {
         let now = Date()
         let components = Calendar.current.dateComponents([.day, .hour, .minute, .weekday], from: now)
@@ -52,40 +47,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let criticalTotal = criticalViolations?.count,
-            let nonCriticalTotal = nonCriticalViolations?.count else { return }
-        
-        // Image carousel setup
-        view.addSubview(scrollView)
-        slideScrollView.delegate = self
-        slidePageControl.currentPage = 0
-        scrollView.contentSize = CGSize(width: 375, height: 800)
-        view.bringSubviewToFront(slidePageControl)
-        
-        // Text label setup
-        scoreLabel.layer.masksToBounds = true
-        scoreLabel.layer.cornerRadius = 5
-        scoreLabel.text = "\(criticalTotal + nonCriticalTotal)"
+        updateViews()
+        fetchRestaurantHealthInspections()
         
         let aboutVC = AboutProfileViewController()
         self.addChild(aboutVC)
         
         StoreFeedbackHelper.askForReview()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        updateView()
-        
-        // Prepares health data for use to speed up parsing
-        print("Serializing health data...")
-        HealthDataController.shared.serializeHealtData()
-        print("Done serializing health data")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
     
     // Horizontal ScrollView
@@ -137,25 +105,15 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let getIndex = segmentedControl.selectedSegmentIndex
         
         switch getIndex {
-            
         case 0:
-            print("First Segment Selected")
             aboutContainerView.isHidden = false
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = true
-            
         case 1:
-            print("Second Segment Selected")
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = false
             reviewContainerView.isHidden = true
-            
-            if inspectionDates?.count == 0 {
-                showNoHealthDataAlert()
-            }
-            
         case 2:
-            print("Third segment selected")
             aboutContainerView.isHidden = true
             healthRatingContainerView.isHidden = true
             reviewContainerView.isHidden = false
@@ -174,7 +132,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
             saveNewFavorite()
             showFavoriteSavedAlert()
-            FavoriteViewController.shared.updateTableView()
+            FavoritesViewController.shared.updateTableView()
             print("Star button tapped once")
             favoriteStar.isSelected = false
         }
@@ -204,33 +162,36 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             guard let destinationTV = segue.destination as? HealthRatingTableViewController else { return }
             
             destinationTV.restaurants = businesses
+            
+            // ✅ TODO: Pass data over Notification Center. It takes a bit of time to fetch the records
+            // From the database so send a notification when it is done.
         }
     }
     
     // Favorite star logic
     func saveNewFavorite() {
-        guard let criticalViolations = criticalViolations,
-            let nonCriticalViolations = nonCriticalViolations,
-            let rating = businesses?.restaurantRating else { return }
+        //        guard let criticalViolations = criticalViolations,
+        //            let nonCriticalViolations = nonCriticalViolations,
+        //            let rating = businesses?.restaurantRating else { return }
         
-        let totalViolations = criticalViolations.count + nonCriticalViolations.count
-        
-        if let descriptionCategories = businesses?.categories {
-            if let description1 = descriptionCategories[0].title {
-                
-                let image = restaurantPhotos[0]
-                guard let name = restaurantNameLabel.text,
-                    let phone = businesses?.restaurantPhone else { return }
-                
-                // Register default image
-                UserDefaults.standard.register(defaults: ["key": UIImage.jpegData(image)])
-                
-                // Save image to UserDefaults
-                UserDefaults.standard.set(UIImage.jpegData(image), forKey: "key")
-                
-                FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "\(rating)", phone: phone, description: "\(description1)")
-            }
-        }
+        //        let totalViolations = criticalViolations.count + nonCriticalViolations.count
+        //
+        //        if let descriptionCategories = businesses?.categories {
+        //            if let description1 = descriptionCategories[0].title {
+        //
+        //                let image = restaurantPhotos[0]
+        //                guard let name = restaurantNameLabel.text,
+        //                    let phone = businesses?.restaurantPhone else { return }
+        //
+        //                // Register default image
+        //                UserDefaults.standard.register(defaults: ["key": UIImage.jpegData(image)])
+        //
+        //                // Save image to UserDefaults
+        //                UserDefaults.standard.set(UIImage.jpegData(image), forKey: "key")
+        //
+        //                FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "\(rating)", phone: phone, description: "\(description1)")
+        //            }
+        //        }
     }
     
     func deleteFavorite() {
@@ -273,7 +234,18 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    func updateView() {
+    func updateViews() {
+        // Image carousel setup
+        view.addSubview(scrollView)
+        slideScrollView.delegate = self
+        slidePageControl.currentPage = 0
+        scrollView.contentSize = CGSize(width: 375, height: 800)
+//        scrollView.bringSubviewToFront(favoriteStar)
+        
+        // Text label setup
+        scoreLabel.layer.masksToBounds = true
+        scoreLabel.layer.cornerRadius = 5
+        
         if let business = businesses {
             guard let restuarantAlias = business.alias else { return }
             
@@ -289,23 +261,36 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 
                 for url in photoUrls{
                     photosGroup.enter()
-                    print("Entering the photos dispatch Group")
                     RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
                         guard let photo = photo else {return}
                         self.restaurantPhotos.append(photo)
-                        print("Leaving the photos dispatch Group")
                         photosGroup.leave()
                     })
                 }
                 
                 photosGroup.notify(queue: .main){
-                    print("Main Queue Notified")
                     let slides = self.createSlides()
                     self.slidePageControl.numberOfPages = slides.count
                     self.setupSlideScrollView(slides: slides)
                     self.restaurantNameLabel.text = name
                     self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
                     self.ratingStar.image = starRatingView
+                }
+            }
+        }
+    }
+    
+    func fetchRestaurantHealthInspections() {
+        guard let address = mapAddress else {
+            return
+        }
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            HealthInspectionController.fetchHealthInspectionFor(restaurantAddress: address) { (inspections) in
+                if let inspections = inspections {
+                    let healthInspections = ["inspections": inspections]
+                    
+                    NotificationCenter.default.post(name: Constants.healthInspectionKey, object: nil, userInfo: healthInspections)
                 }
             }
         }

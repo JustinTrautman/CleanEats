@@ -13,11 +13,10 @@ class CustomSearchBar: UISearchBar {
 
 class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
-    static var shared = HomeViewController()
-    
     var matchingItems: [MKMapItem] = [MKMapItem]()
     var restaurants: [Businesses] = []
     var selectedAnnotation: MKPointAnnotation?
+    var mapAddress: String?
     
     // Outlets
     @IBOutlet weak var searchBarMap: CustomSearchBar!
@@ -35,7 +34,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         request.region = homeMapView.region
         
         let search = MKLocalSearch(request: request)
-        search.start(completionHandler: {(response, error) in
+        search.start(completionHandler: { [unowned self] (response, error) in
             
             if let results = response {
                 
@@ -51,8 +50,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
                     let annotations = self.homeMapView.annotations
                     self.homeMapView.removeAnnotations(annotations)
                     // Getting data
-                    guard let latitude = response?.boundingRegion.center.latitude else {return}
-                    guard let longitude = response?.boundingRegion.center.longitude else {return}
+                    guard let latitude = response?.boundingRegion.center.latitude else { return }
+                    guard let longitude = response?.boundingRegion.center.longitude else { return }
                     
                     RestaurantInfoController.fetchRestaurantInfo(withSearchTerm: self.searchBarMap.text!, latitude: latitude, longitude: longitude) { (businesses) in
                         if let businesses = businesses {
@@ -116,8 +115,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // 1
-        if view.annotation is MKUserLocation
-        {
+        if view.annotation is MKUserLocation {
             // Don't proceed with custom callout
             return
         }
@@ -129,6 +127,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         
         calloutView.restaurant = customAnnotation.restaurant
         calloutView.delegate = self
+        
+        // Returns just the street name capitalized. Required to match database naming conventions.
+        let address = customAnnotation.restaurant.location?.displayAddress[0].truncate(endingCharacter: ",")
+        mapAddress = address?.uppercased()
         
         RestaurantInfoController.getRestaurantImage(imageStringURL: customAnnotation.restaurantImageUrlString) { (image) in
             guard let image = image else {return}
@@ -145,8 +147,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: AnnotationView.self) {
-            for subview in view.subviews
-            {
+            for subview in view.subviews {
                 subview.removeFromSuperview()
             }
         }
@@ -169,10 +170,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         scale.scaleVisibility = .visible // always visible
         view.addSubview(scale)
         
-        guard let y = navigationController?.navigationBar.frame.size.height else { return }
-        let y2 = y + 40
-        let size = CGSize(width: self.view.frame.width, height: y2)
-        navigationController?.navigationBar.sizeThatFits(size)
+//        guard let y = navigationController?.navigationBar.frame.size.height else { return }
+//        let y2 = y + 10
+//        let size = CGSize(width: self.view.frame.width, height: y2)
+//        navigationController?.navigationBar.sizeThatFits(size)
         let logo = UIImage(named: "DineRiteNew")
         var imageView = UIImageView()
         imageView = UIImageView(image: logo)
@@ -184,7 +185,8 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         imageView.topAnchor.constraint(equalTo: navBar.topAnchor, constant: 0).isActive = true
         imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
         imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -195,42 +197,42 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         super.viewWillAppear(animated)
         
     }
+//
+//    func setUpNavHeight() {
+//        guard let y = navigationController?.navigationBar.frame.origin.y else { return }
+//        let y2 = y + 20
+//        let size = CGSize(width: self.view.frame.width, height: y2)
+//        navigationController?.navigationBar.sizeThatFits(size)
+//    }
     
-    func setUpNavHeight() {
-        guard let y = navigationController?.navigationBar.frame.origin.y else { return }
-        let y2 = y + 20
-        let size = CGSize(width: self.view.frame.width, height: y2)
-        navigationController?.navigationBar.sizeThatFits(size)
-    }
-    
-    func setUpNavbarHeight() {
-        for subview in (self.navigationController?.navigationBar.subviews)! {
-            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
-                var subViewFrame: CGRect = subview.frame
-                let subView = UIView()
-                
-                subViewFrame.size.height = 90
-                subView.frame = subViewFrame
-                // Convert an image view to a view
-                // Constrain it to the center and size it
-                let logo = UIImage(named: "DineRiteNew")
-                var imageView = UIImageView()
-                imageView = UIImageView(image: logo)
-                imageView.contentMode = .scaleAspectFit
-                
-                subView.addSubview(imageView)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                subview.backgroundColor = .clear
-                
-                navigationController?.navigationBar.addSubview(subView)
-            }
-        }
-    }
+//    func setUpNavbarHeight() {
+//        for subview in (self.navigationController?.navigationBar.subviews)! {
+//            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
+//                var subViewFrame: CGRect = subview.frame
+//                let subView = UIView()
+//                
+//                subViewFrame.size.height = 90
+//                subView.frame = subViewFrame
+//                // Convert an image view to a view
+//                // Constrain it to the center and size it
+//                let logo = UIImage(named: "DineRiteNew")
+//                var imageView = UIImageView()
+//                imageView = UIImageView(image: logo)
+//                imageView.contentMode = .scaleAspectFit
+//                
+//                subView.addSubview(imageView)
+//                imageView.translatesAutoresizingMaskIntoConstraints = false
+//                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+//                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+//                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+//                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+//                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//                subview.backgroundColor = .clear
+//                
+//                navigationController?.navigationBar.addSubview(subView)
+//            }
+//        }
+//    }
     
     // Action for the searchBar on the MAP
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -278,9 +280,10 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "restaurantProfile" {
-            guard let detailVC = segue.destination as? RestaurantProfileViewController else {print("Targeting the wrong viewConroller") ;  return }
+            guard let detailVC = segue.destination as? RestaurantProfileViewController else { return }
+            detailVC.mapAddress = mapAddress
             detailVC.businesses = self.selectedRestaurant
-            detailVC.navigationItem.hidesBackButton = true
+//            detailVC.navigationItem.hidesBackButton = true
         }
     }
 }
@@ -298,13 +301,12 @@ extension HomeViewController: CLLocationManagerDelegate {
         currentCoordinate = latestLocation.coordinate
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("The status changed")
-        
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             beginLocationUpdates(locationManager: manager)
         }
     }
     
+    // TODO: Move to alert helper
     func showNoResultsAlert() {
         guard let searchedTerm = searchBarMap.text else { return }
         
@@ -316,8 +318,6 @@ extension HomeViewController: CLLocationManagerDelegate {
 
 extension HomeViewController: CalloutViewDelegate {
     func calloutViewTapped(restaurant: Businesses, sender: CalloutView) {
-        print("Customcallout from delegate")
-        
         self.selectedRestaurant = restaurant
         
         NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)

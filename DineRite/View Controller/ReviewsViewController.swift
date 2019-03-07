@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class ReviewsViewController: UIViewController {
+class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     
     // MARK: - Properties
     var businesses: Businesses?
@@ -18,7 +19,6 @@ class ReviewsViewController: UIViewController {
     @IBOutlet weak var reviewsTableViewController: UITableView!
     @IBOutlet weak var yelpButton: UIButton!
     @IBOutlet weak var viewForYelpButton: UIView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +57,10 @@ class ReviewsViewController: UIViewController {
     }
     
     // MARK: - IBActions
-    
     @IBAction func yelpButtonTapped(_ sender: Any) {
-        openYelpURL(urlStr: "http://www.yelp.com")
+        // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
+        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
+        OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
     }
     
     func initializeYelpButtonView() {
@@ -71,15 +72,9 @@ class ReviewsViewController: UIViewController {
         viewForYelpButton.layer.shadowOffset = CGSize.zero
         viewForYelpButton.layer.shouldRasterize = true
     }
-    
-    func openYelpURL(urlStr: String!) {
-        if let url = NSURL(string:urlStr) {
-            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-        }
-    }
 }
 
-extension ReviewsViewController:  UITableViewDelegate, UITableViewDataSource {
+extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return RestaurantReviewController.shared.reviews.count

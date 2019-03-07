@@ -10,9 +10,6 @@ import Foundation
 
 class RestaurantController {
     
-    // sharedInstance
-    static var sharedRestaurant = RestaurantController()
-    
     // Source of truth
     var restaurants: [Restaurant] {
         let restuarunts = [

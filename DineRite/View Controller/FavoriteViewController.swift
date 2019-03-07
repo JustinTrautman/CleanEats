@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController {
+class FavoritesViewController: UIViewController {
     
-    static let shared = FavoriteViewController()
+    static let shared = FavoritesViewController()
     
     // MARK: - Outlets
     @IBOutlet weak var favoriteTableView: UITableView!
@@ -97,7 +97,7 @@ class FavoriteViewController: UIViewController {
 }
 
 // MARK: - TableView Datasource 
-extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,11 +9,8 @@
 import UIKit
 
 class RestaurantDetailController {
-    
-    static let authorizationKey = "Bearer VBD28yjGUwXP2DOqFu5UQIxZ_czZjgAbBijF-_2ch9SwdtsenIlG1cPbM0lQjYmWBmlpXNWku6aTS36pK3b6PwJqsJYW4NTmCbedCYvTm7uA3elgb6tXSBt-MIE-W3Yx"
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses")
     static var restaurantDetails: RestaurantDetails?
-    static let shared = RestaurantDetailController()
     static let photos: [UIImage] = []
     
     static func fetchRestaurantDetailsWith(restaurantAlias: String, completion: @escaping ((RestaurantDetails)?) -> Void) {
@@ -23,11 +20,9 @@ class RestaurantDetailController {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         guard let completeURL = components?.url else { completion(nil) ; return }
-        
-        print("📡📡📡📡 \(completeURL)📡📡📡📡")
-        
+                
         var request = URLRequest(url: completeURL)
-        request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
+        request.addValue(Constants.yelpAuthorizationKey, forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {

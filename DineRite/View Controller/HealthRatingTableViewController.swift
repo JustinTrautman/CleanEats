@@ -9,22 +9,14 @@
 import UIKit
 
 class HealthRatingTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    static let shared = HealthRatingTableViewController()
-    
+        
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoButton: UIButton!
     
     // MARK: - Properties
     var restaurants: Businesses?
-    
-    var violationTitles = HealthViolationData.shared.violationTitles
-    var criticalViolations = HealthViolationData.shared.criticalViolations
-    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
-    var inspectionDates = HealthViolationData.shared.inspectionDates
-    var violationCodes = HealthViolationData.shared.violationCodes
-    var violationWeights = HealthViolationData.shared.violationWeights
+    var healthInspections: [HealthInspection] = []
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -33,57 +25,21 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         tableView.delegate = self
         tableView.separatorStyle = .none
         
-        // Prepares health data for use to speed up parsing
-        print("Serializing health data...")
-        HealthDataController.shared.serializeHealtData()
-        print("Done serializing health data")
-        
-        fetchHealthData()
+        listenForHealthInspections()
     }
     
-    func fetchHealthData() {
-        guard let searchText = restaurants?.location?.displayAddress[0] else { return }
-        let formattedSearchText = searchText.replacingOccurrences(of: "th", with: "").uppercased()
-        print(searchText)
-        print(formattedSearchText)
+    func listenForHealthInspections() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInspectionReceival(notification:)), name: Constants.healthInspectionKey, object: nil)
+    }
+    
+    @objc func handleInspectionReceival(notification: NSNotification) {
+        guard let healthInspections = notification.userInfo?["inspections"] as? [HealthInspection] else { return }
+        print(healthInspections)
         
-        HealthDataController.shared.getViolationDataWith(searchTerm: "\(formattedSearchText)") { (violation) in
-            violation.forEach {
-                // MARK: - Pyramid of if statements and caveman debugging with print statements.
-                if let violationTitle = $0.violationTitle {
-                    HealthViolationData.shared.violationTitles?.append(violationTitle)
-                }
-                
-                if let criticalViolation = $0.criticalViolation {
-                    HealthViolationData.shared.criticalViolations?.append(criticalViolation)
-                    self.criticalViolations?.removeDuplicates()
-                    //                    print(self.criticalViolations)
-                }
-                
-                if let nonCriticalViolation = $0.nonCriticalViolation {
-                    HealthViolationData.shared.nonCriticalViolations?.append(nonCriticalViolation)
-                    self.nonCriticalViolations?.removeDuplicates()
-                    //                    print(self.nonCriticalViolations)
-                }
-                
-                if let inspectionDate = $0.inspectionDate {
-                    HealthViolationData.shared.inspectionDates?.append(inspectionDate)
-                    self.inspectionDates?.removeDuplicates()
-                    //                    print(self.inspectionDates)
-                }
-                
-                if let violationCode = $0.violationCode {
-                    HealthViolationData.shared.violationCodes?.append(violationCode)
-                    self.violationCodes?.removeDuplicates()
-                    //                    print(self.violationCodes)
-                }
-                
-                if let violationWeight = $0.weight {
-                    HealthViolationData.shared.violationWeights?.append(violationWeight)
-                    self.violationWeights?.removeDuplicates()
-                    //                    print(self.violationWeights)
-                }
-            }
+        self.healthInspections = healthInspections
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     
@@ -93,32 +49,22 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let inspectionDates = inspectionDates else { return 0 }
-        if inspectionDates.count != 0 {
-            return 1
-        } else {
-            return 0
-        }
-        //        return inspectionDates.count
+        return healthInspections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return UITableViewCell() }
         
-        guard let criticalViolations = criticalViolations,
-            let nonCriticalViolations = nonCriticalViolations,
-            var inspectionDate = inspectionDates else { return UITableViewCell() }
+        let healthData = healthInspections[indexPath.row]
+        let criticalViolationTotal = Int(healthData.critical ?? "") ?? 0
+        let nonCriticalViolationTotal = Int(healthData.nonCritical ?? "") ?? 0
+        let totalViolations = criticalViolationTotal + nonCriticalViolationTotal
         
-        if inspectionDate.count != 0 {
-            let firstInspection = inspectionDate[0]
-            
-            cell.inspectionDateLabel.text = "\(firstInspection)"
-            cell.criticalViolationsTotal.text = "\(criticalViolations.count)"
-            cell.nonCriticalViolationsTotal.text = "1"
-            //        cell.nonCriticalViolationsTotal.text = "\(nonCriticalViolations.count)"
-            cell.violationsPointTotal.text = "1"
-            //        cell.violationsPointTotal.text = "\(criticalViolations.count + nonCriticalViolations.count)"
-        }
+        cell.inspectionDateLabel.text = healthData.inspectionDate?.convertFromExcelDate()
+        cell.criticalViolationsTotal.text = String(criticalViolationTotal)
+        cell.nonCriticalViolationsTotal.text = String(nonCriticalViolationTotal)
+        cell.violationsPointTotal.text = String(totalViolations)
+        
         return cell
     }
     
@@ -129,15 +75,14 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "toViolationVC" {
-            guard let destinationVC = segue.destination as? ViolationDetailViewController else { return }
-            
-            destinationVC.violationTitles = violationTitles
-            //            destinationVC.criticalViolations = criticalViolations
-            destinationVC.nonCriticalViolations = nonCriticalViolations
-            destinationVC.inspectionDates = inspectionDates
-            destinationVC.violationCodes = violationCodes
-            destinationVC.violationWeights = violationWeights
+        if segue.identifier == ViolationDetailViewController.segueIdentifier {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                guard let destinationVC = segue.destination as? ViolationDetailViewController else { return }
+                
+                let selectedInspection = healthInspections[indexPath.row]
+                
+                destinationVC.healthInspection = selectedInspection
+            }
         }
     }
     

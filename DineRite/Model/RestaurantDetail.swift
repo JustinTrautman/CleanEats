@@ -6,16 +6,15 @@
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
 
-import UIKit
-
 /*
  
  TODO: This model pulls from the Yelp business detail API to get detailed information of each restaurant.
  
  */
 
+import UIKit
+
 struct RestaurantDetails : Codable {
-    
     let name: String
     let phone: String
     let reviewCount: Int
@@ -50,7 +49,6 @@ struct RestaurantDetails : Codable {
     }
     
     enum CodingKeys : String, CodingKey {
-        
         case name
         case phone = "display_phone"
         case reviewCount = "review_count"
@@ -81,7 +79,6 @@ struct Open: Codable {
     let day: Int
     
     enum CodingKeys: String, CodingKey {
-        
         case isOvernight = "is_overnight"
         case start
         case end

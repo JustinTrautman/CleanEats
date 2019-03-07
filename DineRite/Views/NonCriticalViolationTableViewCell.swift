@@ -14,7 +14,6 @@ class NonCriticalViolationTableViewCell: UITableViewCell {
     @IBOutlet weak var nonCriticalViolationTotal: UILabel!
     @IBOutlet weak var violationTitleMinor: UILabel!
     @IBOutlet weak var violationCodeMinor: UILabel!
-    @IBOutlet weak var weight: UILabel!
     @IBOutlet weak var points: UILabel!
     
     override func awakeFromNib() {

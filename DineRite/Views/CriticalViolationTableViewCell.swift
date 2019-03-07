@@ -29,18 +29,7 @@ class CriticalViolationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func initializeViolationLabels() {
-        let attibutedText = NSMutableAttributedString(string: " \(violationTitleMajor)", attributes: nil)
-    }
     
     func updateViews() {
-        guard let violationCode = HealthViolationData.shared.violationCodes else { return }
-        
-        if numberOfCriticalViolations == 0 {
-            self.violationTitleMajor.text = "No critical violations"
-        }
-        self.violationTitleMajor.text = "\(HealthViolationData.shared.violationTitles)"
-        //        self.criticalViolationCodeLabel.text = "Critical Violation Code: \(violationCode.first)"
-        //        self.violationCodeMajor.text = "\(violationMockData.weight) points"
     }
 }

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIT-Zt-YKv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIT-Zt-YKv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favorite View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="wL9-LR-fiO">
             <objects>
-                <viewController id="IVB-lV-4z3" customClass="FavoriteViewController" customModule="CleanEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IVB-lV-4z3" customClass="FavoritesViewController" customModule="DineRite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mWW-9h-yPG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="150" id="HH3-VU-lX6" customClass="FavoriteTableViewCell" customModule="CleanEats" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="150" id="HH3-VU-lX6" customClass="FavoriteTableViewCell" customModule="DineRite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HH3-VU-lX6" id="hq1-wH-L3w">
@@ -136,11 +136,11 @@
             </objects>
             <point key="canvasLocation" x="473" y="187"/>
         </scene>
-        <!--Favorite-->
+        <!--Favorites-->
         <scene sceneID="8as-Xb-bG8">
             <objects>
                 <navigationController id="hIT-Zt-YKv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorite" image="Favicon1" id="H2P-Hw-N0r"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Favicon1" id="H2P-Hw-N0r"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jLx-KL-Rkh">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -156,7 +156,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0Stars" width="146" height="24"/>
+        <image name="0Stars" width="293" height="49"/>
         <image name="Favicon1" width="25" height="24"/>
         <image name="noImage" width="200" height="200"/>
     </resources>

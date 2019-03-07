@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SaltLakeCity.gpx">
+   </FileRef>
+   <FileRef
       location = "group:DineRite.xcodeproj">
    </FileRef>
    <FileRef

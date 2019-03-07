@@ -51,10 +51,10 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     // MARK: - IBActions
     @IBAction func callButtonTapped(_ sender: UIButton) {
         // TODO: - Replace deprecated OpenURL code.
-        guard let phoneNumber = phoneButton.currentTitle?.replacingOccurrences(of: " ", with: ""),
-            let phoneURL = URL(string: "telprompt://\(phoneNumber)") else { return }
-        UIApplication.shared.canOpenURL(phoneURL)
-        UIApplication.shared.open(phoneURL)
+        guard let phoneNumber = phoneButton.currentTitle?.digitsOnly else {
+            return
+        }
+        OpenUrlHelper.call(phoneNumber: phoneNumber)
     }
     
     var displayAddress: [String] = []
@@ -64,7 +64,6 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         
         let str = addresses
         let joinedElements = str.joined(separator: " ")
-        print("😀 \(joinedElements)")
         
         phoneButton.setTitle("      \(phone)", for: .normal)
         // webAddressButton.setTitle("      \(yelpUrl)", for: .normal)

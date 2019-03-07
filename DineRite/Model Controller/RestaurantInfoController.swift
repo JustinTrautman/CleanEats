@@ -17,10 +17,9 @@ enum SearchType: String {
 }
 
 class RestaurantInfoController {
-    static let authorizationKey = "Bearer VBD28yjGUwXP2DOqFu5UQIxZ_czZjgAbBijF-_2ch9SwdtsenIlG1cPbM0lQjYmWBmlpXNWku6aTS36pK3b6PwJqsJYW4NTmCbedCYvTm7uA3elgb6tXSBt-MIE-W3Yx"
+    
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses/search")
     static var restaurants: [Businesses] = []
-    static let shared = RestaurantInfoController()
     
     static func fetchRestaurantInfo(withSearchTerm: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, completion: @escaping (([Businesses])?) -> Void) {
         
@@ -41,9 +40,8 @@ class RestaurantInfoController {
         guard let completeURL = components?.url else { completion(nil) ; return }
         
         var request = URLRequest(url: completeURL)
-        request.addValue(authorizationKey, forHTTPHeaderField: "Authorization")
+        request.addValue(Constants.yelpAuthorizationKey, forHTTPHeaderField: "Authorization")
         
-        print("📡📡📡📡 \(completeURL)📡📡📡📡")
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
             if let error = error {
@@ -61,7 +59,6 @@ class RestaurantInfoController {
                 
             } catch let error {
                 print("Error decoding restaurant data: \(error) \(error.localizedDescription)")
-                
             }
             }.resume()
     }

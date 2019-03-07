@@ -1,137 +1,254 @@
 //
 //  ViolationDetailViewController.swift
-//  CleanEats
+//  DineRite
 //
-//  Created by Joshua Danner on 7/13/18.
-//  Copyright © 2018 Justin Trautman. All rights reserved.
+//  Created by Justin Trautman on 3/6/19.
+//  Copyright © 2019 Justin Trautman. All rights reserved.
 //
 
 import UIKit
 
-class ViolationDetailViewController: UIViewController, UITableViewDataSource, UITabBarDelegate {
+class ViolationDetailViewController: UIViewController {
     
-    // MARK: - Properties
-    var violationTitles = HealthViolationData.shared.violationTitles
-    var criticalViolations = HealthViolationData.shared.criticalViolations
-    var nonCriticalViolations = HealthViolationData.shared.nonCriticalViolations
-    var inspectionDates = HealthViolationData.shared.inspectionDates
-    var violationCodes = HealthViolationData.shared.violationCodes
-    var violationWeights = HealthViolationData.shared.violationWeights
+    // MARK: Properties
+    var healthInspection: HealthInspection?
     
-    // MARK:  IBOutlets
-    @IBOutlet weak var violationTableView: UITableView!
+    // UIKit Properties
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     
+    let restaurantImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = #imageLiteral(resourceName: "Apollo Burger")
+        return imageView
+    }()
+    
+    let restaurantNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 25)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        return label
+    }()
+    
+    let phoneNumberLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .blue
+        label.font = UIFont(name: "system", size: 17)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.8
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePhoneLabelTap)))
+        return label
+    }()
+    
+    let addressLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "system", size: 17)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.3
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleAddressLabelTap)))
+        return label
+    }()
+    
+    let violationTypeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Arial Rounded MT Bold", size: 23)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.contentMode = .center
+        return label
+    }()
+    
+    let violationDescriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont(name: "system", size: 20)
+        textView.isScrollEnabled = false
+        return textView
+    }()
+    
+    let violationCodeLabel: UILabel = {
+        let label = UILabel()
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleViolationCodeLabelTap)))
+        return label
+    }()
+    
+    let violationPointLabel = UILabel()
+    let inspectionDateLabel = UILabel()
+    
+    // View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        violationTableView.dataSource = self
-        violationTableView.delegate = self
-        violationTableView.bounces = false
-        violationTableView.tableFooterView = UIView()
+        
+        layoutViews()
+        setViewProperties()
     }
     
-    func splitBetweenMajorAndMinor(_ input: [Violation]) -> (major: [Violation], minor: [Violation]) {
-        // USE THE .filter() method
-        return([], [])
+    func layoutViews() {
+        // Scroll View
+        view.addSubview(scrollView)
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // Content View
+        scrollView.addSubview(contentView)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
+        // Restaurant Image View
+        contentView.addSubview(restaurantImageView)
+        
+        restaurantImageView.translatesAutoresizingMaskIntoConstraints = false
+        restaurantImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        restaurantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        restaurantImageView.widthAnchor.constraint(equalToConstant: 125).isActive = true
+        restaurantImageView.heightAnchor.constraint(equalToConstant: 125).isActive = true
+        
+        // Restaurant Name Label
+        contentView.addSubview(restaurantNameLabel)
+        
+        restaurantNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        restaurantNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        restaurantNameLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
+        restaurantNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        restaurantNameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // Phone Number Label
+        contentView.addSubview(phoneNumberLabel)
+        
+        phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+        phoneNumberLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: 10).isActive = true
+        phoneNumberLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
+        phoneNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        phoneNumberLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        // Address Label
+        contentView.addSubview(addressLabel)
+        
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 10).isActive = true
+        addressLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
+        addressLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        addressLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        // Violation Type Label
+        contentView.addSubview(violationTypeLabel)
+        
+        violationTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        violationTypeLabel.topAnchor.constraint(equalTo: restaurantImageView.bottomAnchor, constant: 30).isActive = true
+        violationTypeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        violationTypeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
+        violationTypeLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        // Violation Description Text View
+        contentView.addSubview(violationDescriptionTextView)
+        
+        violationDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        violationDescriptionTextView.topAnchor.constraint(equalTo: violationTypeLabel.bottomAnchor, constant: 20).isActive = true
+        violationDescriptionTextView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        violationDescriptionTextView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
+        
+        // Violation Code Label
+        contentView.addSubview(violationCodeLabel)
+        
+        violationCodeLabel.translatesAutoresizingMaskIntoConstraints = false
+        violationCodeLabel.topAnchor.constraint(equalTo: violationDescriptionTextView.bottomAnchor, constant: 20).isActive = true
+        violationCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        violationCodeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
+        violationCodeLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        // Violation Point Label
+        contentView.addSubview(violationPointLabel)
+        
+        violationPointLabel.translatesAutoresizingMaskIntoConstraints = false
+        violationPointLabel.topAnchor.constraint(equalTo: violationCodeLabel.bottomAnchor, constant: 20).isActive = true
+        violationPointLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        violationPointLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
+        violationPointLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        // Inspection Date Label
+        contentView.addSubview(inspectionDateLabel)
+        
+        inspectionDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        inspectionDateLabel.topAnchor.constraint(equalTo: violationPointLabel.bottomAnchor, constant: 20).isActive = true
+        inspectionDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        inspectionDateLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
+        inspectionDateLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }
-}
-
-extension  ViolationDetailViewController: UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard var violations = violationTitles else { return 0 }
+    func setViewProperties() {
+        guard let inspection = healthInspection else {
+            assertionFailure()
+            return
+        }
         
-        let firstViolation = violations[0] 
+        let restaurantName = inspection.name.capitalized
+        let phone = inspection.phone ?? "No phone number"; phoneNumberLabel.textColor = .black
+        let address = inspection.address
+        let criticalScore = inspection.critical ?? "0"
+        let noncriticalScore = inspection.nonCritical ?? "0"
+        let violationDescription = inspection.violationTitle ?? "Additional violation info unavailable"
+        let violationCode = inspection.violationCode ?? ""
+        let inspectionDate = inspection.inspectionDate?.convertFromExcelDate() ?? ""
+        let points = inspection.points ?? "0"
         
-        //        print(firstViolation.count)
-        
-        return 1
-        //         return firstViolation.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard var violationTitle = violationTitles,
-            let violationCode = violationCodes?.first else { return UITableViewCell() }
-        
-        violationTitle.removeDuplicates()
-        let firstViolationTitle = violationTitle.first
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "criticalViolationCell", for: indexPath) as! CriticalViolationTableViewCell
-        
-        guard let criticalViolationCount = criticalViolations,
-            let title = firstViolationTitle else { return UITableViewCell() }
-        
-        cell.numberOfCriticalViolations = 1
-        //        cell.numberOfCriticalViolations = criticalViolationCount.count
-        cell.violationTitleMajor.text = "\(title)"
-        cell.violationCodeMajor.text = "\(violationCode)"
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let violationBoldText = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)]
-        let violationTitleText = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)]
-        
-        guard let criticalViolationTotal = HealthViolationData.shared.criticalViolations,
-            let nonCriticalViolationTotal = HealthViolationData.shared.nonCriticalViolations else { return UIView() }
-        
-        if section == 0 {
+        DispatchQueue.main.async {
+            self.restaurantNameLabel.text = restaurantName
+            self.phoneNumberLabel.text = phone
+            self.addressLabel.text = address
+            self.violationDescriptionTextView.text = violationDescription
             
-            let headerOneView = UIView()
-            let criticalViolationsLabel = UILabel()
+            let violationCodeText = NSMutableAttributedString()
+            violationCodeText
+                .normal("Violation code: ")
+                .colored(violationCode, color: .red)
             
-            headerOneView.addSubview(criticalViolationsLabel)
-            headerOneView.backgroundColor? = .white
+            self.violationCodeLabel.attributedText = violationCodeText
+            self.inspectionDateLabel.text = "Inspection date: \(inspectionDate)"
             
-            criticalViolationsLabel.translatesAutoresizingMaskIntoConstraints = false
-            criticalViolationsLabel.centerXAnchor.constraint(equalTo: headerOneView.centerXAnchor, constant: 0).isActive = true
-            criticalViolationsLabel.centerYAnchor.constraint(equalTo: headerOneView.centerYAnchor, constant: 0).isActive = true
-            //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
+            self.violationDescriptionTextView.heightAnchor.constraint(equalToConstant: self.violationDescriptionTextView.contentSize.height + 20).isActive = true
             
-            // FIXME - I changed this from critical violations to non critical violations. Change back when health data is fixed
+            let violationPointText = NSMutableAttributedString()
+            violationPointText
+                .normal("Violation points: ")
             
-            let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
-            // Replace '1' with non critical violation count
-            attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
-                NSAttributedString.Key.foregroundColor : UIColor.red
-                ]))
+            switch points {
+            case "6":
+                violationPointText.colored(points, color: .red)
+                self.violationPointLabel.attributedText = violationPointText
+            case "3":
+                violationPointText.colored(points, color: .orange)
+                self.violationPointLabel.attributedText = violationPointText
+            default:
+                violationPointText.colored(points, color: .blue)
+                self.violationPointLabel.attributedText = violationPointText
+            }
             
-            criticalViolationsLabel.attributedText = attributedText
+            if criticalScore != "0" {
+                self.violationTypeLabel.text = "Critical Violation"
+                self.violationTypeLabel.textColor = .red
+            }
             
-            return headerOneView
-        } else if section == 1 {
+            if noncriticalScore != "0" {
+                self.violationTypeLabel.text = "Noncritical Violation"
+                self.violationTypeLabel.textColor = .orange
+            }
             
-            let headerTwoView = UIView()
-            let nonCriticalViolationsLabel = UILabel()
-            
-            headerTwoView.addSubview(nonCriticalViolationsLabel)
-            
-            nonCriticalViolationsLabel.translatesAutoresizingMaskIntoConstraints = false
-            nonCriticalViolationsLabel.centerXAnchor.constraint(equalTo: headerTwoView.centerXAnchor, constant: 0).isActive = true
-            nonCriticalViolationsLabel.centerYAnchor.constraint(equalTo: headerTwoView.centerYAnchor, constant: 0).isActive = true
-            //            criticalViolationsLabel.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0).isActive = true
-            
-            let attributedText = NSMutableAttributedString(string: "Non Critical Violations", attributes: violationBoldText)
-            
-            // Replace '1' with non critical violation count
-            attributedText.append(NSAttributedString(string: "  1", attributes: [ // Put your model object major violations where 99 is
-                NSAttributedString.Key.foregroundColor : UIColor.red]))
-            
-            nonCriticalViolationsLabel.attributedText = attributedText
-            
-            return headerTwoView
-            
-        } else {
-            
-            return nil
+            if criticalScore == "0" && noncriticalScore == "0" {
+                self.violationTypeLabel.text = "Other Violation"
+                self.violationTypeLabel.textColor = .blue
+            }
         }
     }
 }
