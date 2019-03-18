@@ -13,16 +13,14 @@ extension ViolationDetailViewController {
         guard let numberToCall = phoneNumberLabel.text, !numberToCall.isEmpty else {
             return
         }
-        
         OpenUrlHelper.call(phoneNumber: numberToCall)
     }
     
     @objc func handleAddressLabelTap(sender: UIView) {
         guard let addressToOpenInMaps = addressLabel.text, !addressToOpenInMaps.isEmpty,
-        let destination = healthInspection?.name else {
+        let destination = restaurantDetails?.restaurantName  else {
             return
         }
-        
         OpenUrlHelper.openMapsWith(address: addressToOpenInMaps, destinationName: destination)
     }
     

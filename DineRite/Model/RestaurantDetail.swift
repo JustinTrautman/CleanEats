@@ -30,7 +30,7 @@ struct RestaurantDetails : Codable {
         case .oneStar:
             return UIImage(named: "1Star")
         case .onePointFiveStar:
-            return UIImage(named: "1.5Star")
+            return UIImage(named: "1.5Stars")
         case .twoStar:
             return UIImage(named: "2Stars")
         case .twoPointFiveStar:
@@ -45,6 +45,8 @@ struct RestaurantDetails : Codable {
             return UIImage(named: "4.5Stars")
         case .fiveStar:
             return UIImage(named: "5Stars")
+        default:
+            return UIImage(named: "0Stars")
         }
     }
     

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gjY-Yg-F36">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gjY-Yg-F36">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +21,8 @@
                     <connections>
                         <segue destination="flE-lN-kNk" kind="relationship" relationship="viewControllers" id="F3N-VE-LB6"/>
                         <segue destination="duU-f8-Y4Z" kind="relationship" relationship="viewControllers" id="Xmx-qG-cjE"/>
-                        <segue destination="etu-hj-2Yf" kind="relationship" relationship="viewControllers" id="Lh4-VZ-aAr"/>
+                        <segue destination="ZIu-Zo-XbU" kind="relationship" relationship="viewControllers" id="HdO-3n-HM5"/>
+                        <segue destination="etu-hj-2Yf" kind="relationship" relationship="viewControllers" id="EQ6-Pi-EgH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUj-Ao-ELN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -48,11 +49,11 @@
             </objects>
             <point key="canvasLocation" x="-792" y="556"/>
         </scene>
-        <!--SearchPage-->
+        <!--Discover-->
         <scene sceneID="qfT-n1-XA8">
             <objects>
-                <viewControllerPlaceholder storyboardName="SearchPage" id="ZIu-Zo-XbU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hYg-qT-a83"/>
+                <viewControllerPlaceholder storyboardName="Discover" id="ZIu-Zo-XbU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="Searchicon1" id="hYg-qT-a83"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkI-zS-5fC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,4 +70,7 @@
             <point key="canvasLocation" x="-246" y="556"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Searchicon1" width="19" height="18"/>
+    </resources>
 </document>

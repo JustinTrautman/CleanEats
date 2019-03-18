@@ -89,7 +89,7 @@
                 <outlet property="restaurantImage" destination="WSt-vK-ZZF" id="UZi-fF-HQg"/>
                 <outlet property="restaurantName" destination="liT-3I-DHR" id="N3A-0v-qLe"/>
             </connections>
-            <point key="canvasLocation" x="-2.5" y="-108.5"/>
+            <point key="canvasLocation" x="-3.2000000000000002" y="-109.29535232383809"/>
         </view>
     </objects>
 </document>

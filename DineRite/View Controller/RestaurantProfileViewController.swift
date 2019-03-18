@@ -15,6 +15,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     var businesses: Businesses?
     var restaurantDetails: RestaurantDetails?
     var mapAddress: String?
+    lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
+    var healthInspections: [HealthInspection]?
     
     // TODO: Move to extension
     var dateComponents: DateComponents {
@@ -22,6 +24,28 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let components = Calendar.current.dateComponents([.day, .hour, .minute, .weekday], from: now)
         return components
     }
+    
+    // Container Views
+    private lazy var aboutViewController: AboutProfileViewController = {
+       let storyboard = UIStoryboard(name: "About", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "AboutProfileViewController") as! AboutProfileViewController
+        self.addChild(viewController)
+        return viewController
+    }()
+    
+    private lazy var healthInspectionTableViewController: HealthRatingTableViewController = {
+       let storyboard = UIStoryboard(name: "HealthInspection", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "HealthInspectionTableViewController") as! HealthRatingTableViewController
+        self.addChild(viewController)
+        return viewController
+    }()
+    
+    private lazy var reviewViewController: ReviewsViewController = {
+       let storyboard = UIStoryboard(name: "Review", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "ReviewsViewController") as! ReviewsViewController
+        self.addChild(viewController)
+        return viewController
+    }()
     
     // MARK: - IBOutlets
     @IBOutlet var restaurantProfileView: UIView!
@@ -38,20 +62,17 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var totalScoreLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var aboutContainerView: UIView!
-    @IBOutlet weak var healthRatingContainerView: UIView!
-    @IBOutlet weak var reviewContainerView: UIView!
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateViews()
+        setupSegmentedControl()
+        updateContainerView()
         fetchRestaurantHealthInspections()
-        
-        let aboutVC = AboutProfileViewController()
-        self.addChild(aboutVC)
         
         StoreFeedbackHelper.askForReview()
     }
@@ -100,31 +121,91 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
     }
     
-    // MARK: - IBActions
-    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        let getIndex = segmentedControl.selectedSegmentIndex
+    func setupSegmentedControl() {
+        segmentedControl.removeAllSegments()
+        segmentedControl.insertSegment(withTitle: "About", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Health Inspections", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Reviews", at: 2, animated: false)
+        segmentedControl.addTarget(self, action: #selector(handleSegmentSelectionChange(_:)), for: .valueChanged)
         
-        switch getIndex {
+        segmentedControl.selectedSegmentIndex = 0
+    }
+    
+    func updateContainerView() {
+        switch segmentedControl.selectedSegmentIndex {
         case 0:
-            aboutContainerView.isHidden = false
-            healthRatingContainerView.isHidden = true
-            reviewContainerView.isHidden = true
+            let mapCoordinates = CLLocationCoordinate2D(latitude: businesses?.coordinate?.latitude ?? 0, longitude: businesses?.coordinate?.longitude ?? 0)
+            aboutViewController.currentCoordinate = mapCoordinates
+            removeActiveContainerView()
+            self.addChild(viewController: aboutViewController)
         case 1:
-            aboutContainerView.isHidden = true
-            healthRatingContainerView.isHidden = false
-            reviewContainerView.isHidden = true
+            guard let healthInspections = healthInspections else { return }
+            healthInspectionTableViewController.healthInspections = healthInspections
+            removeActiveContainerView()
+            self.addChild(viewController: healthInspectionTableViewController)
         case 2:
-            aboutContainerView.isHidden = true
-            healthRatingContainerView.isHidden = true
-            reviewContainerView.isHidden = false
-            
-            guard let restaurant = businesses else { return }
-            NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
-            
+            guard let restuarantDetails = businesses else { return }
+            reviewViewController.businesses = restuarantDetails
+            removeActiveContainerView()
+            self.addChild(viewController: reviewViewController)
         default:
-            break
+            fatalError("Selected an unrecognizer container view.")
         }
     }
+    
+    private func addChild(viewController: UIViewController) {
+        addChild(viewController)
+        containerView.addSubview(viewController.view)
+        
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        viewController.didMove(toParent: self)
+    }
+    
+    private func removeChild(viewController: UIViewController) {
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+    }
+    
+    private func removeActiveContainerView() {
+        for view in containerView.subviews {
+            view.removeFromSuperview()
+        }
+    }
+    
+    private func sendRestaurantData() {
+        guard let restaurant = businesses else {
+            return
+        }
+        NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
+    }
+    
+    // MARK: - IBActions
+//    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+//        let getIndex = segmentedControl.selectedSegmentIndex
+    
+//        switch getIndex {
+//        case 0:
+//            containerView.isHidden = false
+//            healthRatingContainerView.isHidden = true
+//            reviewContainerView.isHidden = true
+//        case 1:
+//            containerView.isHidden = true
+//            healthRatingContainerView.isHidden = false
+//            reviewContainerView.isHidden = true
+//        case 2:
+//            containerView.isHidden = true
+//            healthRatingContainerView.isHidden = true
+//            reviewContainerView.isHidden = false
+//
+//            guard let restaurant = businesses else { return }
+//            NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
+//
+//        default:
+//            break
+//        }
+//    }
     
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
         
@@ -163,6 +244,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             
             destinationTV.restaurants = businesses
             
+            self.updateViewConstraints()
+            
             // ✅ TODO: Pass data over Notification Center. It takes a bit of time to fetch the records
             // From the database so send a notification when it is done.
         }
@@ -194,11 +277,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         //        }
     }
     
+    
+    
     func deleteFavorite() {
         
         // TODO: - Impelement favorite delete function
     }
     
+    // TODO: Move these to Alert Helper
     func showFavoriteSavedAlert() {
         let favoriteSavedAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
         favoriteSavedAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
@@ -211,29 +297,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         self.present(favoriteRemovedAlert, animated: true)
     }
     
-    func showNoHealthDataAlert() {
-        guard let restaurantName = restaurantNameLabel.text else { return }
-        let noHealthDataAlet = UIAlertController(title: nil, message: "Sorry, no health data was found for \(restaurantName)", preferredStyle: .alert)
-        noHealthDataAlet.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(noHealthDataAlet, animated: true)
-    }
-    
-    func showLoadingHealthDataAlert() {
-        
-        let loadingAlert = UIAlertController(title: nil, message: "Testing...", preferredStyle: .alert)
-        
-        loadingAlert.view.tintColor = UIColor.black
-        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating()
-        
-        loadingAlert.view.addSubview(loadingIndicator)
-        present(loadingAlert, animated: true, completion: nil)
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
     func updateViews() {
         // Image carousel setup
         view.addSubview(scrollView)
@@ -243,8 +306,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
 //        scrollView.bringSubviewToFront(favoriteStar)
         
         // Text label setup
-        scoreLabel.layer.masksToBounds = true
-        scoreLabel.layer.cornerRadius = 5
+    
+        totalScoreLabel.layer.masksToBounds = true
+        totalScoreLabel.layer.cornerRadius = 5
         
         if let business = businesses {
             guard let restuarantAlias = business.alias else { return }
@@ -286,13 +350,20 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
         
         DispatchQueue.global(qos: .userInteractive).async {
-            HealthInspectionController.fetchHealthInspectionFor(restaurantAddress: address) { (inspections) in
+            HealthInspectionController.getHealthInspectionsFor(address: address, completion: { (inspections) in
                 if let inspections = inspections {
-                    let healthInspections = ["inspections": inspections]
+//                    let healthInspections = ["inspections": inspections]
+//                    NotificationCenter.default.post(name: Constants.healthInspectionKey, object: nil, userInfo: healthInspections)
+                    self.healthInspections = inspections
                     
-                    NotificationCenter.default.post(name: Constants.healthInspectionKey, object: nil, userInfo: healthInspections)
+                    for inspection in inspections {
+                        self.totalInspectionPoints += inspection.weight ?? 0
+                    }
+                    DispatchQueue.main.async {
+                        self.totalScoreLabel.text = String(describing: self.totalInspectionPoints)
+                    }
                 }
-            }
+            })
         }
     }
 }

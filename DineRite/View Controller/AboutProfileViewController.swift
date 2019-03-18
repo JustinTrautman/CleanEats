@@ -40,8 +40,11 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        mapView.setRegion(MKCoordinateRegion(center: restaurantCoordinates!, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
-        guard let  restaurantCoordinates = restaurantCoordinates else { return }
+        guard let  restaurantCoordinates = restaurantCoordinates else {
+            return
+        }
+        
+        mapView.setRegion(MKCoordinateRegion(center: restaurantCoordinates, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)), animated: true)
         guard let businesses  = businesses else {return}
         let point = CustomAnnotation(coordinate: restaurantCoordinates, restaurant: businesses)
         
@@ -70,7 +73,7 @@ class AboutProfileViewController: UIViewController, MKMapViewDelegate {
         
         addressLabel.text = joinedElements
         if let restaurantDistance = businesses.restaurantDistance {
-            let distanceInMiles = round((restaurantDistance/16.0934))/100
+            let distanceInMiles = round((restaurantDistance / 16.0934)) / 100
             self.distanceLabel.text = "\(distanceInMiles) mi"
         }
     }

@@ -140,7 +140,7 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         }
         
         // 3
-        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height * 0.52)
         view.addSubview(calloutView)
         mapView.setCenter((view.annotation?.coordinate)!, animated: true)
     }
@@ -174,19 +174,19 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
 //        let y2 = y + 10
 //        let size = CGSize(width: self.view.frame.width, height: y2)
 //        navigationController?.navigationBar.sizeThatFits(size)
-        let logo = UIImage(named: "DineRiteNew")
-        var imageView = UIImageView()
-        imageView = UIImageView(image: logo)
-        imageView.contentMode = .scaleAspectFit
-        
-        navigationController?.navigationBar.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        guard let navBar = navigationController?.navigationBar else { return }
-        imageView.topAnchor.constraint(equalTo: navBar.topAnchor, constant: 0).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true        
+//        let logo = UIImage(named: "DineRiteNew")
+//        var imageView = UIImageView()
+//        imageView = UIImageView(image: logo)
+//        imageView.contentMode = .scaleAspectFit
+//
+//        navigationController?.navigationBar.addSubview(imageView)
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        guard let navBar = navigationController?.navigationBar else { return }
+//        imageView.topAnchor.constraint(equalTo: navBar.topAnchor, constant: 0).isActive = true
+//        imageView.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -15).isActive = true
+//        imageView.centerXAnchor.constraint(equalTo: navBar.centerXAnchor).isActive = true
+//        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        imageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

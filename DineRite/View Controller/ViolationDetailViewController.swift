@@ -12,6 +12,7 @@ class ViolationDetailViewController: UIViewController {
     
     // MARK: Properties
     var healthInspection: HealthInspection?
+    var restaurantDetails: Businesses?
     
     // UIKit Properties
     let scrollView = UIScrollView()
@@ -90,7 +91,6 @@ class ViolationDetailViewController: UIViewController {
     func layoutViews() {
         // Scroll View
         view.addSubview(scrollView)
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
@@ -99,7 +99,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Content View
         scrollView.addSubview(contentView)
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
@@ -108,7 +107,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Restaurant Image View
         contentView.addSubview(restaurantImageView)
-        
         restaurantImageView.translatesAutoresizingMaskIntoConstraints = false
         restaurantImageView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         restaurantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -117,7 +115,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Restaurant Name Label
         contentView.addSubview(restaurantNameLabel)
-        
         restaurantNameLabel.translatesAutoresizingMaskIntoConstraints = false
         restaurantNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         restaurantNameLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
@@ -126,7 +123,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Phone Number Label
         contentView.addSubview(phoneNumberLabel)
-        
         phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         phoneNumberLabel.topAnchor.constraint(equalTo: restaurantNameLabel.bottomAnchor, constant: 10).isActive = true
         phoneNumberLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
@@ -135,7 +131,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Address Label
         contentView.addSubview(addressLabel)
-        
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         addressLabel.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 10).isActive = true
         addressLabel.leftAnchor.constraint(equalTo: restaurantImageView.rightAnchor, constant: 10).isActive = true
@@ -144,7 +139,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Violation Type Label
         contentView.addSubview(violationTypeLabel)
-        
         violationTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         violationTypeLabel.topAnchor.constraint(equalTo: restaurantImageView.bottomAnchor, constant: 30).isActive = true
         violationTypeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -153,7 +147,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Violation Description Text View
         contentView.addSubview(violationDescriptionTextView)
-        
         violationDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         violationDescriptionTextView.topAnchor.constraint(equalTo: violationTypeLabel.bottomAnchor, constant: 20).isActive = true
         violationDescriptionTextView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -161,7 +154,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Violation Code Label
         contentView.addSubview(violationCodeLabel)
-        
         violationCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         violationCodeLabel.topAnchor.constraint(equalTo: violationDescriptionTextView.bottomAnchor, constant: 20).isActive = true
         violationCodeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -170,7 +162,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Violation Point Label
         contentView.addSubview(violationPointLabel)
-        
         violationPointLabel.translatesAutoresizingMaskIntoConstraints = false
         violationPointLabel.topAnchor.constraint(equalTo: violationCodeLabel.bottomAnchor, constant: 20).isActive = true
         violationPointLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -179,7 +170,6 @@ class ViolationDetailViewController: UIViewController {
         
         // Inspection Date Label
         contentView.addSubview(inspectionDateLabel)
-        
         inspectionDateLabel.translatesAutoresizingMaskIntoConstraints = false
         inspectionDateLabel.topAnchor.constraint(equalTo: violationPointLabel.bottomAnchor, constant: 20).isActive = true
         inspectionDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
@@ -193,36 +183,36 @@ class ViolationDetailViewController: UIViewController {
             return
         }
         
-        let restaurantName = inspection.name.capitalized
-        let phone = inspection.phone ?? "No phone number"; phoneNumberLabel.textColor = .black
-        let address = inspection.address
-        let criticalScore = inspection.critical ?? "0"
-        let noncriticalScore = inspection.nonCritical ?? "0"
+        let name = restaurantDetails?.restaurantName ?? "Unknown Restaurant"
+        let phone = restaurantDetails?.restaurantPhone ?? "No phone number"
+        let address = restaurantDetails?.location?.displayAddress.first ?? "Could not find address"
+        let criticalScore = inspection.criticalViolation ?? 0
+        let noncriticalScore = inspection.nonCriticalViolation ?? 0
         let violationDescription = inspection.violationTitle ?? "Additional violation info unavailable"
         let violationCode = inspection.violationCode ?? ""
-        let inspectionDate = inspection.inspectionDate?.convertFromExcelDate() ?? ""
-        let points = inspection.points ?? "0"
-        
+        let inspectionDate = inspection.inspectionDate ?? "Inspection date unknown"
+        let points = String(describing: inspection.weight ?? 0)
+
         DispatchQueue.main.async {
-            self.restaurantNameLabel.text = restaurantName
+            self.restaurantNameLabel.text = name
             self.phoneNumberLabel.text = phone
             self.addressLabel.text = address
             self.violationDescriptionTextView.text = violationDescription
-            
+
             let violationCodeText = NSMutableAttributedString()
             violationCodeText
                 .normal("Violation code: ")
                 .colored(violationCode, color: .red)
-            
+
             self.violationCodeLabel.attributedText = violationCodeText
             self.inspectionDateLabel.text = "Inspection date: \(inspectionDate)"
-            
+
             self.violationDescriptionTextView.heightAnchor.constraint(equalToConstant: self.violationDescriptionTextView.contentSize.height + 20).isActive = true
-            
+
             let violationPointText = NSMutableAttributedString()
             violationPointText
                 .normal("Violation points: ")
-            
+
             switch points {
             case "6":
                 violationPointText.colored(points, color: .red)
@@ -234,20 +224,20 @@ class ViolationDetailViewController: UIViewController {
                 violationPointText.colored(points, color: .blue)
                 self.violationPointLabel.attributedText = violationPointText
             }
-            
-            if criticalScore != "0" {
+
+            if criticalScore != 0 {
                 self.violationTypeLabel.text = "Critical Violation"
-                self.violationTypeLabel.textColor = .red
+                self.violationTypeLabel.textColor = .highestRiskViolation
             }
-            
-            if noncriticalScore != "0" {
+
+            if noncriticalScore != 0 {
                 self.violationTypeLabel.text = "Noncritical Violation"
-                self.violationTypeLabel.textColor = .orange
+                self.violationTypeLabel.textColor = .moderateRiskViolation
             }
-            
-            if criticalScore == "0" && noncriticalScore == "0" {
+
+            if criticalScore == 0 && noncriticalScore == 0 {
                 self.violationTypeLabel.text = "Other Violation"
-                self.violationTypeLabel.textColor = .blue
+                self.violationTypeLabel.textColor = .lowestRiskViolation
             }
         }
     }

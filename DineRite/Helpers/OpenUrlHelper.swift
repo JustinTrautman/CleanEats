@@ -8,7 +8,6 @@
 
 import UIKit
 import SafariServices
-//import CoreLocation
 import MapKit
 
 class OpenUrlHelper {

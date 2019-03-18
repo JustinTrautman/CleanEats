@@ -79,9 +79,7 @@ class FavoritesViewController: UIViewController {
     func updateTableView() {
         if FavoriteController.shared.favorites.count == 0 {
             showNoFavoritesAlert()
-            favoriteTableView.tableFooterView = UIView()
-            
-            print(FavoriteController.shared.favorites.count)
+            favoriteTableView.tableFooterView = UIView()            
         }
         
         guard let tableView = favoriteTableView else { return }

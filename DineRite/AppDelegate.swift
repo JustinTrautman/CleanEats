@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StoreFeedbackHelper.incrementAppOpenedCount()
         StoreFeedbackHelper.askForReview()
         
+        HealthInspectionController.serializeHealthInspections()
+        ViolationCodeController.serializeViolationCodes()
+        
         return true
     }
 

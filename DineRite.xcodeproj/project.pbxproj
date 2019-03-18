@@ -22,7 +22,7 @@
 		4211E83E20FD1027008DB9EB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83D20FD1026008DB9EB /* Restaurant.swift */; };
 		4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */; };
 		423D7E9320FFAFF200ED74AB /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */; };
-		4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* SearchPageViewController.swift */; };
+		4282D6B320EACF180045D223 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B220EACF180045D223 /* DiscoverViewController.swift */; };
 		4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */; };
 		4282D6BA20EAD0170045D223 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B820EAD0170045D223 /* ReviewsViewController.swift */; };
 		4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */; };
@@ -34,19 +34,24 @@
 		42EECA4320FAAE98002431D2 /* CriticalViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4220FAAE98002431D2 /* CriticalViolationTableViewCell.swift */; };
 		42EECA4520FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EECA4420FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift */; };
 		D003F527222DE88500630CE7 /* OpenUrlHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003F526222DE88500630CE7 /* OpenUrlHelper.swift */; };
-		D003F529222DEE7400630CE7 /* HealthInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003F528222DEE7400630CE7 /* HealthInspection.swift */; };
-		D003F52B222DEF8D00630CE7 /* HealthInspectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003F52A222DEF8D00630CE7 /* HealthInspectionController.swift */; };
 		D003F52D222E05B200630CE7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D003F52C222E05B200630CE7 /* Constants.swift */; };
 		D009691420EAA138005CAE1A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D009691320EAA138005CAE1A /* Foundation.framework */; };
 		D01C20262144226D000068F6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01C20252144226D000068F6 /* CustomAnnotation.swift */; };
 		D01C2028214422E8000068F6 /* Pods_DineRite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01C2027214422E8000068F6 /* Pods_DineRite.framework */; };
 		D01F559620F4FA4900E38C9B /* RestaurantReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559520F4FA4900E38C9B /* RestaurantReview.swift */; };
 		D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F559720F5025300E38C9B /* RestaurantReviewController.swift */; };
+		D0229DD822356A0E009BF035 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0229DD722356A0E009BF035 /* UIColorExtension.swift */; };
+		D0229DDA22358604009BF035 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0229DD922358604009BF035 /* UILabelExtension.swift */; };
 		D02515A420F905A2006198E9 /* CalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02515A320F905A2006198E9 /* CalloutView.swift */; };
 		D04B26B120FE5C8C001D0F9D /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B26B020FE5C8C001D0F9D /* Favorite.swift */; };
 		D04B26B320FE5CD3001D0F9D /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04B26B220FE5CD3001D0F9D /* FavoriteController.swift */; };
-		D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* SearchPage.storyboard */; };
+		D04B826920E70AAD00788469 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04B826820E70AAD00788469 /* Discover.storyboard */; };
 		D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */; };
+		D04BDF18223EBAEF00ECE331 /* HealthInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BDF17223EBAEF00ECE331 /* HealthInspection.swift */; };
+		D04BDF1A223EBBD000ECE331 /* HealthInspectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BDF19223EBBD000ECE331 /* HealthInspectionController.swift */; };
+		D04BDF1C223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BDF1B223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift */; };
+		D04BDF1E223F2C7300ECE331 /* HealthInspection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04BDF1D223F2C7300ECE331 /* HealthInspection.storyboard */; };
+		D04BDF20223F2D1300ECE331 /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D04BDF1F223F2D1300ECE331 /* Review.storyboard */; };
 		D064652B222F2EAC00CFF98B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064652A222F2EAC00CFF98B /* DateExtension.swift */; };
 		D064652D222F550700CFF98B /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064652C222F550700CFF98B /* UITableViewCellExtension.swift */; };
 		D064652F222F552F00CFF98B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064652E222F552F00CFF98B /* UIViewControllerExtension.swift */; };
@@ -58,6 +63,10 @@
 		D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0895E0820E1A71C00EB1307 /* AppDelegate.swift */; };
 		D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0895E0F20E1A71C00EB1307 /* Assets.xcassets */; };
 		D08AFBCD20EAF65000305116 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08AFBCC20EAF65000305116 /* UIViewExtension.swift */; };
+		D08EDDFA223E9E8A00BA7AAC /* ViolationCode.json in Resources */ = {isa = PBXBuildFile; fileRef = D08EDDF9223E9E8A00BA7AAC /* ViolationCode.json */; };
+		D08EDDFC223EB50800BA7AAC /* ViolationCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDDFB223EB50800BA7AAC /* ViolationCodeController.swift */; };
+		D08EDDFE223EB53F00BA7AAC /* ViolationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EDDFD223EB53F00BA7AAC /* ViolationCode.swift */; };
+		D08EDE00223EB89300BA7AAC /* Inspection.json in Resources */ = {isa = PBXBuildFile; fileRef = D08EDDFF223EB89300BA7AAC /* Inspection.json */; };
 		D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */; };
 		D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */; };
 		D0D7D66A215EDCED0037817B /* StoreFeedbackHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7D669215EDCED0037817B /* StoreFeedbackHelper.swift */; };
@@ -101,7 +110,7 @@
 		4211E83D20FD1026008DB9EB /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		4211E83F20FD1034008DB9EB /* RestaurantDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetail.swift; sourceTree = "<group>"; };
 		423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
-		4282D6B220EACF180045D223 /* SearchPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageViewController.swift; sourceTree = "<group>"; };
+		4282D6B220EACF180045D223 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutProfileViewController.swift; sourceTree = "<group>"; };
 		4282D6B820EAD0170045D223 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthRatingTableViewController.swift; sourceTree = "<group>"; };
@@ -115,19 +124,24 @@
 		6BD501300BE62017BB040F2F /* Pods_DineRite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DineRite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		738A848A2AE8D3D5CDC702D8 /* Pods_CleanEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D003F526222DE88500630CE7 /* OpenUrlHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUrlHelper.swift; sourceTree = "<group>"; };
-		D003F528222DEE7400630CE7 /* HealthInspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInspection.swift; sourceTree = "<group>"; };
-		D003F52A222DEF8D00630CE7 /* HealthInspectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInspectionController.swift; sourceTree = "<group>"; };
 		D003F52C222E05B200630CE7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D009691320EAA138005CAE1A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D01C20252144226D000068F6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		D01C2027214422E8000068F6 /* Pods_DineRite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DineRite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01F559520F4FA4900E38C9B /* RestaurantReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReview.swift; sourceTree = "<group>"; };
 		D01F559720F5025300E38C9B /* RestaurantReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantReviewController.swift; sourceTree = "<group>"; };
+		D0229DD722356A0E009BF035 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		D0229DD922358604009BF035 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		D02515A320F905A2006198E9 /* CalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutView.swift; sourceTree = "<group>"; };
 		D04B26B020FE5C8C001D0F9D /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		D04B26B220FE5CD3001D0F9D /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
-		D04B826820E70AAD00788469 /* SearchPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchPage.storyboard; sourceTree = "<group>"; };
+		D04B826820E70AAD00788469 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		D04BD43620F3CAA400B7BF6C /* RestaurantInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoController.swift; sourceTree = "<group>"; };
+		D04BDF17223EBAEF00ECE331 /* HealthInspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInspection.swift; sourceTree = "<group>"; };
+		D04BDF19223EBBD000ECE331 /* HealthInspectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInspectionController.swift; sourceTree = "<group>"; };
+		D04BDF1B223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantProfileViewController+Handlers.swift"; sourceTree = "<group>"; };
+		D04BDF1D223F2C7300ECE331 /* HealthInspection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HealthInspection.storyboard; sourceTree = "<group>"; };
+		D04BDF1F223F2D1300ECE331 /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		D064652A222F2EAC00CFF98B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		D064652C222F550700CFF98B /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		D064652E222F552F00CFF98B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -143,6 +157,10 @@
 		D0895E1920E1A71D00EB1307 /* DineRiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DineRiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0895E2420E1A71D00EB1307 /* DineRiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DineRiteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AFBCC20EAF65000305116 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D08EDDF9223E9E8A00BA7AAC /* ViolationCode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ViolationCode.json; sourceTree = "<group>"; };
+		D08EDDFB223EB50800BA7AAC /* ViolationCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationCodeController.swift; sourceTree = "<group>"; };
+		D08EDDFD223EB53F00BA7AAC /* ViolationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationCode.swift; sourceTree = "<group>"; };
+		D08EDDFF223EB89300BA7AAC /* Inspection.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Inspection.json; sourceTree = "<group>"; };
 		D0C8453F20E5D0E000475EE7 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		D0D03A772129B2FF006E3C3D /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D0D7D669215EDCED0037817B /* StoreFeedbackHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFeedbackHelper.swift; sourceTree = "<group>"; };
@@ -233,10 +251,11 @@
 			isa = PBXGroup;
 			children = (
 				428865C320F3D3B80095A837 /* RestaurantProfileViewController.swift */,
+				D04BDF1B223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift */,
 				4282D6B920EAD0170045D223 /* HealthRatingTableViewController.swift */,
 				4282D6B820EAD0170045D223 /* ReviewsViewController.swift */,
 				4282D6B420EAD0040045D223 /* AboutProfileViewController.swift */,
-				4282D6B220EACF180045D223 /* SearchPageViewController.swift */,
+				4282D6B220EACF180045D223 /* DiscoverViewController.swift */,
 				06ECAE5520EAD5B00019227C /* HomeViewController.swift */,
 				428865BF20F3D0B50095A837 /* Slide.swift */,
 				063D427020F40EF8004C8DB3 /* AboutViewController.swift */,
@@ -255,7 +274,8 @@
 				D01F559720F5025300E38C9B /* RestaurantReviewController.swift */,
 				D04B26B220FE5CD3001D0F9D /* FavoriteController.swift */,
 				423D7E9220FFAFF200ED74AB /* RestaurantDetailController.swift */,
-				D003F52A222DEF8D00630CE7 /* HealthInspectionController.swift */,
+				D08EDDFB223EB50800BA7AAC /* ViolationCodeController.swift */,
+				D04BDF19223EBBD000ECE331 /* HealthInspectionController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -269,7 +289,10 @@
 				D01F559520F4FA4900E38C9B /* RestaurantReview.swift */,
 				D01C20252144226D000068F6 /* CustomAnnotation.swift */,
 				D04B26B020FE5C8C001D0F9D /* Favorite.swift */,
-				D003F528222DEE7400630CE7 /* HealthInspection.swift */,
+				D08EDDF9223E9E8A00BA7AAC /* ViolationCode.json */,
+				D08EDDFD223EB53F00BA7AAC /* ViolationCode.swift */,
+				D08EDDFF223EB89300BA7AAC /* Inspection.json */,
+				D04BDF17223EBAEF00ECE331 /* HealthInspection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +317,8 @@
 				D064652C222F550700CFF98B /* UITableViewCellExtension.swift */,
 				D064652E222F552F00CFF98B /* UIViewControllerExtension.swift */,
 				D0646532223097BB00CFF98B /* NSMutableAttributedStringExtension.swift */,
+				D0229DD722356A0E009BF035 /* UIColorExtension.swift */,
+				D0229DD922358604009BF035 /* UILabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -341,10 +366,12 @@
 				06ECAE5D20EAD5D30019227C /* Home.storyboard */,
 				06ECAE5C20EAD5D30019227C /* Tab.storyboard */,
 				428865C520F3D3DC0095A837 /* RestaurantProfile.storyboard */,
-				D04B826820E70AAD00788469 /* SearchPage.storyboard */,
+				D04B826820E70AAD00788469 /* Discover.storyboard */,
 				06ECAE5920EAD5C20019227C /* LaunchScreen.storyboard */,
 				428865C120F3D0CA0095A837 /* Slide.xib */,
 				06A6DE4620F83B76009E960C /* CalloutView.xib */,
+				D04BDF1D223F2C7300ECE331 /* HealthInspection.storyboard */,
+				D04BDF1F223F2D1300ECE331 /* Review.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -460,11 +487,15 @@
 				06ECAE5A20EAD5C20019227C /* LaunchScreen.storyboard in Resources */,
 				428865C220F3D0CA0095A837 /* Slide.xib in Resources */,
 				D0895E1020E1A71C00EB1307 /* Assets.xcassets in Resources */,
+				D04BDF1E223F2C7300ECE331 /* HealthInspection.storyboard in Resources */,
+				D04BDF20223F2D1300ECE331 /* Review.storyboard in Resources */,
 				06ECAE5E20EAD5D30019227C /* Favorite.storyboard in Resources */,
 				428865C620F3D3DC0095A837 /* RestaurantProfile.storyboard in Resources */,
 				06A6DE4720F83B76009E960C /* CalloutView.xib in Resources */,
+				D08EDDFA223E9E8A00BA7AAC /* ViolationCode.json in Resources */,
 				06ECAE5F20EAD5D30019227C /* Tab.storyboard in Resources */,
-				D04B826920E70AAD00788469 /* SearchPage.storyboard in Resources */,
+				D04B826920E70AAD00788469 /* Discover.storyboard in Resources */,
+				D08EDE00223EB89300BA7AAC /* Inspection.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,17 +562,18 @@
 				D0E3CA01214420CF00A52370 /* HealthRatingTableViewCell.swift in Sources */,
 				4211E84020FD1034008DB9EB /* RestaurantDetail.swift in Sources */,
 				D0646533223097BB00CFF98B /* NSMutableAttributedStringExtension.swift in Sources */,
+				D04BDF18223EBAEF00ECE331 /* HealthInspection.swift in Sources */,
 				D01C20262144226D000068F6 /* CustomAnnotation.swift in Sources */,
 				D0D7D66A215EDCED0037817B /* StoreFeedbackHelper.swift in Sources */,
 				D0E1DDFE213615E100495A06 /* StringExtension.swift in Sources */,
 				D0D03A782129B2FF006E3C3D /* ArrayExtension.swift in Sources */,
-				D003F529222DEE7400630CE7 /* HealthInspection.swift in Sources */,
 				42999C3B20F4176000E721B6 /* ReviewsTableViewCell.swift in Sources */,
 				D0C8454020E5D0E000475EE7 /* RestaurantTableViewCell.swift in Sources */,
 				4282D6BB20EAD0170045D223 /* HealthRatingTableViewController.swift in Sources */,
 				42EECA4320FAAE98002431D2 /* CriticalViolationTableViewCell.swift in Sources */,
 				D04BD43720F3CAA400B7BF6C /* RestaurantInfoController.swift in Sources */,
-				D003F52B222DEF8D00630CE7 /* HealthInspectionController.swift in Sources */,
+				D04BDF1C223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift in Sources */,
+				D0229DDA22358604009BF035 /* UILabelExtension.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D003F52D222E05B200630CE7 /* Constants.swift in Sources */,
@@ -555,6 +587,8 @@
 				06ECAE5720EAD5B00019227C /* HomeViewController.swift in Sources */,
 				42EECA4520FAB25F002431D2 /* NonCriticalViolationTableViewCell.swift in Sources */,
 				06A6DE4D20F84294009E960C /* AnnotationView.swift in Sources */,
+				D08EDDFC223EB50800BA7AAC /* ViolationCodeController.swift in Sources */,
+				D0229DD822356A0E009BF035 /* UIColorExtension.swift in Sources */,
 				4282D6B520EAD0040045D223 /* AboutProfileViewController.swift in Sources */,
 				4282D6BA20EAD0170045D223 /* ReviewsViewController.swift in Sources */,
 				D064652F222F552F00CFF98B /* UIViewControllerExtension.swift in Sources */,
@@ -565,9 +599,11 @@
 				D0789B0D210149680078F8E3 /* FavoritesViewController.swift in Sources */,
 				423D7E9320FFAFF200ED74AB /* RestaurantDetailController.swift in Sources */,
 				D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */,
+				D04BDF1A223EBBD000ECE331 /* HealthInspectionController.swift in Sources */,
 				D064653122308B9200CFF98B /* ViolationDetailViewController.swift in Sources */,
-				4282D6B320EACF180045D223 /* SearchPageViewController.swift in Sources */,
+				4282D6B320EACF180045D223 /* DiscoverViewController.swift in Sources */,
 				D02515A420F905A2006198E9 /* CalloutView.swift in Sources */,
+				D08EDDFE223EB53F00BA7AAC /* ViolationCode.swift in Sources */,
 				D01F559820F5025300E38C9B /* RestaurantReviewController.swift in Sources */,
 				068C138E20F3DD1E0067EA53 /* RestaurantController.swift in Sources */,
 				D064652D222F550700CFF98B /* UITableViewCellExtension.swift in Sources */,
@@ -728,7 +764,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
 				INFOPLIST_FILE = "$(SRCROOT)/DineRite/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -748,7 +784,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84KK7ZSRKT;
 				INFOPLIST_FILE = "$(SRCROOT)/DineRite/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

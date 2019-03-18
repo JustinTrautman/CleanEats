@@ -17,16 +17,19 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     
     // MARK: IBOutlets
     @IBOutlet weak var reviewsTableViewController: UITableView!
-    @IBOutlet weak var yelpButton: UIButton!
-    @IBOutlet weak var viewForYelpButton: UIView!
+    
+//    override func loadView() {
+//        super.loadView()
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(businessSent), name: .sendBusiness, object: nil)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(businessSent), name: .sendBusiness, object: nil)
         
         reviewsTableViewController.delegate = self
         reviewsTableViewController.dataSource = self
-        initializeYelpButtonView()
+//        initializeYelpButtonView()
         fetchReviews()
         reloadTableView()
     }
@@ -57,21 +60,21 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     // MARK: - IBActions
-    @IBAction func yelpButtonTapped(_ sender: Any) {
-        // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
-        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
-        OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
-    }
+//    @IBAction func yelpButtonTapped(_ sender: Any) {
+//        // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
+//        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
+//        OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
+//    }
     
-    func initializeYelpButtonView() {
-        viewForYelpButton.clipsToBounds = true
-        viewForYelpButton.layer.masksToBounds = false
-        viewForYelpButton.layer.shadowRadius = 7.0
-        viewForYelpButton.layer.shadowColor = UIColor.lightGray.cgColor
-        viewForYelpButton.layer.shadowOpacity = 0.4
-        viewForYelpButton.layer.shadowOffset = CGSize.zero
-        viewForYelpButton.layer.shouldRasterize = true
-    }
+//    func initializeYelpButtonView() {
+//        viewForYelpButton.clipsToBounds = true
+//        viewForYelpButton.layer.masksToBounds = false
+//        viewForYelpButton.layer.shadowRadius = 7.0
+//        viewForYelpButton.layer.shadowColor = UIColor.lightGray.cgColor
+//        viewForYelpButton.layer.shadowOpacity = 0.4
+//        viewForYelpButton.layer.shadowOffset = CGSize.zero
+//        viewForYelpButton.layer.shouldRasterize = true
+//    }
 }
 
 extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {

@@ -1,0 +1,85 @@
+[ {
+"code" : "code",
+"title" : "title",
+"violation" : "violation"
+}, {
+"code" : "4.4.82",
+"title" : "Equipment, Food-Contact Surfaces, Nonfood-Contact Surfaces, and Utensils-Cleaning.",
+"violation" : "Critical"
+}, {
+"code" : "4.3.59",
+"title" : "Cold Holding",
+"violation" : "Critical"
+}, {
+"code" : "4.2.18",
+"title" : "Eating, Drinking, or Using Tobacco.",
+"violation" : "Critical"
+}, {
+"code" : "4.5.26",
+"title" : "Using a Handwashing Sink.",
+"violation" : "Critical"
+}, {
+"code" : "4.4.76",
+"title" : "Manual and Mechanical Warewashing Equipment-Chemical Sanitization, Temperature, pH, Concentration and Hardness.",
+"violation" : "Critical"
+}, {
+"code" : "4.6.25",
+"title" : "Hand Drying Provision.",
+"violation" : "Critical"
+}, {
+"code" : "4.3.23",
+"title" : "Packaged and Unpackaged Food - Separation, Packaging, Segregation.",
+"violation" : "Critical"
+}, {
+"code" : "4.7.2",
+"title" : "Working Containers-Common Name.",
+"violation" : "Critical"
+}, {
+"code" : "4.3.60",
+"title" : "Ready-to-Eat, Potentially hazardous food (time/temperature control for safety food) - Date Marking.",
+"violation" : "Critical"
+}, {
+"code" : "4.1.4",
+"title" : "Food Safety Manager Certification.",
+"violation" : "Critical"
+}, {
+"code" : "4.6.40",
+"title" : "Repairing-Physical Facilities.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.4.85",
+"title" : "Nonfood-Contact Surfaces-Cleaning.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.6.41",
+"title" : "Cleaning-Frequency and Restrictions.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.4.63",
+"title" : "Good Repair and Proper Adjustment.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.4.61",
+"title" : "Fixed Equipment-Spacing or Sealing.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.1.3",
+"title" : "Food Handler Training.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.4.11",
+"title" : "Nonfood-Contact Surfaces.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.3.37",
+"title" : "Food Storage.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.3.24",
+"title" : "Food Storage Containers - Identified with Common Name of Food.",
+"violation" : "Non Critical"
+}, {
+"code" : "4.6.43",
+"title" : "Cleaning Ventilation Systems-Nuisance and Discharge Prohibition.",
+"violation" : "Non Critical"
+} ]

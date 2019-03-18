@@ -23,10 +23,12 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
         listenForHealthInspections()
     }
+    
     
     func listenForHealthInspections() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleInspectionReceival(notification:)), name: Constants.healthInspectionKey, object: nil)
@@ -44,11 +46,9 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     }
     
     // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 210
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.updateViewConstraints()
+
         return healthInspections.count
     }
     
@@ -56,15 +56,16 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return UITableViewCell() }
         
         let healthData = healthInspections[indexPath.row]
-        let criticalViolationTotal = Int(healthData.critical ?? "") ?? 0
-        let nonCriticalViolationTotal = Int(healthData.nonCritical ?? "") ?? 0
+        let criticalViolationTotal = healthData.criticalViolation ?? 0
+        let nonCriticalViolationTotal = healthData.nonCriticalViolation ?? 0
         let totalViolations = criticalViolationTotal + nonCriticalViolationTotal
+        let inspectionDate = healthData.inspectionDate ?? "Unknown inspection date"
         
-        cell.inspectionDateLabel.text = healthData.inspectionDate?.convertFromExcelDate()
+        cell.inspectionDateLabel.text = inspectionDate
         cell.criticalViolationsTotal.text = String(criticalViolationTotal)
         cell.nonCriticalViolationsTotal.text = String(nonCriticalViolationTotal)
         cell.violationsPointTotal.text = String(totalViolations)
-        
+                
         return cell
     }
     
@@ -82,6 +83,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
                 let selectedInspection = healthInspections[indexPath.row]
                 
                 destinationVC.healthInspection = selectedInspection
+                destinationVC.restaurantDetails = restaurants
             }
         }
     }
@@ -100,6 +102,8 @@ extension HealthRatingTableViewController {
         
         alert.addAction(OKAction)
         
-        present(alert, animated: true)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
     }
 }

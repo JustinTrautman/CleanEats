@@ -29,7 +29,6 @@ class CriticalViolationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
     func updateViews() {
     }
 }

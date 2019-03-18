@@ -17,8 +17,8 @@ extension NSMutableAttributedString {
     
     @discardableResult func colored(_ text: String, color: UIColor) -> NSMutableAttributedString {
         let attributes: [NSAttributedString.Key : Any] = [.foregroundColor: color, .font: UIFont.systemFont(ofSize: 15)]
-        let grayText = NSMutableAttributedString(string: text, attributes: attributes)
-        append(grayText)
+        let coloredText = NSMutableAttributedString(string: text, attributes: attributes)
+        append(coloredText)
         
         return self
     }
