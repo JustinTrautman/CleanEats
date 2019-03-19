@@ -319,9 +319,6 @@ extension HomeViewController: CLLocationManagerDelegate {
 extension HomeViewController: CalloutViewDelegate {
     func calloutViewTapped(restaurant: Businesses, sender: CalloutView) {
         self.selectedRestaurant = restaurant
-        
-        NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
-        
         self.performSegue(withIdentifier: "restaurantProfile", sender: sender)
     }
 }

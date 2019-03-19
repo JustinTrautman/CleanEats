@@ -29,7 +29,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         listenForHealthInspections()
     }
     
-    
     func listenForHealthInspections() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleInspectionReceival(notification:)), name: Constants.healthInspectionKey, object: nil)
     }
@@ -47,8 +46,6 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.updateViewConstraints()
-
         return healthInspections.count
     }
     

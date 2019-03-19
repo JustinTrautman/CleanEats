@@ -11,24 +11,37 @@ import MapKit
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: - IBOutlets
+    @IBOutlet var restaurantProfileView: UIView!
+    @IBOutlet weak var favoriteStar: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var slideScrollView: UIScrollView!{
+        didSet {
+            slideScrollView.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var slidePageControl: UIPageControl!
+    @IBOutlet weak var ratingStarImageView: UIImageView!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var totalReviewsLabel: UILabel!
+    @IBOutlet weak var hoursOfOperationLabel: UILabel!
+    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var containerView: UIView!
+    
     // MARK: Properites
     var businesses: Businesses?
     var restaurantDetails: RestaurantDetails?
     var mapAddress: String?
     lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
     var healthInspections: [HealthInspection]?
-    
-    // TODO: Move to extension
-    var dateComponents: DateComponents {
-        let now = Date()
-        let components = Calendar.current.dateComponents([.day, .hour, .minute, .weekday], from: now)
-        return components
-    }
-    
+    lazy var closingTimeAttributedText = NSMutableAttributedString()
+
     // Container Views
-    private lazy var aboutViewController: AboutProfileViewController = {
-       let storyboard = UIStoryboard(name: "About", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "AboutProfileViewController") as! AboutProfileViewController
+    private lazy var aboutViewController: AboutRestaurantViewController = {
+       let storyboard = UIStoryboard(name: "AboutRestaurant", bundle: Bundle.main)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "AboutProfileViewController") as! AboutRestaurantViewController
         self.addChild(viewController)
         return viewController
     }()
@@ -47,25 +60,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         return viewController
     }()
     
-    // MARK: - IBOutlets
-    @IBOutlet var restaurantProfileView: UIView!
-    @IBOutlet weak var favoriteStar: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var slideScrollView: UIScrollView!{
-        didSet {
-            slideScrollView.delegate = self
-        }
-    }
-    
-    @IBOutlet weak var slidePageControl: UIPageControl!
-    @IBOutlet weak var ratingStar: UIImageView!
-    @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var totalReviewsLabel: UILabel!
-    @IBOutlet weak var hoursOfOperationLabel: UILabel!
-    @IBOutlet weak var totalScoreLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var containerView: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +71,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         StoreFeedbackHelper.askForReview()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isMovingFromParent {
+            NotificationCenter.default.post(name: Constants.reviewUnwindKey, object: nil)
+        }
+    }
+
     // Horizontal ScrollView
     var restaurantPhotos: [UIImage] = []
     
@@ -85,7 +87,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         var slides: [Slide] = []
         
         for photo in restaurantPhotos{
-            
             let slide: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
             slide.slideImageView.contentMode = .scaleAspectFill
             slide.slideImageView.clipsToBounds = true
@@ -96,8 +97,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupSlideScrollView(slides : [Slide]) {
-        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180)
+//        slideScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 180)
         slideScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        
         slideScrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
@@ -124,7 +126,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     func setupSegmentedControl() {
         segmentedControl.removeAllSegments()
         segmentedControl.insertSegment(withTitle: "About", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "Health Inspections", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Inspections", at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: "Reviews", at: 2, animated: false)
         segmentedControl.addTarget(self, action: #selector(handleSegmentSelectionChange(_:)), for: .valueChanged)
         
@@ -135,7 +137,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             let mapCoordinates = CLLocationCoordinate2D(latitude: businesses?.coordinate?.latitude ?? 0, longitude: businesses?.coordinate?.longitude ?? 0)
-            aboutViewController.currentCoordinate = mapCoordinates
+            aboutViewController.restaurantDetails = businesses
+            aboutViewController.restaurantCoordinates = mapCoordinates
             removeActiveContainerView()
             self.addChild(viewController: aboutViewController)
         case 1:
@@ -174,41 +177,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func sendRestaurantData() {
-        guard let restaurant = businesses else {
-            return
-        }
-        NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
-    }
-    
-    // MARK: - IBActions
-//    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-//        let getIndex = segmentedControl.selectedSegmentIndex
-    
-//        switch getIndex {
-//        case 0:
-//            containerView.isHidden = false
-//            healthRatingContainerView.isHidden = true
-//            reviewContainerView.isHidden = true
-//        case 1:
-//            containerView.isHidden = true
-//            healthRatingContainerView.isHidden = false
-//            reviewContainerView.isHidden = true
-//        case 2:
-//            containerView.isHidden = true
-//            healthRatingContainerView.isHidden = true
-//            reviewContainerView.isHidden = false
-//
-//            guard let restaurant = businesses else { return }
-//            NotificationCenter.default.post(name: .sendBusiness, object: restaurant, userInfo: nil)
-//
-//        default:
-//            break
-//        }
-//    }
-    
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
-        
         if  favoriteStar.isEnabled {
             favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
             saveNewFavorite()
@@ -226,30 +195,30 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "aboutProfile" {
-            guard let destinationVC = segue.destination as? AboutProfileViewController else { return }
-            
-            destinationVC.businesses = businesses
-            
-            guard let longitude = businesses?.coordinate?.longitude,
-                let lat = businesses?.coordinate?.latitude
-                else { return }
-            
-            destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
-        }
-        
-        if segue.identifier == "toHealthTV" {
-            guard let destinationTV = segue.destination as? HealthRatingTableViewController else { return }
-            
-            destinationTV.restaurants = businesses
-            
-            self.updateViewConstraints()
-            
-            // ✅ TODO: Pass data over Notification Center. It takes a bit of time to fetch the records
-            // From the database so send a notification when it is done.
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "aboutProfile" {
+//            guard let destinationVC = segue.destination as? AboutRestaurantViewController else { return }
+//            
+//            destinationVC.businesses = businesses
+//            
+//            guard let longitude = businesses?.coordinate?.longitude,
+//                let lat = businesses?.coordinate?.latitude
+//                else { return }
+//            
+//            destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
+//        }
+//        
+//        if segue.identifier == "toHealthTV" {
+//            guard let destinationTV = segue.destination as? HealthRatingTableViewController else { return }
+//            
+//            destinationTV.restaurants = businesses
+//            
+//            self.updateViewConstraints()
+//            
+//            // ✅ TODO: Pass data over Notification Center. It takes a bit of time to fetch the records
+//            // From the database so send a notification when it is done.
+//        }
+//    }
     
     // Favorite star logic
     func saveNewFavorite() {
@@ -299,14 +268,12 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func updateViews() {
         // Image carousel setup
-        view.addSubview(scrollView)
+//        view.addSubview(scrollView)
         slideScrollView.delegate = self
         slidePageControl.currentPage = 0
-        scrollView.contentSize = CGSize(width: 375, height: 800)
-//        scrollView.bringSubviewToFront(favoriteStar)
+//        scrollView.contentSize = CGSize(width: 375, height: 800)
         
         // Text label setup
-    
         totalScoreLabel.layer.masksToBounds = true
         totalScoreLabel.layer.cornerRadius = 5
         
@@ -314,10 +281,20 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             guard let restuarantAlias = business.alias else { return }
             
             RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
-                guard restaurantDetails != nil else { return }
-                let name = restaurantDetails?.name
-                guard let totalReviews = restaurantDetails?.reviewCount else { return }
-                let starRatingView = restaurantDetails?.imageForRating
+                guard let currentRestuarant = restaurantDetails else {
+                    return
+                }
+                
+                let name = currentRestuarant.name
+                let totalReviews = currentRestuarant.reviewCount
+                let rating = currentRestuarant.rating?.roundToClosestHalf() ?? 0
+
+                if let hours = currentRestuarant.hours?.first {
+                    let closingTime = RestaurantHoursHelper.returnClosingTime(for: hours)
+                    self.closingTimeAttributedText
+                        .bold("Open until- ")
+                        .normal(closingTime)
+                }
                 
                 guard let photoUrls = restaurantDetails?.photos else { return }
                 
@@ -336,9 +313,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     let slides = self.createSlides()
                     self.slidePageControl.numberOfPages = slides.count
                     self.setupSlideScrollView(slides: slides)
-                    self.restaurantNameLabel.text = name
-                    self.totalReviewsLabel.text  = ("(\(String(describing: totalReviews)))")
-                    self.ratingStar.image = starRatingView
+                    
+                    DispatchQueue.main.async {
+                        self.restaurantNameLabel.text = name
+                        self.totalReviewsLabel.text  = "(\(totalReviews))"
+                        self.ratingStarImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
+                        self.hoursOfOperationLabel.attributedText = self.closingTimeAttributedText
+                    }
                 }
             }
         }
@@ -352,8 +333,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         DispatchQueue.global(qos: .userInteractive).async {
             HealthInspectionController.getHealthInspectionsFor(address: address, completion: { (inspections) in
                 if let inspections = inspections {
-//                    let healthInspections = ["inspections": inspections]
-//                    NotificationCenter.default.post(name: Constants.healthInspectionKey, object: nil, userInfo: healthInspections)
                     self.healthInspections = inspections
                     
                     for inspection in inspections {

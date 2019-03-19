@@ -22,33 +22,7 @@ struct RestaurantDetails : Codable {
     let location: Location
     let photos: [String]?
     let hours: [Hour]?
-    var imageForRating: UIImage? {
-        guard let rating = rating, let ratingEnum = RatingEnum(rawValue: Double(Double(rating))) else {
-            return UIImage()
-        }
-        switch ratingEnum {
-        case .oneStar:
-            return UIImage(named: "1Star")
-        case .onePointFiveStar:
-            return UIImage(named: "1.5Stars")
-        case .twoStar:
-            return UIImage(named: "2Stars")
-        case .twoPointFiveStar:
-            return UIImage(named: "2.5Stars")
-        case .threeStar:
-            return UIImage(named: "3Stars")
-        case .threePointFiveStar:
-            return UIImage(named: "3.5Stars")
-        case .fourStar:
-            return UIImage(named: "4Stars")
-        case .fourPointFiveStar:
-            return UIImage(named: "4.5Stars")
-        case .fiveStar:
-            return UIImage(named: "5Stars")
-        default:
-            return UIImage(named: "0Stars")
-        }
-    }
+    var imageForRating: UIImage? 
     
     enum CodingKeys : String, CodingKey {
         case name
@@ -67,7 +41,6 @@ struct Hour: Codable {
     let isOpenNow: Bool
     
     enum CodingKeys: String, CodingKey {
-        
         case hourOpen = "open"
         case hoursType = "hours_type"
         case isOpenNow = "is_open_now"
@@ -92,7 +65,6 @@ struct Location : Codable {
     let completeAddress: [String?]
     
     enum CodingKeys : String, CodingKey {
-        
         case completeAddress = "display_address"
     }
 }

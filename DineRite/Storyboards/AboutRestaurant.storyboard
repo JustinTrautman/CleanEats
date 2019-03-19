@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="157.59999999999999" y="25.637181409295355"/>
         </scene>
-        <!--About Profile View Controller-->
+        <!--About Restaurant View Controller-->
         <scene sceneID="LGp-ey-nYV">
             <objects>
-                <viewController storyboardIdentifier="AboutProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aRd-nv-ml9" customClass="AboutProfileViewController" customModule="DineRite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aRd-nv-ml9" customClass="AboutRestaurantViewController" customModule="DineRite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0eW-2o-nPv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,8 +196,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gph-yI-BdI">
-                                <rect key="frame" x="24" y="264.5" width="327" height="25"/>
-                                <state key="normal" title="    (801) 364-0286" image="callicon4">
+                                <rect key="frame" x="24" y="264.5" width="327" height="25.5"/>
+                                <state key="normal" title="   Loading..." image="callicon4">
                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -241,15 +241,16 @@
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="9fI-lv-g8I" firstAttribute="trailing" secondItem="gph-yI-BdI" secondAttribute="trailing" constant="24" id="7Ji-2D-rCu"/>
                             <constraint firstItem="8Dr-mG-YbQ" firstAttribute="top" secondItem="9fI-lv-g8I" secondAttribute="top" constant="10" id="8mf-Hx-VSd"/>
-                            <constraint firstItem="SqB-xh-7Cp" firstAttribute="leading" secondItem="gph-yI-BdI" secondAttribute="leading" id="AJw-Gl-3HZ"/>
                             <constraint firstItem="8Dr-mG-YbQ" firstAttribute="leading" secondItem="9fI-lv-g8I" secondAttribute="leading" constant="24" id="Nzr-p9-Y7F"/>
                             <constraint firstItem="afZ-i8-c54" firstAttribute="centerX" secondItem="0eW-2o-nPv" secondAttribute="centerX" id="RZq-fC-965"/>
                             <constraint firstItem="afZ-i8-c54" firstAttribute="top" secondItem="8Dr-mG-YbQ" secondAttribute="bottom" constant="22.5" id="UGZ-EN-92e"/>
+                            <constraint firstItem="gph-yI-BdI" firstAttribute="leading" secondItem="9fI-lv-g8I" secondAttribute="leading" constant="24" id="Z03-C9-Yun"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="leading" secondItem="afZ-i8-c54" secondAttribute="leading" id="Z1C-vJ-kcd"/>
                             <constraint firstItem="gph-yI-BdI" firstAttribute="top" secondItem="SqB-xh-7Cp" secondAttribute="bottom" constant="42" id="g24-5S-a7n"/>
+                            <constraint firstItem="9fI-lv-g8I" firstAttribute="bottom" secondItem="gph-yI-BdI" secondAttribute="bottom" constant="35" id="l4F-o2-IeI"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="top" secondItem="afZ-i8-c54" secondAttribute="bottom" constant="-1" id="o8X-zq-YdP"/>
-                            <constraint firstItem="SqB-xh-7Cp" firstAttribute="trailing" secondItem="gph-yI-BdI" secondAttribute="trailing" id="uIg-HY-9pG"/>
                             <constraint firstItem="9fI-lv-g8I" firstAttribute="trailing" secondItem="8Dr-mG-YbQ" secondAttribute="trailing" constant="24" id="v4c-t8-Chl"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="trailing" secondItem="afZ-i8-c54" secondAttribute="trailing" id="wAQ-aT-pvV"/>
                         </constraints>
@@ -265,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MaM-qa-cZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="651"/>
+            <point key="canvasLocation" x="157.59999999999999" y="650.82458770614699"/>
         </scene>
     </scenes>
     <resources>

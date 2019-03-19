@@ -16,4 +16,18 @@ extension Date {
         formatter.dateFormat = "MMMM dd, yyyy"
         return formatter.string(from: date)
     }
+    
+    func convertTo12Hour() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm"
+        return formatter.string(from: self)
+    }
+    
+    /// Returns a string in day format (EEEE) from a date.
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self)
+    }
+
 }

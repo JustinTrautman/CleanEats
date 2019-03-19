@@ -18,6 +18,7 @@ struct Constants {
     
     // Notification Center
     static let healthInspectionKey = Notification.Name("com.dinerite.healthInspection")
+    static let reviewUnwindKey = Notification.Name("com.dinerite.reviewUnwind")
     
     // Strings
     static let howHealthScoringWorks = "The score of an establishment inspection is based on the violation points accumulated during a routine inspection. The lower the score the better the inspection and the better the ranking. \nRegardless of the rating, if a food establishment is open, it has met acceptable health department requirements at the time of the last inspection. \n\nThere are two types of violations:"

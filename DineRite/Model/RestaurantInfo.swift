@@ -36,33 +36,7 @@ class Businesses: Codable {
     let restaurantDistance: Double?
     var coordinate: Coordinate?
     let location: Location?
-    
-    var imageForRating: UIImage? {
-        guard let rating = restaurantRating, let ratingEnum = RatingEnum(rawValue: Double(rating)) else {
-            return UIImage()
-        }
-        
-        switch ratingEnum {
-        case .oneStar:
-            return UIImage(named: "1Star")
-        case .onePointFiveStar:
-            return UIImage(named: "1.5Star")
-        case .twoStar:
-            return UIImage(named: "2Stars")
-        case .twoPointFiveStar:
-            return UIImage(named: "2.5Stars")
-        case .threeStar:
-            return UIImage(named: "3Stars")
-        case .threePointFiveStar:
-            return UIImage(named: "3.5Stars")
-        case .fourStar:
-            return UIImage(named: "4Stars")
-        case .fourPointFiveStar:
-            return UIImage(named: "4.5Stars")
-        case .fiveStar:
-            return UIImage(named: "5Stars")
-        }
-    }
+    var imageForRating: UIImage?
     
     public var title: String? {
         get { return restaurantName }

@@ -8,6 +8,14 @@
 
 import UIKit
 extension NSMutableAttributedString {
+    @discardableResult func bold(_ text: String) -> NSMutableAttributedString {
+        let attributes: [NSAttributedString.Key : Any] = [.font: UIFont(name: "AmericanTypewriter-CondensedBold", size: 17)!]
+        let boldText = NSMutableAttributedString(string: text, attributes: attributes)
+        append(boldText)
+        
+        return self
+    }
+    
     @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
         let normal = NSAttributedString(string: text)
         append(normal)

@@ -13,31 +13,23 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     
     // MARK: - Properties
     var businesses: Businesses?
-    let reviews: [Reviews] = []
     
     // MARK: IBOutlets
-    @IBOutlet weak var reviewsTableViewController: UITableView!
+    @IBOutlet weak var reviewsTableView: UITableView!
     
-//    override func loadView() {
-//        super.loadView()
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(businessSent), name: .sendBusiness, object: nil)
-//    }
+    override func loadView() {
+        super.loadView()
+        
+        reviewsTableView.delegate = self
+        reviewsTableView.dataSource = self
+        reviewsTableView.tableFooterView = UIView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reviewsTableViewController.delegate = self
-        reviewsTableViewController.dataSource = self
-//        initializeYelpButtonView()
         fetchReviews()
-        reloadTableView()
-    }
-    
-    @objc func businessSent(notification: Notification) {
-        guard let business = notification.object as? Businesses else { return }
-        self.businesses = business
-        fetchReviews()
+        listenForUnwindSegue()
     }
     
     func fetchReviews() {
@@ -46,7 +38,6 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
             
             RestaurantReviewController.shared.fetchRestaurantReview(withID: businessRestaurantID) { (review) in
                 guard let _ = review else { return }
-                
                 self.reloadTableView()
             }
         }
@@ -54,27 +45,41 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     
     func reloadTableView() {
         DispatchQueue.main.async {
-            self.reviewsTableViewController.tableFooterView = UIView()
-            self.reviewsTableViewController.reloadData()
+            self.reviewsTableView.reloadData()
         }
     }
     
-    // MARK: - IBActions
-//    @IBAction func yelpButtonTapped(_ sender: Any) {
-//        // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
-//        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
-//        OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
-//    }
+    func listenForUnwindSegue() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUnwindSegue), name: Constants.reviewUnwindKey, object: nil)
+    }
     
-//    func initializeYelpButtonView() {
-//        viewForYelpButton.clipsToBounds = true
-//        viewForYelpButton.layer.masksToBounds = false
-//        viewForYelpButton.layer.shadowRadius = 7.0
-//        viewForYelpButton.layer.shadowColor = UIColor.lightGray.cgColor
-//        viewForYelpButton.layer.shadowOpacity = 0.4
-//        viewForYelpButton.layer.shadowOffset = CGSize.zero
-//        viewForYelpButton.layer.shouldRasterize = true
-//    }
+    
+    // MARK: Hanlers
+    @objc func handleYelpButtonTap() {
+        // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
+        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
+        OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
+    }
+    
+    @objc func handleUnwindSegue() {
+        RestaurantReviewController.shared.reviews.removeAll()
+        self.reloadTableView()
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == ReviewDetailViewController.segueIdentifier {
+            if let indexPath = reviewsTableView.indexPathForSelectedRow {
+                guard let detailVC = segue.destination as? ReviewDetailViewController else {
+                    assertionFailure()
+                    return
+                }
+                
+                let selectedReview = RestaurantReviewController.shared.reviews[indexPath.row]
+                detailVC.review = selectedReview
+            }
+        }
+    }
 }
 
 extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,11 +95,7 @@ extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 170
-        } else {
-            return 170
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
