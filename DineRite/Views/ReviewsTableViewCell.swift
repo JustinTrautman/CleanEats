@@ -41,7 +41,7 @@ class ReviewsTableViewCell: UITableViewCell {
         
         DispatchQueue.main.async {
             self.reviewerNameLabel.text = name
-            self.reviewDateLabel.text = "Posted: \(datePosted)"
+            self.reviewDateLabel.text = datePosted
             self.ratingImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
             self.reviewTextLabel.text = reviewText
         }

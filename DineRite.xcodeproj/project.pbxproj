@@ -61,6 +61,7 @@
 		D064653122308B9200CFF98B /* ViolationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D064653022308B9200CFF98B /* ViolationDetailViewController.swift */; };
 		D0646533223097BB00CFF98B /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0646532223097BB00CFF98B /* NSMutableAttributedStringExtension.swift */; };
 		D06465352230996800CFF98B /* ViolationDetailViewController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06465342230996800CFF98B /* ViolationDetailViewController+Handlers.swift */; };
+		D065AD412241758600DEEBA4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D065AD402241758600DEEBA4 /* UITableViewExtension.swift */; };
 		D06FE44820F3B58A0071EDA6 /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */; };
 		D07790FA224045DB00C6C3F1 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07790F9224045DB00C6C3F1 /* ReviewDetailViewController.swift */; };
 		D0789B0D210149680078F8E3 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0789B0C210149680078F8E3 /* FavoritesViewController.swift */; };
@@ -155,6 +156,7 @@
 		D064653022308B9200CFF98B /* ViolationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationDetailViewController.swift; sourceTree = "<group>"; };
 		D0646532223097BB00CFF98B /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
 		D06465342230996800CFF98B /* ViolationDetailViewController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViolationDetailViewController+Handlers.swift"; sourceTree = "<group>"; };
+		D065AD402241758600DEEBA4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D06FE44720F3B58A0071EDA6 /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 		D07790F9224045DB00C6C3F1 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		D0789B0C210149680078F8E3 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				D0229DD922358604009BF035 /* UILabelExtension.swift */,
 				D0508A46223FF4CF00AE50AF /* DoubleExtension.swift */,
 				D0CAFBB422406CB0003D56E5 /* UIImageViewExtension.swift */,
+				D065AD402241758600DEEBA4 /* UITableViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				D04BDF1C223F2A4000ECE331 /* RestaurantProfileViewController+Handlers.swift in Sources */,
 				D0229DDA22358604009BF035 /* UILabelExtension.swift in Sources */,
 				063D427120F40EF8004C8DB3 /* AboutViewController.swift in Sources */,
+				D065AD412241758600DEEBA4 /* UITableViewExtension.swift in Sources */,
 				D0895E0920E1A71C00EB1307 /* AppDelegate.swift in Sources */,
 				D003F52D222E05B200630CE7 /* Constants.swift in Sources */,
 				D0508A47223FF4CF00AE50AF /* DoubleExtension.swift in Sources */,

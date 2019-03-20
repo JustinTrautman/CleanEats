@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Kingfisher
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
@@ -35,7 +36,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     var restaurantDetails: RestaurantDetails?
     var mapAddress: String?
     lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
-    var healthInspections: [HealthInspection]?
+    var healthInspections: [HealthInspection] = []
     lazy var closingTimeAttributedText = NSMutableAttributedString()
 
     // Container Views
@@ -142,7 +143,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             removeActiveContainerView()
             self.addChild(viewController: aboutViewController)
         case 1:
-            guard let healthInspections = healthInspections else { return }
+            healthInspectionTableViewController.restaurantDetails = businesses
             healthInspectionTableViewController.healthInspections = healthInspections
             removeActiveContainerView()
             self.addChild(viewController: healthInspectionTableViewController)
@@ -268,10 +269,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func updateViews() {
         // Image carousel setup
-//        view.addSubview(scrollView)
         slideScrollView.delegate = self
         slidePageControl.currentPage = 0
-//        scrollView.contentSize = CGSize(width: 375, height: 800)
         
         // Text label setup
         totalScoreLabel.layer.masksToBounds = true
@@ -302,17 +301,27 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 
                 for url in photoUrls{
                     photosGroup.enter()
-                    RestaurantDetailController.fetchRestaurantPhoto(imageStringURL: url, completion: { (photo) in
-                        guard let photo = photo else {return}
-                        self.restaurantPhotos.append(photo)
-                        photosGroup.leave()
-                    })
+                    let imageUrl = URL(string: url)
+                    
+                    DispatchQueue.main.async {
+                        
+                        KingfisherManager.shared.retrieveImage(with: imageUrl!, completionHandler: { (result) in
+                            switch result {
+                            case .success(let value):
+                                self.restaurantPhotos.append(value.image)
+                                photosGroup.leave()
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        })
+                    }
                 }
                 
-                photosGroup.notify(queue: .main){
+                photosGroup.notify(queue: .main) {
                     let slides = self.createSlides()
                     self.slidePageControl.numberOfPages = slides.count
                     self.setupSlideScrollView(slides: slides)
+                    self.slideScrollView.bringSubviewToFront(self.slidePageControl)
                     
                     DispatchQueue.main.async {
                         self.restaurantNameLabel.text = name

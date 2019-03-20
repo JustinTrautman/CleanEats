@@ -43,7 +43,7 @@ class ReviewDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.nameLabel.text = name
             self.ratingImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
-            self.datePostedLabel.text = "Posted: \(datePosted)"
+            self.datePostedLabel.text = datePosted
             self.reviewTextView.text = reviewText
         }
         

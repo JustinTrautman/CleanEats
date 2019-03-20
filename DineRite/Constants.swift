@@ -17,7 +17,6 @@ struct Constants {
     static let healthInspectionDatabase = URL(string: "database")
     
     // Notification Center
-    static let healthInspectionKey = Notification.Name("com.dinerite.healthInspection")
     static let reviewUnwindKey = Notification.Name("com.dinerite.reviewUnwind")
     
     // Strings

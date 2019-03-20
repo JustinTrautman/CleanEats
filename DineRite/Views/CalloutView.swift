@@ -14,7 +14,6 @@ protocol CalloutViewDelegate: class {
     
     @IBOutlet weak var restaurantImage: UIImageView!
     @IBOutlet weak var restaurantName: UILabel!
-    @IBOutlet weak var restaurantPrice: UILabel!
     @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var restaurantDistance: UILabel!
     @IBOutlet weak var buttonTapped: UIButton!
@@ -31,16 +30,18 @@ protocol CalloutViewDelegate: class {
             guard let restaurant = restaurant else {
                 return
             }
-            self.restaurantName.text = restaurant.restaurantName ?? ""
             
-            if let restaurantDistance = restaurant.restaurantDistance {
-                let distanceInMiles = round((restaurantDistance/16.0934))/100
+            let restaurantDistance = restaurant.restaurantDistance ?? 0
+            let distanceInMiles = restaurantDistance.inMiles
+            let rating = restaurant.restaurantRating ?? 0
+            
+            DispatchQueue.main.async {
+                self.ratingImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
+                self.restaurantImage.layer.cornerRadius = 4
+                self.restaurantImage.clipsToBounds = true
                 self.restaurantDistance.text = "\(distanceInMiles) miles away"
+                self.restaurantName.text = restaurant.restaurantName ?? ""
             }
-            
-            self.ratingImageView.image = restaurant.imageForRating
-            self.restaurantImage.layer.cornerRadius = 4
-            self.restaurantImage.clipsToBounds = true
         }
     }
     

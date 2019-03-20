@@ -22,7 +22,7 @@
                         <action selector="calloutButtonTapped:" destination="Spy-mQ-CE7" eventType="touchUpInside" id="nMI-ox-hp6"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-vK-ZZF" userLabel="Restaurant Image">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultFoodIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WSt-vK-ZZF" userLabel="Restaurant Image">
                     <rect key="frame" x="8" y="8" width="85" height="85"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="GaY-Ur-KOh"/>
@@ -84,7 +84,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="buttonTapped" destination="AOh-nR-AJF" id="jJR-Xd-C8A"/>
-                <outlet property="ratingImageView" destination="3Rt-mU-zqy" id="6Xs-ca-O06"/>
+                <outlet property="ratingImageView" destination="3Rt-mU-zqy" id="NHr-fA-8oz"/>
                 <outlet property="restaurantDistance" destination="r44-BG-0EU" id="j8J-zv-tBX"/>
                 <outlet property="restaurantImage" destination="WSt-vK-ZZF" id="UZi-fF-HQg"/>
                 <outlet property="restaurantName" destination="liT-3I-DHR" id="N3A-0v-qLe"/>
@@ -92,4 +92,7 @@
             <point key="canvasLocation" x="-3.2000000000000002" y="-109.29535232383809"/>
         </view>
     </objects>
+    <resources>
+        <image name="defaultFoodIcon" width="418.90908813476562" height="418.90908813476562"/>
+    </resources>
 </document>

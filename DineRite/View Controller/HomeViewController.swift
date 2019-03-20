@@ -1,6 +1,6 @@
 import UIKit
 import MapKit
-import CoreLocation
+import Kingfisher
 
 @IBDesignable
 class CustomSearchBar: UISearchBar {
@@ -132,10 +132,12 @@ class HomeViewController: UIViewController, UISearchBarDelegate, MKMapViewDelega
         let address = customAnnotation.restaurant.location?.displayAddress[0].truncate(endingCharacter: ",")
         mapAddress = address?.uppercased()
         
-        RestaurantInfoController.getRestaurantImage(imageStringURL: customAnnotation.restaurantImageUrlString) { (image) in
-            guard let image = image else {return}
+        if let imageUrl = URL(string: customAnnotation.restaurantImageUrlString) {
+            let imageTransition = ImageTransition.fade(0.2)
+            
             DispatchQueue.main.async {
-                calloutView.restaurantImage.image = image
+                calloutView.restaurantImage.kf.indicatorType = .activity
+                calloutView.restaurantImage.kf.setImage(with: imageUrl, options: [.transition(imageTransition)])
             }
         }
         

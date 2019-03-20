@@ -196,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gph-yI-BdI">
-                                <rect key="frame" x="24" y="264.5" width="327" height="25.5"/>
+                                <rect key="frame" x="24" y="264.5" width="327" height="25"/>
                                 <state key="normal" title="   Loading..." image="callicon4">
                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -249,7 +249,6 @@
                             <constraint firstItem="gph-yI-BdI" firstAttribute="leading" secondItem="9fI-lv-g8I" secondAttribute="leading" constant="24" id="Z03-C9-Yun"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="leading" secondItem="afZ-i8-c54" secondAttribute="leading" id="Z1C-vJ-kcd"/>
                             <constraint firstItem="gph-yI-BdI" firstAttribute="top" secondItem="SqB-xh-7Cp" secondAttribute="bottom" constant="42" id="g24-5S-a7n"/>
-                            <constraint firstItem="9fI-lv-g8I" firstAttribute="bottom" secondItem="gph-yI-BdI" secondAttribute="bottom" constant="35" id="l4F-o2-IeI"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="top" secondItem="afZ-i8-c54" secondAttribute="bottom" constant="-1" id="o8X-zq-YdP"/>
                             <constraint firstItem="9fI-lv-g8I" firstAttribute="trailing" secondItem="8Dr-mG-YbQ" secondAttribute="trailing" constant="24" id="v4c-t8-Chl"/>
                             <constraint firstItem="SqB-xh-7Cp" firstAttribute="trailing" secondItem="afZ-i8-c54" secondAttribute="trailing" id="wAQ-aT-pvV"/>

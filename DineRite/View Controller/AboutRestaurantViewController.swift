@@ -51,9 +51,9 @@ class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
             return
         }
         
-        if let restuarant = restaurantDetails {
-            let address = restuarant.location?.displayAddress.first ?? ""
-            let distance = restuarant.restaurantDistance?.inMiles ?? 0
+        if let restaurant = restaurantDetails {
+            let address = restaurant.location?.displayAddress.first ?? ""
+            let distance = restaurant.restaurantDistance?.inMiles ?? 0
             
             
             DispatchQueue.main.async {
@@ -72,11 +72,14 @@ class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
     }
     
     func updateViews() {
-        guard let restuarantDetails = restaurantDetails else {
+        guard let restaurantDetails = restaurantDetails else {
             return
         }
         
-        let phoneNumber = restuarantDetails.restaurantPhone ?? "No phone number"
+        guard let phoneNumber = restaurantDetails.restaurantPhone, !phoneNumber.isEmpty else {
+            self.phoneButton.setTitle("   No phone number", for: .normal)
+            return
+        }
         
         DispatchQueue.main.async {
             self.phoneButton.setTitle("   \(phoneNumber)", for: .normal) // TODO: Refactor - replace using " " for spacing

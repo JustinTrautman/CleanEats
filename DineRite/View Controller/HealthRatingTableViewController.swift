@@ -15,7 +15,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var infoButton: UIButton!
     
     // MARK: - Properties
-    var restaurants: Businesses?
+    var restaurantDetails: Businesses?
     var healthInspections: [HealthInspection] = []
     
     // MARK: - View Lifecycle
@@ -26,26 +26,17 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         
-        listenForHealthInspections()
-    }
-    
-    func listenForHealthInspections() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleInspectionReceival(notification:)), name: Constants.healthInspectionKey, object: nil)
-    }
-    
-    @objc func handleInspectionReceival(notification: NSNotification) {
-        guard let healthInspections = notification.userInfo?["inspections"] as? [HealthInspection] else { return }
-        print(healthInspections)
-        
-        self.healthInspections = healthInspections
-        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+        
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if healthInspections.count == 0 {
+            tableView.setEmptyMessage("We couldn't find any health inspection records on file for this restuarant. Please see the reviews tab to see more details about this restaurant.")
+        }
+        
         return healthInspections.count
     }
     
@@ -53,15 +44,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "healthViolationCell") as? HealthRatingTableViewCell else { return UITableViewCell() }
         
         let healthData = healthInspections[indexPath.row]
-        let criticalViolationTotal = healthData.criticalViolation ?? 0
-        let nonCriticalViolationTotal = healthData.nonCriticalViolation ?? 0
-        let totalViolations = criticalViolationTotal + nonCriticalViolationTotal
-        let inspectionDate = healthData.inspectionDate ?? "Unknown inspection date"
-        
-        cell.inspectionDateLabel.text = inspectionDate
-        cell.criticalViolationsTotal.text = String(criticalViolationTotal)
-        cell.nonCriticalViolationsTotal.text = String(nonCriticalViolationTotal)
-        cell.violationsPointTotal.text = String(totalViolations)
+        cell.healthInspection = healthData
                 
         return cell
     }
@@ -79,8 +62,8 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
                 
                 let selectedInspection = healthInspections[indexPath.row]
                 
+                destinationVC.restaurantDetails = restaurantDetails
                 destinationVC.healthInspection = selectedInspection
-                destinationVC.restaurantDetails = restaurants
             }
         }
     }
