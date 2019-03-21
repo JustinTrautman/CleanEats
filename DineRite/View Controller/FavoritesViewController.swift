@@ -7,27 +7,49 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoritesViewController: UIViewController {
-    
-    static let shared = FavoritesViewController()
-    
+
     // MARK: - Outlets
     @IBOutlet weak var favoriteTableView: UITableView!
-    
+
+    // MARK: Properties
+    let fetchedResultsController: NSFetchedResultsController<Favorite> = {
+        let internalFetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        
+        internalFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        return NSFetchedResultsController(fetchRequest: internalFetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+    }()
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //setupNavigationBarItems()
+
+        fetchedResultsController.delegate = self
+
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch from results controller. \(error.localizedDescription)")
+        }
         
         favoriteTableView.delegate = self
         favoriteTableView.dataSource = self
         favoriteTableView.tableFooterView = UIView()
-        
-        updateTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        setUpNavbarHeight()
+        favoriteTableView.reloadData()
+    }
+
+
     //    // Adding Image to Navigation Item
     //    func setupNavigationBarItems() {
     //        let logo = UIImage(named: "DineRiteNew")
@@ -36,13 +58,7 @@ class FavoritesViewController: UIViewController {
     //        imageView.contentMode = .scaleAspectFit
     //        self.navigationItem.titleView = imageView
     //    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setUpNavbarHeight()
-        updateTableView()
-    }
-    
+
     func setUpNavbarHeight() {
         for subview in (self.navigationController?.navigationBar.subviews)! {
             if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
@@ -68,63 +84,78 @@ class FavoritesViewController: UIViewController {
                 subview.backgroundColor = .clear
                 //                navigationController?.navigationItem.titleView?.backgroundColor = .red
                 navigationController?.navigationBar.addSubview(subView)
-                
+
                 //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
                 //
                 //                self.view.addSubview(titleImage)
             }
         }
     }
-    
-    func updateTableView() {
-        if FavoriteController.shared.favorites.count == 0 {
-            showNoFavoritesAlert()
-            favoriteTableView.tableFooterView = UIView()            
-        }
-        
-        guard let tableView = favoriteTableView else { return }
-        
-        tableView.reloadData()
+
+//    func updateTableView() {
+//        if self.fetchedResultsController.fetchedObjects?.count == 0 {
+//            self.favoriteTableView.setEmptyMessage("You don't have any saved favorites! Go explore the map and click the star icon on the restaurants you like!")
+//        }
+//
+//        DispatchQueue.main.async {
+////            self.favoriteTableView.reloadData()
+//        }
+//    }
+}
+
+// MARK: - TableView Datasource
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - Table view data source
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
-    
-    func showNoFavoritesAlert() {
-        let noFavoritesAlert = UIAlertController(title: nil, message: "You have no saved favorites!", preferredStyle: .alert)
-        noFavoritesAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(noFavoritesAlert, animated: true)
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return  UITableViewCell() }
+
+        guard let favorites = fetchedResultsController.fetchedObjects else {
+            return cell
+        }
+
+        let favorite = favorites[indexPath.row]
+        cell.favorite = favorite
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let favorite = fetchedResultsController.fetchedObjects?[indexPath.row] {
+                FavoriteController.delete(favorite: favorite)
+            }
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-// MARK: - TableView Datasource 
-extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    // MARK: - Table view data source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(FavoriteController.shared.favorites.count)
-        return FavoriteController.shared.favorites.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return  UITableViewCell() }
-        
-        let favorite = FavoriteController.shared.favorites
-        let indexPath =  favorite[indexPath.row]
-        cell.favorites = indexPath
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            let favorite = FavoriteController.shared.favorites[indexPath.row]
-            
-            FavoriteController.shared.delete(favorite: favorite)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+// MARK: - FetchResultsControllerDelegate Methods
+extension FavoritesViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            favoriteTableView.deleteRows(at: [indexPath], with: .fade)
+
+        case .insert:
+            guard let indexPath = newIndexPath else { return }
+            favoriteTableView.insertRows(at: [indexPath], with: .automatic)
+
+        case .move:
+            guard let indexPath = indexPath,
+                let newIndexPath = newIndexPath else { return }
+            favoriteTableView.moveRow(at: indexPath, to: newIndexPath)
+
+        case .update:
+            guard let indexPath = indexPath else { return }
+            favoriteTableView.reloadRows(at: [indexPath], with: .automatic)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

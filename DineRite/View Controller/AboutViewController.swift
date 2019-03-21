@@ -12,37 +12,40 @@ class AboutViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var howHealthScoringWorksExplanationLabel: UILabel!
-    @IBOutlet weak var criticalViolationExplanationLabel: UILabel!
-    @IBOutlet weak var nonCriticalViolationExplanationLabel: UILabel!
-    @IBOutlet weak var violationPointsExplanationLabel: UILabel!
-    
+    @IBOutlet weak var howHealthScoringWorksTextView: UITextView!
+    @IBOutlet weak var howHealthScoringWorksTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var criticalViolationTextView: UITextView!
+    @IBOutlet weak var criticalViolationTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var nonCriticalViolationTextView: UITextView!
+    @IBOutlet weak var nonCriticalViolationTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var violationPointsTextView: UITextView!
+    @IBOutlet weak var violationPointsTextViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarItems()
+//        setupNavigationBarItems()
         
-        howHealthScoringWorksExplanationLabel.text = Constants.howHealthScoringWorks
-        criticalViolationExplanationLabel.text = Constants.criticalViolationsText
-        nonCriticalViolationExplanationLabel.text = Constants.noncriticalViolationsText
-        violationPointsExplanationLabel.text = Constants.pointExplanation
+        howHealthScoringWorksTextView.text = Constants.howHealthScoringWorks
+        criticalViolationTextView.text = Constants.criticalViolationsText
+        nonCriticalViolationTextView.text = Constants.noncriticalViolationsText
+        violationPointsTextView.text = Constants.pointExplanation
+        
+        updateViewConstraints()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
         
-        // Dynamically adjust label height
-        howHealthScoringWorksExplanationLabel.setHeight(parentView: view)
-        criticalViolationExplanationLabel.setHeight(parentView: view)
-        nonCriticalViolationExplanationLabel.setHeight(parentView: view)
-        violationPointsExplanationLabel.setHeight(parentView: view)
+        howHealthScoringWorksTextViewHeight.constant = howHealthScoringWorksTextView.contentSize.height
+        criticalViolationTextViewHeight.constant = criticalViolationTextView.contentSize.height
+        nonCriticalViolationTextViewHeight.constant = nonCriticalViolationTextView.contentSize.height
+        violationPointsTextViewHeight.constant = violationPointsTextView.contentSize.height
     }
-    
-    func setupNavigationBarItems() {
-        let logo = UIImage(named: "DineRiteNew")
-        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        imageView = UIImageView(image: logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
-    }
+//    func setupNavigationBarItems() {
+//        let logo = UIImage(named: "DineRiteNew")
+//        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+//        imageView = UIImageView(image: logo)
+//        imageView.contentMode = .scaleAspectFit
+//        self.navigationItem.titleView = imageView
+//    }
 }

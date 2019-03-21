@@ -13,7 +13,7 @@ class FavoriteTableViewCell: UITableViewCell {
     let rating: Double? = 0.0
     var imageForRating: UIImage?
     
-    var favorites: Favorite? {
+    var favorite: Favorite? {
         didSet{
             updateViews()
         }
@@ -24,32 +24,29 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantRatingImageView: UIImageView!
-    @IBOutlet weak var restaurantDescriptionLabel: UILabel!
+    @IBOutlet weak var restaurantAddressLabel: UILabel!
     @IBOutlet weak var restaurantScoreLabel: UILabel!
     @IBOutlet weak var restaurantPhoneNumber: UILabel!
     
     func updateViews() {
-        // Load image from UserDefaults
-        let imageData = UserDefaults.standard.value(forKey: "key") as! Data
-        let imageFromData = UIImage(data: imageData)!
+        var image = UIImage()
+        let name = favorite?.name ?? "Unknown Name"
+        let phone = favorite?.phone ?? "No phone number"
+        let rating = favorite?.rating ?? 0
+        let healthScore = favorite?.healthScore ?? 0
+        let address = favorite?.address ?? "No address available"
         
-        restaurantImageView.image = imageFromData
-        
-        if let name = favorites?.restaurantName {
-            restaurantNameLabel.text = name
+        if let imageData = favorite?.image {
+            image = UIImage(data: imageData) ?? #imageLiteral(resourceName: "noImage")
         }
-        
-        if let phone = favorites?.restaurantPhone {
-            restaurantPhoneNumber.text = phone
-        }
-        
-        if let description = favorites?.restaurantDescription {
-            restaurantDescriptionLabel.text = description
-        }
-        
-        if let ratingStringAmount = favorites?.restaurantRating {
-            guard let rating = Double(ratingStringAmount)?.roundToClosestHalf() else { return }
-            restaurantRatingImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
+
+        DispatchQueue.main.async {
+            self.restaurantImageView.image = image
+            self.restaurantNameLabel.text = name
+            self.restaurantRatingImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
+            self.restaurantScoreLabel.text = String(describing: healthScore)
+            self.restaurantPhoneNumber.text = phone
+            self.restaurantAddressLabel.text = address
         }
     }
 }

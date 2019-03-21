@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Kingfisher
+import CoreData
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
@@ -38,6 +39,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
     var healthInspections: [HealthInspection] = []
     lazy var closingTimeAttributedText = NSMutableAttributedString()
+    private var favorite: Favorite?
 
     // Container Views
     private lazy var aboutViewController: AboutRestaurantViewController = {
@@ -61,6 +63,14 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         return viewController
     }()
     
+    private lazy var fetchedResultsController: NSFetchedResultsController<Favorite> = {
+        let internalFetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        
+        internalFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        return NSFetchedResultsController(fetchRequest: internalFetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +78,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         setupSegmentedControl()
         updateContainerView()
         fetchRestaurantHealthInspections()
+        fetchAllFavorites()
         
         StoreFeedbackHelper.askForReview()
     }
@@ -106,6 +117,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         for i in 0 ..< slides.count {
             slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
             slideScrollView.addSubview(slides[i])
+            slidePageControl.bringSubviewToFront(slidePageControl)
+            slideScrollView.bringSubviewToFront(favoriteStar)
         }
     }
     
@@ -178,94 +191,59 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    // TODO: See if favorite exists and set star selection.
+    private func checkFavoriteStatus() {
+        guard let restaurant = restaurantDetails, let favorites = fetchedResultsController.fetchedObjects else { return }
+    }
+    
+    private func fetchAllFavorites() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch from results controller. \(error.localizedDescription)")
+        }
+    }
+    
+    private func saveOrRemove(favorite: Favorite) {
+        guard let favorites = fetchedResultsController.fetchedObjects else {
+            return
+        }
+    }
+    
     @IBAction func favoriteStarButtonTapped(_ sender: UIButton) {
-        if  favoriteStar.isEnabled {
-            favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
-            saveNewFavorite()
-            showFavoriteSavedAlert()
-            FavoritesViewController.shared.updateTableView()
-            print("Star button tapped once")
-            favoriteStar.isSelected = false
+        guard let restaurant = restaurantDetails else {
+            return
         }
         
-        if  !favoriteStar.isEnabled {
-            favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .disabled)
-            showFavoriteRemovedAlert()
-            deleteFavorite()
-            print("Star button tapped twice")
+        var image = Data()
+        if let restaurantImage = restaurantPhotos.first {
+            image = restaurantImage.pngData()!
+        }
+        let name = restaurant.name
+        let phone = restaurant.phone
+        let rating = restaurant.rating ?? 0
+        let healthScore = Int64(totalInspectionPoints)
+        var address = ""
+        if let completeAddress = restaurant.location.completeAddress.first.flatMap ({ $0 }) {
+            address = completeAddress
+        }
+        
+//         let favorite = Favorite(image: image, name: name, phone: phone, address: address, rating: rating, healthScore: healthScore)
+        FavoriteController.add(image: image, name: name, phone: phone, address: address, rating: rating, healthScore: healthScore)
+        
+//        saveOrRemove(favorite: favorite)
+        
+        DispatchQueue.main.async {
+            if  self.favoriteStar.isSelected {
+                self.favoriteStar.setImage(#imageLiteral(resourceName: "Favicon1"), for: .normal)
+                self.favoriteStar.isSelected = false
+            } else {
+                self.favoriteStar.setImage(#imageLiteral(resourceName: "FavoriteStarFilled"), for: .normal)
+                self.favoriteStar.isSelected = true
+            }
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "aboutProfile" {
-//            guard let destinationVC = segue.destination as? AboutRestaurantViewController else { return }
-//            
-//            destinationVC.businesses = businesses
-//            
-//            guard let longitude = businesses?.coordinate?.longitude,
-//                let lat = businesses?.coordinate?.latitude
-//                else { return }
-//            
-//            destinationVC.restaurantCoordinates = CLLocationCoordinate2D(latitude: lat, longitude: longitude)
-//        }
-//        
-//        if segue.identifier == "toHealthTV" {
-//            guard let destinationTV = segue.destination as? HealthRatingTableViewController else { return }
-//            
-//            destinationTV.restaurants = businesses
-//            
-//            self.updateViewConstraints()
-//            
-//            // ✅ TODO: Pass data over Notification Center. It takes a bit of time to fetch the records
-//            // From the database so send a notification when it is done.
-//        }
-//    }
-    
-    // Favorite star logic
-    func saveNewFavorite() {
-        //        guard let criticalViolations = criticalViolations,
-        //            let nonCriticalViolations = nonCriticalViolations,
-        //            let rating = businesses?.restaurantRating else { return }
-        
-        //        let totalViolations = criticalViolations.count + nonCriticalViolations.count
-        //
-        //        if let descriptionCategories = businesses?.categories {
-        //            if let description1 = descriptionCategories[0].title {
-        //
-        //                let image = restaurantPhotos[0]
-        //                guard let name = restaurantNameLabel.text,
-        //                    let phone = businesses?.restaurantPhone else { return }
-        //
-        //                // Register default image
-        //                UserDefaults.standard.register(defaults: ["key": UIImage.jpegData(image)])
-        //
-        //                // Save image to UserDefaults
-        //                UserDefaults.standard.set(UIImage.jpegData(image), forKey: "key")
-        //
-        //                FavoriteController.shared.create(image: "Image", name: name, healthScore: "\(totalViolations)", rating: "\(rating)", phone: phone, description: "\(description1)")
-        //            }
-        //        }
-    }
-    
-    
-    
-    func deleteFavorite() {
-        
-        // TODO: - Impelement favorite delete function
-    }
-    
-    // TODO: Move these to Alert Helper
-    func showFavoriteSavedAlert() {
-        let favoriteSavedAlert = UIAlertController(title: nil, message: "Restaurant successfully added to your favorites!", preferredStyle: .alert)
-        favoriteSavedAlert.addAction(UIAlertAction(title: "Sweet!", style: .default, handler: nil))
-        self.present(favoriteSavedAlert, animated: true)
-    }
-    
-    func showFavoriteRemovedAlert() {
-        let favoriteRemovedAlert = UIAlertController(title: nil, message: "Restaurant successfully removed from your favorites.", preferredStyle: .alert)
-        favoriteRemovedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(favoriteRemovedAlert, animated: true)
-    }
     
     func updateViews() {
         // Image carousel setup
@@ -283,6 +261,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 guard let currentRestuarant = restaurantDetails else {
                     return
                 }
+                
+                self.restaurantDetails = restaurantDetails
+//                self.checkFavoriteStatus()
                 
                 let name = currentRestuarant.name
                 let totalReviews = currentRestuarant.reviewCount
@@ -304,7 +285,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     let imageUrl = URL(string: url)
                     
                     DispatchQueue.main.async {
-                        
                         KingfisherManager.shared.retrieveImage(with: imageUrl!, completionHandler: { (result) in
                             switch result {
                             case .success(let value):
