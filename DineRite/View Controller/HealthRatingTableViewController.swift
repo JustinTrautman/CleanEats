@@ -70,20 +70,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
     
     // MARK: - IBActions
     @IBAction func infoButtonTapped(_ sender: Any) {
-        presentAlert(majorViolation: "Violations of critical food handling practices and conditions, or existence of an environmental health hazard.", minorViolation: "Low risk violations include proper storage of utensils and linens, adequate lighting, lack of refrigerator thermometers, and soiled food contact surfaces.")
+        AlertHelper.showInspectionInformationalAlert(vc: self)
     }
 }
 
-// Mark: - Alert Stuff
-extension HealthRatingTableViewController {
-    func presentAlert(majorViolation: String, minorViolation: String) {
-        let alert = UIAlertController(title: "Violations", message: "Critical Violations: \n \(majorViolation) \n\n Non-Critical Violations: \n \(minorViolation) \n\n Violation points may be: \n 1(lowest risk violations), \n 3(moderate risk violations), \n or 6 points(highest risk violations).", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        
-        alert.addAction(OKAction)
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
-        }
-    }
-}

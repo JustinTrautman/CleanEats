@@ -1,9 +1,9 @@
 //
-//  HelperExtentions.swift
-//  CleanEats
+//  UINavigationBarExtension.swift
+//  DineRite
 //
-//  Created by Huzaifa Gadiwala on 19/7/18.
-//  Copyright © 2018 Justin Trautman. All rights reserved.
+//  Created by Justin Trautman on 3/22/19.
+//  Copyright © 2019 Justin Trautman. All rights reserved.
 //
 
 import UIKit
@@ -13,4 +13,3 @@ extension UINavigationBar {
         return CGSize(width: UIScreen.main.bounds.size.width, height: 10.0)
     }
 }
-

@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 class FavoritesViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var favoriteTableView: UITableView!
-
+    
     // MARK: Properties
     let fetchedResultsController: NSFetchedResultsController<Favorite> = {
         let internalFetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
@@ -22,15 +22,13 @@ class FavoritesViewController: UIViewController {
         
         return NSFetchedResultsController(fetchRequest: internalFetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
     }()
-
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //setupNavigationBarItems()
-
+                
         fetchedResultsController.delegate = self
-
+        
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -45,62 +43,30 @@ class FavoritesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        setUpNavbarHeight()
-        favoriteTableView.reloadData()
+        setupNavigationBarItems()
+        updateTableView()
     }
-
-
-    //    // Adding Image to Navigation Item
-    //    func setupNavigationBarItems() {
-    //        let logo = UIImage(named: "DineRiteNew")
-    //        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-    //        imageView = UIImageView(image: logo)
-    //        imageView.contentMode = .scaleAspectFit
-    //        self.navigationItem.titleView = imageView
-    //    }
-
-    func setUpNavbarHeight() {
-        for subview in (self.navigationController?.navigationBar.subviews)! {
-            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
-                var subViewFrame: CGRect = subview.frame
-                let subView = UIView()
-                // subViewFrame.origin.y = -20;
-                subViewFrame.size.height = 90
-                subView.frame = subViewFrame
-                // Convert an image view to a view
-                // Constrain it to the center and size it
-                let logo = UIImage(named: "DineRiteNew")
-                var imageView = UIImageView()
-                imageView = UIImageView(image: logo)
-                imageView.contentMode = .scaleAspectFit
-                //                self.navigationItem.titleView = imageView
-                subView.addSubview(imageView)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
-                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
-                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
-                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
-                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-                subview.backgroundColor = .clear
-                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
-                navigationController?.navigationBar.addSubview(subView)
-
-                //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
-                //
-                //                self.view.addSubview(titleImage)
-            }
+    
+    // Adding Image to Navigation Item
+    func setupNavigationBarItems() {
+        let logo = UIImage(named: "DineRiteNew")
+        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 5))
+        imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
+    
+    func updateTableView() {
+        if self.fetchedResultsController.fetchedObjects?.count == 0 {
+            self.favoriteTableView.setEmptyMessage("You don't have any saved favorites! Go explore the map and click the star icon on the restaurants you like!")
+        } else {
+            self.favoriteTableView.backgroundView = UIView()
+        }
+        
+        DispatchQueue.main.async {
+            self.favoriteTableView.reloadData()
         }
     }
-
-//    func updateTableView() {
-//        if self.fetchedResultsController.fetchedObjects?.count == 0 {
-//            self.favoriteTableView.setEmptyMessage("You don't have any saved favorites! Go explore the map and click the star icon on the restaurants you like!")
-//        }
-//
-//        DispatchQueue.main.async {
-////            self.favoriteTableView.reloadData()
-//        }
-//    }
 }
 
 // MARK: - TableView Datasource

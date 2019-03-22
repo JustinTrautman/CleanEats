@@ -31,7 +31,7 @@ class FavoriteTableViewCell: UITableViewCell {
     func updateViews() {
         var image = UIImage()
         let name = favorite?.name ?? "Unknown Name"
-        let phone = favorite?.phone ?? "No phone number"
+        let phone = favorite?.phone == "" ? "No phone number" : favorite?.phone
         let rating = favorite?.rating ?? 0
         let healthScore = favorite?.healthScore ?? 0
         let address = favorite?.address ?? "No address available"

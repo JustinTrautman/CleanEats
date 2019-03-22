@@ -23,7 +23,7 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupNavigationBarItems()
+        setupNavigationBarItems()
         
         howHealthScoringWorksTextView.text = Constants.howHealthScoringWorks
         criticalViolationTextView.text = Constants.criticalViolationsText
@@ -35,17 +35,18 @@ class AboutViewController: UIViewController {
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        
+
         howHealthScoringWorksTextViewHeight.constant = howHealthScoringWorksTextView.contentSize.height
         criticalViolationTextViewHeight.constant = criticalViolationTextView.contentSize.height
-        nonCriticalViolationTextViewHeight.constant = nonCriticalViolationTextView.contentSize.height
+        nonCriticalViolationTextViewHeight.constant = nonCriticalViolationTextView.contentSize.height + 10
         violationPointsTextViewHeight.constant = violationPointsTextView.contentSize.height
     }
-//    func setupNavigationBarItems() {
-//        let logo = UIImage(named: "DineRiteNew")
-//        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        imageView = UIImageView(image: logo)
-//        imageView.contentMode = .scaleAspectFit
-//        self.navigationItem.titleView = imageView
-//    }
+    
+    func setupNavigationBarItems() {
+        let logo = UIImage(named: "DineRiteNew")
+        var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
 }

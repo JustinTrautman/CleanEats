@@ -21,30 +21,10 @@
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-q6-Qbo">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqh-Sf-XAz">
-                                        <rect key="frame" x="0.0" y="312.66666666666674" width="414" height="410"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="410" id="eEu-dQ-DVo"/>
-                                        </constraints>
-                                    </containerView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0C-3k-Hsg" customClass="Slide" customModule="DineRite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRv-Hy-RbY" userLabel="FavoriteStar">
-                                                <rect key="frame" x="8" y="8" width="25" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="25" id="1uk-SL-iCG"/>
-                                                    <constraint firstAttribute="height" constant="24" id="jOj-gs-iZc"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="FavoritesStar">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="favoriteStarButtonTapped:" destination="Kgo-YH-xtX" eventType="touchUpInside" id="mgl-Vu-N4C"/>
-                                                </connections>
-                                            </button>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MJA-DA-Rhd">
+                                            <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MJA-DA-Rhd">
                                                 <rect key="frame" x="187.66666666666666" y="139" width="38.666666666666657" height="37"/>
                                                 <color key="pageIndicatorTintColor" red="0.14939313009999999" green="0.12367843050000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,13 +32,9 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.10980392160000001" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="oRv-Hy-RbY" firstAttribute="top" secondItem="b0C-3k-Hsg" secondAttribute="top" constant="8" id="1L2-62-ugv"/>
                                             <constraint firstItem="MJA-DA-Rhd" firstAttribute="centerX" secondItem="b0C-3k-Hsg" secondAttribute="centerX" id="5Wg-ZE-gCR"/>
-                                            <constraint firstItem="oRv-Hy-RbY" firstAttribute="leading" secondItem="b0C-3k-Hsg" secondAttribute="leading" constant="8" id="FaF-qa-wr8"/>
                                             <constraint firstAttribute="height" constant="176" id="Hsi-b1-4Xj"/>
                                             <constraint firstAttribute="trailing" secondItem="MJA-DA-Rhd" secondAttribute="trailing" constant="187" id="UPG-ZZ-Ymh"/>
-                                            <constraint firstItem="oRv-Hy-RbY" firstAttribute="leading" secondItem="b0C-3k-Hsg" secondAttribute="leadingMargin" id="fvb-Cb-431"/>
-                                            <constraint firstItem="oRv-Hy-RbY" firstAttribute="top" secondItem="b0C-3k-Hsg" secondAttribute="topMargin" id="i5d-wH-7DR"/>
                                             <constraint firstItem="MJA-DA-Rhd" firstAttribute="leading" secondItem="b0C-3k-Hsg" secondAttribute="leading" constant="187.66666666666666" id="oNf-JX-Qxd"/>
                                             <constraint firstAttribute="bottom" secondItem="MJA-DA-Rhd" secondAttribute="bottom" id="tT4-FE-Kwy"/>
                                             <constraint firstItem="MJA-DA-Rhd" firstAttribute="top" secondItem="b0C-3k-Hsg" secondAttribute="top" constant="139" id="tdD-sT-1vV"/>
@@ -140,6 +116,12 @@
                                         </segments>
                                         <color key="tintColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </segmentedControl>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqh-Sf-XAz">
+                                        <rect key="frame" x="0.0" y="312.66666666666674" width="414" height="410"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="410" id="eEu-dQ-DVo"/>
+                                        </constraints>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="b0C-3k-Hsg" firstAttribute="trailing" secondItem="PIW-rp-Qf6" secondAttribute="trailing" id="26b-il-7HQ"/>
@@ -171,7 +153,6 @@
                     <navigationItem key="navigationItem" prompt=" " largeTitleDisplayMode="never" id="Cxa-It-1f6"/>
                     <connections>
                         <outlet property="containerView" destination="sqh-Sf-XAz" id="KdD-pK-on6"/>
-                        <outlet property="favoriteStar" destination="oRv-Hy-RbY" id="o3f-yY-KeU"/>
                         <outlet property="hoursOfOperationLabel" destination="2qz-Hg-fwS" id="8XW-cG-uzI"/>
                         <outlet property="ratingStarImageView" destination="qpS-jT-huT" id="POt-To-TNv"/>
                         <outlet property="restaurantNameLabel" destination="XUT-Cs-e0S" id="zzd-ks-wvc"/>
@@ -191,6 +172,5 @@
     </scenes>
     <resources>
         <image name="5Stars" width="484.79998779296875" height="103.19999694824219"/>
-        <image name="FavoritesStar" width="25" height="24"/>
     </resources>
 </document>

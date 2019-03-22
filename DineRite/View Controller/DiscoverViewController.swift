@@ -30,7 +30,7 @@
         restaurantSearchBar.text = ""
         restaurantMapView.removeAnnotations(restaurantMapView.annotations)
         reloadRestaurantTableView()
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -38,7 +38,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         fastFoodButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -46,7 +46,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         deliveryButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -54,7 +54,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         barButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -62,7 +62,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         foodTruckButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -70,7 +70,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         cafeButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -78,7 +78,7 @@
         clearFilterButtons()
         restaurantSearchBar.text = ""
         groceryButton.isSelected = true
-        populateNearByPlaces()
+        populateNearbyPlaces()
         restaurantSearchBar.resignFirstResponder()
     }
     
@@ -105,7 +105,7 @@
         let scale = MKScaleView(mapView: restaurantMapView)
         scale.scaleVisibility = .visible
         view.addSubview(scale)
-        populateNearByPlaces()
+        populateNearbyPlaces()
         
         // Restaurant SearchBar
         restaurantSearchBar.delegate = self
@@ -140,7 +140,7 @@
         groceryButton.isSelected = false
     }
     
-    func populateNearByPlaces() {
+    func populateNearbyPlaces() {
         var buttonSelected: Bool = false
         
         let span = MKCoordinateSpan(latitudeDelta: 0.012, longitudeDelta: 0.012)
@@ -248,16 +248,11 @@
     
     func showNoResultsAlert() {
         guard let searchedTerm = restaurantSearchBar.text else { return }
-        
-        let noResultsAlert = UIAlertController(title: nil, message: "Sorry, we didn't find any results for \(searchedTerm)", preferredStyle: .alert)
-        noResultsAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(noResultsAlert, animated: true)
+        AlertHelper.showNoSearchResultsAlert(vc: self, searchTerm: searchedTerm)
     }
     
     func showNoTextAlert() {
-        let noTextAlert = UIAlertController(title: nil, message: "Search cannot be blank", preferredStyle: .alert)
-        noTextAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(noTextAlert, animated: true)
+        AlertHelper.showNoSearchTextAlert(vc: self)
     }
  }
  
@@ -322,7 +317,7 @@
                 self.restaurantMapView.setRegion(region, animated: true)
             }
         }
-        populateNearByPlaces()
+        populateNearbyPlaces()
     }
  }
  

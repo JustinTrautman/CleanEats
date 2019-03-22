@@ -11,8 +11,12 @@ import CoreData
 
 class FavoriteController {
     
-    static func add(image: Data, name: String, phone: String, address: String, rating: Double, healthScore: Int64) {
-        Favorite(image: image, name: name, phone: phone, address: address, rating: rating, healthScore: healthScore)
+    static func add(favorite: Favorite) {
+        let name = favorite.name ?? "Unknown Name"
+        let phone = favorite.phone ?? "No phone number"
+        let address = favorite.address ?? "No address"
+        
+        Favorite(image: favorite.image, name: name, phone: phone, address: address, rating: favorite.rating, healthScore: favorite.healthScore)
         saveToPersistentStore()
     }
     
