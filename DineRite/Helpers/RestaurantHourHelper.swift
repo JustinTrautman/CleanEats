@@ -13,6 +13,12 @@ struct RestaurantHoursHelper {
     static func returnClosingTime(for restaurant: Hour) -> String {
         let today = Date().dayOfWeek()
         
+        // TODO: Research - Yelp only returns hours for six days? Time to move away from yelp...
+        
+        guard restaurant.hourOpen.count >= 5 else {
+            return "Hour information unknown" // If restaurant does not have hours for every day of the week, prevent it from fetching an idex that is out of range.
+        }
+        
         switch today {
         case "Monday":
             return restaurant.hourOpen[1].end.convertFromMilitaryTime()
@@ -24,8 +30,6 @@ struct RestaurantHoursHelper {
             return restaurant.hourOpen[4].end.convertFromMilitaryTime()
         case "Friday":
             return restaurant.hourOpen[5].end.convertFromMilitaryTime()
-        case "Saturday":
-            return restaurant.hourOpen[6].end.convertFromMilitaryTime()
         default:
             return restaurant.hourOpen[0].end.convertFromMilitaryTime()
         }

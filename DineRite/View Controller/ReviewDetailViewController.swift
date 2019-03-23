@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 
 class ReviewDetailViewController: UIViewController {
-    
     // MARK: Properties
     var review: Reviews? {
         didSet {
@@ -24,14 +23,13 @@ class ReviewDetailViewController: UIViewController {
     @IBOutlet weak private var ratingImageView: UIImageView!
     @IBOutlet weak private var datePostedLabel: UILabel!
     @IBOutlet weak private var reviewTextView: UITextView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     private func updateViews() {
         guard let review = review else {
-            assertionFailure()
             return
         }
         

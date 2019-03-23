@@ -9,15 +9,12 @@
 import UIKit
 import CoreLocation
 
-
 enum SearchType: String {
-    
     case SearchbarText = ""
     case filterButton
 }
 
 class RestaurantInfoController {
-    
     static let baseURL = URL(string: "https://api.yelp.com/v3/businesses/search")
     static var restaurants: [Businesses] = []
     

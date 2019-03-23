@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class FavoriteController {
-    
     static func add(favorite: Favorite) {
         let name = favorite.name ?? "Unknown Name"
         let phone = favorite.phone ?? "No phone number"
@@ -21,8 +20,8 @@ class FavoriteController {
     }
     
     static func delete(favorite: Favorite) {
-            CoreDataStack.context.delete(favorite)
-            saveToPersistentStore()
+        CoreDataStack.context.delete(favorite)
+        saveToPersistentStore()
     }
     
     private static func saveToPersistentStore() {

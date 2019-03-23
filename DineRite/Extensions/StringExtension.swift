@@ -8,12 +8,7 @@
 
 import Foundation
 
-extension String {
-    var stripped: String {
-        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ&")
-        return self.filter { okayChars.contains($0) }
-    }
-    
+extension String {    
     var digitsOnly: String {
         return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     }

@@ -9,6 +9,7 @@ import UIKit
 
 class HealthRatingTableViewCell: UITableViewCell {
     
+    // MARK: Properties
     var healthInspection: HealthInspection? {
         didSet {
             updateViews()

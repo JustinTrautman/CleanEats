@@ -17,6 +17,7 @@ extension Date {
         return formatter.string(from: date)
     }
     
+    /// Get a 12 hour time from a string in military time format.
     func convertTo12Hour() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
@@ -29,5 +30,4 @@ extension Date {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self)
     }
-
 }

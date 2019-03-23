@@ -20,7 +20,7 @@ class RestaurantDetailController {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         guard let completeURL = components?.url else { completion(nil) ; return }
-                
+        
         var request = URLRequest(url: completeURL)
         request.addValue(Constants.yelpAuthorizationKey, forHTTPHeaderField: "Authorization")
         
@@ -41,7 +41,6 @@ class RestaurantDetailController {
                 completion(restaurantDetails)
             } catch let error {
                 print("❌Error decoding restaurantDetail data; \(error) \(error.localizedDescription)")
-                
             }
             }.resume()
     }

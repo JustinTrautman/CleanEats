@@ -10,8 +10,10 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
     
+    // MARK: Properties
     let rating: Double? = 0.0
     var imageForRating: UIImage?
+    var restaurant: Businesses?
     
     var favorite: Favorite? {
         didSet{
@@ -19,8 +21,7 @@ class FavoriteTableViewCell: UITableViewCell {
         }
     }
     
-    var restaurant: Businesses?
-    
+    // MARK: Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantRatingImageView: UIImageView!
@@ -39,7 +40,7 @@ class FavoriteTableViewCell: UITableViewCell {
         if let imageData = favorite?.image {
             image = UIImage(data: imageData) ?? #imageLiteral(resourceName: "noImage")
         }
-
+        
         DispatchQueue.main.async {
             self.restaurantImageView.image = image
             self.restaurantNameLabel.text = name

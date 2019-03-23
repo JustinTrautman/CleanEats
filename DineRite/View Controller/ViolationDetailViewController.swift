@@ -46,7 +46,6 @@ class ViolationDetailViewController: UIViewController {
     func updateViews() {
         guard let inspection = healthInspection,
             let restaurant = restaurantDetails else {
-                assertionFailure()
                 return
         }
         

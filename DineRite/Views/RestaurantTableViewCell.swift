@@ -9,7 +9,6 @@
 import UIKit
 
 class RestaurantTableViewCell: UITableViewCell {
-    
     // MARK: - Outlets
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
@@ -33,11 +32,9 @@ class RestaurantTableViewCell: UITableViewCell {
         let distanceInMiles = restaurantDistance * 0.000621
         
         restaurantNameLabel.text = restaurant.restaurantName
-        // restaurantRatingImageView.image = restaurant.restaurantRating
         restaurantDistanceLabel.text = "\((distanceInMiles * 100).rounded() / 100) miles away"
         restaurantPriceLabel.text = restaurant.restaurantPrice
         restaurantDescriptionLabel.text = "\(categories)"
-        // restaurantScoreLabel.text = restaurant.restaurantRisk
         
         RestaurantInfoController.getRestaurantImage(imageStringURL: restaurant.restaurantImage) { (image) in
             guard let fetchedImage = image else { return }

@@ -6,12 +6,6 @@
 //  Copyright © 2018 Justin Trautman. All rights reserved.
 //
 
-/*
- 
- TODO: This model pulls from the Yelp business detail API to get detailed information of each restaurant.
- 
- */
-
 import UIKit
 
 struct RestaurantDetails : Codable {

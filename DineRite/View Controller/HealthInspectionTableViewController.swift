@@ -8,8 +8,7 @@
 
 import UIKit
 
-class HealthRatingTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-        
+class HealthInspectionTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var infoButton: UIButton!
@@ -30,7 +29,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
             self.tableView.reloadData()
         }
     }
-        
+    
     // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if healthInspections.count == 0 {
@@ -45,7 +44,7 @@ class HealthRatingTableViewController: UIViewController, UITableViewDataSource, 
         
         let healthData = healthInspections[indexPath.row]
         cell.healthInspection = healthData
-                
+        
         return cell
     }
     

@@ -10,14 +10,12 @@ import UIKit
 import CoreData
 
 class FavoritesViewController: UIViewController {
-    
     // MARK: - Outlets
     @IBOutlet weak var favoriteTableView: UITableView!
     
     // MARK: Properties
     let fetchedResultsController: NSFetchedResultsController<Favorite> = {
         let internalFetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        
         internalFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         return NSFetchedResultsController(fetchRequest: internalFetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -26,7 +24,7 @@ class FavoritesViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         fetchedResultsController.delegate = self
         
         do {
@@ -47,7 +45,6 @@ class FavoritesViewController: UIViewController {
         updateTableView()
     }
     
-    // Adding Image to Navigation Item
     func setupNavigationBarItems() {
         let logo = UIImage(named: "DineRiteNew")
         var imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 5))
@@ -75,20 +72,20 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as? FavoriteTableViewCell else { return  UITableViewCell() }
-
+        
         guard let favorites = fetchedResultsController.fetchedObjects else {
             return cell
         }
-
+        
         let favorite = favorites[indexPath.row]
         cell.favorite = favorite
-
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let favorite = fetchedResultsController.fetchedObjects?[indexPath.row] {
@@ -96,7 +93,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -109,16 +106,16 @@ extension FavoritesViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             guard let indexPath = indexPath else { return }
             favoriteTableView.deleteRows(at: [indexPath], with: .fade)
-
+            
         case .insert:
             guard let indexPath = newIndexPath else { return }
             favoriteTableView.insertRows(at: [indexPath], with: .automatic)
-
+            
         case .move:
             guard let indexPath = indexPath,
                 let newIndexPath = newIndexPath else { return }
             favoriteTableView.moveRow(at: indexPath, to: newIndexPath)
-
+            
         case .update:
             guard let indexPath = indexPath else { return }
             favoriteTableView.reloadRows(at: [indexPath], with: .automatic)

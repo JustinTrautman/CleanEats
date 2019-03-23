@@ -11,7 +11,6 @@ import SafariServices
 import MapKit
 
 class OpenUrlHelper {
-    
     static func format(phoneNumber: String) -> String? {
         let digitsOnly = phoneNumber.digitsOnly
         let length = digitsOnly.count
@@ -61,6 +60,7 @@ class OpenUrlHelper {
         return countryCode + areaCode + prefix + "-" + suffix
     }
     
+    /// Takes in a digit only string and calls UIApplication.openUrl to call from telprompt.
     static func call(phoneNumber: String) {
         if let phoneUrl = URL(string: "telprompt://\(phoneNumber)") {
             UIApplication.shared.canOpenURL(phoneUrl)

@@ -9,7 +9,6 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-    
     // MARK: Outlets
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var howHealthScoringWorksTextView: UITextView!
@@ -21,21 +20,22 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var violationPointsTextView: UITextView!
     @IBOutlet weak var violationPointsTextViewHeight: NSLayoutConstraint!
     
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBarItems()
         
         howHealthScoringWorksTextView.text = Constants.howHealthScoringWorks
         criticalViolationTextView.text = Constants.criticalViolationsText
         nonCriticalViolationTextView.text = Constants.noncriticalViolationsText
         violationPointsTextView.text = Constants.pointExplanation
         
+        setupNavigationBarItems()
         updateViewConstraints()
     }
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
-
+        
         howHealthScoringWorksTextViewHeight.constant = howHealthScoringWorksTextView.contentSize.height
         criticalViolationTextViewHeight.constant = criticalViolationTextView.contentSize.height
         nonCriticalViolationTextViewHeight.constant = nonCriticalViolationTextView.contentSize.height + 10

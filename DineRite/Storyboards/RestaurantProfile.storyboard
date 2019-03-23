@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kgo-YH-xtX">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,17 +11,17 @@
             <objects>
                 <viewController id="Kgo-YH-xtX" customClass="RestaurantProfileViewController" customModule="DineRite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agl-kz-Ul1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-q6-Qbo">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0C-3k-Hsg" customClass="Slide" customModule="DineRite" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="176"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="176"/>
                                         <subviews>
                                             <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MJA-DA-Rhd">
-                                                <rect key="frame" x="187.66666666666666" y="139" width="38.666666666666657" height="37"/>
+                                                <rect key="frame" x="187.5" y="139" width="225" height="37"/>
                                                 <color key="pageIndicatorTintColor" red="0.14939313009999999" green="0.12367843050000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="currentPageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </pageControl>
@@ -41,10 +37,10 @@
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIW-rp-Qf6" userLabel="NameRatingView">
-                                        <rect key="frame" x="0.0" y="178" width="414" height="87.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="178" width="600" height="88"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="XUT-Cs-e0S">
-                                                <rect key="frame" x="8" y="4.0000000000000018" width="398" height="28.666666666666671"/>
+                                                <rect key="frame" x="8" y="4" width="584" height="28.5"/>
                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
                                                 <color key="textColor" red="0.10980392160000001" green="0.1450980392" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -68,19 +64,19 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour information unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2qz-Hg-fwS">
-                                                <rect key="frame" x="8" y="66" width="181.33333333333334" height="19"/>
+                                                <rect key="frame" x="8" y="66" width="181.5" height="19"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="mxy-i6-O8w">
-                                                <rect key="frame" x="297" y="69" width="63" height="13.333333333333329"/>
+                                                <rect key="frame" x="483" y="69" width="63" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="I04-FJ-6lS">
-                                                <rect key="frame" x="307" y="37" width="43" height="30"/>
+                                                <rect key="frame" x="493" y="37" width="43" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.76078431369999999" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,7 +104,7 @@
                                         </constraints>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="r0n-1I-yoF">
-                                        <rect key="frame" x="25" y="274.66666666666669" width="364" height="29"/>
+                                        <rect key="frame" x="25" y="275" width="550" height="29"/>
                                         <segments>
                                             <segment title="About"/>
                                             <segment title="Health Rating"/>
@@ -117,7 +113,7 @@
                                         <color key="tintColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </segmentedControl>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqh-Sf-XAz">
-                                        <rect key="frame" x="0.0" y="312.66666666666674" width="414" height="410"/>
+                                        <rect key="frame" x="0.0" y="313" width="600" height="410"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="410" id="eEu-dQ-DVo"/>
                                         </constraints>
@@ -161,8 +157,8 @@
                         <outlet property="segmentedControl" destination="r0n-1I-yoF" id="cXc-m3-hZ8"/>
                         <outlet property="slidePageControl" destination="MJA-DA-Rhd" id="By9-pR-HHe"/>
                         <outlet property="slideScrollView" destination="b0C-3k-Hsg" id="Bpx-1a-dCB"/>
+                        <outlet property="totalHealthScoreLabel" destination="I04-FJ-6lS" id="te9-6e-B0q"/>
                         <outlet property="totalReviewsLabel" destination="KxJ-Ap-GdQ" id="bgl-bq-AQ9"/>
-                        <outlet property="totalScoreLabel" destination="I04-FJ-6lS" id="te9-6e-B0q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYi-oi-vOV" userLabel="First Responder" sceneMemberID="firstResponder"/>

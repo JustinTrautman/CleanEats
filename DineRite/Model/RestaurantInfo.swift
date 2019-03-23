@@ -21,7 +21,6 @@ struct TopLevelData : Codable {
 }
 
 class Businesses: Codable {
-    
     let restaurantID: String?
     let alias: String?
     var restaurantName: String?
@@ -79,13 +78,11 @@ class Businesses: Codable {
         let displayAddress: [String]
         
         enum CodingKeys: String, CodingKey {
-            
             case displayAddress = "display_address"
         }
     }
     
     private enum CodingKeys: String, CodingKey {
-        
         case restaurantID = "id"
         case alias
         case restaurantName = "name"

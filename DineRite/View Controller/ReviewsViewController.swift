@@ -10,13 +10,13 @@ import UIKit
 import SafariServices
 
 class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
-    
     // MARK: - Properties
-    var businesses: Businesses?
+    var restaurants: Businesses?
     
     // MARK: IBOutlets
     @IBOutlet weak var reviewsTableView: UITableView!
     
+    // MARK: View Lifecycle
     override func loadView() {
         super.loadView()
         
@@ -33,10 +33,10 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
     }
     
     func fetchReviews() {
-        if let business = businesses {
-            guard let businessRestaurantID = business.restaurantID else { return }
+        if let restaurants = restaurants {
+            guard let yelpRestaurantId = restaurants.restaurantID else { return }
             
-            RestaurantReviewController.shared.fetchRestaurantReview(withID: businessRestaurantID) { (review) in
+            RestaurantReviewController.fetchRestaurantReview(withID: yelpRestaurantId) { (review) in
                 guard let _ = review else { return }
                 self.reloadTableView()
             }
@@ -53,16 +53,15 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(handleUnwindSegue), name: Constants.reviewUnwindKey, object: nil)
     }
     
-    
     // MARK: Hanlers
     @objc func handleYelpButtonTap() {
         // ✅ TODO: See if API call returns a specific url for the restaurant. Replace this with that.
-        let restuarantUrl = businesses?.yelpUrl ?? "https://www.yelp.com"
+        let restuarantUrl = restaurants?.yelpUrl ?? "https://www.yelp.com"
         OpenUrlHelper.openWebsite(with: restuarantUrl, on: self)
     }
     
     @objc func handleUnwindSegue() {
-        RestaurantReviewController.shared.reviews.removeAll()
+        RestaurantReviewController.reviews.removeAll()
         self.reloadTableView()
     }
     
@@ -75,7 +74,7 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
                     return
                 }
                 
-                let selectedReview = RestaurantReviewController.shared.reviews[indexPath.row]
+                let selectedReview = RestaurantReviewController.reviews[indexPath.row]
                 detailVC.review = selectedReview
             }
         }
@@ -83,15 +82,15 @@ class ReviewsViewController: UIViewController, SFSafariViewControllerDelegate {
 }
 
 extension ReviewsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RestaurantReviewController.shared.reviews.count
+        return RestaurantReviewController.reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewsTableViewCell
-        let review = RestaurantReviewController.shared.reviews[indexPath.row]
+        let review = RestaurantReviewController.reviews[indexPath.row]
         cell.reviews = review
+        
         return cell
     }
     

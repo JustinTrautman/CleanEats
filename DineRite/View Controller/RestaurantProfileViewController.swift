@@ -12,14 +12,15 @@ import Kingfisher
 import CoreData
 
 class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
-    
     // MARK: Properites
-    var businesses: Businesses?
+    var restaurants: Businesses?
     var restaurantDetails: RestaurantDetails?
     var mapAddress: String?
-    lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
     var healthInspections: [HealthInspection] = []
+    
+    lazy var totalInspectionPoints = 0 // This is the total accumulated violation points received during inspections (less is better).
     lazy var closingTimeAttributedText = NSMutableAttributedString()
+    lazy var restaurantPhotos: [UIImage] = []
     
     // Container Views
     private lazy var aboutViewController: AboutRestaurantViewController = {
@@ -29,9 +30,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         return viewController
     }()
     
-    private lazy var healthInspectionTableViewController: HealthRatingTableViewController = {
+    private lazy var healthInspectionTableViewController: HealthInspectionTableViewController = {
         let storyboard = UIStoryboard(name: "HealthInspection", bundle: Bundle.main)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "HealthInspectionTableViewController") as! HealthRatingTableViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "HealthInspectionTableViewController") as! HealthInspectionTableViewController
         self.addChild(viewController)
         return viewController
     }()
@@ -45,14 +46,13 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     
     private lazy var fetchedResultsController: NSFetchedResultsController<Favorite> = {
         let internalFetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        
         internalFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
         return NSFetchedResultsController(fetchRequest: internalFetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
     }()
     
-    private let favoriteStarButton: UIButton = {
-       let button = UIButton()
+    let favoriteStarButton: UIButton = {
+        let button = UIButton()
         button.setImage(UIImage(named: "favoriteStar"), for: .normal)
         button.setImage(UIImage(named: "favoriteStarFilled"), for: .selected)
         button.addTarget(self, action: #selector(handleFavoriteStarTap), for: .touchUpInside)
@@ -73,10 +73,11 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var totalReviewsLabel: UILabel!
     @IBOutlet weak var hoursOfOperationLabel: UILabel!
-    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var totalHealthScoreLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
     
+    // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,8 +88,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         fetchRestaurantHealthInspections()
         fetchAllFavorites()
         setupFavoriteStarButton()
-        
-        StoreFeedbackHelper.askForReview()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,12 +97,9 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
             NotificationCenter.default.post(name: Constants.reviewUnwindKey, object: nil)
         }
     }
-
-    // Horizontal ScrollView
-    var restaurantPhotos: [UIImage] = []
     
+    // MARK: Programatic View Setup
     func createSlides() -> [Slide] {
-        
         var slides: [Slide] = []
         
         for photo in restaurantPhotos{
@@ -136,10 +132,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         let maximumHorizontalOffset: CGFloat = scrollView.contentSize.width - scrollView.frame.width
         let currentHorizontalOffset: CGFloat = scrollView.contentOffset.x
         
-        // vertical
         let maximumVerticalOffset: CGFloat = scrollView.contentSize.height - scrollView.frame.height
         let currentVerticalOffset: CGFloat = scrollView.contentOffset.y
-        
         let _: CGFloat = currentHorizontalOffset / maximumHorizontalOffset
         let _: CGFloat = currentVerticalOffset / maximumVerticalOffset
     }
@@ -176,27 +170,27 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
     func updateContainerView() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            let mapCoordinates = CLLocationCoordinate2D(latitude: businesses?.coordinate?.latitude ?? 0, longitude: businesses?.coordinate?.longitude ?? 0)
-            aboutViewController.restaurantDetails = businesses
+            let mapCoordinates = CLLocationCoordinate2D(latitude: restaurants?.coordinate?.latitude ?? 0, longitude: restaurants?.coordinate?.longitude ?? 0)
+            aboutViewController.restaurantDetails = restaurants
             aboutViewController.restaurantCoordinates = mapCoordinates
             removeActiveContainerView()
-            self.addChild(viewController: aboutViewController)
+            self.addChildContainer(viewController: aboutViewController)
         case 1:
-            healthInspectionTableViewController.restaurantDetails = businesses
+            healthInspectionTableViewController.restaurantDetails = restaurants
             healthInspectionTableViewController.healthInspections = healthInspections
             removeActiveContainerView()
-            self.addChild(viewController: healthInspectionTableViewController)
+            self.addChildContainer(viewController: healthInspectionTableViewController)
         case 2:
-            guard let restuarantDetails = businesses else { return }
-            reviewViewController.businesses = restuarantDetails
+            guard let restuarantDetails = restaurants else { return }
+            reviewViewController.restaurants = restuarantDetails
             removeActiveContainerView()
-            self.addChild(viewController: reviewViewController)
+            self.addChildContainer(viewController: reviewViewController)
         default:
-            fatalError("Selected an unrecognizer container view.")
+            fatalError("The selected segment index calls for an unrecognized container view.")
         }
     }
     
-    private func addChild(viewController: UIViewController) {
+    private func addChildContainer(viewController: UIViewController) {
         addChild(viewController)
         containerView.addSubview(viewController.view)
         
@@ -205,7 +199,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         viewController.didMove(toParent: self)
     }
     
-    private func removeChild(viewController: UIViewController) {
+    private func removeChildContainer(viewController: UIViewController) {
         viewController.willMove(toParent: nil)
         viewController.view.removeFromSuperview()
         viewController.removeFromParent()
@@ -217,7 +211,6 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    // TODO: See if favorite exists and set star selection.
     private func checkFavoriteStatus() {
         guard let restaurant = restaurantDetails, let favorites = fetchedResultsController.fetchedObjects else { return }
         
@@ -231,71 +224,12 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func fetchAllFavorites() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print("Error performing fetch from results controller. \(error.localizedDescription)")
-        }
-    }
-    
-    private func removeFavorite(withName: String) {
-        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "name == %@", withName)
-        
-        do {
-            let favorites = try CoreDataStack.context.fetch(fetchRequest)
-            for favorite in favorites {
-                FavoriteController.delete(favorite: favorite)
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
-    @objc func handleFavoriteStarTap() {
-        guard let restaurant = restaurantDetails else {
-            return
-        }
-        
-        var image = Data()
-        if let restaurantImage = restaurantPhotos.first {
-            image = restaurantImage.pngData()!
-        }
-        let name = restaurant.name
-        let phone = restaurant.phone
-        let rating = restaurant.rating ?? 0
-        let healthScore = Int64(totalInspectionPoints)
-        var address = ""
-        if let completeAddress = restaurant.location.completeAddress.first.flatMap ({ $0 }) {
-            address = completeAddress
-        }
-        
-        Favorite(image: image, name: name, phone: phone, address: address, rating: rating, healthScore: healthScore)
-        
-        DispatchQueue.main.async {
-            if  self.favoriteStarButton.isSelected {
-                self.favoriteStarButton.setImage(#imageLiteral(resourceName: "Favicon1"), for: .normal)
-                self.favoriteStarButton.isSelected = false
-                
-                self.removeFavorite(withName: name)
-            } else {
-                self.favoriteStarButton.setImage(#imageLiteral(resourceName: "favoriteStarFilled"), for: .normal)
-                self.favoriteStarButton.isSelected = true
-            }
-        }
-    }
-    
     func updateViews() {
         // Image carousel setup
         slideScrollView.delegate = self
         slidePageControl.currentPage = 0
         
-        // Text label setup
-        totalScoreLabel.layer.masksToBounds = true
-        totalScoreLabel.layer.cornerRadius = 5
-        
-        if let business = businesses {
+        if let business = restaurants {
             guard let restuarantAlias = business.alias else { return }
             
             RestaurantDetailController.fetchRestaurantDetailsWith(restaurantAlias: restuarantAlias) { (restaurantDetails) in
@@ -309,7 +243,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                 let name = currentRestuarant.name
                 let totalReviews = currentRestuarant.reviewCount
                 let rating = currentRestuarant.rating?.roundToClosestHalf() ?? 0
-
+                
                 if let hours = currentRestuarant.hours?.first {
                     let closingTime = RestaurantHoursHelper.returnClosingTime(for: hours)
                     self.closingTimeAttributedText
@@ -345,6 +279,8 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                     self.slideScrollView.bringSubviewToFront(self.slidePageControl)
                     
                     DispatchQueue.main.async {
+                        self.totalHealthScoreLabel.layer.masksToBounds = true
+                        self.totalHealthScoreLabel.layer.cornerRadius = 5
                         self.restaurantNameLabel.text = name
                         self.totalReviewsLabel.text  = "(\(totalReviews))"
                         self.ratingStarImageView.image = StarRatingHelper.returnStarFrom(rating: rating)
@@ -355,13 +291,36 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    // MARK: CRUD and Fetcher Functions
+    private func fetchAllFavorites() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error performing fetch from results controller. \(error.localizedDescription)")
+        }
+    }
+    
+    func removeFavorite(withName: String) {
+        let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", withName)
+        
+        do {
+            let favorites = try CoreDataStack.context.fetch(fetchRequest)
+            for favorite in favorites {
+                FavoriteController.delete(favorite: favorite)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func fetchRestaurantHealthInspections() {
         guard let address = mapAddress else {
             return
         }
         
         DispatchQueue.global(qos: .userInteractive).async {
-            HealthInspectionController.getHealthInspectionsFor(address: address, completion: { (inspections) in
+            HealthInspectionController.getHealthInspectionsFor(address: address, completion: { [unowned self] (inspections) in
                 if let inspections = inspections {
                     self.healthInspections = inspections
                     
@@ -369,7 +328,7 @@ class RestaurantProfileViewController: UIViewController, UIScrollViewDelegate {
                         self.totalInspectionPoints += inspection.weight ?? 0
                     }
                     DispatchQueue.main.async {
-                        self.totalScoreLabel.text = String(describing: self.totalInspectionPoints)
+                        self.totalHealthScoreLabel.text = String(describing: self.totalInspectionPoints)
                     }
                 }
             })

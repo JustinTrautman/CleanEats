@@ -8,7 +8,6 @@
  
  import UIKit
  import MapKit
- import CoreLocation
  
  class DiscoverViewController: UIViewController {
     
@@ -361,7 +360,6 @@
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantTableViewCell else { return UITableViewCell() }
         
         let restaurant = restaurants[indexPath.row]
-        
         cell.restaurants = restaurant
         
         return cell

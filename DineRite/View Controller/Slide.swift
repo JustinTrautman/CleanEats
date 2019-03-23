@@ -9,6 +9,5 @@
 import UIKit
 
 class Slide: UIScrollView {
-
     @IBOutlet weak var slideImageView: UIImageView!
 }

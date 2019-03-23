@@ -14,7 +14,6 @@ protocol AboutRestaurantViewControllerDelegate: class {
 }
 
 class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
-    
     // MARK: IBOutlets
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -43,7 +42,6 @@ class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
         
         delegate?.didUpdateAboutRestaurantVC(sender: self)
         updateViews()
-        StoreFeedbackHelper.askForReview()
     }
     
     private func setupMapView() {
@@ -54,7 +52,6 @@ class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
         if let restaurant = restaurantDetails {
             let address = restaurant.location?.displayAddress.first ?? ""
             let distance = restaurant.restaurantDistance?.inMiles ?? 0
-            
             
             DispatchQueue.main.async {
                 self.addressLabel.text = address
@@ -104,7 +101,6 @@ class AboutRestaurantViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - IBActions
     @IBAction func callButtonTapped(_ sender: UIButton) {
-        // TODO: - Replace deprecated OpenURL code.
         guard let phoneNumber = phoneButton.currentTitle?.digitsOnly else {
             return
         }
